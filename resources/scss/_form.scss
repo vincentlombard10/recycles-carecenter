@@ -1,0 +1,12 @@
+.form-label {
+    font-weight: 600;
+}
+.form-control {
+    border-radius: 0.15rem;
+    border: 1px solid #303048;
+    padding: var(--bs-form-control-padding-y) var(--bs-form-control-padding-x);
+    &--success {
+        background: oklch(0.982 0.018 155.826);
+        border: 1Px solid oklch(0.627 0.194 149.214);
+    }
+}

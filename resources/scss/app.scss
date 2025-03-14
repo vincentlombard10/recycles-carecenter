@@ -1,0 +1,62 @@
+@import "bootstrap";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@import "@coreui/coreui/scss/coreui";
+
+@import "list";
+:root {
+    --sidebar-width: 16rem;
+    --cui-sidebar-occupy-start: 16rem;
+}
+@import "root";
+@import "h";
+@import "sidebar";
+@import "hr";
+@import "table";
+@import "panels";
+@import "button";
+@import "form";
+@import "badge";
+h1 {
+    font-size: 1.5rem;
+    line-height: 48px;
+    margin-bottom: 0;
+    font-weight: 600
+}
+.wrapper {
+    display: block;
+    width: calc(100vw - 60px) !important;
+    --livefeed-occupy-end: 0rem;
+    margin-left: 60px;
+    padding-right: var(--livefeed-occupy-end);
+    will-change: auto;
+    transition: padding .15s;
+}
+
+.page-header {
+    position: fixed;
+    background-color: #e8e8ee;
+    color: #303048;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    width: calc(100vw - 60px);
+    z-index: 1000;
+    &--actions {
+
+    }
+}
+.page-wrapper {
+    position: absolute;
+    padding: 2rem;
+    margin-top: 48px;
+    width: calc(100vw - 60px);
+}
+.search-form {
+    padding: 0.5rem 0;
+    border-bottom: 1Px solid #303048;
+    .form-control {
+        border: 0;
+    }
+}

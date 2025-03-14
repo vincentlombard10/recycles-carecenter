@@ -1,0 +1,15 @@
+.badge {
+    --bs-badge-padding-x: 1.25rem;
+    --bs-badge-padding-y: 0.65rem;
+    --bs-badge-border-radius: 0.2rem;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-y);
+    border-radius: var(--bs-badge-border-radius);
+    &--20 {
+        background-color: oklch(0.723 0.219 149.579);
+        color: oklch(0.982 0.018 155.826);
+    }
+    &--90 {
+        background-color: oklch(0.704 0.04 256.788);
+        color: oklch(0.968 0.007 247.896);
+    }
+}

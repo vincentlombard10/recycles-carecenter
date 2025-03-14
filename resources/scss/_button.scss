@@ -1,0 +1,10 @@
+.btn {
+    --bs-btn-padding-x: 1.25rem;
+    --bs-btn-padding-y: 0.65rem;
+    border-radius: 0.2rem;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x) !important;
+    &-sm {
+        --bs-btn-padding-x: 1rem;
+        --bs-btn-padding-y: 0.35rem;
+    }
+}
