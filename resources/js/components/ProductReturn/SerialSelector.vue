@@ -1,19 +1,20 @@
 <template>
     <div class="row" v-if="serial">
-        <div class="col-lg-6 mb-3">
+        <div class="col-lg-12">
             <div class="Serial_Selected">
-                <div>{{ serial.code }} / {{ serial.sku }}</div>
+                <div>{{ serial.code }}</div>
+                <div>{{ serial.sku }}</div>
             </div>
-            <input type="text" name="serial" :value="serial.code">
+            <input type="hidden" name="serial" :value="serial.code">
         </div>
-        <div class="lg-6 mb-3">
-            <button class="Button_Simple"
+        <div class="lg-6">
+            <button class="btn btn-sm btn-dark"
                     @click.prevent="reset">Reset</button>
         </div>
     </div>
     <div class="row" v-else>
         <template v-if="suggestions.length">
-            <div class="col-lg-6 mb-3">
+            <div class="col-lg-6">
                 <div class="Serial_Selector">
                     <ul>
                         <li class="Serial_Item"
@@ -26,7 +27,7 @@
                 </div>
             </div>
             <div class="col-lg-3 mb-3">
-                <button class="Button_Simple"
+                <button class="btn btn-sm btn-dark"
                         @click.prevent="cancelSuggestions">Supprimer la sélection</button>
             </div>
         </template>
@@ -69,8 +70,9 @@ const reset = () => {
     emit('setSerial', null)
 }
 
-const setSerial = (serial) => {
-    serial.value = serial
+const setSerial = (_serial) => {
+    console.log(_serial)
+    serial.value = _serial
     emit('setSerial', serial.value)
 }
 
@@ -83,8 +85,9 @@ const canFetchSerial = computed(() => {
 .Serial_Selector {
     overflow-y: scroll;
     max-height: 12rem;
-    border: 1Px solid black;
+    border: 1px solid black;
     border-radius: 0 0 0.25rem 0.25rem;
+    margin-bottom: .5rem;
     .Serial_Item {
         padding: 0.65rem 1rem;
         border-bottom: 1Px solid #b5babd;
@@ -102,9 +105,11 @@ const canFetchSerial = computed(() => {
     border: 0;
 }
 .Serial_Selected {
-    padding: 0.65rem 1rem;
+    padding: 1rem 1.25rem;
     background-color: oklch(44.6% 0.043 257.281);
+    border-radius: 0.35rem;
     color: white;
+    margin-bottom: 0.5rem;
 }
 </style>
 

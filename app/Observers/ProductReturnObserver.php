@@ -15,7 +15,7 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
         try {
             ProductReport::create([
                 'identifier' => $productReturn->identifier,
-                'return_id' => $productReturn->id,
+                'product_return_id' => $productReturn->id,
                 'status' => ProductReport::STATUS_PENDING,
                 'reason' => $productReturn->reason,
             ]);

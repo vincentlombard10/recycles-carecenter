@@ -5,7 +5,7 @@
         @foreach($items as $item)
             <tr>
                 <td>
-                    <table class="table">
+                    <table class="table m-0">
                         <tbody>
                         <tr>
                             @include('livewire.product-returns.partials.table.cell-identfier')

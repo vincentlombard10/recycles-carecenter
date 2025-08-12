@@ -9,14 +9,13 @@ table.table {
     }
     tbody {
         tr {
-            td {
-                padding: 0.75rem 1rem;
-                line-height: 1.25rem;
-                background: transparent;
-            }
             &.tr--new {
                 background: oklch(94.6% 0.033 307.174);
                 border-bottom: 1px solid oklch(82.7% 0.119 306.383);
+                td {
+                    background: inherit;
+                    color: inherit;
+                }
             }
             &.tr--open {
                 background: white;
@@ -25,17 +24,35 @@ table.table {
                     color: inherit;
                 }
             }
-            &.tr--pending {
+            &.tr--pending, &.tr--hold {
                 background: oklch(95.4% 0.038 75.164);
                 border-bottom: 1px solid oklch(83.7% 0.128 66.29);
+                td {
+                    background: inherit;
+                    color: inherit;
+                }
             }
             &.tr--solved {
                 background: oklch(95% 0.052 163.051);
                 border-bottom: 1px solid oklch(84.5% 0.143 164.978);
+                td {
+                    background: inherit;
+                    color: inherit;
+                }
             }
             &.tr--closed {
                 background: oklch(92.8% 0.006 264.531);
                 border-bottom: 1px solid oklch(87.2% 0.01 258.338);
+                td {
+                    background: inherit;
+                    color: inherit;
+                }
+            }
+            &:last-child {
+                border-bottom: 0;
+                td, th {
+                    border-bottom: inherit;
+                }
             }
         }
     }

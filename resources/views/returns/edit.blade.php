@@ -7,7 +7,7 @@
     <x-page-wrapper>
         <x-messages />
         <div class="mb-3">
-            <a href="{{ route('support.returns.index') }}" class="btn btn-sm btn-light">Retour</a>
+            <a href="{{ route('support.returns.index') }}" class="btn btn-sm btn-dark">Retour</a>
         </div>
         {{ html()->form('PATCH', route('support.returns.update', $return))->open() }}
         <div class="mb-3">
@@ -40,20 +40,45 @@
             {{ html()->form()->close() }}
         </div>
         @endif
-        <div class="danger-zone">
-            <h4>Danger Zone</h4>
-            @if ($return->trashed())
-                {{ html()->form('DELETE', route('support.returns.forceDelete', $return))->open() }}
-                <p>Pour confirmer la <span class="fw-bold">suppression définitive</span> de ce retour produit, renseignez le champ ci-dessous avec le code <span class="fw-semibold">{{ $return->identifier }}</span>.</p>
-            @else
-            {{ html()->form('DELETE', route('support.returns.destroy', $return))->open() }}
-            <p>Pour confirmer la suppression de ce retour produit, renseignez le champ ci-dessous avec le code <span class="fw-semibold">{{ $return->identifier }}</span>.</p>
-            @endif
-            <div class="row mb-3">
-                <div class="col-lg-6">{{ html()->text('confirmation')->class('form-control') }}</div>
+
+        <button type="button" class="btn {{ $return->trashed() ? 'btn-danger' : 'btn-dark' }}" data-bs-toggle="modal" data-bs-target="#modal">
+            {{ $return->trashed() ? 'Supprimer définitivement' : 'Archiver' }}
+        </button>
+
+
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @if($return->trashed())
+                        <h5 class="modal-title" id="exampleModalLabel">Souhaitez-vous supprimer définitivement le retour {{ $return->identifier }} ?</h5>
+                        @else
+                            <h5 class="modal-title" id="exampleModalLabel">Souhaitez-vous réellement archiver le retour {{ $return->identifier }} ?</h5>
+                        @endif
+                    </div>
+                    <div class="modal-mobdy p-3">
+                        @if ($return->trashed())
+                            {{ html()->form('DELETE', route('support.returns.forceDelete', $return))->open() }}
+                            <p>Pour confirmer la <span class="fw-bold">suppression définitive</span> de ce retour produit, renseignez le champ ci-dessous avec le code <span class="fw-semibold">{{ $return->identifier }}</span>.</p>
+                        @else
+                            {{ html()->form('DELETE', route('support.returns.destroy', $return))->open() }}
+                            @if($return->trashed())
+                                <p>Pour confirmer la suppression de ce retour produit, renseignez le champ ci-dessous avec le code <span class="fw-semibold">{{ $return->identifier }}</span>.</p>
+                            @else
+                                <p>Pour confirmer l'archivage de ce retour produit, renseignez le champ ci-dessous avec le code <span class="fw-semibold">{{ $return->identifier }}</span>.</p>
+                            @endif
+                        @endif
+                        <div class="row mb-3">
+                            <div class="col-lg-6">{{ html()->text('confirmation')->class('form-control') }}</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-dark">{{ $return->trashed() ? 'Supprimer' : 'Archiver' }}</button>
+                        {{ html()->form()->close() }}
+                    </div>
+                </div>
             </div>
-            {{ html()->submit('Delete')->class('btn btn-danger') }}
-            {{ html()->form()->close() }}
         </div>
     </x-page-wrapper>
 </x-app-layout>

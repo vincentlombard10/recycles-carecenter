@@ -17,7 +17,7 @@ trait ProductReturnRelationships
 
     public function report(): HasOne
     {
-        return $this->hasOne(ProductReport::class);
+        return $this->hasOne(ProductReport::class)->withTrashed();
     }
 
     public function ticket(): BelongsTo

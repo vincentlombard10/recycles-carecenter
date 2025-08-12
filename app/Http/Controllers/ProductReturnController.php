@@ -57,29 +57,29 @@ class ProductReturnController extends Controller
                 'comment' => $request->comment,
 
                 // Section 5 - Adresses de cheminement du colis
-                'from_id' => Contact::where('code', $request->input('from-code'))->first()->id ?? null,
-                'from_code' => $request->input('from-code'),
-                'from_name' => $request->input('from-name'),
-                'from_address1' => $request->input('from-address1'),
-                'from_address2' => $request->input('from-address2'),
-                'from_postalcode' => $request->input('from-postalcode'),
-                'from_city' => $request->input('from-city'),
+                'routing_from_id' => Contact::where('code', $request->input('routing-from-code'))->first()->id ?? null,
+                'routing_from_code' => $request->input('routing-from-code'),
+                'routing_from_name' => $request->input('routing-from-name'),
+                'routing_from_address1' => $request->input('routing-from-address1'),
+                'routing_from_address2' => $request->input('routing-from-address2'),
+                'routing_from_postalcode' => $request->input('routing-from-postalcode'),
+                'routing_from_city' => $request->input('routing-from-city'),
 
-                'to_id' => Contact::where('code', $request->input('to-code'))->first()->id ?? null,
-                'to_code' => $request->input('to-code'),
-                'to_name' => $request->input('to-name'),
-                'to_address1' => $request->input('to-address1'),
-                'to_address2' => $request->input('to-address2'),
-                'to_postalcode' => $request->input('to-postalcode'),
-                'to_city' => $request->input('to-city'),
+                'routing_to_id' => Contact::where('code', $request->input('routing-to-code'))->first()->id ?? null,
+                'routing_to_code' => $request->input('routing-to-code'),
+                'routing_to_name' => $request->input('routing-to-name'),
+                'routing_to_address1' => $request->input('routing-to-address1'),
+                'routing_to_address2' => $request->input('routing-to-address2'),
+                'routing_to_postalcode' => $request->input('routing-to-postalcode'),
+                'routing_to_city' => $request->input('routing-to-city'),
 
-                'reshipment_id' => Contact::where('code', $request->input('reshipment-code'))->first()->id ?? null,
-                'reshipment_code' => $request->input('reshipment-code'),
-                'reshipment_name' => $request->input('reshipment-name'),
-                'reshipment_address1' => $request->input('reshipment-address1'),
-                'reshipment_address2' => $request->input('reshipment-address2'),
-                'reshipment_postalcode' => $request->input('reshipment-postalcode'),
-                'reshipment_city' => $request->input('reshipment-city'),
+                'return_id' => Contact::where('code', $request->input('return-code'))->first()->id ?? null,
+                'return_code' => $request->input('return-code'),
+                'return_name' => $request->input('return-name'),
+                'return_address1' => $request->input('return-address1'),
+                'return_address2' => $request->input('return-address2'),
+                'return_postalcode' => $request->input('return-postalcode'),
+                'return_city' => $request->input('return-city'),
 
                 'author_id' => 1,
             ]);
@@ -123,7 +123,7 @@ class ProductReturnController extends Controller
     public function destroy(Request $request, $id)
     {
         $productReturn = ProductReturn::find($id);
-        $productReturn->report->delete();
+        $productReturn->report?->delete();
         $productReturn->delete();
         $message = sprintf("Retour produit %s déplacé dans la <a href=%s>corbeille</a>.", $productReturn->identifier, route('support.returns.trash'));
         ToastMagic::info(sprintf("Le retour produit %s a bien été archivé.", $productReturn->identifier));
@@ -138,16 +138,16 @@ class ProductReturnController extends Controller
     public function forceDelete($id)
     {
         $productReturn = ProductReturn::withTrashed()->find($id);
-        $productReturn->report->forceDelete();
+        $productReturn->report?->forceDelete();
         $productReturn->forceDelete();
-        ToastMagic::error(sprintf("Le retour produit %s est définitivement suprimé.", $productReturn->identifier));
+        ToastMagic::error(sprintf("Le retour produit %s est définitivement supprimé.", $productReturn->identifier));
         return redirect()->route('support.returns.trash');
     }
 
     public function restore($id)
     {
-        $productReturn = ProductReturn::withTrashed()->find($id);
-        $productReturn->report->restore();
+        $productReturn = ProductReturn::withTrashed()->where('identifier', $id)->first();
+        $productReturn->report?->restore();
         $productReturn->restore();
         ToastMagic::info(sprintf("Le retour produit %s a bien été restauré.", $productReturn->identifier));
         return redirect()->route('support.returns.index');

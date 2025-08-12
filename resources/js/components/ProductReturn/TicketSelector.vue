@@ -1,6 +1,6 @@
 <template>
     <div class="row" v-if="ticket">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="Selected_Ticket">
                 <div><span class="fw-bold">{{ ticket.id }}</span></div>
                 <div><span>{{ ticket.requester_name }}</span></div>
@@ -50,7 +50,7 @@
         </template>
     </div>
     <div class="row" v-if="ticket || ticketsList">
-        <div class="col">
+        <div class="col d-flex gap-2">
             <a class="btn btn-sm btn-dark" v-if="ticket" @click="unsetTicket">Annuler l'association</a>
             <a class="btn btn-sm btn-dark" v-if="ticketsList.length" @click="unsetTicketsList">Nouvelle recherche</a>
         </div>
@@ -115,7 +115,7 @@ const unsetTicketsList = () => {
     }
 }
 .Selected_Ticket {
-    padding: 0.65rem 1rem;
+    padding: 1rem 1.25rem;
     background-color: oklch(44.6% 0.043 257.281);
     border-radius: 0.35rem;
     color: white;

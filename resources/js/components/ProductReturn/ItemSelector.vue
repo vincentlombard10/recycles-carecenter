@@ -1,18 +1,18 @@
 <template>
     <div class="row" v-if="item">
-        <div class="col-lg-6 mb-3">
+        <div class="col-lg-12">
             <div class="Item_Selected">
                 <span class="fw-bold">{{ item.itno }}</span> <span>{{ item.itds }}</span>
-                <input type="text" name="component" :value="item.itno">
+                <input type="hidden" name="component" :value="item.itno">
             </div>
         </div>
-        <div class="col-lg-6 mb-3">
-            <button class="Button_Simple" @click.prevent="reset">Nouvelle sélection</button>
+        <div class="col-lg-6">
+            <button class="btn btn-sm btn-dark" @click.prevent="reset">Nouvelle sélection</button>
         </div>
     </div>
     <div class="row" v-else>
         <template v-if="itemsSuggestions.length">
-            <div class="col-lg-6 mb-3">
+            <div class="col-lg-6">
                 <div class="Item_Selector">
                     <ul>
                         <li class="Item_Item"
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="col-lg-3 mb-3">
-                <button class="Button_Simple"
+                <button class="btn btn-sm btn-dark"
                         @click.prevent="cancelSuggestions">Supprimer la sélection</button>
             </div>
         </template>
@@ -82,7 +82,7 @@ const setItem = (payload) => {
     border: 1Px solid black;
     border-radius: 0 0 0.25rem 0.25rem;
     .Item_Item {
-        padding: 0.65rem 1rem;
+        padding: 1rem 1.25rem;
         border-bottom: 1Px solid #b5babd;
         cursor: pointer;
         &:hover {
@@ -98,8 +98,10 @@ const setItem = (payload) => {
     border: 0;
 }
 .Item_Selected {
-    padding: 0.65rem 1rem;
+    padding: 1rem 1.25rem;
     background-color: oklch(44.6% 0.043 257.281);
+    border-radius: 0.35rem;
     color: white;
+    margin-bottom: 0.5rem;
 }
 </style>

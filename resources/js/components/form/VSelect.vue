@@ -17,14 +17,8 @@
 import {ref} from "vue";
 
 const props = defineProps<{
-    name: {
-        type: String,
-        required: true
-    },
-    options: {
-        type: Array<any>,
-        required: false
-    }
+    name: string
+    options: Array<any>
 }>()
 
 const selectedOption: Ref<string> = ref('')

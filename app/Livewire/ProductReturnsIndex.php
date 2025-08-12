@@ -17,7 +17,7 @@ class ProductReturnsIndex extends Component
     public function render()
     {
         $items = ProductReturn::where(function ($query) {
-            $query->whereAny(['identifier', 'serial_code', 'from_code'], 'like', '%' . $this->searchTerm . '%');
+            $query->whereAny(['identifier', 'serial_code', 'routing_from_code'], 'like', '%' . $this->searchTerm . '%');
         })
             ->when($this->trashed, function ($query) {
                 return $query->onlyTrashed();

@@ -6,7 +6,7 @@
     </x-page-header>
     <x-page-wrapper>
         <div class="mb-3">
-            <a href="{{route('support.returns.index')}}">Retour</a>
+            <a href="{{route('support.returns.index')}}" class="btn btn-sm btn-dark">Retour</a>
         </div>
         <livewire:search-form />
         <livewire:product-returns-index :trashed="true"/>

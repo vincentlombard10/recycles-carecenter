@@ -37,4 +37,20 @@ class ProductReturn extends Model
     {
         return $this->belongsTo(Contact::class, 'reshipment_id');
     }
+
+    public function ofTypeComponent(): bool
+    {
+        return match ($this->type) {
+            'composant', 'component', 'c', 'C', 'part' => true,
+            default => false
+        };
+    }
+
+    public function ofTypeBike(): bool
+    {
+        return match ($this->type) {
+            'velo', 'bike', 'B', 'b' => true,
+            default => false
+        };
+    }
 }

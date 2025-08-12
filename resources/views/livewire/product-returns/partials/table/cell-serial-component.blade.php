@@ -1,16 +1,16 @@
 <td class="p-2">
     <div class="mb-2">
-        @if($item->type === 'component' && $item->item)
+        @if($item->ofTypeComponent())
             <div class="tinycard tinycard--lg">
                 <div><span class="fw-bold">{{ $item->item_itno  }}</span></div>
-            <div><small>{{ $item->item->itds  }}</small></div>
-            <div><small>{{ $item->item->brand->code  }}</small></div>
+                <div><small>{{ $item->item?->itds  }}</small></div>
+                <div><small>{{ $item->item?->brand->code  }}</small></div>
             </div>
-        @elseif($item->serial)
+        @elseif($item->ofTypeBike())
             <div class="tinycard tinycard--lg">
                 <div><span class="fw-bold">{{ $item->serial_code  }}</span></div>
-            <div><small>{{ $item->serial->item->itno  }}</small></div>
-            <div><small>{{ $item->serial->item->brand->code  }}</small></div>
+                <div><small>{{ $item->serial->item->itno  }}</small></div>
+                <div><small>{{ $item->serial->item->brand->code  }}</small></div>
             </div>
         @else
             <span>Indisponible</span>

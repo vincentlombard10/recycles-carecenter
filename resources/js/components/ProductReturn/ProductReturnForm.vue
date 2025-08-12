@@ -1,149 +1,162 @@
 <template>
-    <section id="Qualification">
-        <div class="row">
-            <div class="col-xl-12 mb-3">
-                <h2>1. Qualification</h2>
+    <div class="card">
+        <div class="card-body p-5">
+            <section id="Qualification" class="p-3">
                 <div class="row">
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="type" class="form-label mb-1">Type de retour</label>
-                        <VSelect v-if="typesList.length" :name="'type'" :options="typesList" @select="handleSelectType"/>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="context" class="form-label mb-1">Contexte</label>
-                        <VSelect :name="'context'" :options="contextsList" @select="handleSelectContext"/>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="reason" class="form-label mb-1">Motif</label>
-                        <VSelect :name="'reason'" :options="reasonsList" @select="handleSelectReason"/>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="assignee" class="form-label mb-1">Assignation</label>
-                        <VSelect name="assignee" :options="assignationsList" @select="handleSelectAssignation" />
-                        {{ assignation }}
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="action" class="form-label mb-1">Action</label>
-                        <VSelect name="action" :options="actionsList" @select="handleSelectAction" />
-                        {{ action }}
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="destination" class="form-label mb-1">Destination</label>
-                        <VSelect name="destination" :options="destinationsList" @select="handleSelectDestination" />
-                        {{ destination }}
+                    <div class="col-xl-12 mb-3">
+                        <h2><i class="bi me-2" :class="{'bi-check-circle-fill': section1isValid, 'bi-x-circle': !section1isValid}"></i>1. Qualification</h2>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <label for="type" class="form-label mb-1">Type de retour</label>
+                                <VSelect
+                                    v-if="typesList.length"
+                                    name="type"
+                                    :options="typesList"
+                                    @select="handleSelectType" />
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <label for="context" class="form-label mb-1">Contexte</label>
+                                <VSelect
+                                    v-if="contextsList.length"
+                                    name="context"
+                                    :options="contextsList"
+                                    @select="handleSelectContext" />
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <label for="reason" class="form-label mb-1">Motif</label>
+                                <VSelect
+                                    v-if="reasonsList.length"
+                                    name="reason"
+                                    :options="reasonsList"
+                                    @select="handleSelectReason" />
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <label for="assignee" class="form-label mb-1">Assignation</label>
+                                <VSelect
+                                    v-if="assignationsList.length"
+                                    name="assignee"
+                                    :options="assignationsList"
+                                    @select="handleSelectAssignation" />
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <label for="action" class="form-label mb-1">Action</label>
+                                <VSelect
+                                    v-if="actionsList.length"
+                                    name="action"
+                                    :options="actionsList"
+                                    @select="handleSelectAction" />
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <label for="destination" class="form-label mb-1">Destination</label>
+                                <VSelect
+                                    v-if="destinationsList.length"
+                                    name="destination"
+                                    :options="destinationsList"
+                                    @select="handleSelectDestination" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section id="Ticket">
-        <div class="row">
-            <div class="col-xl-12 mb-3">
-                <h2>2. Ticket associé</h2>
-                <TicketSelector @set-ticket="handleSelectTicket" />
-            </div>
-        </div>
-    </section>
-    <section id="Product">
-        <div class="row">
-            <div class="col-xl-12 mb-3">
-                <h2>3. Produit concerné</h2>
-                <template v-if="type && serial === null && component === null">
-                    <ItemSelector
-                        v-if="type === 'component' || type === 'composant'"
-                        @set-item="setComponent" />
-                    <SerialSelector
-                        v-if="type === 'bike' || type === 'velo'"
-                        @set-serial="setSerial" />
-                </template>
-                <template v-else-if="type">
-                    <ItemTable :item="component" v-if="component" />
-                    <SerialTable :serial="serial" v-if="serial"/>
-                    <input type="hidden" v-if="component" name="component" :value="component.itno">
-                    <input type="hidden" v-if="serial" name="serial" :value="serial.code">
-                </template>
-                <VAlert v-else>Veuillez d'abord sélectionner le type de retour.</VAlert>
-            </div>
-        </div>
-    </section>
-    <section id="Sale_Information">
-        <h2>4. Informations de vente</h2>
-        <div class="row">
-            <div class="col-lg-3 mb-3">
-                <label for="" class="form-label mb-1">Date de vente</label>
-                <input type="date"
-                       class="form-control"
-                       v-model="bikeSoldAt"
-                       name="bike_sold_at">
-            </div>
-            <div class="col-lg-3 mb-3">
-                <label for="" class="form-label mb-1">Commande</label>
-                <input type="text" class="form-control"
-                       :class="{'form-control--success': order !== ''}"
-                       v-model="order"
-                       name="order">
-            </div>
-            <div class="col-lg-3 mb-3">
-                <label for="" class="form-label mb-1">Facture</label>
-                <input type="text"
-                       class="form-control"
-                       :class="{'form-control--success': invoice.length}"
-                       v-model="invoice"
-                       name="invoice">
-            </div>
-            <div class="col-lg-3 mb-3">
-                <label for="" class="form-label mb-1">Bon de livraison</label>
-                <input type="text" class="form-control"
-                       :class="{'form-control--success': delivery !== ''}"
-                       v-model="delivery"
-                       name="delivery">
-            </div>
-        </div>
-    </section>
-    <section id="Comments">
-        <h2>5. Commentaires</h2>
-        <div class="row">
-            <div class="col-lg-6 mb-3">
-                <label for="" class="form-label mb-1">Informations sur le retour</label>
-                <textarea class="form-control" v-model="info" rows="5" v-html="info" name="info"></textarea>
-            </div>
-            <div class="col-lg-6 mb-3">
-                <label for="" class="form-label mb-1">Commentaires</label>
-                <textarea class="form-control" v-model="comment" rows="5" v-html="comment" name="comment"></textarea>
-            </div>
-        </div>
-    </section>
-    <section id="Transport">
-        <div class="row">
-            <h2>5. Acheminement et retour</h2>
-            <div class="col-xl-9">
-                <div class="mb-3">
-                    <label for="" class="form-label">Expéditeur</label>
-                    <AddressBox fields-prefix="from" @selected="handleSetFromAddress"/>
+            </section>
+            <section id="Ticket" class="p-3">
+                <div class="row">
+                    <div class="col-xl-12 mb-3">
+                        <h2><i class="bi bi-slash-circle me-2"></i>2. Ticket associé</h2>
+                        <TicketSelector @set-ticket="handleSelectTicket" />
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">Destinataire</label>
-                    <AddressBox fields-prefix="to" @selected="handleSetToAddress"/>
+            </section>
+            <section id="Product" class="p-3">
+                <div class="row">
+                    <div class="col-xl-12 mb-3">
+                        <h2><i class="bi me-2" :class="{'bi-check-circle-fill': section3isValid, 'bi-x-circle': !section3isValid}"></i>3. Produit concerné</h2>
+                        <template v-if="type">
+                            <ItemSelector
+                                v-if="type === 'component' || type === 'composant'"
+                                @set-item="setComponent" />
+                            <SerialSelector
+                                v-if="type === 'bike' || type === 'velo'"
+                                @set-serial="setSerial" />
+                        </template>
+                        <VAlert v-else>Veuillez d'abord sélectionner le type de retour.</VAlert>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">Réexpédition</label>
-                    <AddressBox fields-prefix="reshipment" @selected="handleSetReshipmentAddress"/>
+            </section>
+            <section id="Sale_Information" class="p-3">
+                <h2><i class="bi me-2" :class="{'bi-check-circle-fill': section4isValid, 'bi-x-circle': !section4isValid}"></i>4. Informations de vente</h2>
+                <div class="row">
+                    <div class="col-lg-3 mb-3">
+                        <label for="" class="form-label mb-1">Date de vente</label>
+                        <input type="date"
+                               class="form-control"
+                               v-model="bikeSoldAt"
+                               name="bike_sold_at">
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <label for="" class="form-label mb-1">Commande</label>
+                        <input type="text" class="form-control"
+                               :class="{'form-control--success': order !== ''}"
+                               v-model="order"
+                               name="order">
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <label for="" class="form-label mb-1">Facture</label>
+                        <input type="text"
+                               class="form-control"
+                               :class="{'form-control--success': invoice.length}"
+                               v-model="invoice"
+                               name="invoice">
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <label for="" class="form-label mb-1">Bon de livraison</label>
+                        <input type="text" class="form-control"
+                               :class="{'form-control--success': delivery !== ''}"
+                               v-model="delivery"
+                               name="delivery">
+                    </div>
                 </div>
-            </div>
-            <div class="col-xl-9">
-                <SectionStatusAlert
-                    v-if="section5isValid"
-                    :completed="section5isValid"
-                    message="Toutes champs de cette partie ont été renseignés." />
-            </div>
+            </section>
+            <section id="Comments" class="p-3">
+                <h2><i class="bi me-2" :class="{'bi-check-circle-fill': section5isValid, 'bi-x-circle': !section5isValid}"></i>5. Commentaires</h2>
+                <div class="row">
+                    <div class="col-lg-6 mb-3">
+                        <label for="" class="form-label mb-1">Informations sur le retour</label>
+                        <textarea class="form-control" v-model="info" rows="5" v-html="info" name="info"></textarea>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="" class="form-label mb-1">Commentaires</label>
+                        <textarea class="form-control" v-model="comment" rows="5" v-html="comment" name="comment"></textarea>
+                    </div>
+                </div>
+            </section>
+            <section id="Routing" class="p-3">
+                <div class="row">
+                    <h2><i class="bi me-2" :class="{'bi-check-circle-fill': section6isValid, 'bi-x-circle': !section6isValid}"></i>6. Acheminement et retour</h2>
+                    <div class="col-xl-9">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Expéditeur</label>
+                            <AddressBox fields-prefix="routing-from" @selected="handleSetRoutingFromAddress"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Destinataire</label>
+                            <AddressBox fields-prefix="routing-to" @selected="handleSetRoutingToAddress"/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Réexpédition</label>
+                            <AddressBox fields-prefix="return" @selected="handleSetReturnAddress"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <input v-if="canSubmit" type="submit" value="Créer un bon de retour" class="btn btn-primary">
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
-    <section>
-        <div class="row">
-            <div class="col-12">
-                <input v-if="canSubmit" type="submit" value="Créer un bon de retour" class="btn btn-primary">
-            </div>
-        </div>
-    </section>
+    </div>
 </template>
 
 
@@ -187,9 +200,9 @@ const invoice = ref<string>('')
 const delivery = ref<string>('')
 const info = ref<string>('')
 const comment = ref<string>('')
-const fromAddress = ref<string>(null)
-const toAddress = ref<string>(null)
-const reshipmentAddress = ref<string>(null)
+const routingFromAddress = ref<string>(null)
+const routingToAddress = ref<string>(null)
+const returnAddress = ref<string>(null)
 
 const section1isValid = computed<boolean>(() => {
     return type.value.length > 0
@@ -217,7 +230,11 @@ const section4isValid = computed(() => {
 })
 
 const section5isValid = computed(() => {
-    return toAddress.value != null && fromAddress.value != null;
+    return info.value.length > 0
+})
+
+const section6isValid = computed(() => {
+    return routingToAddress.value != null && routingFromAddress.value != null;
 })
 
 const canSubmit = computed(() => {
@@ -232,7 +249,7 @@ const setComponent = (payload: Object) => {
     component.value = payload
 }
 
-const setSerial = (payload: Object) => {
+const setSerial = (payload: string) => {
     serial.value = payload
 }
 
@@ -264,16 +281,16 @@ const handleSelectTicket = (_ticket: string) => {
     ticket.value = _ticket
 }
 
-const handleSetFromAddress = (payload: string) => {
-    fromAddress.value = payload
+const handleSetRoutingFromAddress = (payload: string) => {
+    routingFromAddress.value = payload
 }
 
-const handleSetToAddress = (payload: string) => {
-    toAddress.value = payload
+const handleSetRoutingToAddress = (payload: string) => {
+    routingToAddress.value = payload
 }
 
-const handleSetReshipmentAddress = (payload) => {
-    reshipmentAddress.value = payload
+const handleSetReturnAddress = (payload: string) => {
+    returnAddress.value = payload
 }
 
 const fetchData = async () => {

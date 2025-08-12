@@ -7,32 +7,17 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li>
-                    <a class="dropdown-item text-end" href="{{ route('support.returns.show', $item->identifier) }}">Consulter</a>
+                    <a class="dropdown-item text-end" href="{{ route('support.returns.show', $item->identifier) }}">Consulter<i class="bi bi-eye ms-2"></i>
+                    </a>
                 </li>
                 <li>
-                    <a class="dropdown-item text-end" href="{{ route('support.returns.edit', $item->identifier) }}">Editer</a>
+                    <a class="dropdown-item text-end" href="{{ route('support.returns.edit', $item->identifier) }}">Editer<i class="bi bi-pencil-square ms-2"></i>
+                    </a>
                 </li>
                 <li>
-                    <a class="dropdown-item text-end" href="{{ route('support.returns.download', $item->identifier) }}">Télécharger</a>
+                    <a class="dropdown-item text-end" href="{{ route('support.returns.download', $item->identifier) }}">Télécharger<i class="bi bi-download ms-2"></i>
+                    </a>
                 </li>
-                @if($item->trashed())
-                    <li>
-                        {{ html()->form('POST', route('support.returns.restore', $item))->open() }}
-                        <a class="dropdown-item text-end" onclick="this.preventDefault();this.closest('form').submit();">Restaurer</a>
-                        {{ html()->form()->close() }}
-                    </li>
-                    <li>
-                        {{ html()->form('DELETE', route('support.returns.forceDelete', $item))->open() }}
-                        <a class="dropdown-item text-end" onclick="this.preventDefault();this.closest('form').submit();">Supprimer définitivement</a>
-                        {{ html()->form()->close() }}
-                    </li>
-                @else
-                <li>
-                    {{ html()->form('DELETE', route('support.returns.destroy', $item))->open() }}
-                    <a class="dropdown-item text-end" onclick="this.preventDefault();this.closest('form').submit();">Supprimer</a>
-                    {{ html()->form()->close() }}
-                </li>
-                @endif
             </ul>
         </div>
     </div>
