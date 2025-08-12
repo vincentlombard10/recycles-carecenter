@@ -1,12 +1,29 @@
+.fields-group {
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
 .form-label {
     font-weight: 600;
 }
 .form-control {
-    border-radius: 0.15rem;
-    border: 1px solid #303048;
-    padding: var(--bs-form-control-padding-y) var(--bs-form-control-padding-x);
+    //border-radius: 0.15rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: oklch(70.4% 0.04 256.788);
+    background-color: white;
+    padding: 0.5rem 1rem;
     &--success {
-        background: oklch(0.982 0.018 155.826);
-        border: 1Px solid oklch(0.627 0.194 149.214);
+        background-color: oklch(92.5% 0.084 155.995);
+        border: 1px solid oklch(0.627 0.194 149.214);
+        &:focus {
+            background: oklch(87.1% 0.15 154.449);
+        }
+    }
+    &--danger {
+        border-color: oklch(51.4% 0.222 16.935);
+        background-color: oklch(81% 0.117 11.638);
+        &:focus {
+            background: oklch(71.2% 0.194 13.428);
+        }
     }
 }

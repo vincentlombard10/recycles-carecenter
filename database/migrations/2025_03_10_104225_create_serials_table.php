@@ -9,18 +9,14 @@ return new class extends Migration {
     {
         Schema::create('serials', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('item_itno');
-            $table->timestamp('in');
-            $table->timestamp('out');
-            $table->string('dealer_code');
-            $table->string('order');
-            $table->string('delivery');
-            $table->string('group_code');
-            $table->string('brand_code');
-            $table->foreignId('group_id');
-            $table->foreignId('brand_id');
-            $table->foreignId('item_id');
+            $table->timestamp('in')->nullable();
+            $table->timestamp('out')->nullable();
+            $table->string('dealer_code')->nullable();
+            $table->string('order')->nullable();
+            $table->string('delivery')->nullable();
+            $table->foreignId('item_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

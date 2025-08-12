@@ -10,35 +10,9 @@ class Metric extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [
-        'agent_wait_time_in_minutes',
-        'assigned_at',
-        'assignee_stations',
-        'assignee_updated_at',
-        'custom_status_updated_at',
-        'first_resolution_time_in_minutes',
-        'full_resolution_time_in_minutes',
-        'group_stations',
-        'initially_assigned_at',
-        'latest_comment_added_at',
-        'on_hold_time_in_minutes',
-        'reopens',
-        'replies',
-        'reply_time_in_minutes',
-        'reply_time_in_seconds',
-        'requester_updated_at',
-        'requester_wait_time_in_minutes',
-        'solved_at',
-        'status_updated_at',
-        'ticket_id',
-        'url',
-        'ticket_id',
-    ];
+    protected $table = 'metrics';
 
-    public function ticket(): BelongsTo
-    {
-        return $this->belongsTo(Ticket::class);
-    }
+    protected $guarded = ['id'];
 
     protected function casts(): array
     {
@@ -59,4 +33,10 @@ class Metric extends Model
             'updated_at' => 'timestamp',
         ];
     }
+
+    public function ticket(): BelongsTo
+    {
+        return $this->belongsTo(Ticket::class);
+    }
+
 }

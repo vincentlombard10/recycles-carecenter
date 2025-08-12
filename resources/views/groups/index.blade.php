@@ -1,5 +1,7 @@
 <x-app-layout>
-    <x-page-header>Groupes</x-page-header>
+    <x-page-header>
+        <h1>Groupes</h1>
+    </x-page-header>
     <x-page-wrapper>
         <livewire:search-form />
         <livewire:groups-index />

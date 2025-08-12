@@ -1,19 +1,14 @@
 <?php
 
 use App\Http\Controllers\AddressController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\GroupController;
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\ProductReportController;
-use App\Http\Controllers\ProductReturnController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SerialController;
-use App\Http\Controllers\TicketController;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Database\RecordNotFoundException;
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Client;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -25,48 +20,42 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-    Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
-        Route::group(['prefix' => 'tickets', 'as' => 'tickets.'], function () {
-            Route::get('/', [TicketController::class, 'index'])->name('index');
-        });
+Route::get('/zendesk-test', function() {
 
-        Route::group(['prefix' => 'returns', 'as' => 'returns.'], function () {
-            Route::get('/', [ProductReturnController::class, 'index'])->name('index');
-            Route::get('/create', [ProductReturnController::class, 'create'])->name('create');
-            Route::post('/', [ProductReturnController::class, 'store'])->name('store');
-        });
+    try {
 
-        Route::group(['prefix' => 'reports', 'as' => 'reports.'], function () {
-            Route::get('/', [ProductReportController::class, 'index'])->name('index');
-        });
-    });
-
-    Route::group(['prefix' => 'serials', 'as' => 'serials.'], function () {
-        Route::get('/', [SerialController::class, 'index'])->name('index');
-        Route::get('/search', [SerialController::class, 'search'])->name('search');
-    });
-
-    Route::group(['prefix' => 'brands', 'as' => 'brands.'], function () {
-        Route::get('/', [BrandController::class, 'index'])->name('index');
-    });
-
-    Route::group(['prefix' => 'groups', 'as' => 'groups.'], function () {
-        Route::get('/', [GroupController::class, 'index'])->name('index');
-    });
-
-    Route::group(['prefix' => 'items', 'as' => 'items.'], function () {
-        Route::get('/', [ItemController::class, 'index'])->name('index');
-        Route::get('/search', [ItemController::class, 'search'])->name('search');
-    });
-
-    Route::group(['prefix' => 'contacts', 'as' => 'contacts.'], function () {
-        Route::get('/', [ContactController::class, 'index'])->name('index');
-        Route::get('/search', [ContactController::class, 'search'])->name('search');
-        Route::group(['prefix' => '/{id}'], function () {
-            Route::get('/', [ContactController::class, 'show'])->name('show');
-        });
-    });
+        $sub = 'recyclesfrance';
+        $credentials = base64_encode(config('zendesk.username') . '/token:lufyxTQLPECJAB86IgFo6Y1bI8ugjJK41vqn3TQP');
+        $client = new Client(['headers' => ['Authorization' => 'Basic ' . $credentials]]);
+        try {
+            $response = $client->request('GET', "https://{$sub}.zendesk.com/api/v2/tickets/34296.json");
+        } catch (GuzzleException $e) {
+            dd($e->getMessage());
+        }
+        if ($response->getStatusCode() === 200) {
+            return response()->json(json_decode($response->getBody()->getContents()));
+/*            //$tickets = json_decode($response->getBody(), true);
+            foreach ($tickets['tickets'] as $ticket) {
+                echo "Ticket ID: " . $ticket['id'] . " - Subject: " . $ticket['subject'] . "\n";
+            }*/
+        } else {
+            echo "Failed to retrieve tickets. Status Code: " . $response->getStatusCode();
+        }
+    } catch (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e) {
+        dd($e->getMessage());
+    }
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/brands.php';
+require __DIR__.'/groups.php';
+require __DIR__.'/items.php';
+require __DIR__.'/serials.php';
+require __DIR__.'/contacts.php';
+require __DIR__.'/support/tickets.php';
+require __DIR__.'/support/returns.php';
+require __DIR__.'/support/reports.php';
+require __DIR__.'/admin/customfields.php';
+require __DIR__.'/zendesk.php';

@@ -12,13 +12,18 @@ class SerialsIndex extends Component
     use WithPagination;
 
     public $searchTerm;
+
+    public bool $orphans = false;
     protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
         $serials = Serial::where(function ($query) {
-            $query->whereAny(['code', 'item_itno', 'customer_code'], 'like', '%' . $this->searchTerm . '%');
-        })->paginate(15);
+            $query->whereAny(['code', 'item_itno', 'dealer_code'], 'like', '%' . $this->searchTerm . '%');
+            $query->when($this->orphans, function ($query) {
+                $query->doesnthave('item');
+            });
+        })->paginate(10);
 
         return view('livewire.serials-index', compact('serials'));
     }

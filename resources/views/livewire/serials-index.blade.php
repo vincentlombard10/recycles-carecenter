@@ -4,6 +4,7 @@
         <tr>
             <th style="width: 8rem;">Code</th>
             <th>SKU Associé</th>
+            <th>Designation</th>
             <th style="width: 12rem;">Client</th>
             <th style="width: 12rem;">Commande</th>
             <th style="width: 12rem;">BL</th>
@@ -13,8 +14,19 @@
         @foreach($serials as $serial)
             <tr>
                 <td>{{ $serial->code  }}</td>
-                <td>{{ $serial->item_itno  }}</td>
-                <td>{{ $serial->customer_code  }}</td>
+                <td>
+                    @if($serial->item)
+                        <span class="fw-semibold text-primary">{{ $serial->item->itno }}</span>
+                    @else
+                        <span>{{ $serial->item_itno  }}</span>
+                    @endif
+                </td>
+                <td>
+                    @if($serial->item)
+                        <span class="">{{ $serial->item->itds }}</span>
+                    @endif
+                </td>
+                <td>{{ $serial->dealer_code  }}</td>
                 <td>{{ $serial->order  }}</td>
                 <td>{{ $serial->delivery  }}</td>
             </tr>

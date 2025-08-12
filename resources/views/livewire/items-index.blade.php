@@ -6,7 +6,6 @@
             <th>Désignation</th>
             <th style="width: 6rem;">Marque</th>
             <th style="width: 6rem;">Groupe</th>
-            <th style="width: 6rem;">Statut</th>
         </tr>
         </thead>
         <tbody>
@@ -14,9 +13,20 @@
             <tr>
                 <td>{{ $item->itno }}</td>
                 <td>{{ $item->itds }}</td>
-                <td>{{ $item->brand_code }}</td>
-                <td>{{ $item->group_code }}</td>
-                <td>{{ $item->status }}</td>
+                <td>
+                    @if($item->brand)
+                        <span class="fw-semibold text-primary">{{ $item->brand->code }}</span>
+                    @else
+                        <span>{{ $item->brand_code }}</span>
+                    @endif
+                </td>
+                <td>
+                    @if($item->group)
+                        <span class="fw-semibold text-primary">{{ $item->group->code }}</span>
+                    @else
+                        <span>{{ $item->group_code }}</span>
+                    @endif
+                </td>
             </tr>
         @endforeach
         </tbody>

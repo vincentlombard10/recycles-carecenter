@@ -12,7 +12,7 @@ class ContactResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'code' => $this->code,
             'name' => $this->name,
             'zendesk_user_id' => $this->zendesk_user_id,
             'status' => $this->status,

@@ -22,9 +22,9 @@ class ContactController extends Controller
     {
         $search = $request->term;
         if ($search != '') {
-            $contacts = Contact::whereAny(['id', 'name'], 'like', '%' . $search . '%')->get();
+            $contacts = Contact::whereAny(['code', 'name'], 'like', '%' . $search . '%')->get();
         } else {
-            $contacts = Contact::orderBy('id')->get();
+            $contacts = Contact::orderBy('code')->get();
         }
         return response()->json(['contacts' => $contacts]);
     }

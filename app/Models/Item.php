@@ -10,16 +10,9 @@ class Item extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [
-        'itno',
-        'itds',
-        'label',
-        'group_id',
-        'brand_id',
-        'group_code',
-        'brand_code',
-        'status',
-    ];
+    protected $table = 'items';
+
+    protected $guarded = ['id'];
 
     public function group(): BelongsTo
     {

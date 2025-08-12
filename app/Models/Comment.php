@@ -10,25 +10,9 @@ class Comment extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [
-        'attachments',
-        'audit_id',
-        'author_id',
-        'body',
-        'html_body',
-        'metadata',
-        'plain_body',
-        'public',
-        'type',
-        'uploads',
-        'via',
-        'ticket_id',
-    ];
+    protected $table = 'comments';
 
-    public function ticket(): BelongsTo
-    {
-        return $this->belongsTo(Ticket::class);
-    }
+    protected $guarded = ['id'];
 
     protected function casts(): array
     {
@@ -40,5 +24,10 @@ class Comment extends Model
             'uploads' => 'array',
             'via' => 'array',
         ];
+    }
+
+    public function ticket(): BelongsTo
+    {
+        return $this->belongsTo(Ticket::class);
     }
 }

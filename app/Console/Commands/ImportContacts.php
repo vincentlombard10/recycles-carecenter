@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Imports\ContactsImport;
 use App\Jobs\ImportContactsJob;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use PHPUnit\Framework\Exception;
 
 class ImportContacts extends Command
@@ -29,7 +31,6 @@ class ImportContacts extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '4096M');
         ini_set('max_execution_time', '3600');
 
         if ($this->option('file')) {
@@ -65,7 +66,7 @@ class ImportContacts extends Command
                 $this->line("ok");
             }
             Storage::disk('local')->put($localFilename, $fileContents);
-            ImportContactsJob::dispatch($localFilename);
+            Excel::import(new ContactsImport(), $localFilename);
 
         } catch (Exception $e) {
 

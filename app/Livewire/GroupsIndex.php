@@ -17,7 +17,7 @@ class GroupsIndex extends Component
     {
         $groups = Group::where(function ($query) {
             $query->whereAny(['code', 'name'], 'like', '%' . $this->searchTerm . '%');
-        })->paginate(15);
+        })->orderBy('code')->paginate(10);
 
         return view('livewire.groups-index', compact('groups'));
     }

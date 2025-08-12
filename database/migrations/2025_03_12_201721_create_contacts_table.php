@@ -8,7 +8,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->bigInteger('id')->unique()->primary()->index();
+            $table->id();
+            $table->string('code')->unique()->index();
             $table->string('name');
             $table->integer('zendesk_user_id')->nullable()->index();
             $table->integer('status');

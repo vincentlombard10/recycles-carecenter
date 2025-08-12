@@ -9,8 +9,13 @@ class SerialController extends Controller
 {
     public function index()
     {
-        $serials = Serial::paginate(25);
-        return view('serials.index', compact('serials'));
+        $orphans = Serial::doesntHave('item')->count();
+        return view('serials.index', compact( 'orphans'));
+    }
+
+    public function orphans()
+    {
+        return view('serials.orphans');
     }
 
     public function search(Request $request)

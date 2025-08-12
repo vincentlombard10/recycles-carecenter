@@ -8,11 +8,11 @@
         </tr>
         <tr>
             <th>SKU</th>
-            <td>{{ props.serial.item_itno }}</td>
+            <td>{{ props.serial.sku }}</td>
         </tr>
-        <tr>
-            <th>Client</th>
-            <td>{{ props.serial.customer_code }}</td>
+        <tr v-if="props.serial.item">
+            <th>Désignation</th>
+            <td>{{ props.serial.item.itds }}</td>
         </tr>
         </tbody>
     </table>

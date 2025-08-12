@@ -10,8 +10,9 @@ class Brand extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [
-        'code',
-        'name',
-    ];
+    protected $table = 'brands';
+
+    protected $primaryKey = 'id';
+
+    protected $guarded = ['id'];
 }

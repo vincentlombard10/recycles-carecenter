@@ -1,15 +1,74 @@
 .badge {
     --bs-badge-padding-x: 1.25rem;
     --bs-badge-padding-y: 0.65rem;
-    --bs-badge-border-radius: 0.2rem;
+    //--bs-badge-border-radius: 0.35rem;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-y);
-    border-radius: var(--bs-badge-border-radius);
-    &--20 {
+    //border-radius: var(--bs-badge-border-radius);
+    background-color: black;
+    font-weight: 400;
+    font-size: 0.9rem;
+    &--20,
+    &--active {
         background-color: oklch(0.723 0.219 149.579);
         color: oklch(0.982 0.018 155.826);
     }
-    &--90 {
-        background-color: oklch(0.704 0.04 256.788);
+    &--90,
+    &--inactive {
+        background-color: oklch(27.9% 0.041 260.031);
         color: oklch(0.968 0.007 247.896);
+    }
+    &.status {
+        &--pending {
+            background-color: oklch(54.1% 0.281 293.009) !important;
+            color: white;
+        }
+        &--received {
+            background-color: oklch(70.4% 0.14 182.503);
+            color: white;
+        }
+        &--first-quotation {
+            background-color: oklch(93% 0.034 272.788);
+            color: oklch(39.8% 0.195 277.366);
+        }
+        &--first-quotation-reminder {
+            background-color: oklch(94.3% 0.029 294.588);
+            color: oklch(43.2% 0.232 292.759);
+        }
+        &--first-quotation-approved {
+            background-color: oklch(96.2% 0.044 156.743);
+            color: oklch(52.7% 0.154 150.069);
+        }
+        &--first-quotation-rejected {
+            background-color: oklch(94.1% 0.03 12.58);
+            color: oklch(51.4% 0.222 16.935);
+        }
+        &--second-quotation {
+            background-color: oklch(93% 0.034 272.788);
+            color: oklch(39.8% 0.195 277.366);
+        }
+        &--second-quotation-reminder {
+            background-color: oklch(94.3% 0.029 294.588);
+            color: oklch(43.2% 0.232 292.759);
+        }
+        &--second-quotation-approved {
+            background-color: oklch(96.2% 0.044 156.743);
+            color: oklch(52.7% 0.154 150.069);
+        }
+        &--second-quotation-rejected {
+            background-color: oklch(94.1% 0.03 12.58);
+            color: oklch(51.4% 0.222 16.935);
+        }
+        &--shipped {
+            background-color: oklch(65.6% 0.241 354.308);
+            color: white;
+        }
+        &--process-finished {
+            background-color: oklch(55.4% 0.046 257.417);
+            color: white;
+        }
+        &--cancelled {
+            background-color: oklch(63.7% 0.237 25.331);
+            color: white;
+        }
     }
 }

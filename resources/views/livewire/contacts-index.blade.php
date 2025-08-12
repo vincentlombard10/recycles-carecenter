@@ -13,28 +13,28 @@
         <tbody>
         @foreach ($contacts as $contact)
             <tr>
-                <td>
-                    <div><span class="fw-bold">{{ $contact->id }}</span></div>
+                <td class="py-3">
+                    <div><span class="fw-bold">{{ $contact->code }}</span></div>
                     <div><small>{{ $contact->name }}</small></div>
                 </td>
-                <td>
+                <td class="py-3">
                     <div><small>{{ $contact->address1 }}</small></div>
                     <div><small>{{ $contact->address2 }}</small></div>
                     <div><small>{{ $contact->postalcode }} {{ $contact->city }}</small></div>
                 </td>
-                <td>
+                <td class="py-3">
                     {{ $contact->country }}
                 </td>
-                <td>
+                <td class="py-3">
                     <div>{{ $contact->phone }}</div>
                     <div>{{ $contact->email }}</div>
                 </td>
-                <td>
+                <td class="py-3">
                     <div class="d-grid">
                         <span class="badge badge--{{ $contact->status }}">{{ $contact->status_label }}</span>
                     </div>
                 </td>
-                <td>
+                <td class="py-3">
                     <a href="{{ route('contacts.show', $contact) }}" class="btn btn-sm btn-dark">Editer</a>
                 </td>
             </tr>

@@ -2,10 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\ImportSerialsJob;
+use App\Imports\SerialsImport;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use PHPUnit\Framework\Exception;
 
 class ImportSerials extends Command
@@ -28,10 +29,7 @@ class ImportSerials extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '4096M');
-
-        ini_set('max_execution_time', '3600');
-
+        ini_set('memory_limit', '-1');
 
         if ($this->option('file')) {
 
@@ -63,7 +61,11 @@ class ImportSerials extends Command
                 return;
             }
             Storage::disk('local')->put($localFilename, $fileContents);
-            ImportSerialsJob::dispatch($localFilename);
+            //ImportSerialsJob::dispatch($localFilename);
+
+            Excel::import(new SerialsImport, $localFilename);
+
+
 
         } catch (Exception $e) {
 

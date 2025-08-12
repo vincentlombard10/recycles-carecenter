@@ -9,11 +9,16 @@ return new class extends Migration {
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('itno');
+            $table->string('itno')->unique();
             $table->string('itds');
             $table->string('label')->nullable();
-            $table->foreignId('group_id');
-            $table->foreignId('brand_id');
+            $table->string('brand_code')->nullable();
+            $table->string('group_code')->nullable();
+            $table->string('item_code')->nullable();
+            $table->foreignId('group_id')->nullable();
+            $table->foreignId('brand_id')->nullable();
+            $table->foreignId('item_id')->nullable();
+            $table->integer('status')->default(20);
             $table->timestamps();
             $table->softDeletes();
         });

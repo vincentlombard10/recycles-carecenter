@@ -15,7 +15,7 @@ class ItemsIndex extends Component
     {
         $items = Item::where(function ($query) {
             $query->whereAny(['itno', 'itds'], 'like', '%' . $this->searchTerm . '%');
-        })->paginate(15);;
+        })->paginate(10);
         return view('livewire.items-index', compact('items'));
     }
 

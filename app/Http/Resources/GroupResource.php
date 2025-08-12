@@ -12,11 +12,7 @@ class GroupResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
             'code' => $this->code,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-
             'name' => $this->name,
         ];
     }

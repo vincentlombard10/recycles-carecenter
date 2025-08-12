@@ -16,14 +16,8 @@ class ItemResource extends JsonResource
             'itno' => $this->itno,
             'itds' => $this->itds,
             'label' => $this->label,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-
-            'group_id' => $this->group_id,
-            'brand_id' => $this->brand_id,
-
-            'group' => new GroupResource($this->whenLoaded('group')),
-            'brand' => new BrandResource($this->whenLoaded('brand')),
+            'group' => new GroupResource($this->group),
+            'brand' => new BrandResource($this->brand),
         ];
     }
 }

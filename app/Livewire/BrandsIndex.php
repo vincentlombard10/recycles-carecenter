@@ -17,7 +17,7 @@ class BrandsIndex extends Component
     {
         $brands = Brand::where(function ($query) {
             return $query->whereAny(['code', 'name'], 'like', '%' . $this->searchTerm . '%');
-        })->paginate(15);
+        })->orderBy('code')->paginate(10);
         return view('livewire.brands-index', compact('brands'));
     }
 

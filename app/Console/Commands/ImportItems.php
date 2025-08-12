@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Imports\ItemsImport;
 use App\Jobs\ImportItemsJob;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use PHPUnit\Framework\Exception;
 
 class ImportItems extends Command
@@ -29,8 +31,9 @@ class ImportItems extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '4096M');
-        ini_set('max_execution_time', '3600');
+        ini_set('memory_limit', '-1');
+
+        echo "OOOK";
 
         if ($this->option('file')) {
 
@@ -62,7 +65,8 @@ class ImportItems extends Command
                 return;
             }
             Storage::disk('local')->put($localFilename, $fileContents);
-            ImportItemsJob::dispatch($localFilename);
+
+            Excel::import(new ItemsImport(), $localFilename);
 
         } catch (Exception $e) {
 

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Ticket;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,7 +16,8 @@ class TicketsIndex extends Component
 
     public function render()
     {
-        return view('livewire.tickets-index');
+        $tickets = Ticket::orderBy('created_at', 'desc')->paginate(30);
+        return view('livewire.tickets-index', compact('tickets'));
     }
 
     #[On('updatedSearchTerm')]
