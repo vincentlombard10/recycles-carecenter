@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Traits\Relationships;
+namespace App\Models\Traits\Relationship;
 
 use App\Models\Contact;
 use App\Models\Item;
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
-trait ProductReturnRelationships
+trait ProductReturnRelationship
 {
 
     public function report(): HasOne

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\Attributes\ProductReturnAttributes;
-use App\Models\Traits\Relationships\ProductReturnRelationships;
+use App\Models\Traits\Relationship\ProductReturnRelationship;
 use App\Observers\ProductReturnObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +15,7 @@ class ProductReturn extends Model
 {
     use SoftDeletes,
         ProductReturnAttributes,
-        ProductReturnRelationships;
+        ProductReturnRelationship;
 
     protected $guarded = ['id'];
 

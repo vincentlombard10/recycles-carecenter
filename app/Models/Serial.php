@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Traits\Relationships\SerialRelationships;
+use App\Models\Traits\Relationship\SerialRelationship;
 
 class Serial extends Model
 {
     use SoftDeletes,
-        SerialRelationships;
+        SerialRelationship;
 
     protected $table = 'serials';
 

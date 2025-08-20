@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Matrix\Exception;
 
 class ContactController extends Controller
 {

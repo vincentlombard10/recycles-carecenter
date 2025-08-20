@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Relationship\SerialAdditionalRelationship;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SerialAdditional extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,
+        SerialAdditionalRelationship;
 
     protected $table = 'serials_additionals';
 

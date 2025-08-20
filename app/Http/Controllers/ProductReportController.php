@@ -11,12 +11,19 @@ class ProductReportController extends Controller
 {
     public function index()
     {
+        if (!auth()->user()->hasAnyPermission('reports.read')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
+
         $reports_count = ProductReport::count();
         return view('reports.index', compact('reports_count'));
     }
 
     public function create()
     {
+        if (!auth()->user()->hasAnyPermission('reports.create')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
         return view('reports.create');
     }
 
@@ -26,6 +33,9 @@ class ProductReportController extends Controller
 
     public function edit(string $identifier)
     {
+        if (!auth()->user()->hasAnyPermission('reports.update')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
         $report = ProductReport::where('identifier', $identifier)->firstOrFail();
         return view('reports.edit', compact('report'));
     }

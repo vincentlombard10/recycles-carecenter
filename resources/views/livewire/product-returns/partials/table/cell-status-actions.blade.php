@@ -10,10 +10,9 @@
                     <a class="dropdown-item text-end" href="{{ route('support.returns.show', $item->identifier) }}">Consulter<i class="bi bi-eye ms-2"></i>
                     </a>
                 </li>
-                <li>
-                    <a class="dropdown-item text-end" href="{{ route('support.returns.edit', $item->identifier) }}">Editer<i class="bi bi-pencil-square ms-2"></i>
-                    </a>
-                </li>
+                @canany(['returns.update', 'returns.edit'])
+                <li><a class="dropdown-item text-end" href="{{ route('support.returns.edit', $item->identifier) }}">Editer<i class="bi bi-pencil-square ms-2"></i></a></li>
+                @endcanany
                 <li>
                     <a class="dropdown-item text-end" href="{{ route('support.returns.download', $item->identifier) }}">Télécharger<i class="bi bi-download ms-2"></i>
                     </a>

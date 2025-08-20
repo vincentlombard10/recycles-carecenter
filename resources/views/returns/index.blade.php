@@ -5,9 +5,11 @@
         </div>
     </x-page-header>
     <x-page-wrapper>
+        @canany(['returns.create'])
         <div class="mb-3">
             <a href="{{ route('support.returns.create') }}" class="btn btn-primary">Nouveau retour</a>
         </div>
+        @endcanany
         @if($returns_count > 0)
         <livewire:search-form />
         <livewire:product-returns-index />

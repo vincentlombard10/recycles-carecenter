@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Traits\Scopes;
+namespace App\Models\Traits\Scope;
 
 trait ProductReportScope
 {

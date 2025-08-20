@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('serial_code');
             $table->foreignId('serial_id');
-            $table->string('qualificiation');
+            $table->string('qualification');
             $table->string('reference');
             $table->string('category');
             $table->timestamps();

@@ -4,8 +4,10 @@ use App\Http\Controllers\ProductReturnController;
 
 Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
     Route::group(['prefix' => 'returns', 'as' => 'returns.'], function () {
-        Route::get('/', [ProductReturnController::class, 'index'])->name('index');
-        Route::get('/create', [ProductReturnController::class, 'create'])->name('create');
+        Route::get('/', [ProductReturnController::class, 'index'])
+            ->name('index');
+        Route::get('/create', [ProductReturnController::class, 'create'])
+            ->name('create');
         ROute::get('/archives', [ProductReturnController::class, 'trash'])->name('trash');
         Route::delete('/{productReturn}', [ProductReturnController::class, 'destroy'])
             ->name('destroy');

@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\ProductReturn;
 use App\Models\Serial;
 use App\Models\Ticket;
+use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Devrabiul\ToastMagic\Facades\ToastMagic;
@@ -15,15 +16,27 @@ use Exception;
 
 class ProductReturnController extends Controller
 {
+    public function __construct()
+    {
+    }
     public function index()
     {
+        if (!auth()->user()->hasAnyPermission('returns.read')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
+
         $returns_count = ProductReturn::count();
         return view('returns.index', compact('returns_count'));
     }
 
     public function create()
     {
+        if (!auth()->user()->hasAnyPermission('returns.create')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
+
         return view('returns.create');
+
     }
 
     public function store(Request $request): RedirectResponse
@@ -103,12 +116,20 @@ class ProductReturnController extends Controller
 
     public function show($id)
     {
+        if (!auth()->user()->hasAnyPermission('returns.read')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
+
         $productReturn = ProductReturn::where('identifier', $id)->first();
         return view('returns.show', compact('productReturn'));
     }
 
     public function edit($identifier)
     {
+        if (!auth()->user()->hasAnyPermission('returns.update')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
+
         $return = ProductReturn::where('identifier', $identifier)->withTrashed()->firstOrFail();
         return view('returns.edit', compact('return'));
     }
@@ -122,6 +143,10 @@ class ProductReturnController extends Controller
 
     public function destroy(Request $request, $id)
     {
+        if (!auth()->user()->hasAnyPermission('returns.delete')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
+
         $productReturn = ProductReturn::find($id);
         $productReturn->report?->delete();
         $productReturn->delete();
@@ -132,6 +157,10 @@ class ProductReturnController extends Controller
 
     public function trash()
     {
+        if (!auth()->user()->hasAnyPermission('returns.read')) {
+            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+        }
+
         return view('returns.archives');
     }
 
