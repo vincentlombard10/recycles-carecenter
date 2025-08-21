@@ -33,8 +33,6 @@ class ImportItems extends Command
     {
         ini_set('memory_limit', '-1');
 
-        echo "OOOK";
-
         if ($this->option('file')) {
 
             $date = $this->option('file');
@@ -55,6 +53,8 @@ class ImportItems extends Command
         $localFilename = 'ITEMS.csv';
 
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
+
+        $this->line("Importer le fichier $filename");
 
         try {
 
