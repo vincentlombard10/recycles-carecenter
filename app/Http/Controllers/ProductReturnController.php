@@ -95,14 +95,17 @@ class ProductReturnController extends Controller
                 'return_city' => $request->input('return-city'),
 
                 'author_id' => 1,
+                'status' => ProductReturn::STATUS_PENDING,
+
             ]);
 
             if ($request->ticket) {
 
                 $return->ticket()->associate(Ticket::findOrFail($request->ticket));
                 $return->save();
-
             }
+
+            ToastMagic::info(sprintf("Le retour produit %s a bien été archivé.", $return->identifier));
 
         } catch (Exception $exception) {
 
@@ -150,7 +153,6 @@ class ProductReturnController extends Controller
         $productReturn = ProductReturn::find($id);
         $productReturn->report?->delete();
         $productReturn->delete();
-        $message = sprintf("Retour produit %s déplacé dans la <a href=%s>corbeille</a>.", $productReturn->identifier, route('support.returns.trash'));
         ToastMagic::info(sprintf("Le retour produit %s a bien été archivé.", $productReturn->identifier));
         return redirect()->route('support.returns.index', $productReturn->id)->with('success', $message);
     }
