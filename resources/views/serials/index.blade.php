@@ -6,6 +6,8 @@
         <livewire:search-form />
         @if(\App\Models\Serial::count() > 0)
         <livewire:serials-index />
+        @else
+            No serial
         @endif
     </x-page-wrapper>
 </x-app-layout>
