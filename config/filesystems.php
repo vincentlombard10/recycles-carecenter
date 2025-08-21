@@ -71,6 +71,17 @@ return [
             'timeout' => 30
         ],
 
+        'sftp' => [
+            'driver' => 'sftp',
+            'host' => '51.38.230.205',
+            'username' => 'debian',
+            'password' => 'Cycleurope2023***',
+            'port' => 22,
+            'root' => '/home/m3',
+            'ssl' => true,
+            'timeout' => 300
+        ]
+
     ],
 
     /*
