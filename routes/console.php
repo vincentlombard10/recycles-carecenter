@@ -2,10 +2,14 @@
 
 use Zendesk\API\HttpClient as ZendeskAPI;
 
-# Importation des références produits
-# Importation des numéros de série
-# Importation des références complémentaires des numéros de série
-# Importation des contacts
+Schedule::command('items:import --file=' . \Carbon\Carbon::now()->format('ymd'))
+    ->dailyAt('20:00');
+
+Schedule::command('serials:import --file=' . \Carbon\Carbon::now()->format('ymd'))
+    ->dailyAt('20:05');
+
+Schedule::command('contacts:import --file=' . \Carbon\Carbon::now()->format('ymd'))
+    ->dailyAt('20:10');
 
 #Importation des tickets chaque minute
 Schedule::call(function () {
@@ -74,4 +78,4 @@ Schedule::call(function () {
         }
     }
 
-})->everyFiveMinutes();
+})->everyMinute();
