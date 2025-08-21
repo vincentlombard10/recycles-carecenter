@@ -4,6 +4,7 @@
     </x-page-header>
     <x-page-wrapper>
         <livewire:search-form />
+        {{ \App\Models\Serial::count() }}
         @if(\App\Models\Serial::count())
         <livewire:serials-index />
         @endif
