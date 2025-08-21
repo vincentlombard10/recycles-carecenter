@@ -61,9 +61,6 @@
         </li>
     </ul>
     @endhasanyrole
-    <div style="color: black;">
-        {{ auth()->user()->email }}
-    </div>
     <ul class="sidebar-menu mt-auto mb-0">
         <li class="sidebar-item">
             {{ html()->form('POST', route('logout'))->open() }}
