@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="sidebar-brand"></div>
     <ul class="sidebar-menu">
-        {{ auth()->user()->role() }}
+        {{ auth()->user()->role }}
         @can('tickets.read')
         <li class="sidebar-item">
             <a href="{{ route('support.tickets.index') }}"
