@@ -6,7 +6,7 @@
             @foreach($tickets as $ticket)
                 <tr class="tr--{{ strtolower($ticket->status) }}">
                     <td class="ps-4 pe-2 py-4">
-                        <div><h5 class="fw-bold"><a href="{{ route('tickets.show', $ticket->id) }}">{{ $ticket->id }}</a></h5></div>
+                        <div><h5 class="fw-bold"><a href="{{ route('support.tickets.show', $ticket->id) }}">{{ $ticket->id }}</a></h5></div>
                         <div>{{ $ticket->priority  }}</div>
                     </td>
                     <td class="px-2 py-4">
