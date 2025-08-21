@@ -7,8 +7,8 @@ use Illuminate\Database\RecordNotFoundException;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Client;
 
-Route::get('/', function () {
-    return view('auth.login');
+Route::middleware('guest')->get('/', function () {
+    return redirect('/login');
 });
 
 Route::get('/dashboard', function () {
