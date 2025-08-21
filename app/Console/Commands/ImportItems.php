@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Imports\ItemsImport;
-use App\Jobs\ImportItemsJob;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
