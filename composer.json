@@ -26,6 +26,7 @@
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-html": "^3.11",
         "spatie/laravel-permission": "^6.21",
+        "spatie/laravel-webhook-client": "^3.4",
         "spatie/simple-excel": "^3.7"
     },
     "require-dev": {
