@@ -3,7 +3,6 @@
         <h1>Numéros de série</h1>
     </x-page-header>
     <x-page-wrapper>
-        <div>{{ $orphans }}</div>
         <livewire:search-form />
         <livewire:serials-index />
     </x-page-wrapper>
