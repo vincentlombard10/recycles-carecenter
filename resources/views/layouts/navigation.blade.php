@@ -59,6 +59,11 @@
                class="sidebar-link {{ Route::is('contacts.*') ? 'active': '' }}"><i class="bi bi-person-lines-fill"></i>&nbsp;<span
                     class="sidebar-link__label">Contacts</span></a>
         </li>
+        <li class="sidebar-item">
+            <a href="{{ route('contacts.index') }}"
+               class="sidebar-link {{ Route::is('log-viewer.*') ? 'active': '' }}"><i class="bi bi-person-lines-fill"></i>&nbsp;<span
+                    class="sidebar-link__label">Visualiseur de logs</span></a>
+        </li>
     </ul>
     @endhasanyrole
     <ul class="sidebar-menu mt-auto mb-0">
