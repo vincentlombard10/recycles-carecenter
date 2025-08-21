@@ -1,11 +1,13 @@
 <div class="sidebar">
     <div class="sidebar-brand"></div>
     <ul class="sidebar-menu">
+        @can('tickets.read')
         <li class="sidebar-item">
             <a href="{{ route('support.tickets.index') }}"
                class="sidebar-link {{ Route::is('support.tickets.*') ? 'active': '' }}"><i
                     class="bi bi-inboxes-fill"></i>&nbsp;<span class="sidebar-link__label">Tickets</span></a>
         </li>
+        @endcan
         @canany(['returns.read', 'returns.create', 'returns.update', 'returns.delete'])
             <li class="sidebar-item">
                 <a href="{{ route('support.returns.index') }}"
