@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -13,12 +16,28 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create')
+            ->withRoles($roles);
     }
 
     public function store(Request $request)
     {
-
+        try {
+            $randomPassword = Str::random(10);
+            $user = User::create([
+                'name' => sprintf('%s %s', $request->input('firstname'), $request->input('lastname')),
+                'email' => $request->input('email'),
+                'password' => bcrypt($randomPassword),
+                'email_verified_at' => now(),
+            ]);
+            $user->assignRole($request->input('role'));
+            $user->save();
+            \ToastMagic::success("Utilisateur créé");
+        } catch (\Throwable $th) {
+            \ToastMagic::error($th->getMessage());
+        }
+        return redirect()->route('admin.users.index');
     }
 
     public function show($id)
