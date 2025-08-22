@@ -59,6 +59,20 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-
+        try {
+            $user = User::find($id);
+            $user->update([
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'name' => sprintf('%s %s', $request->input('firstname'), $request->input('lastname')),
+                'email' => $request->email,
+            ]);
+            $user->syncRoles($request->input('role'));
+            $user->save();
+            \ToastMagic::success("Utilisateur mis à jour");
+        } catch (\Throwable $th) {
+            \ToastMagic::error($th->getMessage());
+        }
+        return redirect()->route('admin.users.index');
     }
 }

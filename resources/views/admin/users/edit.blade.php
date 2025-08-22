@@ -3,7 +3,7 @@
         <h1>Editer utilisateur</h1>
     </x-page-header>
     <x-page-wrapper>
-        {{ html()->form('PATCH', route('admin.users.update', $user->id))->open() }}
+        {{ html()->form('PUT', route('admin.users.update', $user->id))->open() }}
         <div class="card">
             <div class="card-body p-5">
                 <div class="form-group mb-3">
@@ -27,7 +27,7 @@
                     <select name="role" id="role" class="form-control">
                         <option selected disabled>Sélectionner</option>
                         @foreach($roles as $role)
-                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                            <option value="{{ $role->name }}" {{ $user->getRoleNames()[0] === $role->name ? 'selected': '' }}>{{ $role->name }}</option>
                         @endforeach
                     </select>
                 </div>
