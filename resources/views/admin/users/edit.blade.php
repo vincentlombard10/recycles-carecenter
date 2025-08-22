@@ -7,12 +7,16 @@
         <div class="card">
             <div class="card-body p-5">
                 <div class="form-group mb-3">
+                    {{ html()->label('Identifiant')->for('username')->class('form-label') }}
+                    {{ html()->text('username')->class('form-control')->value($user->username)->disabled() }}
+                </div>
+                <div class="form-group mb-3">
                     {{ html()->label('Prénom')->for('firstname')->class('form-label') }}
-                    {{ html()->text('firstname')->class('form-control')->value($user->name) }}
+                    {{ html()->text('firstname')->class('form-control')->value($user->firstname) }}
                 </div>
                 <div class="form-group mb-3">
                     {{ html()->label('Nom')->for('lastname')->class('form-label') }}
-                    {{ html()->text('lastname')->class('form-control')->value($user->name) }}
+                    {{ html()->text('lastname')->class('form-control')->value($user->lastname) }}
                 </div>
                 <div class="form-group mb-3">
                     {{ html()->label('Adresse e-mail')->for('email')->class('form-label') }}
