@@ -1,8 +1,6 @@
 <div class="sidebar">
-    <div class="sidebar-brand"></div>
+    <div class="sidebar-brand">Care Center</div>
     <ul class="sidebar-menu">
-        {{ auth()->user()->name }}
-        {{ auth()->user()->permissions_count }}
         @can('tickets.read')
         <li class="sidebar-item">
             <a href="{{ route('support.tickets.index') }}"

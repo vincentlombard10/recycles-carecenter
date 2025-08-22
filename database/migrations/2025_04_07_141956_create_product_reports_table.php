@@ -50,8 +50,8 @@ return new class extends Migration {
             $table->decimal('battery_current_capacity')->nullable();
             $table->decimal('battery_temperature')->nullable();
             $table->decimal('battery_internal_resistance')->nullable();
-            $table->text('diagnostic');
-            $table->foreignId('return_id')->references('id')->on('product_returns')->onDelete('cascade');
+            $table->text('diagnostic')->nullable();
+            $table->foreignId('product_return_id')->references('id')->on('product_returns')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

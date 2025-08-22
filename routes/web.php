@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ProfileController;
+use App\Mail\TestMail;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Database\RecordNotFoundException;
 use Illuminate\Support\Facades\Route;
@@ -13,8 +14,15 @@ Route::middleware('guest')->get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/test-mail', function () {
+    try {
+        Mail::to('vincent.lombard@re-cycles-france.fr')->send(new TestMail());
+    } catch (Exception $e) {
+        dd($e->getMessage());
+    }
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
