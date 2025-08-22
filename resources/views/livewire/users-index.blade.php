@@ -2,7 +2,9 @@
     <table class="table">
         <thead>
         <tr>
-            <th>User</th>
+            <th>Identifiant</th>
+            <th>Nom</th>
+            <th>Prénom</th>
             <th>Email</th>
             <th>Role</th>
         </tr>
@@ -10,7 +12,9 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td class="ps-4 pe-2 py-3">{{ $user->name }}</td>
+                <td class="ps-4 pe-2 py-3">{{ $user->username }}</td>
+                <td class="px-2 py-3">{{ $user->lastname }}</td>
+                <td class="px-2 py-3">{{ $user->firstname }}</td>
                 <td class="px-2 py-3">{{ $user->email }}</td>
                 <td class="px-2 py-3">
                     @foreach($user->roles as $role)

@@ -26,6 +26,9 @@ class UserController extends Controller
         try {
             $randomPassword = Str::random(10);
             $user = User::create([
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'username' => $request->username,
                 'name' => sprintf('%s %s', $request->input('firstname'), $request->input('lastname')),
                 'email' => $request->input('email'),
                 'password' => bcrypt($randomPassword),
@@ -47,7 +50,11 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        return view('admin.users.edit');
+        $user = User::find($id);
+        $roles = Role::all();
+        return view('admin.users.edit')
+            ->withUser($user)
+            ->withRoles($roles);
     }
 
     public function update(Request $request, $id)
