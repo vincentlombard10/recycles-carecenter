@@ -1,7 +1,7 @@
 <div>
     @if (count($items))
         @foreach($items as $item)
-            <div>{{ $item->identifier }}</div>
+            <div clas="px-4 px-3" style="background: white; border-bottom: 1px solid black;">{{ $item->identifier }}</div>
         @endforeach
 
         <table class="table">
