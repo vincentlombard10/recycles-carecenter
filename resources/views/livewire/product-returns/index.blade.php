@@ -1,8 +1,11 @@
 <div>
     @if (count($items))
-    <table class="table">
-        <tbody>
         @foreach($items as $item)
+            <div>{{ $item->identifier }}</div>
+        @endforeach
+
+        <table class="table">
+        <tbody>
             <tr>
                 <td>
                     <table class="table m-0">
@@ -18,7 +21,6 @@
                     </table>
                 </td>
             </tr>
-        @endforeach
         </tbody>
     </table>
     @else
