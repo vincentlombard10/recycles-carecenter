@@ -1,4 +1,4 @@
-<td class="p-2" style="width: 12rem;">
+<td class="ps-2 pe-4 py-3" style="width: 12rem;">
     <h4 class="fw-bold">{{ $item->identifier ?? 'IDENTIFIER' }}</h4>
     <div class="d-grid mb-1"><span class="badge">{{ $item->type }}</span></div>
     <div class="d-grid mb-1"><span class="badge">{{ $item->context }}</span></div>
