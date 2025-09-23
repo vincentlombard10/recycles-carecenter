@@ -1,9 +1,8 @@
 <x-app-layout>
     <x-page-header>
-        <h1>Marques</h1>
+        <livewire:search-form />
     </x-page-header>
     <x-page-wrapper>
-        <livewire:search-form />
         <livewire:brands-index />
     </x-page-wrapper>
 </x-app-layout>

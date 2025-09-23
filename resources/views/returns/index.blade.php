@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-page-header>
-        <h1>Retours produits</h1>
-        <div class="page-header--actions">
-        </div>
+        <livewire:search-form />
     </x-page-header>
     <x-page-wrapper>
         @canany(['returns.create'])
@@ -11,7 +9,6 @@
         </div>
         @endcanany
         @if($returns_count > 0)
-        <livewire:search-form />
         <livewire:product-returns-index />
         @else
             <div class="alert alert-primary">Il ne se passe pas grand chose ici.</div>

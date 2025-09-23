@@ -11,7 +11,7 @@
     <body class="font-sans antialiased">
         <x-sidebar-navigation />
         <div id="main">
-            {{ $slot  }}
+            {{ $slot }}
         </div>
         {!! ToastMagic::scripts() !!}
     </body>

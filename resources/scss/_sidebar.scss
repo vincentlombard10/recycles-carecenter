@@ -1,13 +1,17 @@
 .sidebar {
-    width: var(--sidebar-width);
     background-color: white;
+    width: 4rem;
     color: white;
     height: 100vh;
     position: fixed;
     display: flex;
+    border-radius: 0.5rem;
     flex-direction: column;
+    @media (min-width: 1200px) {
+        width: 16rem;
+    }
+
     .sidebar-brand {
-        background: #f8f5f4;
         width: 100%;
         display: flex;
         color: black;
@@ -22,7 +26,9 @@
         width: 100%;
         justify-content: center;
         padding: 0.5rem;
-        background-color: white;
+        @media (min-width: 1200px) {
+            padding: 1rem;
+        }
         li.sidebar-item {
             background: white;
             width: 100%;
@@ -31,13 +37,25 @@
                 margin-bottom: 0;
             }
             .sidebar-link {
-                width: 100%;
+                width: 3rem;
+                height: 3rem;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                display: flex;
                 text-decoration: none;
-                padding: 0.35rem 0.75rem;
-                display: inline-block;
                 background-color: white;
                 color: oklch(44.6% 0.043 257.281);
                 border-radius: 0.25rem;
+                @media (min-width: 1200px) {
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    gap: 0.5rem;
+                    height: auto;
+                    text-align: left;
+                    padding: 0.5rem 0.75rem;
+                }
                 &:hover {
                     width: 100%;
                     background: oklch(95.4% 0.038 75.164);
@@ -46,6 +64,12 @@
                 &.active {
                     background-color: oklch(64.6% 0.222 41.116);
                     color: white;
+                }
+                &__label {
+                    display: none;
+                    @media (min-width: 1200px) {
+                        display: inline-block;
+                    }
                 }
                 &--logout {
                     background-color: oklch(51.4% 0.222 16.935);

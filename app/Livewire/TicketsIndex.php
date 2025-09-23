@@ -16,7 +16,11 @@ class TicketsIndex extends Component
 
     public function render()
     {
-        $tickets = Ticket::orderBy('created_at', 'desc')->paginate(30);
+        $tickets = Ticket::where(function ($query) {
+            $query->where('id', 'like', '%' . $this->searchTerm . '%');
+            $query->orWhere('requester_name', 'like', '%' . $this->searchTerm . '%');
+            $query->orWhere('requester_email', 'like', '%' . $this->searchTerm . '%');
+        })->orderBy('created_at', 'desc')->paginate(30);
         return view('livewire.tickets-index', compact('tickets'));
     }
 

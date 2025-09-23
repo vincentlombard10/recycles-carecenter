@@ -1,0 +1,20 @@
+.rcf-card {
+    padding: 1.25rem 1.75rem;
+    background-color: white;
+    display: grid;
+    grid-template-columns: auto 8rem;
+    gap: 1rem;
+    margin-bottom: 0.25rem;
+    border-radius: 0.35rem;
+}
+
+.Card_Return {
+    &--Info {
+        display: block;
+        @media (min-width: 1200px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+    }
+}

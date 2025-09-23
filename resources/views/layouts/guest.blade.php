@@ -10,6 +10,7 @@
 <body class="antialiased">
     <div class="login-card-wrapper">
         <div class="login-card">
+            <h1>Care Center</h1>
             {{ $slot }}
         </div>
     </div>

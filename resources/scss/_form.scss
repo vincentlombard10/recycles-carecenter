@@ -9,7 +9,7 @@
     //border-radius: 0.15rem;
     border-width: 1px;
     border-style: solid;
-    border-color: oklch(70.4% 0.04 256.788);
+    border-color: oklch(85.4% 0.04 256.788);
     background-color: white;
     padding: 0.5rem 1rem;
     &--success {
@@ -25,5 +25,9 @@
         &:focus {
             background: oklch(71.2% 0.194 13.428);
         }
+    }
+    &--pill {
+        border-radius: 4rem !important;
+        border-width: 4px !important;
     }
 }
