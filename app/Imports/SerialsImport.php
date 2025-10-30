@@ -14,14 +14,14 @@ use Maatwebsite\Excel\Events\AfterImport;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
-class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithUpserts, WithEvents
+class SerialsImport implements ToCollection, WithHeadingRow, WithBatchInserts, WithChunkReading, WithUpserts, WithEvents
 {
     /**
     * @param array $row
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function model(array $row)
+/*    public function model(array $row)
     {
         if( $row['snh_num'] !== 'SNH_Num') {
             echo "•";
@@ -34,6 +34,17 @@ class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
                 'last_delivery' => $row['snh_bl'],
                 'dealer_code' => $row['snh_cli'],
             ]);
+        }
+    }*/
+
+    public function collection(Collection $collection)
+    {
+        foreach ($collection as $row) {
+            if (Serial::where('code', $row['snh_num'])->exists()) {
+                echo "\033[0;32;40m" . $row['snh_num'] . " exists...\033[0m" . PHP_EOL;
+            } else {
+                echo "\033[0;31;40m" . $row['snh_num'] . " doest not exists...\033[0m" . PHP_EOL;
+            }
         }
     }
 
