@@ -28,7 +28,7 @@ class ImportItemsJob implements ShouldQueue
         SimpleExcelReader::create(storage_path('app/private/' . $this->localFilename))
             ->useDelimiter(";")
             ->getRows()
-            ->chunk(10)
+            ->chunk(50)
             ->each(function ($row) {
                 ImportItemsChunkJob::dispatch($row);
             });
