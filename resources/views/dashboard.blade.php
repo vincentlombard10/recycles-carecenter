@@ -3,6 +3,9 @@
     <x-page-wrapper>
         <div class="container-fluid">
             <div class="row">
+                {{ auth()->user()->roles }}
+            </div>
+            <div class="row">
                 <h2>Codes chassis</h2>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
