@@ -35,14 +35,14 @@ class ImportSerialsChunkJob implements ShouldQueue
         $this->chunk->each(function ($row) {
             try {
                 $serial = Serial::updateOrCreate([
-                    'code' => $row['SNH_Code']
+                    'code' => $row['SNH_Num']
                 ], [
-                    'item_itno' => $row['snh_art'],
-                    'in' => \Carbon\Carbon::parse($row['snh_dtin'])->format('Y-m-d') ?? null,
-                    'out' => \Carbon\Carbon::parse($row['snh_dtout'])->format('Y-m-d') ?? null,
-                    'last_order' => $row['snh_cdem3'],
-                    'last_delivery' => $row['snh_bl'],
-                    'dealer_code' => $row['snh_cli'],
+                    'item_itno' => $row['SNH_Art'],
+                    'in' => \Carbon\Carbon::parse($row['SNH_DtIn'])->format('Y-m-d') ?? null,
+                    'out' => \Carbon\Carbon::parse($row['SNH_DtOut'])->format('Y-m-d') ?? null,
+                    'last_order' => $row['SNH_CdeM3'],
+                    'last_delivery' => $row['SNH_BL'],
+                    'dealer_code' => $row['SNH_Cli'],
                 ]);
             } catch (\Throwable $th) {
                 Log::error($th->getMessage());
