@@ -35,7 +35,7 @@ class ImportItemsChunkJob implements ShouldQueue
     {
         $this->chunk->each(function ($row) {
             $brand = Brand::firstOrNew([
-                'code' => $row['itm_Marque'],
+                'code' => $row['Itm_Marque'],
             ]);
 
             $group = Group::firstOrNew([
