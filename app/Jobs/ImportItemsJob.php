@@ -17,7 +17,7 @@ class ImportItemsJob implements ShouldQueue
      */
     public function __construct()
     {
-        $this->localFilename = "SERIALS.csv";
+        $this->localFilename = "ITEMS.csv";
     }
 
     /**
