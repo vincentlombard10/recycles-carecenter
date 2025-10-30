@@ -14,12 +14,16 @@
                     <x-dashboard.counter
                         title="sans facture associée"
                         :percent="true"
-                        :count="round($serial_without_invoice_count / $serials_count, 4) * 100" />
+                        :progress="true"
+                        :total="$serials_count"
+                        :count="$serial_without_invoice_count" />
                     @endif
                 </div>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
                         title="sans article associé"
+                        :total="$serials_count"
+                        :progress="true"
                         :count="$serials_without_item" />
                 </div>
             </div>
