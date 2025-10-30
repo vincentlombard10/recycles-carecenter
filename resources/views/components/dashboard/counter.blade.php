@@ -12,6 +12,10 @@
     @endif
     <div class="display">
         <div class="title">{{ $title }}</div>
+        @if($count && $total > 0)
         <div class="count">{{ $count/$total * 100 }}@if($percent)%@endif</div>
+        @else
+        <div class="count">{{ $count }}</div>
+        @endif
     </div>
 </div>
