@@ -55,7 +55,6 @@ class SerialsImport implements ToCollection, WithHeadingRow, WithBatchInserts, W
                 'last_order' => $row['snh_cdem3'],
                 'last_delivery' => $row['snh_bl'],
                 'dealer_code' => $row['snh_cli'],
-                'item_id' => Item::where('itno', $row['snh_art'])->first()->id ?? null,
             ]);
         }
     }
