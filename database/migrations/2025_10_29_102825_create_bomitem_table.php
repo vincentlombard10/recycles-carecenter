@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('bomitem', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bom_id');
             $table->string('item_itno')->nullable();
             $table->string('description')->nullable();
             $table->integer('quantity')->nullable();
