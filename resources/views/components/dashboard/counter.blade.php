@@ -13,7 +13,7 @@
     <div class="display">
         <div class="title">{{ $title }}</div>
         @if($count && $total > 0 && $percent)
-        <div class="count">{{ round($count/$total, 2) * 100 }}@if($percent)%@endif</div>
+        <div class="count">{{ round($count/$total, 4) * 100 }}@if($percent)%@endif</div>
         @else
         <div class="count">{{ $count }}</div>
         @endif
