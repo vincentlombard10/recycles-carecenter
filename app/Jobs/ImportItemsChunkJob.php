@@ -11,6 +11,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class ImportItemsChunkJob implements ShouldQueue
 {
@@ -33,6 +34,7 @@ class ImportItemsChunkJob implements ShouldQueue
      */
     public function handle(): void
     {
+        Log::info('chunk', [$this->chunk]);
         $this->chunk->each(function ($row) {
             $brand = Brand::firstOrNew([
                 'code' => $row['Itm_Marque'],
