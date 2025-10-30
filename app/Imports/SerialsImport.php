@@ -45,6 +45,18 @@ class SerialsImport implements ToCollection, WithHeadingRow, WithBatchInserts, W
             } else {
                 echo "\033[0;31;40m" . $row['snh_num'] . " doest not exists...\033[0m" . PHP_EOL;
             }
+
+            Serial::updateOrCreate([
+                'code' => $row['snh_num'],
+            ], [
+                'item_itno' => $row['snh_art'],
+                'in' => \Carbon\Carbon::parse($row['snh_dtin'])->format('Y-m-d') ?? null,
+                'out' => \Carbon\Carbon::parse($row['snh_dtout'])->format('Y-m-d') ?? null,
+                'last_order' => $row['snh_cdem3'],
+                'last_delivery' => $row['snh_bl'],
+                'dealer_code' => $row['snh_cli'],
+                'item_id' => Item::where('code', $row['snh_art'])->first()->id ?? null,
+            ]);
         }
     }
 
