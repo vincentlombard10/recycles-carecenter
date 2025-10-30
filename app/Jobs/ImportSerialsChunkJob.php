@@ -43,6 +43,7 @@ class ImportSerialsChunkJob implements ShouldQueue
                     'last_order' => $row['SNH_CdeM3'],
                     'last_delivery' => $row['SNH_BL'],
                     'dealer_code' => $row['SNH_Cli'],
+                    'item_id' => Item::where('itno', $row['SNH_Art'])->first()->id ?? null,
                 ]);
             } catch (\Throwable $th) {
                 Log::error($th->getMessage());
