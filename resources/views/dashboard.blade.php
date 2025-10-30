@@ -10,10 +10,12 @@
                         :count="$serials_count" class="mb-3"/>
                 </div>
                 <div class="col-4 mb-3">
+                    @if($serials_count > 0)
                     <x-dashboard.counter
                         title="sans facture associée"
                         :percent="true"
                         :count="round($serial_without_invoice_count / $serials_count, 4) * 100" />
+                    @endif
                 </div>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
