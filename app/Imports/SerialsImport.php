@@ -78,7 +78,7 @@ class SerialsImport implements ToCollection, WithHeadingRow, WithBatchInserts, W
     public function registerEvents(): array
     {
         return [
- /*           AfterImport::class => function(AfterImport $event) {
+            AfterImport::class => function(AfterImport $event) {
                 $serials = Serial::select('id', 'item_itno')
                     ->whereNotNull('item_itno')
                     ->where('code', '!=', 'SNH_Num')
@@ -88,7 +88,7 @@ class SerialsImport implements ToCollection, WithHeadingRow, WithBatchInserts, W
                     $item = Item::where('itno', $serial->item_itno)->first();
                     Serial::whereId($serial->id)->update(['item_id' => $item?->id]);
                 }
-            },*/
+            },
         ];
     }
 }
