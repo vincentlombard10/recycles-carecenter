@@ -5,4 +5,5 @@ return [
     App\Providers\AuthServiceProvider::class,
     Spatie\Html\HtmlServiceProvider::class,
     Spatie\Permission\PermissionServiceProvider::class,
+    Milon\Barcode\BarcodeServiceProvider::class,
 ];

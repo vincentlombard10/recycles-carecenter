@@ -22,7 +22,7 @@ class ProductReturnsIndex extends Component
             ->when($this->trashed, function ($query) {
                 return $query->onlyTrashed();
             })
-            ->orderBy('created_at', 'desc')->paginate(10);
+            ->orderBy('updated_at', 'desc')->paginate(10);
 
         return view('livewire.product-returns.index', compact('items'));
     }

@@ -14,12 +14,16 @@ class ContactResource extends JsonResource
         return [
             'code' => $this->code,
             'name' => $this->name,
-            'zendesk_user_id' => $this->zendesk_user_id,
+            'zendeskUserID' => $this->zendesk_user_id,
             'status' => $this->status,
             'phone' => $this->phone,
             'email' => $this->email,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'address1' => $this->address1,
+            'address2' => $this->address2,
+            'postcode' => $this->postcode,
+            'city' => $this->city,
+            'createdAt' => $this->created_at,
+            'updatedAt' => $this->updated_at,
         ];
     }
 }

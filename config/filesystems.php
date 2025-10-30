@@ -80,7 +80,15 @@ return [
             'root' => '/home/m3',
             'ssl' => true,
             'timeout' => 300
-        ]
+        ],
+
+        'exports' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/exports'),
+            'url' => env('APP_URL').'/storage/exports',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
 
     ],
 

@@ -1,13 +1,15 @@
 <x-app-layout>
     <x-page-header>
-        <livewire:search-form />
+        @canany(['returns.create'])
+        <a
+            href="{{ route('support.returns.create') }}"
+            class="page-header-btn page-header-btn-primary"><i class="bi bi-plus-circle"></i>
+        </a>
+        @endcanany
+        <div class="page-header-content"><livewire:search-form /></div>
     </x-page-header>
     <x-page-wrapper>
-        @canany(['returns.create'])
-        <div class="mb-3">
-            <a href="{{ route('support.returns.create') }}" class="btn btn-primary">Nouveau retour</a>
-        </div>
-        @endcanany
+        <x-messages />
         @if($returns_count > 0)
         <livewire:product-returns-index />
         @else

@@ -12,7 +12,7 @@ class AddressRequest extends FormRequest
             'name' => ['required'],
             'address1' => ['nullable'],
             'address2' => ['nullable'],
-            'postalcode' => ['required'],
+            'postcode' => ['required'],
             'city' => ['required'],
             'is_primary' => ['required'],
             'is_active' => ['required'],

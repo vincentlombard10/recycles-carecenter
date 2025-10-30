@@ -2,74 +2,38 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Method\ProductReportMethod;
+use App\Models\Traits\Relationship\ProductReportRelationship;
+use App\Models\Traits\Scope\ProductReportScope;
 use App\Observers\ProductReportObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Traits\Attribute\ProductReportAttribute;
 
 #[ObservedBy(ProductReportObserver::class)]
 class ProductReport extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,
+        ProductReportAttribute,
+        ProductReportMethod,
+        ProductReportScope,
+        ProductReportRelationship;
+
+    protected $table = 'productreports';
 
     protected $guarded = ['id'];
 
-    public const STATUS_PENDING = 'pending';
-    public const STATUS_PROCESSING = 'processing';
-    public const STATUS_COMPLETED = 'completed';
-    public const STATUS_CANCELLED = 'cancelled';
-
-    protected function casts(): array
+    protected function casts()
     {
         return [
-            'battery_key' => 'boolean',
-            'antitheft_key' => 'boolean',
-            'charger' => 'boolean',
-            'battery' => 'boolean',
-            'pedals' => 'boolean',
-            'front_wheel' => 'boolean',
-            'rear_wheel' => 'boolean',
-            'saddle' => 'boolean',
-            'seatpost' => 'boolean',
-            'display' => 'boolean',
-            'motor' => 'boolean',
-            'stripes' => 'boolean',
-            'corrosion' => 'boolean',
-            'clay' => 'boolean',
-            'sand' => 'boolean',
-            'impacts' => 'boolean',
-            'cracks' => 'boolean',
-            'breakages' => 'boolean',
-            'customizations' => 'boolean',
-            'battery_charge' => 'boolean',
+            'battery_look_states' => 'array'
         ];
     }
+    public const STATUS_INIT = 'init';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_IN_PROGRESS = 'in_progress';
+    public const STATUS_CLOSED = 'closed';
+    public const STATUS_CANCELLED = 'cancelled';
 
-    public function return(): BelongsTo
-    {
-        return $this->belongsTo(ProductReturn::class, 'product_return_id');
-    }
-
-    public function getStatusLabelAttribute(): string
-    {
-        return match($this->status) {
-            self::STATUS_PENDING => __('En attente'),
-            self::STATUS_PROCESSING => __('En cours'),
-            self::STATUS_COMPLETED => __('Terminé'),
-            self::STATUS_CANCELLED => __('Annulé'),
-            default => __('-'),
-        };
-    }
-
-    public function getStatusColorAttribute(): string
-    {
-        return match($this->status) {
-            self::STATUS_PENDING => 'pending',
-            self::STATUS_PROCESSING => 'processing',
-            self::STATUS_COMPLETED => 'completed',
-            self::STATUS_CANCELLED => 'cancelled',
-            default => __('-'),
-        };
-    }
 }

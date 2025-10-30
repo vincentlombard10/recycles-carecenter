@@ -2,14 +2,26 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Attribute\TicketAttribute;
+use App\Models\Traits\Scope\TicketScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ticket extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,
+        TicketScope,
+        TicketAttribute;
+
     protected $guarded = [];
+
+    public const STATUS_NEW = "New";
+    public const STATUS_OPEN = "Open";
+    public const STATUS_HOLD = "Hold";
+    public const STATUS_PENDING = "Pending";
+    public const STATUS_SOLVED = "Solved";
+    public const STATUS_CLOSED = "Closed";
 
     protected function casts(): array
     {

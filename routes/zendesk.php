@@ -1,71 +1,77 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use App\Models\Zendesk\TicketField;
 use Zendesk\API\HttpClient as ZendeskAPI;
 
-Route::group(['prefix' => 'zendesk'], function () {
-    Route::get('/tickets/{id}', function ($id) {
+Route::group(['prefix' => 'zendesk', 'as' => 'zendesk.'], function () {
+    Route::group(['prefix' => '/tickets', 'as' => 'tickets.'], function() {
+        Route::get('/import', \App\Http\Controllers\Zendesk\ImportZendeskTicketController::class)
+            ->name('import');
+        Route::post('/export', \App\Http\Controllers\Zendesk\ExportZendeskTicketController::class)
+            ->name('export.post');
+    });
+    Route::group(['prefix' => '/comments', 'as' => 'comments.'], function() {
+       Route::get('/import', function () {
 
-        ini_set('max_execution_time', 3600);
-        ini_set('memory_limit', '-1');
-        $subdomain = "recyclesfrance";
-        $username = "maxime.freydrich@re-cycles-france.fr";
-        $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
+           ini_set('max_execution_time', 3600);
+           ini_set('memory_limit', '-1');
+           $subdomain = "recyclesfrance";
+           $username = "maxime.freydrich@re-cycles-france.fr";
+           $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
 
-        $client = new ZendeskAPI($subdomain);
-        $client->setAuth('basic', ['username' => $username, 'token' => $token]);
-        //$ticket = $client->tickets(32540)->comments()->findAll();
+           $client = new ZendeskAPI($subdomain);
+           $client->setAuth('basic', ['username' => $username, 'token' => $token]);
 
-        $startTime = \Carbon\Carbon::now()->subDays(5)->timestamp;
-        $endTime = \Carbon\Carbon::now()->subDays(290)->timestamp;
+           $startTime = \Carbon\Carbon::now()->subDays(2)->timestamp;
+           $endTime = \Carbon\Carbon::now()->subDays(290)->timestamp;
 
-        $tickets = $client->tickets()->export(['start_time' => $startTime]);
-        foreach ($tickets->results as $ticket) {
-            try {
-                $ticket = \App\Models\Ticket::updateOrCreate(
-                    attributes: ['id' => $ticket->id],
-                    values: [
-                        'generated_timestamp' => intval($ticket->generated_timestamp),
-                        'requester_id' => intval($ticket->req_id),
-                        'assignee_id' => intval($ticket->assignee_id),
-                        'replies' => intval($ticket->replies),
-                        'reopens' => intval($ticket->reopens),
-                        'first_reply_time_in_minutes' => intval($ticket->first_reply_time_in_minutes),
-                        'first_reply_time_in_minutes_within_business_hours' => intval($ticket->first_reply_time_in_minutes_within_business_hours),
-                        'first_resolution_time_in_minutes' => intval($ticket->first_resolution_time_in_minutes),
-                        'first_resolution_time_in_minutes_within_business_hours' => intval($ticket->first_reply_time_in_minutes_within_business_hours),
-                        'full_resolution_time_in_minutes' => intval($ticket->full_resolution_time_in_minutes),
-                        'full_resolution_time_in_minutes_within_business_hours' => intval($ticket->full_resolution_time_in_minutes_within_business_hours),
-                        'agent_wait_time_in_minutes' => intval($ticket->agent_wait_time_in_minutes),
-                        'agent_wait_time_in_minutes_within_business_hours' => intval($ticket->agent_wait_time_in_minutes_within_business_hours),
-                        'requester_wait_time_in_minutes' => intval($ticket->requester_wait_time_in_minutes),
-                        'requester_wait_time_in_minutes_within_business_hours' => intval($ticket->requester_wait_time_in_minutes_within_business_hours),
-                        'on_hold_time_in_minutes' => intval($ticket->on_hold_time_in_minutes),
-                        'on_hold_time_in_minutes_within_business_hours' => intval($ticket->on_hold_time_in_minutes_within_business_hours),
-                        'first_reply_time_in_seconds' => intval($ticket->first_reply_time_in_seconds),
-                        'ticket_form_name' => $ticket->ticket_form_name,
-                        'requester_external_id' => $ticket->req_external_id,
-                        'requester_name' => $ticket->req_name,
-                        'requester_email' => $ticket->req_email,
-                        'assignee_name' => $ticket->assignee_name,
-                        'brand_name' => $ticket->brand_name,
-                        'satisfaction_score' => $ticket->satisfaction_score,
-                        'status' => $ticket->status,
-                        'tags' => $ticket->current_tags,
-                        'url' => $ticket->url,
-                        'via' => $ticket->via,
-                        'subject' => $ticket->subject,
-                        'priority' => $ticket->priority,
-                        'created_at' => $ticket->created_at,
-                        'assigned_at' => $ticket->assigned_at ? Str::substr($ticket->assigned_at, 0, 19) : null,
-                        'solved_at' => $ticket->solved_at ? Str::substr($ticket->solved_at, 0, 19) : null,
-                        'updated_at' => $ticket->updated_at,
-                    ]
-                );
-            } catch (\Exception $e) {
-                Log::error($e->getMessage());
+           $comments = $client->tickets()->comments()->export(['start_time' => $startTime]);
+            dd($comments);
+
+       });
+    });
+    Route::group(['prefix' => '/ticketfields', 'as' => 'ticketfields.'], function() {
+        Route::get('/', function () {
+            ini_set('max_execution_time', 3600);
+            ini_set('memory_limit', '-1');
+            $subdomain = "recyclesfrance";
+            $username = "maxime.freydrich@re-cycles-france.fr";
+            $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
+
+            $client = new ZendeskAPI($subdomain);
+            $client->setAuth('basic', ['username' => $username, 'token' => $token]);
+
+            $ticketfields = $client->ticketFields()->findAll();
+            foreach($ticketfields->ticket_fields as $ticketfield) {
+                TicketField::updateOrCreate([
+                    'id' => $ticketfield->id,
+                ], [
+                    'url' => $ticketfield->url,
+                    'type' => $ticketfield->type,
+                    'title' => $ticketfield->title,
+                    'raw_title' => $ticketfield->raw_title,
+                    'description' => $ticketfield->description,
+                    'raw_description' => $ticketfield->raw_description,
+                    'position' => $ticketfield->position,
+                    'active' => $ticketfield->active,
+                    'required' => $ticketfield->required,
+                    'collapsed_for_agents' => $ticketfield->collapsed_for_agents,
+                    'regexp_for_validation' => $ticketfield->regexp_for_validation,
+                    'title_in_portal' => $ticketfield->title_in_portal,
+                    'raw_title_in_portal' => $ticketfield->raw_title_in_portal,
+                    'visible_in_portal' => $ticketfield->visible_in_portal,
+                    'editable_in_portal' => $ticketfield->editable_in_portal,
+                    'required_in_portal' => $ticketfield->required_in_portal,
+                    'agent_can_edit' => $ticketfield->agent_can_edit,
+                    'tag' => $ticketfield->tag,
+                    'created_at' => $ticketfield->created_at,
+                    'updated_at' => $ticketfield->updated_at,
+                    'removable' => $ticketfield->removable,
+                    'key' => $ticketfield->key,
+                    'agent_description' => $ticketfield->agent_description,
+                ]);
             }
-        }
-
+        });
     });
 });

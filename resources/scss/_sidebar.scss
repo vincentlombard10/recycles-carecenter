@@ -14,13 +14,15 @@
     .sidebar-brand {
         width: 100%;
         display: flex;
-        color: black;
+        color: oklch(64.6% 0.222 41.116);
+        background-color: oklch(99% 0.029 294.588);
         font-size: 1rem;
         text-align: center;
         justify-content: center;
         align-items: center;
-        height: 42px;
+        height: 80px;
         text-transform: uppercase;
+        border-bottom: 1px solid oklch(89.4% 0.057 293.283);
     }
     ul.sidebar-menu {
         width: 100%;
@@ -45,8 +47,9 @@
                 display: flex;
                 text-decoration: none;
                 background-color: white;
-                color: oklch(44.6% 0.043 257.281);
-                border-radius: 0.25rem;
+                color: oklch(28.3% 0.141 291.089);
+                border-radius: 0.375rem;
+                font-weight: 500;
                 @media (min-width: 1200px) {
                     width: 100%;
                     display: flex;
@@ -58,11 +61,11 @@
                 }
                 &:hover {
                     width: 100%;
-                    background: oklch(95.4% 0.038 75.164);
+                    background: oklch(94.3% 0.029 294.588);
                     color: oklch(64.6% 0.222 41.116);
                 }
                 &.active {
-                    background-color: oklch(64.6% 0.222 41.116);
+                    background-color: oklch(43.2% 0.232 292.759);
                     color: white;
                 }
                 &__label {

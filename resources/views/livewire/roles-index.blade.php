@@ -3,11 +3,11 @@
         <tbody>
         @foreach($roles as $role)
             <tr>
-                <td>{{ $role->name }}</td>
+                <td class="ps-4 pe-2 py-3">{{ $role->public_name }}</td>
                 <td class="p-2" style="width: 10rem;">
                     <div class="d-grid gap-2">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Actions
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">

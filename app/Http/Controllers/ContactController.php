@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Matrix\Exception;
@@ -11,6 +12,10 @@ class ContactController extends Controller
 {
     public function index()
     {
+        if(!Auth::user()->canAny('contacts.read')) {
+            \ToastMagic::error('You do not have permission to access this page.');
+            return redirect()->route('dashboard');
+        }
         return view('contacts.index');
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TicketResource;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,6 @@ class TicketController extends Controller
         } else {
             $tickets = Ticket::all();
         }
-        return response()->json($tickets);
+        return TIcketResource::collection($tickets);
     }
 }

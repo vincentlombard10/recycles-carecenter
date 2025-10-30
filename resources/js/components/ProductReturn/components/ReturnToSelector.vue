@@ -1,0 +1,166 @@
+<template>
+    <h4>Réexpédition</h4>
+    <div class="row" v-if="store.returnTo">
+        <div class="col-lg-4">
+            <ContactCard :contact="store.returnTo" class="mb-2"/>
+            <input type="hidden" name="return_to_code" :value="store.returnToCode">
+            <button
+                class="btn btn-sm btn-dark"
+                @click.prevent="store.cancelReturnTo"><i class="bi bi-x-lg me-1"></i>Annuler
+            </button>
+        </div>
+        <div class="col-lg-8">
+            <div class="Address_Card">
+                <h6>Adresse postale</h6>
+                <div class="mb-2" v-show="isEditing">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <input type="text"
+                                   name="return_to_address1"
+                                   class="form-control form-control-xs"
+                                   v-model="store.returnToAddress1">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <input type="text"
+                                   name="return_to_address2"
+                                   class="form-control form-control-xs"
+                                   v-model="store.returnToAddress2">
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-3">
+                            <input type="text"
+                                   name="return_to_postcode"
+                                   class="form-control form-control-xs"
+                                   v-model="store.returnToPostcode">
+                        </div>
+                        <div class="col-9">
+                            <input type="text"
+                                   name="return_to_city"
+                                   class="form-control form-control-xs"
+                                   v-model="store.returnToCity">
+                        </div>
+                    </div>
+                </div>
+                <ContactAddress class="mb-2" v-show="!isEditing" :address="returnToAddress" />
+                <div class="Address_Card--Actions">
+                    <button v-if="!isEditing" class="btn btn-sm btn-violet"
+                            @click.prevent="startEditing">
+                        <i class="bi bi-pen me-1"></i>Modifier
+                    </button>
+                    <button v-else class="btn btn-sm btn-dark"
+                            @click.prevent="stopEditing">
+                        <i class="bi bi-x-lg me-1"></i>Fermer
+                    </button>
+                    <button v-if="addressIsChanged"
+                            class="btn btn-sm btn-violet"
+                            @click.prevent="store.resetReturnToAddress">
+                        Restaurer l'adresse initiale
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" v-else>
+        <div class="col-lg-4 mb-3">
+            <input type="text"
+                   class="form-control mb-2"
+                   placeholder="Code client ..."
+                   v-model="store.returnToSearchTerm"
+                   @input="store.fetchReturnToContacts()">
+            <button
+                class="btn btn-sm btn-dark"
+                v-if="store.returnToSearchTerm.length"
+                @click.prevent="store.cancelReturnTo()"><i class="bi bi-eraser me-1"></i>Effacer
+            </button>
+        </div>
+        <div class="col-lg-8 mb-3">
+            <ul class="Contacts_List" v-if="store.returnToList.length">
+                <ContactItem
+                    v-for="contact in store.returnToList"
+                    :key="contact"
+                    :contact="contact"
+                    @click.prevent="store.setReturnTo(contact)"/>
+            </ul>
+            <template v-else-if="store.returnToSearchTerm.length">
+                <div v-if="store.canFetchReturnToContacts && !store.queryingReturnToContacts">No suggestions</div>
+                <div v-else-if="!store.canFetchReturnToContacts">Tapez au moins {{ store.generalMinSearchLength }} caractères.</div>
+            </template>
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import {useProductReturnStore} from "../../../stores/productReturn";
+import ContactItem from "./ContactItem.vue";
+import ContactCard from "./ContactCard.vue";
+import {ref, computed} from "vue";
+import ContactAddress from "./ContactAddress.vue";
+
+const store = useProductReturnStore()
+
+const isEditing = ref(false)
+
+const startEditing = () => {
+    isEditing.value = true
+}
+
+const stopEditing = () => {
+    isEditing.value = false
+}
+
+const contactAddress = computed(() => {
+    return {
+        address1: store.returnTo.address1,
+        address2: store.returnTo.address2,
+        postcode: store.returnTo.postcode,
+        city: store.returnTo.city
+    }
+})
+
+const returnToAddress = computed(() => {
+    return {
+        address1: store.returnToAddress1,
+        address2: store.returnToAddress2,
+        postcode: store.returnToPostcode,
+        city: store.returnToCity
+    }
+})
+
+const addressIsChanged = computed(() => {
+    return store.returnTo.address1 !== store.returnToAddress1 ||
+        store.returnTo.address2 !== store.returnToAddress2 ||
+        store.returnTo.postcode !== store.returnToPostcode ||
+        store.returnTo.city !== store.returnToCity
+})
+
+</script>
+
+<style lang="scss" scoped>
+.Contacts_List {
+    overflow-y: scroll;
+    height: 14rem;
+    border: 1px solid oklch(70.2% 0.183 293.541);
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+
+    .Contact_Item {
+        padding: 0.65rem 1rem;
+        border-bottom: 1px solid oklch(89.4% 0.057 293.283);
+        background-color: white;
+        cursor: pointer;
+        color: oklch(28.3% 0.141 291.089);
+
+        &:hover {
+            background-color: oklch(94.3% 0.029 294.588);
+            color: oklch(28.3% 0.141 291.089);
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}
+</style>

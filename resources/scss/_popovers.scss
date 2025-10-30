@@ -1,0 +1,43 @@
+[popover],
+[popover]::backdrop {
+    position: fixed;
+    inset: 0;
+    width: 24rem;
+    height: fit-content;
+    margin: auto;
+    border-radius: 1rem;
+    padding: 2rem;
+    overflow: auto;
+    background-color: white;
+    border: 0px solid oklch(55.4% 0.046 257.417);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    transition:
+        display 400ms,
+        overlay 400ms, /* <= !important */
+        opacity 400ms,
+        translate 400ms;
+    transition-behavior: allow-discrete;
+    opacity: 0;
+    backdrop-filter: blur(20px);
+}
+
+::backdrop {
+    //backdrop-filter: blur(16px);
+    background-color: rgba(0,0,0,0.2);
+}
+
+[popover]:popover-open {
+    translate: 0 0;
+    opacity: 1;
+    backdrop-filter: blur(20px);
+}
+
+@starting-style {
+    [popover]:popover-open {
+        translate: 0 -2rem;
+        opacity: 0;
+    }
+    [popover]:popover-open::backdrop {
+        opacity: 0;
+    }
+}

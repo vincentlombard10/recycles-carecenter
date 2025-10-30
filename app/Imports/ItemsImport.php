@@ -5,6 +5,9 @@ namespace App\Imports;
 use App\Models\Brand;
 use App\Models\Group;
 use App\Models\Item;
+use App\Models\Serial;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
@@ -14,14 +17,52 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeImport;
 use Maatwebsite\Excel\Events\AfterImport;
 
-class ItemsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithUpserts, WithEvents
+class ItemsImport implements ToCollection, WithHeadingRow, WithBatchInserts, WithChunkReading, WithUpserts, WithEvents
 {
     /**
     * @param array $row
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function model(array $row)
+    public function collection(Collection $collection)
+    {
+        // TODO: Implement collection() method.
+        foreach ($collection as $row) {
+            if ($row['itm_code'] === 'Itm_Code') {
+                continue;
+            }
+            if (Item::where('itno', $row['itm_code'])->exists()) {
+                echo "\033[0;32;40m" . $row['itm_code'] . " exists...\033[0m" . PHP_EOL;
+            } else {
+                echo "\033[0;31;40m" . $row['itm_code'] . " doest not exists...\033[0m" . PHP_EOL;
+            }
+
+            $brand = Brand::firstOrNew([
+                'code' => $row['itm_marque'],
+            ]);
+
+            $group = Group::firstOrNew([
+                'code' => $row['itm_fam'],
+            ]);
+
+            $item = Item::updateOrCreate([
+                'itno' => $row['itm_code'],
+            ], [
+                'itds' => $row['itm_nom'],
+                'label' => $row['itm_nomfr'],
+                'group_id' => $group->id ?? null,
+                'group_code' => $row['itm_fam'],
+                'brand_id' => $brand->id ?? null,
+                'brand_code' => $row['itm_marque'],
+            ]);
+
+            Serial::where('item_itno', $item->itno)->update([
+                'item_id' => $item->id ?? null,
+            ]);
+        }
+    }
+
+/*    public function model(array $row)
     {
         $brand = Brand::firstOrNew([
             'code' => $row['itm_marque'],
@@ -37,7 +78,7 @@ class ItemsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChun
                 //'status' => intval($row['itm_stat']),
             ]);
         }
-    }
+    }*/
 
     public function batchSize(): int
     {

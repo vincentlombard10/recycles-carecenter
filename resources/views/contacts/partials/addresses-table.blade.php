@@ -18,7 +18,7 @@
             <td>
                 <div>{{ $address->address1 }}</div>
                 <div>{{ $address->address2 }}</div>
-                <div>{{ $address->postalcode }} {{$address->city }}</div>
+                <div>{{ $address->postcode }} {{$address->city }}</div>
             </td>
             <td>
                 <div class="dropdown">

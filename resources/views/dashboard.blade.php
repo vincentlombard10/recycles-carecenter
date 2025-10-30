@@ -1,48 +1,73 @@
 <x-app-layout>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
-    <div>Dashboard</div>
+    <x-messages />
+    <x-page-wrapper>
+        <div class="container-fluid">
+            <div class="row">
+                <h2>Codes chassis</h2>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="Tous"
+                        :count="$serials_count" class="mb-3"/>
+                </div>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="sans facture associée"
+                        :percent="true"
+                        :count="round($serial_without_invoice_count / $serials_count, 4) * 100" />
+                </div>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="sans article associé"
+                        :count="$serials_without_item" />
+                </div>
+            </div>
+            <div class="row">
+                <h2>Tickets</h2>
+                <div class="col-4 mb-3">
+                    <div class="mb-2">
+                        <x-dashboard.counter
+                            title="Nouveau"
+                            :count="$tickets_new_count" />
+                    </div>
+                    <div>
+                        @foreach($tickets_new as $t)
+                            <span class="badhe">{{ $t->id }}</span>
+
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="Ouvert"
+                        :count="$tickets_open_count" />
+                </div>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="En attente"
+                        :count="$tickets_hold_or_pending_count" />
+                </div>
+            </div>
+            <div class="row">
+                <h2>Retours produit</h2>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="en attente"
+                        :count="$product_returns_pending_count" />
+                </div>
+            </div>
+            <div class="row">
+                <h2>Expertises et rapports</h2>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="en attente"
+                        :count="$product_reports_pending_count" />
+                </div>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="en cours"
+                        :count="$product_reports_in_progress_count" />
+                </div>
+            </div>
+        </div>
+    </x-page-wrapper>
 </x-app-layout>

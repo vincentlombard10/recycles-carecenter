@@ -1,14 +1,24 @@
 <template>
-    <div class="Alert">
+    <div
+        class="Alert"
+        :class="`Alert__${props.type}`">
         <slot></slot>
     </div>
 </template>
 
+<script setup lang="ts">
+const props = defineProps(['type'])
+</script>
+
 <style lang="scss" scoped>
 .Alert {
-    background-color: oklch(92.9% 0.013 255.508);
-    color: oklch(27.9% 0.041 260.031);
+    background-color: oklch(95.4% 0.038 75.164);
+    color: oklch(38% 0.189 293.745);
     padding: 1.25rem 1.75rem;
     border-radius: 0.35rem;
+    &__success, &__Success {
+        background-color: oklch(87.1% 0.15 154.449);
+        color: oklch(39.3% 0.095 152.535);
+    }
 }
 </style>

@@ -32,7 +32,7 @@
                     </select>
                 </div>
                 <div>
-                    {{ html()->submit('Update')->class('btn btn-primary') }}
+                    {{ html()->submit('Mettre à jour')->class('btn btn-primary') }}
                 </div>
             </div>
         </div>

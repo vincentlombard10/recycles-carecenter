@@ -18,7 +18,7 @@ class ProductReportsIndex extends Component
         $reports = ProductReport::where(function ($query) {
            $query->whereAny(['identifier'], 'like', '%' . $this->searchTerm . '%');
         })
-        ->orderBy('created_at', 'desc')->paginate(10);
+        ->orderBy('updated_at', 'desc')->paginate(10);
         return view('livewire.product-reports.index', compact('reports'));
     }
 

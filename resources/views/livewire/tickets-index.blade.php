@@ -1,32 +1,32 @@
 <div>
     <div class="mb-3">{{ $tickets->links() }}</div>
     <div class="mb-3">
-        <table class="table">
-            <tbody>
-            @foreach($tickets as $ticket)
-                <tr class="tr--{{ strtolower($ticket->status) }}">
-                    <td class="ps-4 pe-2 py-4">
-                        <div><h5 class="fw-bold"><a href="{{ route('support.tickets.show', $ticket->id) }}">{{ $ticket->id }}</a></h5></div>
-                        <div>{{ $ticket->priority  }}</div>
-                    </td>
-                    <td class="px-2 py-4">
-                        <div>{{ date('d/m/Y', $ticket->created_at) }}</div>
-                        <div>{{ date('H:i', $ticket->created_at) }}</div>
-                    </td>
-                    <td class="px-2 py-4">
+        @foreach($tickets as $ticket)
+            <div class="rcf-card Card_Ticket Card_Ticket__{{ $ticket->status }}">
+                <div class="Card_Ticket_Content">
+                    <div>
+                        <h2 class="fw-semibold">{{ $ticket->id }}</h2>
                         <div>{{ $ticket->requester_name }}</div>
+                        <div><span class="fw-semibold">{{ $ticket->requester_email }}</span></div>
                         <div>{{ $ticket->ticket_form_name }}</div>
                         <div>{{ $ticket->subject }}</div>
-                    </td>
-                    <td class="px-2 py-4">
-                        <div>{{ $ticket->brand_name }}</div>
-                        <div>{{ $ticket->assignee_name }}</div>
-                    </td>
-                    <td class="ps-2 pe-4 py-4">{{ $ticket->status }}</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+                        <div><span class="text-primary">{{ date('d/m/Y H:i', $ticket->created_at) }}</span></div>
+                    </div>
+                    <div>
+                        <div><small>1ère réponse : {{ $ticket->first_reply_time_in_minutes }} / {{ $ticket->first_reply_time_in_minutes_within_business_hours }}</small></div>
+                        <div><small>1ère résolution : {{ $ticket->first_resolution_time_in_minutes }} / {{ $ticket->first_resolution_time_in_minutes_within_business_hours }}</small></div>
+                        <div><small>Résolution complète : {{ $ticket->full_resolution_time_in_minutes }} / {{ $ticket->full_resolution_time_in_minutes_within_business_hours }}</small></div>
+                        <div><small>Réponses : {{ $ticket->replies }}</small></div>
+                        <div><small>Réouvertures : {{ $ticket->reopens }}</small></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-grid">
+                        <span class="rcf-badge rcf-badge--{{ strtolower($ticket->status) }}">{{ $ticket->status_label }}</span>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
     <div>{{ $tickets->links() }}</div>
 </div>

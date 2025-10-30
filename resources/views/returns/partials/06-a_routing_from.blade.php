@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <th>CP / Ville</th>
-            <td>{{ $productReturn->routing_from_postalcode }} {{ $productReturn->routing_from_city }}</td>
+            <td>{{ $productReturn->routing_from_postcode }} {{ $productReturn->routing_from_city }}</td>
         </tr>
         </tbody>
     </table>

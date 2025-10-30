@@ -56,4 +56,23 @@ table.table {
             }
         }
     }
+    &-mini {
+        thead {
+            border: 2Px solid blue;
+        }
+        tbody {
+            tr {
+                th {
+                    padding: 0.15rem;
+                    background-color: transparent;
+                    font-weight: 500;
+                }
+                td {
+                    padding: 0.15rem;
+                    background-color: transparent;
+                }
+            }
+        }
+        margin-bottom: 0;
+    }
 }

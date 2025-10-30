@@ -38,4 +38,12 @@ return [
     'contacts.create' => 'Création',
     'contacts.update' => 'Edition',
     'contacts.delete' => 'Suppression',
+    'brands' => 'Marques',
+    'brands.read' => 'Lecture',
+    'groups' => 'Groupes',
+    'groups.read' => 'Lecture',
+    'serials' => 'Numéros de série',
+    'serials.read' => 'Lecture',
+    'items' => 'Articles',
+    'items.read' => 'Lecture',
 ];

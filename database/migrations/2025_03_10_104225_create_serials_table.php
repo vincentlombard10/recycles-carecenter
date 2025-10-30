@@ -14,10 +14,12 @@ return new class extends Migration {
             $table->timestamp('in')->nullable();
             $table->timestamp('out')->nullable();
             $table->string('dealer_code')->nullable();
-            $table->string('order')->nullable();
-            $table->string('delivery')->nullable();
+            $table->string('last_order', 32)->nullable();
+            $table->string('last_delivery', 32)->nullable();
+            $table->string('last_invoice', 32)->nullable();
             $table->foreignId('item_id')->nullable();
             $table->timestamps();
+            $table->timestamp('last_invoice_date')->nullable();
             $table->softDeletes();
         });
     }

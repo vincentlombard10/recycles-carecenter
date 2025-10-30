@@ -15,8 +15,9 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
         try {
             ProductReport::create([
                 'identifier' => $productReturn->identifier,
-                'product_return_id' => $productReturn->id,
-                'status' => ProductReport::STATUS_PENDING,
+                'type' => $productReturn->type,
+                'productreturn_id' => $productReturn->id,
+                'status' => ProductReport::STATUS_INIT,
                 'reason' => $productReturn->reason,
             ]);
         } catch (\Exception $exception) {
@@ -24,9 +25,19 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
         }
     }
 
+    public function updating(ProductReturn $productReturn)
+    {
+        $productReturn->offered_at = $productReturn->isDirty('status') &&
+            $productReturn->status === ProductReturn::STATUS_PENDING &&
+            $productReturn->offered_at === null ? now() : $productReturn->offered_at;
+    }
+
     public function updated(ProductReturn $productReturn)
     {
         Log::debug('ProductReturn updated', ['productReturn' => $productReturn]);
+        $productReturn->report()->update([
+            'type' => $productReturn->type,
+        ]);
     }
 
     public function deleted(ProductReturn $productReturn)

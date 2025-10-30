@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Traits\Attributes\ContactAttributes;
+use App\Models\Traits\Attribute\ContactAttributes;
 
 class Contact extends Model
 {

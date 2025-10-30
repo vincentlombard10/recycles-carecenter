@@ -19,7 +19,9 @@ class SerialResource extends JsonResource
             'in' => $this->in,
             'out' => $this->out,
             'dealerCode' => $this->customer_code,
-            'order' => $this->order,
+            'order' => $this->last_order,
+            'invoice' => $this->last_invoice,
+            'delivery' => $this->last_delivery,
             'item' => ItemResource::make($this->item),
         ];
     }

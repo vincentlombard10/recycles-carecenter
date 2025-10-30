@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('ticket_fields', function (Blueprint $table) {
             $table->string('id');
+            $table->string('url')->nullable();
             $table->string('type');
             $table->string('title')->nullable();
             $table->string('raw_title')->nullable();

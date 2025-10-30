@@ -13,6 +13,7 @@ Route::prefix('admin/users')->as("admin.users.")->group(function () {
 
 Route::prefix('admin/roles')->as("admin.roles.")->group(function () {
     Route::get('/', [RoleController::class, 'index'])->name('index');
+    Route::get('/create', [RoleController::class, 'create'])->name('create');
     Route::get('/{role}/edit', [RoleController::class, 'edit'])->name('edit');
     Route::patch('/{role}/update', [RoleController::class, 'update'])->name('update');
 });

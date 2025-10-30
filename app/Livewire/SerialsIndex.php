@@ -23,7 +23,7 @@ class SerialsIndex extends Component
             $query->when($this->orphans, function ($query) {
                 $query->doesnthave('item');
             });
-        })->paginate(10);
+        })->orderBy('out', 'desc')->paginate(15);
 
         return view('livewire.serials-index', compact('serials'));
     }

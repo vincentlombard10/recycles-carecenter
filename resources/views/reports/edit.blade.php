@@ -1,13 +1,19 @@
 <x-app-layout>
     <x-page-header>
-        <h1>Rapport d'intervention {{ $report->identifier }}</h1>
+        <a
+            href="{{ route('support.reports.index') }}"
+            class="page-header-btn page-header-btn-secondary"><i class="bi bi-arrow-left-circle"></i>
+        </a>
+        <div class="page-header-content">
+            <h1>Rapport d'intervention {{ $report->identifier }}</h1>
+        </div>
     </x-page-header>
     <x-page-wrapper>
-        <div class="page-header--actions">
-            <a href="{{ route('support.returns.index') }}" class="btn btn-secondary">Retour</a>
+        <div class="container-fluid p-5">
+            {{ html()->form('PATCH', route('support.reports.update', $report))->open() }}
+            <div id="product-report-form" data-report="{{ $report->identifier }}"></div>
+            <input type="submit" class="btn btn-lg btn-primary" value="Enregistrer">
+            {{ html()->form()->close() }}
         </div>
-        {{ html()->form('PATCH', route('support.reports.update', $report))->open() }}
-        <div id="product-report-form" data-identifier="{{ $report->identifier }}"></div>
-        {{ html()->form()->close() }}
     </x-page-wrapper>
 </x-app-layout>

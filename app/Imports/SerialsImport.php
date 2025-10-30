@@ -11,7 +11,8 @@ use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Events\AfterImport;
-use Maatwebsite\Excel\Events\AfterSheet;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
 
 class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithUpserts, WithEvents
 {
@@ -23,13 +24,14 @@ class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
     public function model(array $row)
     {
         if( $row['snh_num'] !== 'SNH_Num') {
+            echo "•";
             return new Serial([
                 'code' => $row['snh_num'],
                 'item_itno' => $row['snh_art'],
                 'in' => \Carbon\Carbon::parse($row['snh_dtin'])->format('Y-m-d') ?? null,
                 'out' => \Carbon\Carbon::parse($row['snh_dtout'])->format('Y-m-d') ?? null,
-                'order' => $row['snh_cdem3'],
-                'delivery' => $row['snh_bl'],
+                'last_order' => $row['snh_cdem3'],
+                'last_delivery' => $row['snh_bl'],
                 'dealer_code' => $row['snh_cli'],
             ]);
         }
@@ -37,12 +39,12 @@ class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
 
     public function batchSize(): int
     {
-        return 1000;
+        return 100;
     }
 
     public function chunkSize(): int
     {
-        return 1000;
+        return 100;
     }
 
     public function uniqueBy()
@@ -53,7 +55,7 @@ class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
     public function registerEvents(): array
     {
         return [
-            AfterImport::class => function(AfterImport $event) {
+ /*           AfterImport::class => function(AfterImport $event) {
                 $serials = Serial::select('id', 'item_itno')
                     ->whereNotNull('item_itno')
                     ->where('code', '!=', 'SNH_Num')
@@ -63,7 +65,7 @@ class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
                     $item = Item::where('itno', $serial->item_itno)->first();
                     Serial::whereId($serial->id)->update(['item_id' => $item?->id]);
                 }
-            },
+            },*/
         ];
     }
 }

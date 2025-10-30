@@ -27,7 +27,7 @@ class ContactsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithC
                 'status' => intval($row['cli_sta']) ?? null,
                 'address1' => $row['cli_adr1'],
                 'address2' => $row['cli_adr2'],
-                'postalcode' => $row['cli_codepos'],
+                'postcode' => $row['cli_codepos'],
                 'city' => $row['cli_ville'],
                 'country' => $row['cli_pays'],
                 'phone' => $row['cli_tel'],

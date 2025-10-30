@@ -16,7 +16,17 @@ class RoleController extends Controller
 
     public function create()
     {
-        return view('roles.create');
+        $role_permission = Permission::select('id', 'name')->groupBy('name')->get();
+        $custom_permission = array();
+
+        foreach ($role_permission as $permission) {
+            $key = substr($permission->name, 0, strpos($permission->name, '.'));
+            if (str_starts_with($permission->name, $key)) {
+                $custom_permission[$key][] = $permission;
+            }
+        }
+        return view('roles.create')
+            ->with('permissions', $custom_permission);
     }
 
     public function store(Request $request)

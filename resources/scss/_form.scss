@@ -11,7 +11,6 @@
     border-style: solid;
     border-color: oklch(85.4% 0.04 256.788);
     background-color: white;
-    padding: 0.5rem 1rem;
     &--success {
         background-color: oklch(92.5% 0.084 155.995);
         border: 1px solid oklch(0.627 0.194 149.214);
@@ -29,5 +28,10 @@
     &--pill {
         border-radius: 4rem !important;
         border-width: 4px !important;
+    }
+    &-xs {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.65rem;
+        border-radius: 0.2rem;
     }
 }

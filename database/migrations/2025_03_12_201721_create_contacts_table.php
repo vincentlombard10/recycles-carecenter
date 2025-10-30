@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->integer('status');
             $table->string('address1')->nullable();
             $table->string('address2')->nullable();
-            $table->string('postalcode', 8)->nullable();
+            $table->string('postcode', 8)->nullable();
             $table->string('city', 64)->nullable();
             $table->string('country', 2)->nullable();
             $table->string('salesrep', 12)->nullable();
