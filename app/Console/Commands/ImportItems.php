@@ -58,7 +58,7 @@ class ImportItems extends Command
 
         try {
 
-            $fileContents = Storage::disk('m3files-ftp')->get($filename);
+            $fileContents = Storage::disk('sftp')->get($filename);
 
             if (!$fileContents) {
                 $this->error('Aucun fichier d\'ímportation à cette date.');
