@@ -1,7 +1,7 @@
 <?php
 
-# Webhooks
-# Route::webhooks('/webhooks/support/tickets/', 'webhook_01');
+Route::webhooks('/webhooks/zendesk/tickets', 'zendesk.tickets', 'patch')
+    ->withoutMiddleware(['auth']);
 
 
 

@@ -3,6 +3,17 @@
 return [
     'configs' => [
         [
+            'name' => 'zendesk.tickets',
+            'signing_secret' => 'gMJ_lF2Mc_8S2R5D3u7MxRYyjdOuBhJhU-5TwLYbTsc=',
+            'signature_header_name' => 'X-Zendesk-Webhook-Signature',
+            'signature_validator' => \App\Webhooks\Validators\ZendeskSignatureValidator::class,
+            'webhook_profile' => \Spatie\WebhookClient\WebhookProfile\ProcessEverythingWebhookProfile::class,
+            'webhook_response' => \App\Webhooks\Responses\UpdateTicketWebhookResponse::class,
+            'webhook_model' => \Spatie\WebhookClient\Models\WebhookCall::class,
+            'store_headers' => [],
+            'process_webhook_job' => \App\Webhooks\Jobs\UpdateTicketWebhookJob::class,
+        ],
+        [
             /*
              * This package supports multiple webhook receiving endpoints. If you only have
              * one endpoint receiving webhooks, you can use 'default'.
