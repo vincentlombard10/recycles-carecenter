@@ -115,9 +115,11 @@ class ProductReportController extends Controller
             voltage: $request->battery_nominal_voltage,
             capacity: $request->battery_nominal_capacity,
         );
-        foreach ($request->battery_look_states as $state) {
-            if ($state !== "other") {
-                $bls[] = BatteryState::where('identifier', $state)->first()->id;
+        if ($request->battery_look_states) {
+            foreach ($request->battery_look_states as $state) {
+                if ($state !== "other") {
+                    $bls[] = BatteryState::where('identifier', $state)->first()->id;
+                }
             }
         }
         $battery_look = self::getBatteryLook(
