@@ -2,10 +2,6 @@
 
 namespace App\Webhooks\Jobs;
 
-use App\Domains\Auth\Models\User;
-use App\Domains\Library\Models\Serial;
-use App\Domains\Support\Models\Ticket;
-use App\Notifications\ZendeskUserWithoutExternalIdNotification;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -26,11 +22,13 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
 
         try {
 
-            $ticket = Ticket::updateOrCreate([
+            Log::alert("Webhook Process Job");
+
+/*            $ticket = Ticket::updateOrCreate([
                 'zendesk_id' => $this->webhookCall->payload['id']
             ], [
 
-            ]);
+            ]);*/
 
             //Log::debug('New support', ['support' => (new Ticket())->getSupport($this->webhookCall->payload['support'])]);
 
