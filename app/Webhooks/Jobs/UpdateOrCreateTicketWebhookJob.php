@@ -4,7 +4,6 @@ namespace App\Webhooks\Jobs;
 
 use Exception;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob;
 use Spatie\WebhookClient\Models\WebhookCall;
 
