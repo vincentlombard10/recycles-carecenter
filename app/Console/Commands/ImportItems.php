@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Imports\ItemsImport;
+use App\Jobs\ImportItemsJob;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -64,8 +65,10 @@ class ImportItems extends Command
                 return;
             }
             Storage::disk('local')->put($localFilename, $fileContents);
+            Log::info(sprintf("Nouveau fichier : %s", $filename));
 
-            Excel::import(new ItemsImport(), $localFilename);
+            ImportItemsJob::dispatch($localFilename);
+            //Excel::import(new ItemsImport(), $localFilename);
 
         } catch (Exception $e) {
 

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Imports\SerialsImport;
+use App\Jobs\ImportSerialsJob;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -61,9 +62,9 @@ class ImportSerials extends Command
                 return;
             }
             Storage::disk('local')->put($localFilename, $fileContents);
-            //ImportSerialsJob::dispatch($localFilename);
+            ImportSerialsJob::dispatch($localFilename);
 
-            Excel::import(new SerialsImport, $localFilename);
+            //Excel::import(new SerialsImport, $localFilename);
 
 
 

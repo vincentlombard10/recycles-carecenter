@@ -20,7 +20,7 @@ class ImportZendeskTicketController extends Controller
         $client = new ZendeskAPI($subdomain);
         $client->setAuth('basic', ['username' => $username, 'token' => $token]);
 
-        $startTime = \Carbon\Carbon::now()->subHours(4)->timestamp;
+        $startTime = \Carbon\Carbon::now()->subHours(48)->timestamp;
         //$endTime = \Carbon\Carbon::now()->subDays(32)->timestamp;
 
         $tickets = $client->tickets()->export(['start_time' => $startTime]);

@@ -14,19 +14,41 @@ use Maatwebsite\Excel\Events\AfterImport;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
-class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithUpserts, WithEvents
+class SerialsImport implements ToCollection, WithHeadingRow, WithBatchInserts, WithChunkReading, WithUpserts, WithEvents
 {
     /**
     * @param array $row
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function model(array $row)
+/*    public function model(array $row)
     {
         if( $row['snh_num'] !== 'SNH_Num') {
             echo "•";
             return new Serial([
                 'code' => $row['snh_num'],
+                'item_itno' => $row['snh_art'],
+                'in' => \Carbon\Carbon::parse($row['snh_dtin'])->format('Y-m-d') ?? null,
+                'out' => \Carbon\Carbon::parse($row['snh_dtout'])->format('Y-m-d') ?? null,
+                'last_order' => $row['snh_cdem3'],
+                'last_delivery' => $row['snh_bl'],
+                'dealer_code' => $row['snh_cli'],
+            ]);
+        }
+    }*/
+
+    public function collection(Collection $collection)
+    {
+        foreach ($collection as $row) {
+            if (Serial::where('code', $row['snh_num'])->exists()) {
+                echo "\033[0;32;40m" . $row['snh_num'] . " exists...\033[0m" . PHP_EOL;
+            } else {
+                echo "\033[0;31;40m" . $row['snh_num'] . " doest not exists...\033[0m" . PHP_EOL;
+            }
+
+            Serial::updateOrCreate([
+                'code' => $row['snh_num'],
+            ], [
                 'item_itno' => $row['snh_art'],
                 'in' => \Carbon\Carbon::parse($row['snh_dtin'])->format('Y-m-d') ?? null,
                 'out' => \Carbon\Carbon::parse($row['snh_dtout'])->format('Y-m-d') ?? null,
@@ -55,7 +77,7 @@ class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
     public function registerEvents(): array
     {
         return [
- /*           AfterImport::class => function(AfterImport $event) {
+            AfterImport::class => function(AfterImport $event) {
                 $serials = Serial::select('id', 'item_itno')
                     ->whereNotNull('item_itno')
                     ->where('code', '!=', 'SNH_Num')
@@ -65,7 +87,7 @@ class SerialsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithCh
                     $item = Item::where('itno', $serial->item_itno)->first();
                     Serial::whereId($serial->id)->update(['item_id' => $item?->id]);
                 }
-            },*/
+            },
         ];
     }
 }

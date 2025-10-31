@@ -24,6 +24,7 @@
         "maatwebsite/excel": "^3.1",
         "milon/barcode": "^12.0",
         "opcodesio/log-viewer": "^3.15",
+        "predis/predis": "^3.2",
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-html": "^3.11",
         "spatie/laravel-permission": "^6.21",
