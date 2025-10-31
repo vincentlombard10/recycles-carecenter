@@ -15,7 +15,7 @@ class ImportZendeskTicketController extends Controller
         ini_set('memory_limit', '-1');
         $subdomain = config('zendesk.subdomain');
         $username = config('zendesk.username');
-        $token = config('zendesk.subdomain');
+        $token = config('zendesk.token');
 
         $client = new ZendeskAPI($subdomain);
         $client->setAuth(config('zendesk.auth_strategy'), ['username' => $username, 'token' => $token]);
@@ -26,6 +26,7 @@ class ImportZendeskTicketController extends Controller
         $tickets = $client->tickets()->export(['start_time' => $startTime]);
         foreach ($tickets->results as $ticket) {
             $comments = $client->tickets($ticket->id)->comments()->findAll();
+            var_dump($ticket->current_tags);
             try {
                 $ticket = \App\Models\Ticket::updateOrCreate(
                     attributes: ['id' => $ticket->id],

@@ -20,10 +20,6 @@ Schedule::call(function () {
     ini_set('max_execution_time', 3600);
     ini_set('memory_limit', '-1');
 
-    $subdomain = "recyclesfrance";
-    $username = "maxime.freydrich@re-cycles-france.fr";
-    $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
-
     $client = new ZendeskAPI(config('zendesk.subdomain'));
     $client->setAuth(config('zendesk.auth_strategy'), [
         'username' => config('zendesk.username'),

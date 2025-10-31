@@ -4,8 +4,9 @@
     'percent' => false,
     'progress' => false,
     'total' => null,
+    'class' => null
     ])
-<div class="db-counter">
+<div class="db-counter @if($class){{ $class }}@endif">
     @if($progress && $total)
     <div class="progressbar" style="width: {{ $count/$total * 100 }}%;">
     </div>
