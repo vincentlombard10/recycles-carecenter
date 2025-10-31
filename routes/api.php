@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'v1'], function () {
+Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
     Route::apiResource('/items', \App\Http\Controllers\Api\v1\ItemController::class);
     Route::apiResource('/tickets', \App\Http\Controllers\Api\v1\TicketController::class);
     Route::apiResource('/serials', \App\Http\Controllers\Api\v1\SerialController::class);
