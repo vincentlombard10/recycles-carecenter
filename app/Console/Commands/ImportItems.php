@@ -17,7 +17,7 @@ class ImportItems extends Command
      *
      * @var string
      */
-    protected $signature = 'items:import {--file=}';
+    protected $signature = 'items:import {--file=?}';
 
     /**
      * The console command description.
