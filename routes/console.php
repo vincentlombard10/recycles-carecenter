@@ -78,4 +78,4 @@ Schedule::call(function () {
         }
     }
 
-})->everyMinute();
+})->everyFiveMinutes();

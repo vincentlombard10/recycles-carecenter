@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob;
 use Spatie\WebhookClient\Models\WebhookCall;
+use Zendesk\API\HttpClient as ZendeskAPI;
 
 class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
 {
@@ -18,6 +19,13 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
     {
 
         Log::debug('Ticket Payload', ['payload' => $this->webhookCall->payload]);
+
+        $subdomain = "recyclesfrance";
+        $username = "maxime.freydrich@re-cycles-france.fr";
+        $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
+
+        $client = new ZendeskAPI($subdomain);
+        $client->setAuth('basic', ['username' => $username, 'token' => $token]);
 
         try {
 
