@@ -8,10 +8,10 @@ return [
             'signature_header_name' => 'X-Zendesk-Webhook-Signature',
             'signature_validator' => \App\Webhooks\Validators\ZendeskSignatureValidator::class,
             'webhook_profile' => \Spatie\WebhookClient\WebhookProfile\ProcessEverythingWebhookProfile::class,
-            'webhook_response' => \App\Webhooks\Responses\UpdateTicketWebhookResponse::class,
+            'webhook_response' => \App\Webhooks\Responses\UpdateOrCreateTicketWebhookResponse::class,
             'webhook_model' => \Spatie\WebhookClient\Models\WebhookCall::class,
             'store_headers' => [],
-            'process_webhook_job' => \App\Webhooks\Jobs\UpdateTicketWebhookJob::class,
+            'process_webhook_job' => \App\Webhooks\Jobs\UpdateOrCreateTicketWebhookJob::class,
         ],
         [
             /*
