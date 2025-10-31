@@ -1,5 +1,7 @@
 <?php
 
+use App\Webhooks\Jobs\UpdateOrCreateTicketWebhookJob;
+
 return [
     'configs' => [
         [
@@ -11,7 +13,7 @@ return [
             'webhook_response' => \App\Webhooks\Responses\UpdateOrCreateTicketWebhookResponse::class,
             'webhook_model' => \Spatie\WebhookClient\Models\WebhookCall::class,
             'store_headers' => [],
-            'process_webhook_job' => \App\Webhooks\Jobs\UpdateOrCreateTicketWebhookJob::class,
+            'process_webhook_job' => UpdateOrCreateTicketWebhookJob::class,
         ],
         [
             /*
