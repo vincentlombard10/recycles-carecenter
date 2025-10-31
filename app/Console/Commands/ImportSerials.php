@@ -55,7 +55,7 @@ class ImportSerials extends Command
 
         try {
 
-            $fileContents = Storage::disk('sftp')->get($filename);
+            $fileContents = Storage::disk('m3files-ftp')->get($filename);
 
             if (!$fileContents) {
                 $this->error('Aucun fichier d\'ímportation à cette date.');
