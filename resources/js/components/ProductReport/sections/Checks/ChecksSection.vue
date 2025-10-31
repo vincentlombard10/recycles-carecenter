@@ -3,7 +3,6 @@
         <div class="Section_Head">
             <h2 class="mb-3">Contrôles</h2>
             <div>
-                Badge
             </div>
         </div>
         <PresenceChecksSubSection v-if="store.type === 'bike'"/>
