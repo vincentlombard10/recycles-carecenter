@@ -56,7 +56,7 @@ class ImportContacts extends Command
 
         try {
 
-            $fileContents = Storage::disk('sftp')->get($filename);
+            $fileContents = Storage::disk('m3files-ftp')->get($filename);
             Log::debug('FileContents', ['contents' =>$fileContents]);
 
             if (!$fileContents) {
