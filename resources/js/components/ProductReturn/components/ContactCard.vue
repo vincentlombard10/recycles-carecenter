@@ -12,7 +12,8 @@ const props = defineProps(['contact'])
 <style lang="scss" scoped>
 .Contact_Card {
     padding: 1rem 1.5rem;
-    background: oklch(94.3% 0.029 294.588);
+    background: oklch(96.9% 0.016 293.756);
+    border: 1Px solid oklch(89.4% 0.057 293.283);
     border-radius: 0.5rem;
 }
 </style>

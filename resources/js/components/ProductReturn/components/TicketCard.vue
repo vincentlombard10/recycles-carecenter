@@ -13,7 +13,8 @@ const props = defineProps(['ticket'])
 
 <style lang="scss">
 .Ticket_Card {
-    background-color: oklch(94.3% 0.029 294.588);
+    background-color: white;
+    border: 1px solid oklch(70.2% 0.183 293.541);
     padding: 1.25rem 1.5rem;
     border-radius: 0.5rem;
 }

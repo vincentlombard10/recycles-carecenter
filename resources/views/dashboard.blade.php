@@ -36,12 +36,6 @@
                             class="db-counter--zd New"
                             :count="$tickets_new_count" />
                     </div>
-                    <div>
-                        @foreach($tickets_new as $t)
-                            <span class="badhe">{{ $t->id }}</span>
-
-                        @endforeach
-                    </div>
                 </div>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
