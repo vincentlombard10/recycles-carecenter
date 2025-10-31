@@ -35,7 +35,7 @@ class ImportItemsChunkJob implements ShouldQueue
     public function handle(): void
     {
         $this->chunk->each(function ($row) {
-            Log::info(sprintf("Row : %s", $row));
+
             $brand = Brand::firstOrNew([
                 'code' => $row['Itm_Marque'],
             ]);
