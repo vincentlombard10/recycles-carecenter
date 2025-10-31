@@ -20,5 +20,9 @@ const props = defineProps(['type'])
         background-color: oklch(87.1% 0.15 154.449);
         color: oklch(39.3% 0.095 152.535);
     }
+    &__danger, &__Danger {
+        background-color: oklch(71.2% 0.194 13.428);
+        color: oklch(98% 0.016 73.684);
+    }
 }
 </style>
