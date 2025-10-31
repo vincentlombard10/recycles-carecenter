@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Ticket;
 use Zendesk\API\HttpClient as ZendeskAPI;
 
 Schedule::command('items:import --file=' . \Carbon\Carbon::now()->format('ymd'))
@@ -23,17 +24,18 @@ Schedule::call(function () {
     $username = "maxime.freydrich@re-cycles-france.fr";
     $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
 
-    $client = new ZendeskAPI($subdomain);
-    $client->setAuth('basic', ['username' => $username, 'token' => $token]);
-    //$ticket = $client->tickets(32540)->comments()->findAll();
+    $client = new ZendeskAPI(config('zendesk.subdomain'));
+    $client->setAuth(config('zendesk.auth_strategy'), [
+        'username' => config('zendesk.username'),
+        'token' => config('zendesk.token')
+    ]);
 
     $startTime = \Carbon\Carbon::now()->subDays(5)->timestamp;
-    $endTime = \Carbon\Carbon::now()->subDays(290)->timestamp;
 
     $tickets = $client->tickets()->export(['start_time' => $startTime]);
     foreach ($tickets->results as $ticket) {
         try {
-            $ticket = \App\Models\Ticket::updateOrCreate(
+            $ticket = Ticket::updateOrCreate(
                 attributes: ['id' => $ticket->id],
                 values: [
                     'generated_timestamp' => intval($ticket->generated_timestamp),

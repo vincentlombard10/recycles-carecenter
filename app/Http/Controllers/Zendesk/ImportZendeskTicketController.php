@@ -13,12 +13,12 @@ class ImportZendeskTicketController extends Controller
     {
         ini_set('max_execution_time', 360);
         ini_set('memory_limit', '-1');
-        $subdomain = "recyclesfrance";
-        $username = "maxime.freydrich@re-cycles-france.fr";
-        $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
+        $subdomain = config('zendesk.subdomain');
+        $username = config('zendesk.username');
+        $token = config('zendesk.subdomain');
 
         $client = new ZendeskAPI($subdomain);
-        $client->setAuth('basic', ['username' => $username, 'token' => $token]);
+        $client->setAuth(config('zendesk.auth_strategy'), ['username' => $username, 'token' => $token]);
 
         $startTime = \Carbon\Carbon::now()->subHours(48)->timestamp;
         //$endTime = \Carbon\Carbon::now()->subDays(32)->timestamp;

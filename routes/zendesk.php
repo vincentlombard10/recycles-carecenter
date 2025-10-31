@@ -16,12 +16,12 @@ Route::group(['prefix' => 'zendesk', 'as' => 'zendesk.'], function () {
 
            ini_set('max_execution_time', 3600);
            ini_set('memory_limit', '-1');
-           $subdomain = "recyclesfrance";
-           $username = "maxime.freydrich@re-cycles-france.fr";
-           $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
 
-           $client = new ZendeskAPI($subdomain);
-           $client->setAuth('basic', ['username' => $username, 'token' => $token]);
+           $client = new ZendeskAPI(config('zendesk.subdomain'));
+           $client->setAuth(config('zendesk.auth_strategy'), [
+               'username' => config('zendesk.username'),
+               'token' => config('zendesk.token'),
+           ]);
 
            $startTime = \Carbon\Carbon::now()->subDays(2)->timestamp;
            $endTime = \Carbon\Carbon::now()->subDays(290)->timestamp;
@@ -35,12 +35,12 @@ Route::group(['prefix' => 'zendesk', 'as' => 'zendesk.'], function () {
         Route::get('/', function () {
             ini_set('max_execution_time', 3600);
             ini_set('memory_limit', '-1');
-            $subdomain = "recyclesfrance";
-            $username = "maxime.freydrich@re-cycles-france.fr";
-            $token = "silDCW7ZUFDRo6oMqfXQ8oiaSq6Lij4zzxki3gSc";
 
-            $client = new ZendeskAPI($subdomain);
-            $client->setAuth('basic', ['username' => $username, 'token' => $token]);
+            $client = new ZendeskAPI(config('zendesk.subdomain'));
+            $client->setAuth(config('zendesk.auth_strategy'), [
+                'username' => config('zendesk.username'),
+                'token' => config('zendesk.token')
+            ]);
 
             $ticketfields = $client->ticketFields()->findAll();
             foreach($ticketfields->ticket_fields as $ticketfield) {
