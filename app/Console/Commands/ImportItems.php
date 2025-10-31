@@ -62,8 +62,7 @@ class ImportItems extends Command
 
             if (!$fileContents) {
                 $this->error('Aucun fichier d\'ímportation à cette date.');
-                return;
-            }
+git            }
             Storage::disk('local')->put($localFilename, $fileContents);
             Log::info(sprintf("Nouveau fichier : %s", $filename));
 
