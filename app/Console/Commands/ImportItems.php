@@ -65,6 +65,7 @@ class ImportItems extends Command
                 return;
             }
             Storage::disk('local')->put($localFilename, $fileContents);
+            Log::info(sprintf("Nouveau fichier : %s", $filename));
 
             ImportItemsJob::dispatch($localFilename);
             //Excel::import(new ItemsImport(), $localFilename);
