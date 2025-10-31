@@ -54,7 +54,7 @@ class ImportItems extends Command
 
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
 
-        $this->line("Importer le fichier $filename");
+        $this->line("Importer le fichier $filename ...");
 
         try {
 
