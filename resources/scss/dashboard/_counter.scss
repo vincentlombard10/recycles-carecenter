@@ -7,6 +7,32 @@
     border-radius: 0.5rem;
     position: relative;
     overflow: hidden;
+    &--zd {
+        .display {
+            color: inherit;
+        }
+        &.New {
+            background-color: oklch(82.8% 0.189 84.429);
+            color: white !important;
+            .display {
+                color: inherit;
+            }
+        }
+        &.Open {
+            background-color: oklch(63.7% 0.237 25.331);
+            color: white;
+            .display {
+                color: inherit;
+            }
+        }
+        &.Hold {
+            background-color: oklch(68.5% 0.169 237.323);
+            color: white;
+            .display {
+                color: inherit;
+            }
+        }
+    }
     .progressbar {
         position: absolute;
         top: 0;

@@ -24,6 +24,13 @@
         text-transform: uppercase;
         border-bottom: 1px solid oklch(89.4% 0.057 293.283);
     }
+    .sidebar-content {
+        overflow-y: scroll;
+        height: calc(100vh - 80px);
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    }
     ul.sidebar-menu {
         width: 100%;
         justify-content: center;

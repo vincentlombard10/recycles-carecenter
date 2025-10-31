@@ -17,7 +17,7 @@ class ImportItems extends Command
      *
      * @var string
      */
-    protected $signature = 'items:import {--file=}';
+    protected $signature = 'items:import {--file=?}';
 
     /**
      * The console command description.
@@ -54,7 +54,7 @@ class ImportItems extends Command
 
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
 
-        $this->line("Importer le fichier $filename");
+        $this->line("Importer le fichier $filename ...");
 
         try {
 
@@ -62,7 +62,6 @@ class ImportItems extends Command
 
             if (!$fileContents) {
                 $this->error('Aucun fichier d\'ímportation à cette date.');
-                return;
             }
             Storage::disk('local')->put($localFilename, $fileContents);
             Log::info(sprintf("Nouveau fichier : %s", $filename));

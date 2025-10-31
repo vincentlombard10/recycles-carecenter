@@ -33,6 +33,7 @@
                     <div class="mb-2">
                         <x-dashboard.counter
                             title="Nouveau"
+                            class="db-counter--zd New"
                             :count="$tickets_new_count" />
                     </div>
                     <div>
@@ -45,11 +46,13 @@
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
                         title="Ouvert"
+                        class="db-counter--zd Open"
                         :count="$tickets_open_count" />
                 </div>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
                         title="En attente"
+                        class="db-counter--zd Hold"
                         :count="$tickets_hold_or_pending_count" />
                 </div>
             </div>
