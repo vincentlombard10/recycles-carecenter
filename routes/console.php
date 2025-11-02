@@ -13,7 +13,7 @@ Schedule::command('contacts:import --file=' . \Carbon\Carbon::now()->format('ymd
     ->dailyAt('20:10');
 
 #Importation des tickets chaque minute
-Schedule::call(function () {
+/*Schedule::call(function () {
 
     Log::info("Importation des tickets Zendesk ...");
 
@@ -76,4 +76,4 @@ Schedule::call(function () {
         }
     }
 
-})->everyFiveMinutes();
+})->everyFiveMinutes();*/
