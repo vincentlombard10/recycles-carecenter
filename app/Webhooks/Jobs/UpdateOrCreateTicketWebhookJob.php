@@ -29,7 +29,7 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
         ]);
 
         $ticket = $client->tickets()->find($this->webhookCall->payload['id']);
-
+        Log::debug('Ticket', ['ticket' => $ticket]);
         try {
 
             Log::alert("Webhook Process Job");
