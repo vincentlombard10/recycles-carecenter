@@ -5,7 +5,7 @@ namespace App\Webhooks\Jobs;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use PHPUnit\Framework\Attributes\Ticket;
+use App\Models\Ticket;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob;
 use Spatie\WebhookClient\Models\WebhookCall;
 use Zendesk\API\HttpClient as ZendeskAPI;
