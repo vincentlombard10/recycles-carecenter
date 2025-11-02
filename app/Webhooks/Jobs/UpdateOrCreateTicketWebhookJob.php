@@ -5,6 +5,7 @@ namespace App\Webhooks\Jobs;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\Ticket;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob;
 use Spatie\WebhookClient\Models\WebhookCall;
 use Zendesk\API\HttpClient as ZendeskAPI;
@@ -27,7 +28,7 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
             'token' => config('zendesk.token')
         ]);
 
-        $ticket = $client->tickets()->find($this->webhookCall->payload['ticket_id']);
+        $ticket = $client->tickets()->find($this->webhookCall->payload['id']);
 
         try {
 

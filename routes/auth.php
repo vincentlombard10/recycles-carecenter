@@ -55,4 +55,11 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+        Route::get('change-password', [PasswordController::class, 'edit'])
+            ->name('password.change');
+        Route::put('update-password', [\App\Http\Controllers\ProfileController::class, 'updatePassword'])
+            ->name('password.update');
+    });
 });
