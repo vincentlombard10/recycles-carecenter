@@ -36,7 +36,7 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
         Log::debug('Ticket', ['ticket' => $ticket]);
         try {
 
-            Ticket::updateOrCreate([
+            $t = Ticket::updateOrCreate([
                 'id' => $ticket->id,
             ], [
                 'generated_timestamp' => intval($ticket->generated_timestamp),
