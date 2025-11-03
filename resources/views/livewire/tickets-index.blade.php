@@ -6,9 +6,12 @@
                 <div class="Card_Ticket_Content">
                     <div>
                         <h2 class="fw-semibold">{{ $ticket->id }}</h2>
-                        <div>{{ $ticket->requester_name }}</div>
+                        @if(count($ticket->comments))
+                            <span class="badge">{{ count($ticket->comments) }} Commentaire(s)</span>
+                        @else
+                            <a href="{{ route('zendesk.tickets.sync', ['id' => $ticket->id]) }}">Get comments</a>
+                        @endif
                         <div><span class="fw-semibold">{{ $ticket->requester_email }}</span></div>
-                        <div>{{ $ticket->ticket_form_name }}</div>
                         <div>{{ $ticket->subject }}</div>
                         <div><span class="text-primary">{{ date('d/m/Y H:i', $ticket->created_at) }}</span></div>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Zendesk;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -22,14 +23,9 @@ class SyncZendeskTicketController extends Controller
 
         $ticketsData = $client->tickets()->find($ticketID);
         $ticket = $ticketsData->ticket;
-        dump($ticket);
         $ticketMetric = $client->tickets($ticketID)->metrics()->findAll()->ticket_metric;
-        dump($ticketMetric);
         $ticketComments = $client->tickets($ticketID)->comments()->findAll()->comments;
-        dd($ticketComments);
         try {
-
-            Log::alert("Webhook Process Job");
 
             Ticket::updateOrCreate([
                 'id' => $ticket->id,
@@ -51,13 +47,6 @@ class SyncZendeskTicketController extends Controller
                 'requester_wait_time_in_minutes_within_business_hours' => intval($ticketMetric->requester_wait_time_in_minutes->business),
                 'on_hold_time_in_minutes' => intval($ticketMetric->on_hold_time_in_minutes->calendar),
                 'on_hold_time_in_minutes_within_business_hours' => intval($ticketMetric->on_hold_time_in_minutes->business),
-                'first_reply_time_in_seconds' => intval($ticketMetric->reply_time_in_seconds->calendar),
-                //'ticket_form_name' => $ticket->ticket_form_name,
-                //'requester_external_id' => $ticket->req_external_id,
-                //'requester_name' => $ticket->req_name,
-                //'requester_email' => $ticket->req_email,
-                //'assignee_name' => $ticket->assignee_name,
-                //'brand_name' => $ticket->brand_name,
                 'satisfaction_score' => $ticket->satisfaction_rating->score,
                 'status' => $ticket->status,
                 'tags' => $ticket->tags,
@@ -71,12 +60,32 @@ class SyncZendeskTicketController extends Controller
                 'updated_at' => $ticketMetric->updated_at,
             ]);
 
-            //Log::debug('New support', ['support' => (new Ticket())->getSupport($this->webhookCall->payload['support'])]);
+            foreach ($ticketComments as $comment) {
+                $comment = Comment::updateOrCreate([
+                    'id' => $comment->id,
+                ], [
+                    'ticket_id' => $ticket->id,
+                    'body' => $comment->body,
+                    'html_body' => $comment->html_body,
+                    'plain_body' => $comment->plain_body,
+                    'via' => $comment->via,
+                    'attachments' => $comment->attachments,
+                    'author_id' => $comment->author_id,
+                    'audit_id' => $comment->audit_id,
+                    'metadata' => $comment->metadata,
+                    'public' => $comment->public,
+                    'type' => $comment->type,
+                    'created_at' => $comment->created_at,
+                ]);
+            }
+
 
         } catch (\Exception $exception) {
 
             Log::error('Ticket Update (webhook) : ' . $exception->getMessage());
 
         }
+
+        return redirect()->route('support.tickets.index');
     }
 }
