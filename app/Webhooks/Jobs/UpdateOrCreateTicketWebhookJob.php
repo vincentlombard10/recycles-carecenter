@@ -69,6 +69,14 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
                 'updated_at' => $ticketMetric->updated_at,
             ]);
 
+            foreach($ticket->fields as $field) {
+                if($t->ticketFields()->where('ticketfield_id', $field->id)->exists()) {
+                    $t->ticketFields()->updateExistingPivot($field->id, ['value' => $field->value]);
+                } else {
+                    $t->ticketFields()->attach($field->id, ['value' => $field->value]);
+                }
+            }
+
             foreach ($ticketComments as $comment) {
                 $comment = Comment::updateOrCreate([
                     'id' => $comment->id,

@@ -6,7 +6,13 @@
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <div class="alert">
-                        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus dolor dolorum eos fuga in magni optio ratione velit voluptas. Beatae consequuntur cupiditate error ipsa iusto nemo sequi suscipit voluptas.</small>
+                        <p>Votre mot de passe doit :</p>
+                        <ul>
+                            <li>Contenir au moins 8 caractères</li>
+                            <li>Inclure des lettres majuscules et minuscules</li>
+                            <li>Contenir au moins un chiffre</li>
+                            <li>Contenir au moins un symbole</li>
+                        </ul>
                     </div>
                 </div>
             </div>

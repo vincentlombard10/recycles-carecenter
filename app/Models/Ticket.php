@@ -4,7 +4,9 @@ namespace App\Models;
 
 use App\Models\Traits\Attribute\TicketAttribute;
 use App\Models\Traits\Scope\TicketScope;
+use App\Models\Zendesk\TicketField;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -57,5 +59,10 @@ class Ticket extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'ticket_id');
+    }
+
+    public function ticketFields(): BelongsToMany
+    {
+        return $this->belongsToMany(TicketField::class, 'ticket_ticketfield', 'ticket_id', 'ticketfield_id');
     }
 }

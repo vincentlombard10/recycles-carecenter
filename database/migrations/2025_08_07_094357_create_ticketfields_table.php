@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('ticket_fields', function (Blueprint $table) {
+        Schema::create('ticketfields', function (Blueprint $table) {
             $table->string('id');
             $table->string('url')->nullable();
             $table->string('type');
@@ -36,6 +36,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('ticket_fields');
+        Schema::dropIfExists('ticketfields');
     }
 };

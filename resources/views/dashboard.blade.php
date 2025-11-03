@@ -1,13 +1,8 @@
 <x-app-layout>
     <x-messages />
     <x-page-wrapper>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <a href="{{ route('profile.password.change') }}">Modifier le mot de passe</a>
-                </div>
-            </div>
-            <div class="row">
+        <div class="container-fluid p-3">
+            <div class="row mb-3">
                 <h2>Codes chassis</h2>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter

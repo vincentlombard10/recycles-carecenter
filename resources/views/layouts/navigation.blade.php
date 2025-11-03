@@ -3,17 +3,18 @@
     <div class="sidebar-content">
         <ul class="sidebar-menu">
             <li class="sidebar-item">
+                <a href="{{ route('profile.index') }}" class="sidebar-link {{ Route::is('profile.*') ? 'active': '' }}">
+                    <i class="bi bi-person-badge"></i>
+                    <span class="sidebar-link__label">Mon profil</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="sidebar-menu">
+            <li class="sidebar-item">
                 <a href="{{ route('dashboard') }}"
                    class="sidebar-link {{ Route::is('dashboard') ? 'active': '' }}"><i
                         class="bi bi-house"></i><span class="sidebar-link__label">Tableau de bord</span></a>
             </li>
-            @canany('tickets.read')
-                <li class="sidebar-item">
-                    <a href="{{ route('support.tickets.index') }}"
-                       class="sidebar-link {{ Route::is('support.tickets.*') ? 'active': '' }}"><i
-                            class="bi bi-inboxes"></i><span class="sidebar-link__label">Tickets Zendesk</span></a>
-                </li>
-            @endcanany
             @canany(['returns.read', 'returns.create', 'returns.update', 'returns.delete'])
                 <li class="sidebar-item">
                     <a href="{{ route('support.returns.index') }}"
@@ -27,6 +28,13 @@
                        class="sidebar-link {{ Route::is('support.reports.*') ? 'active': '' }}"><i
                             class="bi bi-list-check"></i><span
                             class="sidebar-link__label">Rapports d'expertise</span></a>
+                </li>
+            @endcanany
+            @canany('tickets.read')
+                <li class="sidebar-item">
+                    <a href="{{ route('support.tickets.index') }}"
+                       class="sidebar-link {{ Route::is('support.tickets.*') ? 'active': '' }}"><i
+                            class="bi bi-inboxes"></i><span class="sidebar-link__label">Tickets Zendesk</span></a>
                 </li>
             @endcanany
             <li class="sidebar-item">
