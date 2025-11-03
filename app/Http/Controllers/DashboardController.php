@@ -20,6 +20,18 @@ class DashboardController extends Controller
         $tickets_new = Ticket::new()->get();
         $tickets_hold_or_pending_count = \App\Models\Ticket::holdOrPending()->count();
 
+        $tickets_solved_last_year_count = Ticket::query()->where('status', 'solved')
+            ->where('created_at', '>', now()->subYear()->startOfYear())
+            ->where('solved_at', '<', now()->subYear()->endOfYear())->count();
+        $ticket_solved_last_year_at_same_time_count = Ticket::query()->where('status', Ticket::STATUS_SOLVED)
+            ->where('created_at', '>', now()->subYear()->startOfYear())
+            ->where('solved_at', '<', now()->subYear())->count();
+        $tickets_solved_this_year_count = Ticket::query()->where('status', Ticket::STATUS_SOLVED)
+            ->where('created_at', '>', now()->startOfYear())
+            ->where('solved_at', '<', now()->endOfYear())->count();
+        dd($tickets_solved_last_year_count, $ticket_solved_last_year_at_same_time_count, $tickets_solved_this_year_count);
+
+
         $product_returns_pending_count = ProductReturn::where('status', 'pending')->count();
         $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
         $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')->count();
