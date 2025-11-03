@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\Zendesk\SyncZendeskTicketController;
 use App\Models\Zendesk\TicketField;
 use Zendesk\API\HttpClient as ZendeskAPI;
 
@@ -10,6 +11,8 @@ Route::group(['prefix' => 'zendesk', 'as' => 'zendesk.'], function () {
             ->name('import');
         Route::post('/export', \App\Http\Controllers\Zendesk\ExportZendeskTicketController::class)
             ->name('export.post');
+        Route::get('/{id}/sync', SyncZendeskTicketController::class)
+            ->name('sync');
     });
     Route::group(['prefix' => '/comments', 'as' => 'comments.'], function() {
        Route::get('/import', function () {
