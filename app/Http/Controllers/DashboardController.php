@@ -23,15 +23,13 @@ class DashboardController extends Controller
         $tickets_solved_last_year_count = Ticket::query()->where('status', 'solved')
             ->where('created_at', '>', now()->subYear()->startOfYear())
             ->where('solved_at', '<', now()->subYear()->endOfYear())->count();
-        $ticket_solved_last_year_at_same_time_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
+        $tickets_solved_last_year_at_same_time_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
             ->where('created_at', '>', now()->subYear()->startOfYear())
             ->where('solved_at', '<', now()->subYear())->count();
         $tickets_solved_this_year_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
             ->where('created_at', '>', now()->startOfYear())
             ->where('solved_at', '<', now()->endOfYear())
             ->count();
-        dd($tickets_solved_last_year_count, $ticket_solved_last_year_at_same_time_count, $tickets_solved_this_year_count);
-
 
         $product_returns_pending_count = ProductReturn::where('status', 'pending')->count();
         $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
@@ -44,6 +42,9 @@ class DashboardController extends Controller
             ->with('tickets_open_count', $tickets_open_count)
             ->with('tickets_new_count', $tickets_new_count)
             ->with('tickets_new', $tickets_new)
+            ->with('tickets_solved_last_year_at_same_time_count', $tickets_solved_last_year_at_same_time_count)
+            ->with('tickets_solved_last_year_count', $tickets_solved_last_year_count)
+            ->with('tickets_solved_this_year_count', $tickets_solved_this_year_count)
             ->with('tickets_hold_or_pending_count', $tickets_hold_or_pending_count)
             ->with('product_returns_pending_count', $product_returns_pending_count)
             ->with('product_reports_pending_count', $product_reports_pending_count)
