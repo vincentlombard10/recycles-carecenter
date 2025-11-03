@@ -7,7 +7,7 @@
                     <div>
                         <h2 class="fw-semibold">{{ $ticket->id }}</h2>
                         @if(count($ticket->comments))
-                            <span class="badge" style="background-color: oklch(94.3% 0.029 294.588);">{{ count($ticket->comments) }} <i class="bi bi-chat"></i>
+                            <span class="badge" style="background-color: oklch(94.3% 0.029 294.588);">{{ count($ticket->comments) }}&nbsp;<i class="bi bi-chat ms-2"></i>
 </span>
                         @else
                             <a href="{{ route('zendesk.tickets.sync', ['id' => $ticket->id]) }}">Get comments</a>
