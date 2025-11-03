@@ -53,4 +53,9 @@ class Ticket extends Model
     {
         return $this->hasMany(ProductReturn::class, 'ticket_id');
     }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'ticket_id');
+    }
 }

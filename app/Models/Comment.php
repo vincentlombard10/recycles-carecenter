@@ -12,7 +12,7 @@ class Comment extends Model
 
     protected $table = 'comments';
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     protected function casts(): array
     {
