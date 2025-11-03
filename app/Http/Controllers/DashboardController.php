@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $tickets_new = Ticket::new()->get();
         $tickets_hold_or_pending_count = \App\Models\Ticket::holdOrPending()->count();
 
-        $tickets_solved_last_year_count = Ticket::query()->whereIn('status', 'solved', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
+        $tickets_solved_last_year_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
             ->where('created_at', '>', now()->subYear()->startOfYear())
             ->where('solved_at', '<', now()->subYear()->endOfYear())->count();
         $tickets_solved_last_year_at_same_time_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
