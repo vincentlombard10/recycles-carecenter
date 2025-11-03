@@ -13,6 +13,8 @@ Route::group(['prefix' => 'zendesk', 'as' => 'zendesk.'], function () {
             ->name('export.post');
         Route::get('/sync-without-comments', \App\Http\Controllers\Zendesk\SyncZendeskTicketsWithoutCommentsController::class)
             ->name('sync-without-comments');
+        ROute::get('/sync-missing-tickets', \App\Http\Controllers\Zendesk\SyncMissingZendeskTicketController::class)
+            ->name('sync-missing-tickets');
         Route::get('/{id}/sync', SyncZendeskTicketController::class)
             ->name('sync');
     });
