@@ -11,6 +11,8 @@ Route::group(['prefix' => 'zendesk', 'as' => 'zendesk.'], function () {
             ->name('import');
         Route::post('/export', \App\Http\Controllers\Zendesk\ExportZendeskTicketController::class)
             ->name('export.post');
+        Route::get('/sync-without-comments', \App\Http\Controllers\Zendesk\SyncZendeskTicketsWithoutCommentsController::class)
+            ->name('sync-without-comments');
         Route::get('/{id}/sync', SyncZendeskTicketController::class)
             ->name('sync');
     });
