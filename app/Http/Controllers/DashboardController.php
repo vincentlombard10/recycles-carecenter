@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $tickets_solved_last_year_count = Ticket::query()->where('status', 'solved')
             ->where('created_at', '>', now()->subYear()->startOfYear())
             ->where('solved_at', '<', now()->subYear()->endOfYear())->count();
-        $ticket_solved_last_year_at_same_time_count = Ticket::query()->where('status', Ticket::STATUS_SOLVED)
+        $ticket_solved_last_year_at_same_time_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
             ->where('created_at', '>', now()->subYear()->startOfYear())
             ->where('solved_at', '<', now()->subYear())->count();
         $tickets_solved_this_year_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
