@@ -16,6 +16,8 @@ class Ticket extends Model
         TicketScope,
         TicketAttribute;
 
+    protected $table = 'tickets';
+
     protected $guarded = [];
 
     public const STATUS_NEW = "New";
