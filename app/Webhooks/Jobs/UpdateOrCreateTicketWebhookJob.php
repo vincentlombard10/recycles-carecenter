@@ -28,7 +28,8 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
             'token' => config('zendesk.token')
         ]);
 
-        $ticket = $client->tickets()->find($this->webhookCall->payload['id']);
+        $ticketsData = $client->tickets()->find($this->webhookCall->payload['id']);
+        $ticket = $ticketsData->ticket;
         Log::debug('Ticket', ['ticket' => $ticket]);
         try {
 
