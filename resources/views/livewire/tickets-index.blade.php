@@ -12,6 +12,7 @@
                         @else
                             <a href="{{ route('zendesk.tickets.sync', ['id' => $ticket->id]) }}">Get comments</a>
                         @endif
+                        <div>{{ $ticket->ticketFields() }}</div>
                         <div>{{ $ticket->ticketFields->count() }}</div>
                         @if (count($ticket->ticketFields))
                             <span class="badge bage-success" style="background-color: oklch(90.1% 0.076 70.697)">TF</span>
