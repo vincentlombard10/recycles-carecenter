@@ -25,7 +25,7 @@ class SyncMissingZendeskTicketController extends Controller
 
         for($i = 0; $i < 500; $i++) {
 
-            $ticketID = $_GET['start_id'] + $i;
+            $ticketID = $_GET['start_id'] - $i;
 
             try {
                 dump($ticketID);
