@@ -4,7 +4,8 @@
     'percent' => false,
     'progress' => false,
     'total' => null,
-    'class' => null
+    'class' => null,
+    'suffix' => null
     ])
 <div class="db-counter @if($class){{ $class }}@endif">
     @if($progress && $total)
@@ -16,7 +17,7 @@
         @if($count && $total > 0 && $percent)
         <div class="count">{{ round($count/$total, 4) * 100 }}@if($percent)%@endif</div>
         @else
-        <div class="count">{{ $count }}</div>
+        <div class="count">{{ $count }}{{ $suffix }}</div>
         @endif
     </div>
 </div>

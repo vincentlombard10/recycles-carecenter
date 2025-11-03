@@ -20,16 +20,12 @@ class DashboardController extends Controller
         $tickets_new = Ticket::new()->get();
         $tickets_hold_or_pending_count = \App\Models\Ticket::holdOrPending()->count();
 
-        $tickets_solved_last_year_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
-            ->where('created_at', '>', now()->subYear()->startOfYear())
-            ->where('solved_at', '<', now()->subYear()->endOfYear())->count();
-        $tickets_solved_last_year_at_same_time_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
-            ->where('created_at', '>', now()->subYear()->startOfYear())
-            ->where('solved_at', '<', now()->subYear())->count();
         $tickets_solved_this_year_count = Ticket::query()->whereIn('status', [Ticket::STATUS_SOLVED, Ticket::STATUS_CLOSED])
             ->where('created_at', '>', now()->startOfYear())
             ->where('solved_at', '<', now()->endOfYear())
             ->count();
+        $first_reply_avg_time = Ticket::where('created_at', '>', now()->startOfYear())->avg('tickets.first_reply_time_in_minutes_within_business_hours');
+        $full_resolution_avg_time = Ticket::where('created_at', '>', now()->startOfYear())->avg('tickets.full_resolution_time_in_minutes_within_business_hours');
 
         $product_returns_pending_count = ProductReturn::where('status', 'pending')->count();
         $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
@@ -42,9 +38,9 @@ class DashboardController extends Controller
             ->with('tickets_open_count', $tickets_open_count)
             ->with('tickets_new_count', $tickets_new_count)
             ->with('tickets_new', $tickets_new)
-            ->with('tickets_solved_last_year_at_same_time_count', $tickets_solved_last_year_at_same_time_count)
-            ->with('tickets_solved_last_year_count', $tickets_solved_last_year_count)
             ->with('tickets_solved_this_year_count', $tickets_solved_this_year_count)
+            ->with('first_reply_avg_time', $first_reply_avg_time)
+            ->with('full_resolution_avg_time', $full_resolution_avg_time)
             ->with('tickets_hold_or_pending_count', $tickets_hold_or_pending_count)
             ->with('product_returns_pending_count', $product_returns_pending_count)
             ->with('product_reports_pending_count', $product_reports_pending_count)

@@ -65,13 +65,15 @@
                 </div>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
-                        title="Réolus l'année dernière AST"
-                        :count="$tickets_solved_last_year_at_same_time_count" />
+                        title="Temps de première réponse"
+                        :count="round($first_reply_avg_time)"
+                        suffix="''"/>
                 </div>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
-                        title="Résolus l'année dernière"
-                        :count="$tickets_solved_last_year_count" />
+                        title="Temps de résolution complète"
+                        :count="round($full_resolution_avg_time)"
+                        suffix="''"/>
                 </div>
             </div>
             <div class="row">
