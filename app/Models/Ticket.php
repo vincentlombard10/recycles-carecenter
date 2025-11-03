@@ -63,8 +63,14 @@ class Ticket extends Model
         return $this->hasMany(Comment::class, 'ticket_id');
     }
 
-    public function ticketFields(): BelongsToMany
+    public function ticketFields(): HasMany
     {
-        return $this->belongsToMany(TicketField::class, 'ticket_ticketfield', 'ticket_id', 'ticketfield_id');
+        return $this->hasMany(TicketField::class,);
+    }
+
+    public function fields(): BelongsToMany
+    {
+        return $this->belongsToMany(TicketField::class, 'ticket_ticketfield', 'ticket_id', 'ticketfield_id')->withPivot('value');
+
     }
 }
