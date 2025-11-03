@@ -28,7 +28,7 @@ class TicketField extends Model
 
     public function ticket(): BelongsToMany
     {
-        return $this->belongsToMany(Ticket::class, 'ticket_ticketfield')
+        return $this->belongsToMany(Ticket::class, 'ticket_ticketfield', 'ticket_id', 'field_id');
             ->withPivot('value');
     }
 }

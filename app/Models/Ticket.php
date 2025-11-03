@@ -65,6 +65,6 @@ class Ticket extends Model
 
     public function ticketFields(): BelongsToMany
     {
-        return $this->belongsToMany(TicketField::class, 'ticket_ticketfield', 'ticket_id', 'ticketfield_id');
+        return $this->belongsToMany(TicketField::class, 'ticket_ticketfield', 'ticket_id', 'field_id');
     }
 }
