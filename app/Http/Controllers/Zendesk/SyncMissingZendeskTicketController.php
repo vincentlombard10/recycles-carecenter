@@ -34,7 +34,7 @@ class SyncMissingZendeskTicketController extends Controller
                 $ticketMetric = $client->tickets($ticketID)->metrics()->findAll()->ticket_metric;
                 $ticketComments = $client->tickets($ticketID)->comments()->findAll()->comments;
 
-                Ticket::updateOrCreate([
+                $t = Ticket::updateOrCreate([
                     'id' => $ticket->id,
                 ], [
                     'generated_timestamp' => intval($ticket->generated_timestamp),
@@ -66,6 +66,14 @@ class SyncMissingZendeskTicketController extends Controller
                     'solved_at' => $ticketMetric->solved_at ? Str::substr($ticketMetric->solved_at, 0, 19) : null,
                     'updated_at' => $ticketMetric->updated_at,
                 ]);
+
+                foreach($ticket->fields as $field) {
+                    if($t->ticketFields()->where('ticketfield_id', $field->id)->exists()) {
+                        $t->ticketFields()->updateExistingPivot($field->id, ['value' => $field->value]);
+                    } else {
+                        $t->ticketFields()->attach($field->id, ['value' => $field->value]);
+                    }
+                }
 
                 foreach ($ticketComments as $comment) {
                     $comment = Comment::updateOrCreate([
