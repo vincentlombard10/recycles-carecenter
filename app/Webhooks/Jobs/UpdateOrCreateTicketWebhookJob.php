@@ -39,7 +39,7 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
                 'id' => $ticket->id,
             ], [
                 'generated_timestamp' => intval($ticket->generated_timestamp),
-                'requester_id' => intval($ticket->req_id),
+                'requester_id' => intval($ticket->requester_id),
                 'assignee_id' => intval($ticket->assignee_id),
                 'replies' => intval($ticket->replies),
                 'reopens' => intval($ticket->reopens),
