@@ -32,6 +32,7 @@ class ImportContacts extends Command
     public function handle()
     {
         ini_set('max_execution_time', '3600');
+        ini_set('memory_limit', '-1');
 
         $path = 'in/users/';
         $file_prefix = 'CL_';
@@ -47,7 +48,7 @@ class ImportContacts extends Command
 
             if ($date == 'C' || $date == 'c') {
                 $this->line("Opération annulée");
-                return;
+                return 1;
             }
 
         }
@@ -57,12 +58,12 @@ class ImportContacts extends Command
         Log::info(sprintf("Contacts - Mise à jour des contacts à partir du fichier différentiel %s", $filename));
         try {
 
-            $fileContents = Storage::disk('m3files-ftp')->get($filename);
+            $fileContents = Storage::disk('sftp')->get($filename);
 
             if (!$fileContents) {
                 Log::warning(sprintf("Contacts - Aucun contenu dans le fichier %s", $filename));
                 $this->error('Aucun fichier d\'ímportation à cette date.');
-                return;
+                return 1;
             } else {
                 $this->line("ok");
             }

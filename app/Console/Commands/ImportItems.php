@@ -31,6 +31,7 @@ class ImportItems extends Command
      */
     public function handle()
     {
+        ini_set('max_execution_time', '3600');
         ini_set('memory_limit', '-1');
 
         $path = 'in/items/';
@@ -47,7 +48,7 @@ class ImportItems extends Command
 
             if ($date == 'C' || $date == 'c') {
                 $this->line("Opération annulée");
-                return;
+                return 1;
             }
 
         }
