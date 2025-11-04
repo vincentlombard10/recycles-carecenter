@@ -12,7 +12,7 @@
                         @else
                             <a href="{{ route('zendesk.tickets.sync', ['id' => $ticket->id]) }}">Get comments</a>
                         @endif
-                        @if (count($ticket->fields))
+                        @if ($ticket->fields_count))
                             <span class="badge bage-success" style="background-color: oklch(90.1% 0.076 70.697)">TF</span>
                         @endif
                         <div><span class="fw-semibold">{{ $ticket->requester_email }}</span></div>

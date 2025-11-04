@@ -20,7 +20,9 @@ class TicketsIndex extends Component
             $query->where('id', 'like', '%' . $this->searchTerm . '%');
             $query->orWhere('requester_name', 'like', '%' . $this->searchTerm . '%');
             $query->orWhere('requester_email', 'like', '%' . $this->searchTerm . '%');
-        })->orderBy('created_at', 'desc')->paginate(30);
+        })
+            ->withCount('fields')
+            ->orderBy('created_at', 'desc')->paginate(30);
         return view('livewire.tickets-index', compact('tickets'));
     }
 
