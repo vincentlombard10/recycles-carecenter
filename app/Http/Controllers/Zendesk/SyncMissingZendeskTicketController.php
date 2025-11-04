@@ -23,7 +23,7 @@ class SyncMissingZendeskTicketController extends Controller
         $client = new ZendeskAPI($subdomain);
         $client->setAuth(config('zendesk.auth_strategy'), ['username' => $username, 'token' => $token]);
 
-        for($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
 
             $ticketID = $_GET['start_id'] - $i;
 
@@ -68,13 +68,15 @@ class SyncMissingZendeskTicketController extends Controller
                     'fields_count' => count($ticket->fields),
                 ]);
 
-                foreach($ticket->fields as $field) {
+                foreach ($ticket->fields as $field) {
                     Log::info('Field', ['field' => $field]);
-  /*                  if($t->ticketFields()->where('ticketfield_id', $field->id)->exists()) {
+                    if ($t->ticketFields()->where('ticketfield_id', $field->id)->exists()) {
+                        Log::info('Update Ticket Field', ['field' => $field]);
                         $t->ticketFields()->updateExistingPivot($field->id, ['value' => $field->value]);
                     } else {
+                        Log::info('New Ticket Field', ['field' => $field]);
                         $t->ticketFields()->attach($field->id, ['value' => $field->value]);
-                    }*/
+                    }
                 }
 
                 foreach ($ticketComments as $comment) {
