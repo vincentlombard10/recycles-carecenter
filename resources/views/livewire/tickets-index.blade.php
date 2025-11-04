@@ -6,7 +6,7 @@
                 <div class="Card_Ticket_Content">
                     <div>
                         <h2 class="fw-semibold">{{ $ticket->id }}</h2>
-                        @if($ticket->comments_count)
+{{--                        @if($ticket->comments_count)
                             <span class="badge" style="background-color: oklch(94.3% 0.029 294.588);">{{ $ticket->comments_count }}<i class="bi bi-chat ms-2"></i>
 </span>
                         @else
@@ -14,7 +14,7 @@
                         @endif
                         @if ($ticket->fields_count)
                             <span class="badge bage-success" style="background-color: oklch(90.1% 0.076 70.697)">TF</span>
-                        @endif
+                        @endif--}}
                         <div><span class="fw-semibold">{{ $ticket->requester_email }}</span></div>
                         <div>{{ $ticket->subject }}</div>
                         <div><span class="text-primary">{{ date('d/m/Y H:i', $ticket->created_at) }}</span></div>
