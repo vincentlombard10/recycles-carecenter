@@ -15,8 +15,11 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="d-grid items-center justify-end mt-2">
+        <div class="d-grid mb-3">
             <input type="submit" class="btn btn-primary" value="Recevoir le lien de renouvellement.">
+        </div>
+        <div>
+            <a href="/">Retour</a>
         </div>
     </form>
 </x-guest-layout>
