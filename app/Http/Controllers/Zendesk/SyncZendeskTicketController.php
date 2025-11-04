@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Zendesk;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Contact;
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Zendesk\API\HttpClient as ZendeskAPI;
@@ -25,6 +27,14 @@ class SyncZendeskTicketController extends Controller
         $ticket = $ticketsData->ticket;
         $ticketMetric = $client->tickets($ticketID)->metrics()->findAll()->ticket_metric;
         $ticketComments = $client->tickets($ticketID)->comments()->findAll()->comments;
+        $user = $client->users()->find($ticket->requester_id)->user;
+
+        if ($user->external_id !== null) {
+            Contact::where('code', $user->external_id)->update([
+                'zendesk_user_id' => $ticket->requester_id,
+            ]);
+        }
+
         try {
 
 

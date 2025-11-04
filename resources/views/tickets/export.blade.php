@@ -16,11 +16,11 @@
             <div class="row">
                 <div class="col-md-6 col-xl-3 mb-2">
                     <label for="from" class="form-label mb-1">Début de la période</label>
-                    <input type="datetime-local" class="form-control" id="from" name="from" required>
+                    <input type="datetime-local" class="form-control" id="from" name="from" required value="{{ $start_time }}">
                 </div>
                 <div class="col-md-6 col-xl-3 mb-2">
                     <label for="to" class="form-label mb-1">Fin de la période</label>
-                    <input type="datetime-local" class="form-control" id="to" name="to" required>
+                    <input type="datetime-local" class="form-control" id="to" name="to" required value="{{ $end_time }}">
                 </div>
             </div>
             <div class="row">

@@ -16,14 +16,16 @@
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Type</th>
                             <th>Titre</th>
                             <th>Valeur</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($ticket->fields as $tf)
+                        @foreach($ticket->filledFields as $tf)
                             <tr class="@if($tf->pivot->value == null) table-secondary @endif">
                                 <th style="width: 12rem;">{{ $tf->id }}</th>
+                                <th>{{ $tf->type }}</th>
                                 <td style="width: 50%;">{{ $tf->title }}</td>
                                 <td>{{ $tf->pivot->value }}</td>
                             </tr>

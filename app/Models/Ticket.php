@@ -73,4 +73,9 @@ class Ticket extends Model
         return $this->belongsToMany(TicketField::class, 'ticket_ticketfield', 'ticket_id', 'ticketfield_id')->withPivot('value');
 
     }
+
+    public function filledFields(): BelongsToMany
+    {
+        return $this->fields()->withPivot('value')->where('value', '!=', null);
+    }
 }
