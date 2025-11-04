@@ -23,7 +23,7 @@ class SyncMissingZendeskTicketController extends Controller
         $client = new ZendeskAPI($subdomain);
         $client->setAuth(config('zendesk.auth_strategy'), ['username' => $username, 'token' => $token]);
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 500; $i++) {
 
             $ticketID = $_GET['start_id'] - $i;
 
