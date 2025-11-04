@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-page-header>
         <div class="page-header-content">
-            Exporter
+            <div>
+                <h1>Exportation des tickets Zendesk</h1>
+            </div>
+            <div></div>
         </div>
     </x-page-header>
     <x-page-wrapper>

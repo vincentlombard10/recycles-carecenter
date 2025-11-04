@@ -1,7 +1,12 @@
 <x-app-layout>
     <x-page-header>
         <div class="page-header-content">
-            <livewire:search-form />
+            <div>
+                <h1>Contacts clients</h1>
+            </div>
+            <div>
+                <livewire:search-form />
+            </div>
         </div>
     </x-page-header>
     <x-page-wrapper>

@@ -1,7 +1,15 @@
 <x-app-layout>
-    <x-messages />
+    <x-page-header>
+        <div class="page-header-content">
+            <div>
+                <h1>Tableau de bord</h1>
+            </div>
+            <div></div>
+        </div>
+    </x-page-header>
     <x-page-wrapper>
         <div class="container-fluid p-3">
+            <x-messages />
             <div class="row mb-3">
                 <h2>Codes chassis</h2>
                 <div class="col-4 mb-3">

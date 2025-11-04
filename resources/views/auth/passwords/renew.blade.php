@@ -1,8 +1,17 @@
 <x-app-layout>
+    <x-page-header>
+        <div class="page-header-content">
+            <div class="d-flex align-items-center gap-3">
+                <a href="{{ route('profile.index') }}" class="btn btn-circle btn-orange">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+                <h1>Modifier le mot de passe de connexion</h1>
+            </div>
+        </div>
+    </x-page-header>
     <x-messages />
     <x-page-wrapper>
         <div class="container-fluid p-3">
-            <h1 class="mb-3">Modifier le mot de passe de connexion</h1>
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <div class="alert">

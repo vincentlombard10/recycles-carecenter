@@ -1,14 +1,20 @@
 <x-app-layout>
     <x-page-header>
         <div class="page-header-content">
-            <livewire:search-form />
+            <div>
+                <h1>Tickets Zendesk Support</h1>
+            </div>
+            <div class="d-flex align-content-center gap-2">
+                <a href="{{ route('support.tickets.export.form') }}"
+                    class="btn btn-circle btn-cyan">
+                    <i class="bi bi-cloud-download"></i>
+                </a>
+                <livewire:search-form />
+            </div>
         </div>
     </x-page-header>
     <x-page-wrapper>
         <x-messages />
-        <div class="mb-3">
-            <a href="{{ route('support.tickets.export.form') }}" class="btn btn-sm btn-violet">Exporter les ticket Zendesk</a>
-        </div>
         <div class="">
             <livewire:tickets-index />
         </div>

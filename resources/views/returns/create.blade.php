@@ -1,11 +1,15 @@
 <x-app-layout>
     <x-page-header>
-        <a
-            href="{{ route('support.returns.index') }}"
-           class="page-header-btn page-header-btn-secondary"><i class="bi bi-arrow-left-circle"></i>
-        </a>
         <div class="page-header-content">
-            <h1>Nouveau retour produit</h1>
+            <div class="d-flex align-items-center gap-3">
+                <a href="{{ route('support.returns.index') }}" class="btn btn-circle btn-orange">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+                <h1>Nouveau retour produit</h1>
+            </div>
+            <div>
+
+            </div>
         </div>
     </x-page-header>
     <x-page-wrapper>

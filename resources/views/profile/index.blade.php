@@ -1,12 +1,16 @@
 <x-app-layout>
-    <x-messages />
+    <x-page-header>
+        <div class="page-header-content">
+            <div class="d-flex align-items-center gap-3">
+                <h1>Mon profil</h1>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+
+            </div>
+        </div>
+    </x-page-header>
     <x-page-wrapper>
         <div class="container-fluid p-3">
-            <div class="row mb-3">
-                <div class="col-12 mb-3">
-                    <h1>Mon profil</h1>
-                </div>
-            </div>
             <div class="row mb-3">
                 <div class="col-12 mb-3">
                     <ul>
