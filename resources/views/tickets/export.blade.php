@@ -5,8 +5,8 @@
         </div>
     </x-page-header>
     <x-page-wrapper>
-        <x-messages />
-        <div class="container-fluid">
+        <div class="container-fluid p-3">
+            <x-messages />
             <div class="row">
                 <div class="col-12 mb-3">
                     <a href="{{ route('support.tickets.index') }}" class="btn btn-sm btn-dark">Retour</a>
@@ -29,6 +29,9 @@
                 </div>
             </div>
             {{ html()->form()->close() }}
+            <div>
+                {{ session('success') }}
+            </div>
         </div>
     </x-page-wrapper>
 </x-app-layout>
