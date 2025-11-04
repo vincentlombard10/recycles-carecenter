@@ -9,7 +9,7 @@
 
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
-        <div>
+        <div class="mb-3">
             <label for="email" class="form-label mb-1">Adresse e-mail</label>
             <input type="text" name="email" class="form-control" value="{{ old('email') }}" required autofocus>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
