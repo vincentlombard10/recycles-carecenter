@@ -25,5 +25,6 @@ class BrandsIndex extends Component
     public function updateSearchTerm($searchTerm)
     {
         $this->searchTerm = $searchTerm;
+        $this->goToPage(1);
     }
 }
