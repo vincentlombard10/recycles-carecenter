@@ -4,15 +4,11 @@
         <p>Aucun souci, renseignez votre adresse e-mail et vous recevrez un lien pour renouveler votre mot de passe.</p>
     </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
         <div class="mb-3">
             <label for="email" class="form-label mb-1">Adresse e-mail</label>
             <input type="text" name="email" class="form-control" value="{{ old('email') }}" required autofocus>
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div class="d-grid mb-3">
@@ -22,4 +18,18 @@
             <a href="/">Retour</a>
         </div>
     </form>
+
+    @if ($errors->any())
+        <div id="login-bottom-banner">
+            @foreach($errors->all() as $e)
+                <li>{{ $e }}</li>
+            @endforeach
+        </div>
+    @endif
+
+    @if(session('status'))
+        <div id="login-status-banner">
+            {{ session('status') }}
+        </div>
+    @endif
 </x-guest-layout>
