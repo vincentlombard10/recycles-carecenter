@@ -95,7 +95,7 @@ class SyncMissingZendeskTicketController extends Controller
                     ]);
                 }
 
-                $t->comments_count = $ticketComments->count();
+                $t->comments_count = count($ticketComments);
                 $t->save();
 
 

@@ -6,7 +6,7 @@
                 <div class="Card_Ticket_Content">
                     <div>
                         <h2 class="fw-semibold">{{ $ticket->id }}</h2>
-                        <div>{{ $ticket->comments_count }}</div>
+                        <div>Commentaires : {{ $ticket->comments_count }}</div>
 {{--                        @if($ticket->comments_count)
                             <span class="badge" style="background-color: oklch(94.3% 0.029 294.588);">{{ $ticket->comments_count }}<i class="bi bi-chat ms-2"></i>
 </span>
