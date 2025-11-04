@@ -18,9 +18,8 @@ class TicketsIndex extends Component
     {
         $tickets = Ticket::where(function ($query) {
             $query->where('id', 'like', '%' . $this->searchTerm . '%');
-            $query->orWhere('requester_name', 'like', '%' . $this->searchTerm . '%');
-            $query->orWhere('requester_email', 'like', '%' . $this->searchTerm . '%');
         })
+            ->select('id', 'tickets.first_reply_time_in_minutes_within_business_hours')
             ->withCount('fields', 'comments')
             ->orderBy('created_at', 'desc')->paginate(30);
         return view('livewire.tickets-index', compact('tickets'));
