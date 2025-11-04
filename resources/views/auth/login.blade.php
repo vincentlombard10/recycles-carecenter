@@ -1,12 +1,12 @@
 <x-guest-layout>
     {{ html()->form('POST', route('login'))->open() }}
     <div class="mb-3">
-        {{ html()->label('Adresse e-mail :')->class('form-label') }}
+        {{ html()->label('Adresse e-mail :')->class('form-label mb-1') }}
         {{ html()->email('email')->class('form-control focus-ring focus-ring-light')->autocomplete('off') }}
         <x-input-error :messages="$errors->get('email')" class="mt-2"/>
     </div>
     <div class="mb-3">
-        {{ html()->label('Mot de passe :')->class('form-label') }}
+        {{ html()->label('Mot de passe :')->class('form-label mb-1') }}
         {{ html()->password('password')->class('form-control focus-ring focus-ring-light')->autocomplete('current-password') }}
         <x-input-error :messages="$errors->get('password')" class="mt-2"/>
     </div>
