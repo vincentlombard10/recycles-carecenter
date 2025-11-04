@@ -72,10 +72,10 @@ class SyncMissingZendeskTicketController extends Controller
                     Log::info('Field', ['field' => $field]);
                     if ($t->ticketFields()->where('ticketfield_id', $field->id)->exists()) {
                         Log::info('Update Ticket Field', ['field' => $field]);
-                        $t->ticketFields()->updateExistingPivot($field->id, ['value' => $field->value]);
+                        //$t->ticketFields()->updateExistingPivot($field->id, ['value' => $field->value]);
                     } else {
                         Log::info('New Ticket Field', ['field' => $field]);
-                        $t->ticketFields()->attach($field->id, ['value' => $field->value]);
+                        //$t->ticketFields()->attach($field->id, ['value' => $field->value]);
                     }
                 }
 
