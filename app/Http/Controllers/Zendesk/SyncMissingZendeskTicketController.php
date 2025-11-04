@@ -28,7 +28,7 @@ class SyncMissingZendeskTicketController extends Controller
             $ticketID = $_GET['start_id'] - $i;
 
             try {
-                dump($ticketID);
+
                 $ticketsData = $client->tickets()->find($ticketID);
                 $ticket = $ticketsData->ticket;
                 $ticketMetric = $client->tickets($ticketID)->metrics()->findAll()->ticket_metric;
@@ -66,6 +66,7 @@ class SyncMissingZendeskTicketController extends Controller
                     'solved_at' => $ticketMetric->solved_at ? Str::substr($ticketMetric->solved_at, 0, 19) : null,
                     'updated_at' => $ticketMetric->updated_at,
                     'fields_count' => count($ticket->fields),
+                    'comments_count' => count($ticketComments),
                 ]);
 
                 foreach ($ticket->fields as $field) {
@@ -94,10 +95,6 @@ class SyncMissingZendeskTicketController extends Controller
                         'created_at' => $comment->created_at,
                     ]);
                 }
-
-                $t->comments_count = count($ticketComments);
-                $t->save();
-
 
             } catch (\Exception $exception) {
 
