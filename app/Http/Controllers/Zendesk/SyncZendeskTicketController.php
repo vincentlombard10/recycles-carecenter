@@ -62,11 +62,11 @@ class SyncZendeskTicketController extends Controller
                 "fields_count" => count($ticket->fields),
             ]);
 
-            foreach($ticket->fields as $field) {
-                if($t->ticketFields()->where('ticketfield_id', $field->id)->exists()) {
-                    $t->ticketFields()->updateExistingPivot($field->id, ['value' => $field->value]);
+            foreach ($ticket->fields as $field) {
+                if ($t->fields()->where('ticketfield_id', $field->id)->exists()) {
+                    $t->fields()->updateExistingPivot($field->id, ['value' => $field->value]);
                 } else {
-                    $t->ticketFields()->attach($field->id, ['value' => $field->value]);
+                    $t->fields()->attach($field->id, ['value' => $field->value]);
                 }
             }
 
