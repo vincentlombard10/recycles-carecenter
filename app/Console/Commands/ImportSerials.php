@@ -31,6 +31,9 @@ class ImportSerials extends Command
     public function handle()
     {
         ini_set('memory_limit', '-1');
+        $path = 'in/serials/';
+        $file_prefix = 'SN_';
+        $localFilename = 'SERIALS.csv';
 
         if ($this->option('file')) {
 
@@ -47,31 +50,29 @@ class ImportSerials extends Command
 
         }
 
-        $path = 'in/serials/';
-        $file_prefix = 'SN_';
-        $localFilename = 'SERIALS.csv';
-
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
+
+        Log::info(sprintf("SN Chassis - Mise à jour à partir du fichier différentiel %s", $filename));
 
         try {
 
             $fileContents = Storage::disk('m3files-ftp')->get($filename);
 
             if (!$fileContents) {
+                Log::warning(sprintf("SN Chassis - Aucun contenu dans le fichier %s", $filename));
                 $this->error('Aucun fichier d\'ímportation à cette date.');
                 return;
             }
             Storage::disk('local')->put($localFilename, $fileContents);
+
             ImportSerialsJob::dispatch($localFilename);
-
-            //Excel::import(new SerialsImport, $localFilename);
-
-
 
         } catch (Exception $e) {
 
             Log::error($e->getMessage());
 
         }
+
+        return 0;
     }
 }

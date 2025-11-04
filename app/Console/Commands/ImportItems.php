@@ -33,6 +33,10 @@ class ImportItems extends Command
     {
         ini_set('memory_limit', '-1');
 
+        $path = 'in/items/';
+        $file_prefix = 'IT_';
+        $localFilename = 'ITEMS.csv';
+
         if ($this->option('file')) {
 
             $date = $this->option('file');
@@ -48,11 +52,9 @@ class ImportItems extends Command
 
         }
 
-        $path = 'in/items/';
-        $file_prefix = 'IT_';
-        $localFilename = 'ITEMS.csv';
-
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
+
+        Log::info(sprintf("Items - Mise à jour des contacts à partir du fichier différentiel %s", $filename));
 
         $this->line("Importer le fichier $filename ...");
 
@@ -61,18 +63,20 @@ class ImportItems extends Command
             $fileContents = Storage::disk('sftp')->get($filename);
 
             if (!$fileContents) {
+                Log::warning(sprintf("Items - Aucun contenu dans le fichier %s", $filename));
                 $this->error('Aucun fichier d\'ímportation à cette date.');
             }
             Storage::disk('local')->put($localFilename, $fileContents);
-            Log::info(sprintf("Nouveau fichier : %s", $filename));
 
             ImportItemsJob::dispatch($localFilename);
-            //Excel::import(new ItemsImport(), $localFilename);
 
         } catch (Exception $e) {
 
             Log::error($e->getMessage());
 
         }
+
+        return 0;
+
     }
 }
