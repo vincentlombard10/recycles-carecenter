@@ -5,7 +5,7 @@
                 <h1>Mon profil</h1>
             </div>
             <div class="d-flex align-items-center gap-3">
-
+                :)
             </div>
         </div>
     </x-page-header>
