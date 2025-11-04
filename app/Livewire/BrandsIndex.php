@@ -27,5 +27,6 @@ class BrandsIndex extends Component
         $this->searchTerm = $searchTerm;
         $this->goToPage(1);
 
+
     }
 }
