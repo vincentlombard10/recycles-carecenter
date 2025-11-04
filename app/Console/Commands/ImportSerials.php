@@ -58,7 +58,7 @@ class ImportSerials extends Command
 
         try {
 
-            $fileContents = Storage::disk('m3files-ftp')->get($filename);
+            $fileContents = Storage::disk('sftp')->get($filename);
 
             if (!$fileContents) {
                 Log::warning(sprintf("SN Chassis - Aucun contenu dans le fichier %s", $filename));
