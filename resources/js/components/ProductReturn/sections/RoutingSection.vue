@@ -37,7 +37,8 @@ const store = useProductReturnStore()
     }
 }
 .Address_Card {
-    background: oklch(94.3% 0.029 294.588);
+    background: oklch(96.9% 0.016 293.756);
+    border: 1Px solid oklch(89.4% 0.057 293.283);
     border-radius: 0.5rem;
     padding: 1.25rem 1.5rem;
     &--Actions {

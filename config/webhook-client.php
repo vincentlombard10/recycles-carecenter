@@ -1,6 +1,7 @@
 <?php
 
 use App\Webhooks\Jobs\UpdateOrCreateTicketWebhookJob;
+use App\Webhooks\Responses\ContactWebhookResponse;
 
 return [
     'configs' => [
@@ -15,6 +16,17 @@ return [
             'store_headers' => [],
             'process_webhook_job' => UpdateOrCreateTicketWebhookJob::class,
         ],
+        [
+            'name' => 'contacts',
+            'signing_secret' => 'GF-QHuR6fQFE2iTI8m8ScXcZhbt5uwjHTfw3x4ksJak=',
+            'signature_header_name' => 'X-Zendesk-Webhook-Signature',
+            'signature_validator' => \App\Webhooks\Validators\ZendeskSignatureValidator::class,
+            'webhook_profile' => \Spatie\WebhookClient\WebhookProfile\ProcessEverythingWebhookProfile::class,
+            'webhook_response' => ContactWebhookResponse::class,
+            'webhook_model' => \Spatie\WebhookClient\Models\WebhookCall::class,
+            'store_headers' => [],
+            'process_webhook_job' => \App\Webhooks\Jobs\UpdateOrCreateContactWebhookJob::class
+        ]
     ],
 
     /*

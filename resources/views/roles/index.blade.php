@@ -1,6 +1,13 @@
 <x-app-layout>
     <x-page-header>
-        <div class="page-header-content"><livewire:search-form /></div>
+        <div class="page-header-content">
+            <div>
+                <h1>Rôles</h1>
+            </div>
+            <div>
+                <livewire:search-form />
+            </div>
+        </div>
     </x-page-header>
     <x-page-wrapper>
         <livewire:roles-index />

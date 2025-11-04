@@ -66,7 +66,7 @@
                 <VAlert type="success" v-if="batteryIsAbove70Percent">
                     La batterie est au dessus de 70% de sa capacité nominale. Elle est dans un état normal de fonctionnement.
                 </VAlert>
-                <VAlert v-else>La batterie est en dessous de 70% de sa capacité nominale. Un remplacement est fortement recommandé.</VAlert>
+                <VAlert type="danger" v-else>La batterie est en dessous de 70% de sa capacité nominale. Un remplacement est fortement recommandé.</VAlert>
             </div>
         </div>
     </section>

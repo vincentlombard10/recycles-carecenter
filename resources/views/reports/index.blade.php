@@ -1,6 +1,9 @@
 <x-app-layout>
     <x-page-header>
         <div class="page-header-content">
+            <div>
+                <h1>Rapports d'intervention</h1>
+            </div>
             <livewire:search-form />
         </div>
     </x-page-header>

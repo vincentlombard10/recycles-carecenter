@@ -18,9 +18,8 @@ class TicketsIndex extends Component
     {
         $tickets = Ticket::where(function ($query) {
             $query->where('id', 'like', '%' . $this->searchTerm . '%');
-            $query->orWhere('requester_name', 'like', '%' . $this->searchTerm . '%');
-            $query->orWhere('requester_email', 'like', '%' . $this->searchTerm . '%');
-        })->orderBy('created_at', 'desc')->paginate(30);
+        })
+            ->orderBy('created_at', 'desc')->paginate(30);
         return view('livewire.tickets-index', compact('tickets'));
     }
 
@@ -28,5 +27,6 @@ class TicketsIndex extends Component
     public function updateSearchTerm($searchTerm)
     {
         $this->searchTerm = $searchTerm;
+        $this->goToPage(1);
     }
 }

@@ -65,6 +65,8 @@ return new class extends Migration {
             $table->string('requester_email')->nullable();
             $table->timestamp('assigned_at')->nullable();
             $table->timestamp('solved_at')->nullable();
+            $table->integer('comments_count')->nullable();
+            $table->integer('fields_count')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

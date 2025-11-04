@@ -40,7 +40,7 @@ return new class extends Migration {
             $table->string('battery_reference')->nullable();
             $table->string('battery_serial')->nullable();
             $table->string('battery_type')->nullable();
-            $table->decimal('battery_nominal_voltage')->nullable();
+            $table->string('battery_nominal_voltage', 16)->nullable();
             $table->decimal('battery_nominal_capacity')->nullable();
             $table->text('battery_look_states')->nullable();
             $table->string('battery_look_custom_state')->nullable();

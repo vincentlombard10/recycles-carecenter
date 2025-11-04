@@ -14,7 +14,7 @@ class TicketFieldItem extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'ticket_field_id',
+        'ticketfield_id',
         'ticket_id',
         'value',
     ];

@@ -3,4 +3,9 @@
     color: black;
     border: 1px solid oklch(92.9% 0.013 255.508);
     padding: 1rem 1.5rem;
+    &.alert-success {
+        background-color: oklch(89.4% 0.057 293.283);
+        color: oklch(38% 0.189 293.745);
+        border: 1Px solid oklch(81.1% 0.111 293.571);
+    }
 }

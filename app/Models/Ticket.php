@@ -4,7 +4,9 @@ namespace App\Models;
 
 use App\Models\Traits\Attribute\TicketAttribute;
 use App\Models\Traits\Scope\TicketScope;
+use App\Models\Zendesk\TicketField;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -13,6 +15,8 @@ class Ticket extends Model
     use SoftDeletes,
         TicketScope,
         TicketAttribute;
+
+    protected $table = 'tickets';
 
     protected $guarded = [];
 
@@ -52,5 +56,26 @@ class Ticket extends Model
     public function returns(): HasMany
     {
         return $this->hasMany(ProductReturn::class, 'ticket_id');
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'ticket_id');
+    }
+
+    public function ticketFields(): HasMany
+    {
+        return $this->hasMany(TicketField::class,);
+    }
+
+    public function fields(): BelongsToMany
+    {
+        return $this->belongsToMany(TicketField::class, 'ticket_ticketfield', 'ticket_id', 'ticketfield_id')->withPivot('value');
+
+    }
+
+    public function filledFields(): BelongsToMany
+    {
+        return $this->fields()->withPivot('value')->where('value', '!=', null);
     }
 }

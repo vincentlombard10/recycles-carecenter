@@ -13,9 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
-            '/customfields/options/sort',
             '/webhooks/*',
             '/webhooks/zendesk/tickets',
+            '/webhooks/contacts',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

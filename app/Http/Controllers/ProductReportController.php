@@ -77,6 +77,7 @@ class ProductReportController extends Controller
     public function update(Request $request, $id)
     {
         $productReport = ProductReport::findOrFail($id);
+        $bls = $productReport->batteryStates->pluck('id')->toArray();
         $presenceChecks = self::getPresenceChecks(
             battery_key: $request->battery_key,
             lock_key: $request->lock_key,
@@ -115,9 +116,11 @@ class ProductReportController extends Controller
             voltage: $request->battery_nominal_voltage,
             capacity: $request->battery_nominal_capacity,
         );
-        foreach ($request->battery_look_states as $state) {
-            if ($state !== "other") {
-                $bls[] = BatteryState::where('identifier', $state)->first()->id;
+        if ($request->battery_look_states) {
+            foreach ($request->battery_look_states as $state) {
+                if ($state !== "other") {
+                    $bls[] = BatteryState::where('identifier', $state)->first()->id;
+                }
             }
         }
         $battery_look = self::getBatteryLook(

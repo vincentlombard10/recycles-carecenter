@@ -66,6 +66,7 @@ class ImportZendeskTicketController extends Controller
                         'assigned_at' => $ticket->assigned_at ? Str::substr($ticket->assigned_at, 0, 19) : null,
                         'solved_at' => $ticket->solved_at ? Str::substr($ticket->solved_at, 0, 19) : null,
                         'updated_at' => $ticket->updated_at,
+                        'fields_count' => count($ticket->fields),
                     ]
                 );
             } catch (\Exception $e) {

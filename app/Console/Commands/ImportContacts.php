@@ -32,6 +32,11 @@ class ImportContacts extends Command
     public function handle()
     {
         ini_set('max_execution_time', '3600');
+        ini_set('memory_limit', '-1');
+
+        $path = 'in/users/';
+        $file_prefix = 'CL_';
+        $localFilename = 'CONTACTS.csv';
 
         if ($this->option('file')) {
 
@@ -43,25 +48,22 @@ class ImportContacts extends Command
 
             if ($date == 'C' || $date == 'c') {
                 $this->line("Opération annulée");
-                return;
+                return 1;
             }
 
         }
 
-        $path = 'in/users/';
-        $file_prefix = 'CL_';
-        $localFilename = 'CONTACTS.csv';
-
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
 
+        Log::info(sprintf("Contacts - Mise à jour des contacts à partir du fichier différentiel %s", $filename));
         try {
 
-            $fileContents = Storage::disk('m3files-ftp')->get($filename);
-            Log::debug('FileContents', ['contents' =>$fileContents]);
+            $fileContents = Storage::disk('sftp')->get($filename);
 
             if (!$fileContents) {
+                Log::warning(sprintf("Contacts - Aucun contenu dans le fichier %s", $filename));
                 $this->error('Aucun fichier d\'ímportation à cette date.');
-                return;
+                return 1;
             } else {
                 $this->line("ok");
             }
@@ -74,5 +76,7 @@ class ImportContacts extends Command
             Log::error($e->getMessage());
 
         }
+
+        return 0;
     }
 }

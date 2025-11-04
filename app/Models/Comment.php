@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    use SoftDeletes;
+    const UPDATED_AT = null;
 
     protected $table = 'comments';
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     protected function casts(): array
     {

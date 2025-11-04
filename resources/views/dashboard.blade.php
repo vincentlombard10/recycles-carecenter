@@ -1,8 +1,16 @@
 <x-app-layout>
-    <x-messages />
+    <x-page-header>
+        <div class="page-header-content">
+            <div>
+                <h1>Tableau de bord</h1>
+            </div>
+            <div></div>
+        </div>
+    </x-page-header>
     <x-page-wrapper>
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid p-3">
+            <x-messages />
+            <div class="row mb-3">
                 <h2>Codes chassis</h2>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
@@ -36,12 +44,6 @@
                             class="db-counter--zd New"
                             :count="$tickets_new_count" />
                     </div>
-                    <div>
-                        @foreach($tickets_new as $t)
-                            <span class="badhe">{{ $t->id }}</span>
-
-                        @endforeach
-                    </div>
                 </div>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter
@@ -54,6 +56,27 @@
                         title="En attente"
                         class="db-counter--zd Hold"
                         :count="$tickets_hold_or_pending_count" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <div class="mb-2">
+                        <x-dashboard.counter
+                            title="Résolus cette année"
+                            :count="$tickets_solved_this_year_count" />
+                    </div>
+                </div>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="Temps de première réponse"
+                        :count="round($first_reply_avg_time)"
+                        suffix="''"/>
+                </div>
+                <div class="col-4 mb-3">
+                    <x-dashboard.counter
+                        title="Temps de résolution complète"
+                        :count="round($full_resolution_avg_time)"
+                        suffix="''"/>
                 </div>
             </div>
             <div class="row">

@@ -10,15 +10,14 @@ return new class extends Migration {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->json('attachments')->nullable();
-            $table->integer('audit_id')->nullable();
-            $table->integer('author_id')->nullable();
-            $table->string('body')->nullable();
-            $table->string('html_body')->nullable();
+            $table->bigInteger('audit_id')->nullable();
+            $table->bigInteger('author_id')->nullable();
+            $table->text('body')->nullable();
+            $table->text('html_body')->nullable();
             $table->json('metadata')->nullable();
-            $table->string('plain_body')->nullable();
+            $table->text('plain_body')->nullable();
             $table->boolean('public')->nullable();
             $table->string('type')->nullable();
-            $table->json('uploads')->nullable();
             $table->json('via');
             $table->foreignId('ticket_id')->nullable();
             $table->timestamps();

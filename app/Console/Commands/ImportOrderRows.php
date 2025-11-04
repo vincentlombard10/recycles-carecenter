@@ -32,7 +32,13 @@ class ImportOrderRows extends Command
     public function handle()
     {
         ini_set('max_execution_time', '3600');
-        if ($this->option('file')) {
+        ini_set('memory_limit', '-1');
+
+        $path = 'in/invoices/';
+        $file_prefix = 'SI_';
+        $localFilename = 'ORDER_ROWS.csv';
+
+        if ($this->option('m3files-ftp')) {
 
             $date = $this->option('file');
 
@@ -42,25 +48,24 @@ class ImportOrderRows extends Command
 
             if ($date == 'C' || $date == 'c') {
                 $this->line("Opération annulée");
-                return;
+                return 1;
             }
 
         }
 
-        $path = 'in/invoices/';
-        $file_prefix = 'SI_';
-        $localFilename = 'ORDER_ROWS.csv';
 
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
+
+        Log::info(sprintf("Commandes - Mise à jour des lignes à partir du fichier différentiel %s", $filename));
 
         try {
 
             $fileContents = Storage::disk('sftp')->get($filename);
-            $fileContents = Storage::disk('sftp')->get($filename);
 
             if (!$fileContents) {
+                Log::warning(sprintf("Commandes - Aucun contenu dans le fichier %s", $filename));
                 $this->error('Aucun fichier d\'ímportation à cette date.');
-                return;
+                return 1;
             }
             Storage::disk('local')->put($localFilename, $fileContents);
 
@@ -71,5 +76,7 @@ class ImportOrderRows extends Command
             Log::error($e->getMessage());
 
         }
+
+        return 0;
     }
 }

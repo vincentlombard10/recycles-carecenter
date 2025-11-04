@@ -36,7 +36,7 @@ class ImportContactsChunkJob implements ShouldQueue
             try {
 
                 $contact = Contact::updateOrCreate([
-                    'id' =>  $contact['Cli_Code'],
+                    'code' =>  $contact['Cli_Code'],
                 ], [
                     'name' => $contact['Cli_Nom'],
                     'status' => $contact['Cli_Sta'],
@@ -49,18 +49,6 @@ class ImportContactsChunkJob implements ShouldQueue
                     'email' => $contact['Cli_Mail'],
                     'salesrep' => $contact['Cli_Rep'],
                 ]);
-                if($contact->addresses()->count() === 0) {
-                    Address::create([
-                        'name' => 'Adresse principale par défaut',
-                        'address1' => $contact->address1,
-                        'address2' => $contact->address2,
-                        'postcode' => $contact->postcode,
-                        'city' => $contact->city,
-                        'is_primary' => true,
-                        'is_active' => true,
-                        'contact_id' => $contact->id,
-                    ]);
-                }
 
             } catch (Exception $e) {
                 Log::error($e->getMessage());

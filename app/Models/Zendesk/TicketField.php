@@ -4,11 +4,13 @@ namespace App\Models\Zendesk;
 
 use App\Models\Ticket;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TicketField extends Model
 {
     protected $guarded = [];
+
+    protected $table = 'ticketfields';
 
     protected function casts(): array
     {
@@ -24,8 +26,9 @@ class TicketField extends Model
         ];
     }
 
-    public function ticket(): BelongsTo
+    public function ticket(): BelongsToMany
     {
-        return $this->belongsTo(Ticket::class, 'ticket_id');
+        return $this->belongsToMany(Ticket::class, 'ticket_ticketfield', 'ticket_id', 'ticketfield_id')
+            ->withPivot('value');
     }
 }

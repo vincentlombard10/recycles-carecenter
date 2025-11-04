@@ -12,6 +12,5 @@ class UpdateOrCreateTicketWebhookResponse implements RespondsToWebhook
     public function respondToValidWebhook(Request $request, WebhookConfig $config): Response
     {
         return response()->json(['message' => 'test']);
-        //return response()->json($request->all());
     }
 }

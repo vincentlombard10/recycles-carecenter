@@ -6,9 +6,16 @@
                 <div class="Card_Ticket_Content">
                     <div>
                         <h2 class="fw-semibold">{{ $ticket->id }}</h2>
-                        <div>{{ $ticket->requester_name }}</div>
+                        @if($ticket->comments_count)
+                            <span class="badge" style="background-color: oklch(94.3% 0.029 294.588);">{{ $ticket->comments_count }}<i class="bi bi-chat ms-2"></i>
+</span>
+                        @else
+                            <a href="{{ route('zendesk.tickets.sync', ['id' => $ticket->id]) }}">Get comments</a>
+                        @endif
+                        @if ($ticket->fields_count)
+                            <span class="badge bage-success" style="background-color: oklch(90.1% 0.076 70.697)">TF</span>
+                        @endif
                         <div><span class="fw-semibold">{{ $ticket->requester_email }}</span></div>
-                        <div>{{ $ticket->ticket_form_name }}</div>
                         <div>{{ $ticket->subject }}</div>
                         <div><span class="text-primary">{{ date('d/m/Y H:i', $ticket->created_at) }}</span></div>
                     </div>
@@ -21,8 +28,19 @@
                     </div>
                 </div>
                 <div>
-                    <div class="d-grid">
+                    <div class="d-grid gap-2">
                         <span class="rcf-badge rcf-badge--{{ strtolower($ticket->status) }}">{{ $ticket->status_label }}</span>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item text-end" href="{{ route('support.tickets.show', ['zendeskID' => $ticket->id]) }}">Consulter<i class="bi bi-eye ms-2"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

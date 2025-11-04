@@ -33,6 +33,10 @@ class TicketController extends Controller
 
     public function export()
     {
-        return view('tickets.export');
+        $start_time = now()->subMonth()->startOfMonth();
+        $end_time = now()->subMonth()->endOfMonth();
+        return view('tickets.export')
+            ->with('start_time', $start_time)
+            ->with('end_time', $end_time);
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Jobs;
 
 use AllowDynamicProperties;
+use App\Events\TicketsExported;
 use App\Models\Ticket;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -27,7 +29,7 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
     /**
      * Create a new job instance.
      */
-    public function __construct(public $start_time = null, public $end_time = null)
+    public function __construct(public Authenticatable $user, public $start_time = null, public $end_time = null)
     {
         parent::__construct();
     }
@@ -48,10 +50,11 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
 
             Log::info($start_time);
             Log::info($end_time);
+
             $tickets = Ticket::query()->where(function ($query) use ($start_time, $end_time) {
                 $query->whereDate('created_at', '>=', $start_time);
                 $query->whereDate('created_at', '<=', $end_time);
-            })->get();
+            })->orderByDesc('id')->get();
 
             $writer = SimpleExcelWriter::create(
                 Storage::disk('exports')->path($this->filename),
@@ -99,6 +102,8 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
                 $writer->addRow($row);
             }
             $writer->close();
+
+            TicketsExported::dispatch($this->user, $this->filename);
 
         } catch (Exception $exception) {
 

@@ -147,6 +147,7 @@ const addressIsChanged = computed(() => {
     border: 1px solid oklch(70.2% 0.183 293.541);
     border-radius: 0.375rem;
     margin-bottom: 0.5rem;
+    background-color: oklch(94.3% 0.029 294.588);
 
     .Contact_Item {
         padding: 0.65rem 1rem;
@@ -156,7 +157,7 @@ const addressIsChanged = computed(() => {
         color: oklch(28.3% 0.141 291.089);
 
         &:hover {
-            background-color: oklch(94.3% 0.029 294.588);
+            background-color: oklch(95.4% 0.038 75.164);
             color: oklch(28.3% 0.141 291.089);
         }
 
