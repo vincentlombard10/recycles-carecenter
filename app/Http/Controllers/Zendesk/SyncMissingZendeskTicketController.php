@@ -69,7 +69,7 @@ class SyncMissingZendeskTicketController extends Controller
                 ]);
 
                 foreach($ticket->fields as $field) {
-                    Log::info($field);
+                    Log::info('Field', ['field' => $field]);
   /*                  if($t->ticketFields()->where('ticketfield_id', $field->id)->exists()) {
                         $t->ticketFields()->updateExistingPivot($field->id, ['value' => $field->value]);
                     } else {
