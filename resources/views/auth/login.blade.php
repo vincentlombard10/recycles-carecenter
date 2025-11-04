@@ -22,7 +22,7 @@
     {{ html()->form()->close() }}
 
     @if ($errors->any())
-        <div id="bottom-error-banner" style="position: absolute; bottom: 0; left: 0; padding: 4rem; background: red; color: white; width: 100%;">
+        <div id="bottom-bottom-banner">
             @foreach($errors->all() as $e)
                 <li>{{ $e }}</li>
             @endforeach
