@@ -34,7 +34,7 @@ class SyncZendeskTicketsWithoutCommentsController extends Controller
             $ticketComments = $client->tickets($t->id)->comments()->findAll()->comments;
             try {
 
-                Ticket::updateOrCreate([
+                $t = Ticket::updateOrCreate([
                     'id' => $ticket->id,
                 ], [
                     'generated_timestamp' => intval($ticket->generated_timestamp),
@@ -65,6 +65,7 @@ class SyncZendeskTicketsWithoutCommentsController extends Controller
                     'assigned_at' => $ticketMetric->assigned_at ? Str::substr($ticketMetric->assigned_at, 0, 19) : null,
                     'solved_at' => $ticketMetric->solved_at ? Str::substr($ticketMetric->solved_at, 0, 19) : null,
                     'updated_at' => $ticketMetric->updated_at,
+                    'fields_count' => count($ticket->fields),
                 ]);
 
                 foreach ($ticketComments as $comment) {
@@ -85,6 +86,9 @@ class SyncZendeskTicketsWithoutCommentsController extends Controller
                         'created_at' => $comment->created_at,
                     ]);
                 }
+
+                $t->comment_count = $ticketComments->count();
+                $t->save();
 
 
             } catch (\Exception $exception) {

@@ -67,6 +67,7 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
                 'assigned_at' => $ticketMetric->assigned_at ? Str::substr($ticketMetric->assigned_at, 0, 19) : null,
                 'solved_at' => $ticketMetric->solved_at ? Str::substr($ticketMetric->solved_at, 0, 19) : null,
                 'updated_at' => $ticketMetric->updated_at,
+                'fields_count' => count($ticket->fields),
             ]);
 
             foreach($ticket->fields as $field) {
@@ -95,6 +96,9 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
                     'created_at' => $comment->created_at,
                 ]);
             }
+
+            $ticket->comment_count = $ticketComments->count();
+            $ticket->save();
 
 
         } catch (\Exception $exception) {

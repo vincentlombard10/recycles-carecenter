@@ -59,6 +59,7 @@ class SyncZendeskTicketController extends Controller
                 'assigned_at' => $ticketMetric->assigned_at ? Str::substr($ticketMetric->assigned_at, 0, 19) : null,
                 'solved_at' => $ticketMetric->solved_at ? Str::substr($ticketMetric->solved_at, 0, 19) : null,
                 'updated_at' => $ticketMetric->updated_at,
+                "fields_count" => count($ticket->fields),
             ]);
 
             foreach($ticket->fields as $field) {
@@ -88,6 +89,8 @@ class SyncZendeskTicketController extends Controller
                 ]);
             }
 
+            $t->comments_count = $ticketComments->count();
+            $t->save();
 
         } catch (\Exception $exception) {
 
