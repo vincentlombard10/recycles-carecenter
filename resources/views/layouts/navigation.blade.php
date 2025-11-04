@@ -37,13 +37,13 @@
                             class="bi bi-inboxes"></i><span class="sidebar-link__label">Tickets Zendesk</span></a>
                 </li>
             @endcanany
-            <li class="sidebar-item">
+{{--            <li class="sidebar-item">
                 <a href="#"
                    class="sidebar-link">
                     <i class="bi bi-card-list"></i>
                     <span class="sidebar-link__label">Nomenclatures</span>
                 </a>
-            </li>
+            </li>--}}
         </ul>
         <ul class="sidebar-menu">
             @canany('brands.read')
