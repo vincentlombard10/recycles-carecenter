@@ -18,7 +18,7 @@ return [
         ],
         [
             'name' => 'contacts',
-            'signing_secret' => 'gMJ_lF2Mc_8S2R5D3u7MxRYyjdOuBhJhU-5TwLYbTsc=',
+            'signing_secret' => 'GF-QHuR6fQFE2iTI8m8ScXcZhbt5uwjHTfw3x4ksJak=',
             'signature_header_name' => 'X-Zendesk-Webhook-Signature',
             'signature_validator' => \App\Webhooks\Validators\ZendeskSignatureValidator::class,
             'webhook_profile' => \Spatie\WebhookClient\WebhookProfile\ProcessEverythingWebhookProfile::class,
