@@ -97,7 +97,7 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
                 ]);
             }
 
-            $ticket->comment_count = $ticketComments->count();
+            $ticket->comment_count = count($ticketComments);
             $ticket->save();
 
 
