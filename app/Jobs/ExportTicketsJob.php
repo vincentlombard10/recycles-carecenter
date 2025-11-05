@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use AllowDynamicProperties;
 use App\Events\TicketsExported;
+use App\Models\Serial;
 use App\Models\Ticket;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,6 +13,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use OpenSpout\Common\Entity\Cell;
 use OpenSpout\Common\Entity\Row;
 use Matrix\Exception;
@@ -80,22 +82,22 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
             foreach ($tickets as $ticket) {
                 $row = (new Row([
                     Cell::fromValue($ticket->id),
-                    Cell::fromValue($ticket->fields()->wherePivot('ticketfield_id', 360013813919)->first()->value),
+                    Cell::fromValue(self::getTicketField($ticket, 360013813919)),
                     Cell::fromValue($ticket->contact ? $ticket->contact->code : '-'),
                     Cell::fromValue($ticket->status),
-                    Cell::fromValue($ticket->user_external_id),
+                    Cell::fromValue(self::getFormattedSerial(self::getTicketField($ticket, 22607784559250))),
 
-                    Cell::fromValue($ticket->fields()->wherePivot('ticketfield_id', 23839797779090)->first()->value),
-                    Cell::fromValue($ticket->fields()->wherePivot('ticketfield_id', 23839621467666)->first()->value),
+                    Cell::fromValue(self::getItem($ticket)),
+                    Cell::fromValue(self::getTicketField($ticket, 23839621467666)),
                     Cell::fromValue('value'),
-                    Cell::fromValue($ticket->fields()->wherePivot('ticketfield_id', 16604606187794)->first()->value),
-                    Cell::fromValue($ticket->fields()->wherePivot('ticketfield_id', 25461954818834)->first()->value),
+                    Cell::fromValue(self::getTicketField($ticket, 16604606187794)),
+                    Cell::fromValue(self::getTicketField($ticket, 25461954818834)),
 
 
-                    Cell::fromValue('value'),
-                    Cell::fromValue('value'),
-                    Cell::fromValue('value'),
-                    Cell::fromValue('value'),
+                    Cell::fromValue(self::getTicketField($ticket, 25462537828754)),
+                    Cell::fromValue(self::getTicketField($ticket, 25462965934354)),
+                    Cell::fromValue(self::getTicketField($ticket, 25463023390610)),
+                    Cell::fromValue(self::getTicketField($ticket, 23839797779090)),
                     Cell::fromValue(date('Y-m-d H:i:s', $ticket->created_at)),
 
                     Cell::fromValue(''),
@@ -110,6 +112,32 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
 
             Log::error($exception->getMessage());
 
+        }
+    }
+
+    private function getTicketField($ticket, $identifier): string|null {
+        if ($ticket->fields()->wherePivot('ticketfield_id', $identifier)->exists()) {
+            return $ticket->fields()->wherePivot('ticketfield_id', $identifier)->first()->pivot->value;
+        }
+        return null;
+    }
+
+    private function getFormattedSerial($serial): string|null
+    {
+        if (Str::startsWith($serial, '500')) {
+            return Str::substr($serial, 3, 8);
+        }
+        return $serial;
+    }
+
+    private function getItem($ticket): string|null {
+        $formatted_serial = self::getFormattedSerial(self::getTicketField($ticket, 22607784559250));
+        if (
+            Str::length($formatted_serial) === 8
+        ) {
+            return Serial::where('code', $formatted_serial)->exists() ? Serial::where('code', $formatted_serial)->first()->item_itno : '-';
+        } else {
+            return self::getTicketField($ticket, 23839797779090);
         }
     }
 }
