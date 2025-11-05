@@ -81,7 +81,7 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
                 $row = (new Row([
                     Cell::fromValue($ticket->id),
                     Cell::fromValue(''),
-                    Cell::fromValue('value'),
+                    Cell::fromValue($ticket->contact ? $ticket->contact->code : '-'),
                     Cell::fromValue($ticket->status),
                     Cell::fromValue($ticket->user_external_id),
 

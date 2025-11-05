@@ -6,6 +6,7 @@ use App\Models\Traits\Attribute\TicketAttribute;
 use App\Models\Traits\Scope\TicketScope;
 use App\Models\Zendesk\TicketField;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -77,5 +78,10 @@ class Ticket extends Model
     public function filledFields(): BelongsToMany
     {
         return $this->fields()->withPivot('value')->where('value', '!=', null);
+    }
+
+    public function contact(): BelongsTo
+    {
+        return $this->belongsTo(Contact::class, 'contact_id');
     }
 }
