@@ -29,8 +29,8 @@
             </div>
         </div>
         <div class="row">
-            <ul>
-                <li v-for="item in itemsList" :key="item" @click="setItem(item)">
+            <ul class="Item_Selector" v-if="itemsList.length">
+                <li v-for="item in itemsList" :key="item" @click="setItem(item)" class="Item_Item">
                     <span>{{ item.itno }}</span>
                     <span>{{ item.label ?? item.itds }}</span>
                     <span>{{ item.group.code }}</span>
@@ -95,5 +95,30 @@ const handleAddReplacementItem = () => {
     background-color: oklch(94.3% 0.029 294.588);
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
+}
+
+.Item_Selector {
+    overflow-y: scroll;
+    max-height: 12rem;
+    border: 1px solid oklch(70.2% 0.183 293.541);
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+
+    .Item_Item {
+        padding: 0.65rem 1rem;
+        border-bottom: 1px solid oklch(89.4% 0.057 293.283);
+        background-color: white;
+        cursor: pointer;
+        color: oklch(28.3% 0.141 291.089);
+
+        &:hover {
+            background-color: oklch(94.3% 0.029 294.588);
+            color: oklch(28.3% 0.141 291.089);
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
 }
 </style>

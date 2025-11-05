@@ -192,7 +192,9 @@ export const useProductReportStore = defineStore('report', () => {
 
     const reportCompleted = computed(() => {
         if (type.value === 'bike') {
-            return true
+            return presenceChecksSubsectionCompleted.value &&
+                lookChecksSubsectionCompleted.value &&
+                batterySectionCompleted.value
         } else if (type.value === 'battery') {
             return batterySectionCompleted.value
         } else {
