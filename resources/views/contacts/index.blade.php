@@ -4,7 +4,10 @@
             <div>
                 <h1>Contacts clients</h1>
             </div>
-            <div>
+            <div class="d-flex align-items-center gap-2">
+                <a href="{{ route('contacts.duplicates') }}" class="btn btn-circle btn-amber">
+                    <i class="bi bi-exclamation-lg"></i>
+                </a>
                 <livewire:search-form />
             </div>
         </div>
