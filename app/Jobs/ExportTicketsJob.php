@@ -80,16 +80,17 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
             foreach ($tickets as $ticket) {
                 $row = (new Row([
                     Cell::fromValue($ticket->id),
-                    Cell::fromValue(''),
+                    Cell::fromValue($ticket->fields()->where('ticketfield_id', 360013813919)->first()->value),
                     Cell::fromValue($ticket->contact ? $ticket->contact->code : '-'),
                     Cell::fromValue($ticket->status),
                     Cell::fromValue($ticket->user_external_id),
 
+                    Cell::fromValue($ticket->fields()->where('ticketfield_id', 23839797779090)->first()->value),
+                    Cell::fromValue($ticket->fields()->where('ticketfield_id', 23839621467666)->first()->value),
                     Cell::fromValue('value'),
-                    Cell::fromValue('value'),
-                    Cell::fromValue('value'),
-                    Cell::fromValue('value'),
-                    Cell::fromValue('value'),
+                    Cell::fromValue($ticket->fields()->where('ticketfield_id', 16604606187794)->first()->value),
+                    Cell::fromValue($ticket->fields()->where('ticketfield_id', 25461954818834)->first()->value),
+
 
                     Cell::fromValue('value'),
                     Cell::fromValue('value'),
