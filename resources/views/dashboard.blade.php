@@ -19,12 +19,12 @@
                 </div>
                 <div class="col-2 mb-3">
                     <x-dashboard.counter
-                        title="Synchronisés"
+                        title="Associés"
                         :count="$contacts_with_support_enabled_count" class="mb-3"/>
                 </div>
                 <div class="col-3 mb-3">
                     <x-dashboard.counter
-                        title="Non synchronisés"
+                        title="Non associés"
                         :count="$contacts_with_support_disabled" class="mb-3"/>
                 </div>
                 <div class="col-3 mb-3">
@@ -63,8 +63,8 @@
                         :count="$serials_without_item" />
                 </div>
             </div>
-            <div class="row">
-                <h2>Tickets</h2>
+            <h2>Tickets</h2>
+{{--            <div class="row">
                 <div class="col-4 mb-3">
                     <div class="mb-2">
                         <x-dashboard.counter
@@ -85,7 +85,7 @@
                         class="db-counter--zd Hold"
                         :count="$tickets_hold_or_pending_count" />
                 </div>
-            </div>
+            </div>--}}
             <div class="row">
                 <div class="col-4 mb-3">
                     <div class="mb-2">

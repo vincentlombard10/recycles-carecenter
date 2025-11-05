@@ -1,6 +1,8 @@
 <x-app-layout>
     <x-page-header>
-        <h1>Duplicates</h1>
+        <div class="page-header-content">
+            <h1>Duplicates</h1>
+        </div>
     </x-page-header>
     <x-page-wrapper>
         <div class="container-fluid p-3">
