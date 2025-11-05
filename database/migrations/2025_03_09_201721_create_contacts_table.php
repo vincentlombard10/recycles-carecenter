@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('code')->unique()->index();
             $table->string('name');
-            $table->integer('zendesk_user_id')->nullable()->index();
+            $table->bigInteger('zendesk_user_id')->nullable()->index();
             $table->integer('status');
             $table->string('address1')->nullable();
             $table->string('address2')->nullable();
@@ -21,6 +21,8 @@ return new class extends Migration {
             $table->string('salesrep', 12)->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->boolean('zendesk_support')->default(true);
+            $table->json('duplicates')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

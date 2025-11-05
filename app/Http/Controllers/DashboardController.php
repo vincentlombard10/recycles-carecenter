@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use App\Models\Serial;
@@ -11,6 +12,13 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
+        /* Contacts */
+        $contacts_count = Contact::count();
+        $contacts_with_support_enabled_count = Contact::whereNotNull('zendesk_user_id')->count();
+        $contacts_with_support_disabled = Contact::where('support_enabled', false)->count();
+        $contacts_with_duplicates_count = Contact::whereNotNull('duplicates')->count();
+        $contacts_pending = Contact::whereNull('support_enabled')->count();
+
         $serials_count = Serial::count();
         $serials_without_item = Serial::doesntHave('item')->count();
         $serial_without_invoice_count = Serial::whereNull('last_invoice')->count();
@@ -32,6 +40,11 @@ class DashboardController extends Controller
         $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')->count();
 
         return view('dashboard')
+            ->with('contacts_count', $contacts_count)
+            ->with('contacts_with_support_enabled_count', $contacts_with_support_enabled_count)
+            ->with('contacts_with_support_disabled', $contacts_with_support_disabled)
+            ->with('contacts_with_duplicates_count', $contacts_with_duplicates_count)
+            ->with('contacts_pending', $contacts_pending)
             ->with('serials_count', $serials_count)
             ->with('serials_without_item', $serials_without_item)
             ->with('serial_without_invoice_count', $serial_without_invoice_count)

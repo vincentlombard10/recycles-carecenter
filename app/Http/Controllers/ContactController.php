@@ -19,6 +19,13 @@ class ContactController extends Controller
         return view('contacts.index');
     }
 
+    public function duplicates()
+    {
+        $contacts = Contact::whereNotNull('duplicates')->get();
+        return view('contacts.duplicates')
+            ->with('contacts', $contacts);
+    }
+
     public function show($id)
     {
         $contact = Contact::findOrFail($id);

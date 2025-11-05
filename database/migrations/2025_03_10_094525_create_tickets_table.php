@@ -67,6 +67,7 @@ return new class extends Migration {
             $table->timestamp('solved_at')->nullable();
             $table->integer('comments_count')->nullable();
             $table->integer('fields_count')->nullable();
+            $table->foreignId('contact_id')->nullable()->constrained();
             $table->timestamps();
             $table->softDeletes();
         });
