@@ -11,6 +11,34 @@
         <div class="container-fluid p-3">
             <x-messages />
             <div class="row mb-3">
+                <h2>Contacts</h2>
+                <div class="col-2 mb-3">
+                    <x-dashboard.counter
+                        title="Tous"
+                        :count="$contacts_count" class="mb-3"/>
+                </div>
+                <div class="col-2 mb-3">
+                    <x-dashboard.counter
+                        title="Synchronisés"
+                        :count="$contacts_with_support_enabled_count" class="mb-3"/>
+                </div>
+                <div class="col-3 mb-3">
+                    <x-dashboard.counter
+                        title="Non synchronisés"
+                        :count="$contacts_with_support_disabled" class="mb-3"/>
+                </div>
+                <div class="col-3 mb-3">
+                    <x-dashboard.counter
+                        title="Dupliqués sur Zendesk"
+                        :count="$contacts_with_duplicates_count" class="mb-3"/>
+                </div>
+                <div class="col-2 mb-3">
+                    <x-dashboard.counter
+                        title="En attente"
+                        :count="$contacts_pending" class="mb-3"/>
+                </div>
+            </div>
+            <div class="row mb-3">
                 <h2>Codes chassis</h2>
                 <div class="col-4 mb-3">
                     <x-dashboard.counter

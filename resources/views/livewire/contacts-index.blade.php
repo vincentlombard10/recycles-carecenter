@@ -8,7 +8,18 @@
                 <div class="Card_Contact--Body">
                     <div class="Card_Contact--Main">
                         <div>
-                            <div><h2 class="fw-semibold mb-1">{{ $contact->code }}</h2></div>
+                            <div><h2 class="fw-semibold mb-0">{{ $contact->code }}</h2></div>
+                            <div>
+                                @if($contact->zendesk_user_id)
+                                    <small class="fw-semibold text-success">{{ $contact->zendesk_user_id }}</small>
+                                @elseif($contact->duplicates)
+                                    <small class="fw-semibold text-warning">Plusieurs utilisateurs Zendesk</small>
+                                @elseif(!$contact->support_enabled == null)
+                                    <small class="fw-semibold text-danger">Aucun utilisateur Zendesk</small>
+                                @else
+                                    <small class="fw-normal text-secondary">Non défini</small>
+                                @endif
+                            </div>
                             <div><small>{{ $contact->name }}</small></div>
                         </div>
                         <div>
