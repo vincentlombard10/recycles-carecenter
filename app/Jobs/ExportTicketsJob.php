@@ -82,7 +82,7 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
             foreach ($tickets as $ticket) {
                 $row = (new Row([
                     Cell::fromValue($ticket->id),
-                    Cell::fromValue(self::getTicketField($ticket, 360013813919)),
+                    Cell::fromValue(self::getTicketField($ticket, 26799500920978)),
                     Cell::fromValue($ticket->contact ? $ticket->contact->code : '-'),
                     Cell::fromValue($ticket->status),
                     Cell::fromValue(self::getFormattedSerial(self::getTicketField($ticket, 22607784559250))),
