@@ -3,6 +3,7 @@
 namespace App\Webhooks\Jobs;
 
 use App\Models\Comment;
+use App\Models\Contact;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -69,6 +70,7 @@ class UpdateOrCreateTicketWebhookJob extends ProcessWebhookJob
                 'updated_at' => $ticketMetric->updated_at,
                 'fields_count' => count($ticket->fields),
                 'comments_count' => count($ticketComments),
+                'contact_id' => Contact::where('zendesk_user_id', $ticket->requester_id)->first()->id ?? null,
             ]);
 
             foreach ($ticket->fields as $field) {
