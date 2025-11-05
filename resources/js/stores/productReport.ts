@@ -78,7 +78,7 @@ export const useProductReportStore = defineStore('report', () => {
     const batteryChargeState = ref('')
     const batteryCellsStatesList = [
         {identifier: 'stable', label: 'Equilibre : < 0,2V / cellule'},
-        {identifier: 'unstable', label: 'Déséquilibre : < 0,2V / cellule'}
+        {identifier: 'unstable', label: 'Déséquilibre : > 0,2V / cellule'}
     ]
     const batteryChargeVoltage = ref()
 
