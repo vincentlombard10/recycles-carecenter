@@ -12,6 +12,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mb-3">
+                    <div>{{ $ticket->fields()->wherePivot('ticketfield_id', 16577615117074)->first()->value }}</div>
                     <table class="table">
                         <thead>
                         <tr>
