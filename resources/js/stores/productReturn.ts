@@ -174,7 +174,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         serialsList.value = response.data
     }
 
-    const setSerial = async (_serial) => {
+    const setSerial = async (_serial: string, replaceSalesInformation: boolean = false) => {
         const req = await fetch('/api/v1/serials/?' + new URLSearchParams({q: _serial}))
         const response = await req.json()
         serialsList.value = response.data
@@ -184,6 +184,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         serialDesignation.value = serial.value.item.itds
         serialBrand.value = serial.value.item.brand.code
 
+        if (!replaceSalesInformation) {
+            return;
+        }
         order.value = serial.value.order
         invoice.value = serial.value.invoice
         delivery.value = serial.value.delivery
@@ -201,6 +204,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         serialDesignation.value = ''
         serialBrand.value = ''
         serialsList.value = []
+        order.value = ''
+        invoice.value = ''
+        delivery.value = ''
         serialSearchMethod.value = 'auto'
     }
 

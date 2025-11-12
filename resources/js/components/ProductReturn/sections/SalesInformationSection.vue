@@ -10,6 +10,7 @@
             <div class="col-lg-3 mb-3">
                 <label for="" class="form-label mb-1">Date de vente</label>
                 <input type="date" class="form-control"
+                       value="2020-01-01"
                        :class="{'form-control--success': store.bikeSoldAt !== ''}"
                        v-model="store.bikeSoldAt"
                        name="bike_sold_at">

@@ -4,7 +4,7 @@
         :id="name"
         :value="currentOption"
         class="form-control"
-        :class="{'form-control--success': selectedOption.length}"
+        :class="{'form-control--success': selectedOption.length || currentOption }"
         @change="handleSelect">
         <option value="" disabled selected>Sélectionner</option>
         <option v-for="opt in props.options"

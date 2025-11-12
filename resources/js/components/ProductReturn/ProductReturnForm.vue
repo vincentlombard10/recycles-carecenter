@@ -11,7 +11,6 @@
 
 <script setup lang="ts">
 import {ref, computed, onMounted} from "vue"
-import AddressBox from "../AddressBox.vue";
 
 import { useProductReturnStore} from "../../stores/productReturn";
 import QualificationSection from "./sections/QualificationSection.vue";
@@ -21,6 +20,7 @@ import SalesInformationSection from "./sections/SalesInformationSection.vue";
 import CommentsSection from "./sections/CommentsSection.vue";
 import RoutingSection from "./sections/RoutingSection.vue";
 import StatusSection from "./sections/StatusSection.vue";
+import dayjs from "dayjs"
 const store = useProductReturnStore()
 
 const productReturn = ref()
@@ -45,6 +45,7 @@ onMounted(() => {
     if (document.querySelector("#product-return-form").getAttribute('data-return') !== null) {
         productReturn.value = JSON.parse(document.querySelector("#product-return-form").getAttribute('data-return'))
         store.status = productReturn.value.status
+        console.log(productReturn.value)
         store.setType(productReturn.value.type)
         store.setContext(productReturn.value.context)
         store.setReason(productReturn.value.reason)
@@ -56,10 +57,11 @@ onMounted(() => {
         store.delivery = productReturn.value.delivery
         store.info = productReturn.value.info
         store.note = productReturn.value.note
+        store.bikeSoldAt = dayjs(productReturn.value.bike_sold_at).format('YYYY-MM-DD')
         store.setTicket(productReturn.value.ticket_id ?? null)
         store.setItem(productReturn.value.item_itno ?? null)
         if (productReturn.value.serial_code) {
-            store.setSerial(productReturn.value.serial_code)
+            store.setSerial(productReturn.value.serial_code, false)
         }
         setRoutingFrom()
         setRoutingTo()

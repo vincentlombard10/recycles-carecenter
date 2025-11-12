@@ -138,7 +138,7 @@
             <tr>
                 <td class="w-third" style="padding: 1rem;">
                     <h3>Type</h3>
-                    {{ ucfirst($productReturn->type_label) ?? }}
+                    {{ ucfirst($productReturn->type_label) }}
                 </td>
                 <td class="w-third" style="padding: 1rem;">
                     <h3>Contexte</h3>

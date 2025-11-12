@@ -45,12 +45,10 @@
     <div class="row" v-else-if="store.serialsList.length">
         <div class="col-lg-12 mb-2">
             <ul class="Serial_Selector">
-                <li class="Serial_Item"
-                    v-for="serial in store.serialsList"
-                    :key="serial.code"
-                    @click.prevent="store.setSerial(serial.code)">
-                    <span class="fw-bold">{{ serial.code }}</span>&nbsp;<span>{{ serial.sku }}</span>
-                </li>
+                <SerialItem v-for="serial in store.serialsList"
+                            :serial="serial"
+                            :key="serial.code"
+                            @click.prevent="store.setSerial(serial.code, true)" />
             </ul>
         </div>
         <div class="col-lg-3 mb-3">
@@ -78,7 +76,7 @@
 
 <script setup>
 import {useProductReturnStore} from "../../../stores/productReturn.ts";
-import SerialCard from "./SerialCard.vue";
+import SerialItem from "./SerialItem.vue";
 
 const store = useProductReturnStore()
 </script>

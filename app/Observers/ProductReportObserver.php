@@ -12,7 +12,23 @@ class ProductReportObserver implements ShouldHandleEventsAfterCommit
     public function saving(ProductReport $productReport)
     {
         if ($productReport->isDirty('status')) {
-            $productReport->closed_at = $productReport->closed_at === null ? now() : $productReport->closed_at;
+            switch ($productReport->status) {
+                case 'init':
+                    $productReport->status = 'init';
+                    break;
+                case 'pending':
+                    $productReport->status = 'pending';
+                    break;
+                case 'in_progress':
+                    $productReport->status = 'in_progress';
+                    $productReport->started_at = $productReport->started_at == null ? now() : $productReport->started_at;
+                    break;
+                case 'closed':
+                    $productReport->status = 'closed';
+                    $productReport->closed_at = $productReport->closed_at == null ? now() : $productReport->closed_at;
+                    break;
+                default:
+            }
         }
         Log::debug('Product report saving', ['productReport' => $productReport]);
     }

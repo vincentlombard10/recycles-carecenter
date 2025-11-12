@@ -16,6 +16,11 @@ trait ProductReportMethod
 
     public function isClosed(): bool
     {
+        return $this->status === self::STATUS_CLOSED;
+    }
+
+    public function isCancelled(): bool
+    {
         return $this->status === self::STATUS_CANCELLED;
     }
 }

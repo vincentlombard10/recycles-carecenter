@@ -27,10 +27,7 @@
                         <div class="zd-id">
                             <span class="fw-bold">{{ ticket.id }}</span>
                         </div>
-                        <div class="zd-info">
-                            <div class="fw-bold">{{ ticket.requester_name }}</div>
-                            <div>{{ ticket.subject }}</div>
-                        </div>
+                        <div v-if="ticket.contact">{{ ticket.contact.code }} / {{ ticket.contact.name }}</div>
                     </li>
                 </ul>
             </div>
