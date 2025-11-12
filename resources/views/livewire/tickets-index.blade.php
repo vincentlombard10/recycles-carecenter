@@ -10,7 +10,7 @@
                             <div class="mb-1"><span class="fw-semibold">{{ $ticket->contact->code }}</span> - {{ $ticket->contact->name }}</div>
                         @endif
                         @php
-                        var_dump(stripslashes($ticket->via["source"]))
+                        var_dump(stripslashes($ticket->via["channel"]))
                         @endphp
                         @if($ticket->comments_count)
                             <span class="badge" style="background-color: oklch(94.3% 0.029 294.588);">{{ $ticket->comments_count }}<i class="bi bi-chat ms-2"></i>
