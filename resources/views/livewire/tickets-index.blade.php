@@ -12,7 +12,6 @@
                         @php
                         var_dump($ticket->via)
                         @endphp
-                        <div>{{ json_decode($ticket->via) }}</div>
                         @if($ticket->comments_count)
                             <span class="badge" style="background-color: oklch(94.3% 0.029 294.588);">{{ $ticket->comments_count }}<i class="bi bi-chat ms-2"></i>
 </span>
