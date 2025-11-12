@@ -76,6 +76,9 @@ const setRoutingFrom = () => {
         store.routingFromAddress2 = productReturn.value.routing_from_address2
         store.routingFromPostcode = productReturn.value.routing_from_postcode
         store.routingFromCity = productReturn.value.routing_from_city
+        store.routingFromEmail = productReturn.value.routing_from_email
+        store.routingFromPhone = productReturn.value.routing_from_phone
+        store.routingFromInfo = productReturn.value.routing_from_info
     }
 }
 

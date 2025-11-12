@@ -44,6 +44,32 @@
                                    v-model="store.routingToCity">
                         </div>
                     </div>
+                    <div class="row mb-1">
+                        <div class="col-4">
+                            <label for="routing_to_phone" class="form-label mb-0">Téléphone</label>
+                            <input type="text"
+                                   name="routing_to_phone"
+                                   class="form-control form-control-xs"
+                                   v-model="store.routingToPhone">
+                        </div>
+                        <div class="col-8">
+                            <label for="routing_to_email" class="form-label mb-0">E-mail</label>
+                            <input type="text"
+                                   name="routing_to_email"
+                                   class="form-control form-control-xs"
+                                   v-model="store.routingToEmail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="routing_to_info" class="form-label mb-0">Infos</label>
+                            <textarea name="routing_to_info"
+                                      class="form-control form-control-sm"
+                                      id="routing_to_info"
+                                      cols="30"
+                                      v-html="store.routingToInfo"></textarea>
+                        </div>
+                    </div>
                 </div>
                 <ContactAddress class="mb-2" v-show="!isEditing" :address="routingToAddress" />
                 <div class="Address_Card--Actions">
@@ -119,7 +145,9 @@ const contactAddress = computed(() => {
         address1: store.routingTo.address1,
         address2: store.routingTo.address2,
         postcode: store.routingTo.postcode,
-        city: store.routingTo.city
+        city: store.routingTo.city,
+        phone: store.routingTo.phone,
+        email: store.routingTo.email
     }
 })
 
@@ -128,7 +156,9 @@ const routingToAddress = computed(() => {
         address1: store.routingToAddress1,
         address2: store.routingToAddress2,
         postcode: store.routingToPostcode,
-        city: store.routingToCity
+        city: store.routingToCity,
+        phone: store.routingToPhone,
+        email: store.routingToEmail
     }
 })
 
@@ -136,7 +166,9 @@ const addressIsChanged = computed(() => {
     return store.routingTo.address1 !== store.routingToAddress1 ||
         store.routingTo.address2 !== store.routingToAddress2 ||
         store.routingTo.postcode !== store.routingToPostcode ||
-        store.routingTo.city !== store.routingToCity
+        store.routingTo.city !== store.routingToCity ||
+        store.routingTo.phone !== store.routingToPhone ||
+        store.routingTo.email !== store.routingToEmail
 })
 </script>
 

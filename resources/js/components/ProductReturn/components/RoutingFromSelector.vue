@@ -6,7 +6,8 @@
             <input type="hidden" name="routing_from_code" :value="store.routingFromCode">
             <button
                 class="btn btn-sm btn-dark"
-                @click.prevent="store.cancelRoutingFrom"><i class="bi bi-x-lg me-1"></i>Annuler</button>
+                @click.prevent="store.cancelRoutingFrom"><i class="bi bi-x-lg me-1"></i>Annuler
+            </button>
         </div>
         <div class="col-lg-8">
             <div class="Address_Card">
@@ -42,18 +43,47 @@
                                    v-model="store.routingFromCity">
                         </div>
                     </div>
+                    <div class="row mb-1">
+                        <div class="col-4">
+                            <label for="routing_from_phone" class="form-label mb-0">Téléphone</label>
+                            <input type="text"
+                                   name="routing_from_phone"
+                                   class="form-control form-control-xs"
+                                   v-model="store.routingFromPhone">
+                        </div>
+                        <div class="col-8">
+                            <label for="routing_from_email" class="form-label mb-0">E-mail</label>
+                            <input type="text"
+                                   name="routing_from_email"
+                                   class="form-control form-control-xs"
+                                   v-model="store.routingFromEmail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="routing_from_info" class="form-label mb-0">Infos</label>
+                            <textarea name="routing_from_info"
+                                      class="form-control form-control-sm"
+                                      id="routing_from_info"
+                                      rows="3"
+                                      v-html="store.routingFromInfo"></textarea>
+                        </div>
+                    </div>
                 </div>
-                <ContactAddress class="mb-2" v-show="!isEditing" :address="routingFromAddress" />
+                <ContactAddress class="mb-2" v-show="!isEditing" :address="routingFromAddress"/>
                 <div class="Address_Card--Actions">
                     <button v-if="!isEditing" class="btn btn-sm btn-violet"
                             @click.prevent="startEditing">
-                        <i class="bi bi-pen me-1"></i>Modifier</button>
+                        <i class="bi bi-pen me-1"></i>Modifier
+                    </button>
                     <button v-else class="btn btn-sm btn-dark"
                             @click.prevent="stopEditing">
-                        <i class="bi bi-x-lg me-1"></i>Fermer</button>
+                        <i class="bi bi-x-lg me-1"></i>Fermer
+                    </button>
                     <button v-if="addressIsChanged"
                             class="btn btn-sm btn-violet"
-                            @click.prevent="store.resetRoutingFromAddress">Restaurer l'adresse initiale</button>
+                            @click.prevent="store.resetRoutingFromAddress">Restaurer l'adresse initiale
+                    </button>
                 </div>
             </div>
         </div>
@@ -68,7 +98,8 @@
             <button
                 class="btn btn-sm btn-dark"
                 v-if="store.routingFromSearchTerm.length"
-                @click.prevent="store.cancelRoutingFrom()"><i class="bi bi-eraser me-1"></i>Effacer</button>
+                @click.prevent="store.cancelRoutingFrom()"><i class="bi bi-eraser me-1"></i>Effacer
+            </button>
         </div>
         <div class="col-lg-8 mb-3">
             <ul class="Contacts_List" v-if="store.routingFromList.length">
@@ -94,6 +125,7 @@ import ContactItem from "./ContactItem.vue";
 import ContactCard from "./ContactCard.vue";
 import ContactAddress from "./ContactAddress.vue";
 import VAlert from "../../form/VAlert.vue";
+
 const store = useProductReturnStore()
 
 const isEditing = ref(false)
@@ -111,7 +143,10 @@ const contactAddress = computed(() => {
         address1: store.routingFrom.address1,
         address2: store.routingFrom.address2,
         postcode: store.routingFrom.postcode,
-        city: store.routingFrom.city
+        city: store.routingFrom.city,
+        phone: store.routingFrom.phone,
+        email: store.routingFrom.email,
+        info: store.routingFrom.info
     }
 })
 
@@ -128,7 +163,9 @@ const addressIsChanged = computed(() => {
     return store.routingFrom.address1 !== store.routingFromAddress1 ||
         store.routingFrom.address2 !== store.routingFromAddress2 ||
         store.routingFrom.postcode !== store.routingFromPostcode ||
-        store.routingFrom.city !== store.routingFromCity
+        store.routingFrom.city !== store.routingFromCity ||
+        store.routingFrom.phone !== store.routingFromPhone ||
+        store.routingFrom.email !== store.routingFromEmail
 })
 </script>
 

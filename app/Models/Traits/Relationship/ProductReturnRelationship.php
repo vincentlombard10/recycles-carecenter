@@ -40,6 +40,16 @@ trait ProductReturnRelationship
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function validator(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'validator_id');
+    }
+
+    public function receiver(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'receiver_id');
+    }
+
     public function from(): BelongsTo
     {
         return $this->belongsTo(Contact::class, 'from_id');

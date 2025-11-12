@@ -33,9 +33,13 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
 
     public function updating(ProductReturn $productReturn)
     {
-        $productReturn->offered_at = $productReturn->isDirty('status') &&
-            $productReturn->status === ProductReturn::STATUS_PENDING &&
-            $productReturn->offered_at === null ? now() : $productReturn->offered_at;
+        if ($productReturn->isDirty('status')
+            && $productReturn->isPending()
+            && $productReturn->validated_at === null
+        ) {
+            $productReturn->validated_at = now();
+            $productReturn->validator_id = auth()->user()->id;
+        }
     }
 
     public function updated(ProductReturn $productReturn)

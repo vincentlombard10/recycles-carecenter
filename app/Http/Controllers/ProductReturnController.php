@@ -107,7 +107,8 @@ class ProductReturnController extends Controller
             ...$commentsData,
             ...$senderData,
             ...$recipientData,
-            ...$returnToData
+            ...$returnToData,
+            'environment' => $request->environment ?? 'sandbox',
         ];
 
 
@@ -195,6 +196,9 @@ class ProductReturnController extends Controller
             address2: $request->routing_from_address2 ?? null,
             postcode: $request->routing_from_postcode ?? null,
             city: $request->routing_from_city ?? null,
+            phone: $request->routing_from_phone ?? null,
+            email: $request->routing_from_email ?? null,
+            info: $request->routing_from_info ?? null,
         );
         $recipient = self::getRecipient(
             prefix: 'routing_to_',
@@ -203,6 +207,9 @@ class ProductReturnController extends Controller
             address2: $request->routing_to_address2 ?? null,
             postcode: $request->routing_to_postcode ?? null,
             city: $request->routing_to_city ?? null,
+            phone: $request->routing_to_phone ?? null,
+            email: $request->routing_to_email ?? null,
+            info: $request->routing_to_info ?? null,
         );
         $reshippedTo = self::getReturnedTo(
             prefix: 'return_to_',
@@ -211,6 +218,9 @@ class ProductReturnController extends Controller
             address2: $request->return_to_address2 ?? null,
             postcode: $request->return_to_postcode ?? null,
             city: $request->return_to_city ?? null,
+            phone: $request->return_to_phone ?? null,
+            email: $request->return_to_email ?? null,
+            info: $request->return_to_info ?? null,
         );
         $data = [
             ...$qualification,
@@ -241,6 +251,7 @@ class ProductReturnController extends Controller
                 $productReturn->update([
                     'status' => ProductReturn::STATUS_RECEIVED,
                     'received_at' => now(),
+                    'receiver_id' => auth()->user()->id,
                 ]);
                 $productReturn->report->update([
                     'status' => ProductReturn::STATUS_PENDING,
@@ -370,7 +381,10 @@ class ProductReturnController extends Controller
         string|null $address1,
         string|null $address2,
         string|null $postcode,
-        string|null $city
+        string|null $city,
+        string|null $phone,
+        string|null $email,
+        string|null $info,
     ): array
     {
         return [
@@ -380,6 +394,9 @@ class ProductReturnController extends Controller
             $prefix . 'address2' => $address2 ? trim($address2) : null,
             $prefix . 'postcode' => $postcode ? trim($postcode) : null,
             $prefix . 'city' => $city ? trim($city) : null,
+            $prefix . 'phone' => $phone ? trim($phone) : null,
+            $prefix . 'email' => $email ? trim($email) : null,
+            $prefix . 'info' => $info ? trim($info) : null,
         ];
     }
 
@@ -389,7 +406,10 @@ class ProductReturnController extends Controller
         string|null $address1,
         string|null $address2,
         string|null $postcode,
-        string|null $city
+        string|null $city,
+        string|null $phone,
+        string|null $email,
+        string|null $info,
     ): array
     {
         return [
@@ -399,6 +419,9 @@ class ProductReturnController extends Controller
             $prefix . 'address2' => $address2 ? trim($address2) : null,
             $prefix . 'postcode' => $postcode ? trim($postcode) : null,
             $prefix . 'city' => $city ? trim($city) : null,
+            $prefix . 'phone' => $phone ? trim($phone) : null,
+            $prefix . 'email' => $email ? trim($email) : null,
+            $prefix . 'info' => $info ? trim($info) : null,
         ];
     }
 
@@ -408,7 +431,10 @@ class ProductReturnController extends Controller
         string|null $address1,
         string|null $address2,
         string|null $postcode,
-        string|null $city
+        string|null $city,
+        string|null $phone,
+        string|null $email,
+        string|null $info,
     ): array
     {
         return [
@@ -418,6 +444,9 @@ class ProductReturnController extends Controller
             $prefix . 'address2' => $address2 ? trim($address2) : null,
             $prefix . 'postcode' => $postcode ? trim($postcode) : null,
             $prefix . 'city' => $city ? trim($city) : null,
+            $prefix . 'phone' => $phone ? trim($phone) : null,
+            $prefix . 'email' => $email ? trim($email) : null,
+            $prefix . 'info' => $info ? trim($info) : null,
         ];
     }
 }
