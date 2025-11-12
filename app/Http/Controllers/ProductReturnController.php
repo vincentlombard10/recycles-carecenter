@@ -110,16 +110,6 @@ class ProductReturnController extends Controller
             ...$returnToData
         ];
 
-        try {
-
-            $productReturn = $this->productReturnService->createProductReturn($data);
-            ToastMagic::info(sprintf("Le retour produit %s a bien été créé.", $productReturn->identifier));
-
-        } catch (Exception $e) {
-
-            ToastMagic::error($e->getMessage());
-
-        }
 
         try {
             $return = ProductReturn::create([
