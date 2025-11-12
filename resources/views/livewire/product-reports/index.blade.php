@@ -41,8 +41,7 @@
                 <div class="Card_Support--Side">
                     <div class="d-grid gap-1">
                         <span class="rcf-badge rcf-badge--{{ $report->status_color }}">{{ $report->status_label }}</span>
-                        @if($report->status !== 'init'
-                            && auth()->user()->canAny(['reports.update', 'reports.read']))
+                        @if(($report->isPending() || $report->isInProgress()) && auth()->user()->can('reports.update'))
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
                                         aria-expanded="false">
@@ -52,16 +51,25 @@
                                     @if($report->isPending())
                                         <li><button class="dropdown-item text-end" popovertarget="po-{{ $report->id }}">Démarrer<i class="bi bi-pencil-square ms-2"></i></button></li>
                                     @endif
-                                    @if($report->isInProgress() && auth()->user()->can('reports.update'))
+                                    @if($report->isInProgress())
                                         <li><a class="dropdown-item text-end" href="{{ route('support.reports.edit', $report->identifier) }}">
                                                 Editer<i class="bi bi-pencil-square ms-2"></i></a></li>
                                     @endif
-                                    @if($report->status === 'closed')
-                                        <li><a class="dropdown-item text-end" href="{{ route('support.reports.download', $report->identifier) }}">
-                                                Télécharger le rapport<i class="bi bi-download ms-2"></i></a></li>
-                                    @endif
                                 </ul>
                             </div>
+                        @elseif($report->isClosed() && auth()->user()->can('reports.read'))
+                            @if($report->status === 'closed' && auth()->user()->can('reports.read'))
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item text-end" href="{{ route('support.reports.download', $report->identifier) }}">
+                                                Télécharger le rapport<i class="bi bi-download ms-2"></i></a></li>
+                                    </ul>
+                                </div>
+                            @endif
                         @endif
                     </div>
                 </div>
