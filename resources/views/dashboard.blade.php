@@ -10,7 +10,7 @@
     <x-page-wrapper>
         <div class="container-fluid p-3">
             <x-messages />
-            <div class="row mb-3">
+{{--            <div class="row mb-3">
                 <h2>Contacts</h2>
                 <div class="col-2 mb-3">
                     <x-dashboard.counter
@@ -63,7 +63,7 @@
                         :count="$serials_without_item" />
                 </div>
             </div>
-            <h2>Tickets</h2>
+            <h2>Tickets</h2>--}}
 {{--            <div class="row">
                 <div class="col-4 mb-3">
                     <div class="mb-2">
@@ -86,7 +86,7 @@
                         :count="$tickets_hold_or_pending_count" />
                 </div>
             </div>--}}
-            <div class="row">
+{{--            <div class="row">
                 <div class="col-4 mb-3">
                     <div class="mb-2">
                         <x-dashboard.counter
@@ -106,7 +106,7 @@
                         :count="round($full_resolution_avg_time)"
                         suffix="''"/>
                 </div>
-            </div>
+            </div>--}}
             <div class="row">
                 <h2>Retours produit</h2>
                 <div class="col-4 mb-3">
