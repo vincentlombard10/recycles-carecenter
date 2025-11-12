@@ -40,6 +40,7 @@ class ContactsImport implements ToCollection, WithHeadingRow, WithBatchInserts, 
                         'phone' => $row['cli_tel'],
                         'salesrep' => $row['cli_rep'],
                     ]);
+                    Log::info('contact', ['contact' => $contact]);
                 } catch (Exception $e) {
                     Log::error($e->getMessage());
                 }
