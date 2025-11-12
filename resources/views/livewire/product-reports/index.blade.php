@@ -41,7 +41,8 @@
                 <div class="Card_Support--Side">
                     <div class="d-grid gap-1">
                         <span class="rcf-badge rcf-badge--{{ $report->status_color }}">{{ $report->status_label }}</span>
-                        @if($report->status !== 'init')
+                        @if($report->status !== 'init'
+                            && auth()->user()->canAny('reports.update', 'reports.download'))
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
                                         aria-expanded="false">
