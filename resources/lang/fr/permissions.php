@@ -48,8 +48,13 @@ return [
     'groups.create' => 'Création',
     'groups.update' => 'Edition',
     'groups.delete' => 'Suppression',
-    'serials' => 'Numéros de série',
-    'serials.read' => 'Lecture',
+    'serials' => [
+        'name' => 'Nom',
+        'read' => 'Lecture',
+        'create' => 'Création',
+        'update' => 'Edition',
+        'delete' => 'Suppression',
+    ]
     'items' => 'Articles',
     'items.read' => 'Lecture',
 ];
