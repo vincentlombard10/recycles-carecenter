@@ -11,10 +11,6 @@
                     @foreach($rootPermissions as $permission)
                         <div class="mb-3">
                             <h4>{{ __('permissions.' . $permission->name) }}</h4>
-                            <div class="form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input select-all">
-                                <label for="select-all" class="form-check-label">Tout sélectionner</label>
-                            </div>
                             @forelse($permission->children as $permission)
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="permission[]"
