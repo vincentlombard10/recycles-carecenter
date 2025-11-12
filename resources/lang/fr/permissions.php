@@ -54,7 +54,7 @@ return [
         'create' => 'Création',
         'update' => 'Edition',
         'delete' => 'Suppression',
-    ]
+    ],
     'items' => 'Articles',
     'items.read' => 'Lecture',
 ];
