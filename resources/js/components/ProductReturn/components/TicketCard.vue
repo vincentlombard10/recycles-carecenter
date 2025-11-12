@@ -1,9 +1,7 @@
 <template>
     <div class="Ticket_Card">
-        <div>{{ ticket.requesterName }}</div>
-        <div>{{ ticket.subject }}</div>
-        <div>{{ ticket.requesterEmail }}</div>
-        <div>{{ ticket.brand }}</div>
+        <div><h5 class="fw-semibold mb-1">{{ ticket.id }}</h5></div>
+        <div v-if="ticket.contact">{{ ticket.contact.code }} {{ ticket.contact.name }}</div>
     </div>
 </template>
 

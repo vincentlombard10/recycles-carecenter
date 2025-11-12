@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\ProductReturn;
 use App\Models\Serial;
 use App\Models\Ticket;
+use App\Services\ProductReturnService;
 use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,8 +17,11 @@ use Exception;
 
 class ProductReturnController extends Controller
 {
-    public function __construct()
+    protected ProductReturnService $productReturnService;
+
+    public function __construct(ProductReturnService $productReturnService)
     {
+        $this->productReturnService = $productReturnService;
     }
 
     public function index()
@@ -47,57 +51,76 @@ class ProductReturnController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $qualification = self::getQualification(
-            type: $request->type ?? null,
-            context: $request->context ?? null,
-            reason: $request->reason ?? null,
-            assignation: $request->assignation ?? null,
-            action: $request->action ?? null,
-            destination: $request->destination ?? null
-        );
-        $ticket = self::getTicket(ticket: $request->ticket);
-        $item = self::getItem(item: $request->item);
-        $serial = self::getSerial(
-            code: $request->serial_code ?? null,
-            designation: $request->serial_itds ?? null,
-            sku: $request->serial_itno ?? null,
-            brand: $request->serial_itcl ?? null,
-        );
-        $salesInformation = self::getSalesInformation(
-            date: $request->bike_sold_at ?? null,
-            order: $request->order ?? null,
-            invoice: $request->invoice ?? null,
-            delivery: $request->delivery ?? null,
-        );
-        $comments = self::getComments(
-            info: $request->info ?? null,
-            note: $request->note ?? null
-        );
-        $sender = self::getSender(
-            prefix: 'routing_from_',
-            code: $request->routing_from_code ?? null,
-            address1: $request->routing_from_address1 ?? null,
-            address2: $request->routing_from_address2 ?? null,
-            postcode: $request->routing_from_postcode ?? null,
-            city: $request->routing_from_city ?? null,
-        );
-        $recipient = self::getRecipient(
-            prefix: 'routing_to_',
-            code: $request->routing_to_code ?? null,
-            address1: $request->routing_to_address1 ?? null,
-            address2: $request->routing_to_address2 ?? null,
-            postcode: $request->routing_to_postcode ?? null,
-            city: $request->routing_to_city ?? null,
-        );
-        $returnTo = self::getReturnedTo(
-            prefix: 'return_to_',
-            code: $request->return_to_code ?? null,
-            address1: $request->return_to_address ?? null,
-            address2: $request->return_to_address ?? null,
-            postcode: $request->return_to_postcode ?? null,
-            city: $request->return_to_city ?? null,
-        );
-        $data = [...$qualification, ...$ticket, ...$item, ...$serial, ...$salesInformation, ...$comments, ...$sender, ...$recipient, ...$returnTo];
+        $qualificationData = [
+            'type' => $request->type ?? null,
+            'context' => $request->context ?? null,
+            'reason' => $request->reason ?? null,
+            'assignation' => $request->assignation ?? null,
+            'action' => $request->action ?? null,
+            'destination' => $request->destination ?? null
+        ];
+        $ticketData = ['ticket' => $request->ticket ?? null];
+        $itemData = ['item' => $request->item ?? null];
+        $serialData = [
+            'code' => $request->serial_code ?? null,
+            'designation' => $request->designation ?? null,
+            'sku' => $request->sku ?? null,
+            'brand' => $request->brand ?? null,
+        ];
+        $salesData = [
+            'date' => $request->bike_sold_at ?? null,
+            'order' => $request->order ?? null,
+            'invoice' => $request->invoice ?? null,
+            'delivery' => $request->delivery ?? null,
+        ];
+        $commentsData = [
+            'info' => $request->info ?? null,
+            'note' => $request->note ?? null,
+        ];
+        $senderData = [
+            'routing_from_code' => $request->routing_from_code ?? null,
+            'routing_from_address1' => $request->routing_from_address1 ?? null,
+            'routing_from_address2' => $request->routing_from_address2 ?? null,
+            'routing_from_postcode' => $request->routing_from_postcode ?? null,
+            'routing_from_city' => $request->routing_from_city ?? null,
+        ];
+        $recipientData = [
+            'routing_to_code' => $request->routing_to_code ?? null,
+            'routing_to_address1' => $request->routing_to_address1 ?? null,
+            'routing_to_address2' => $request->routing_to_address2 ?? null,
+            'routing_to_postcode' => $request->routing_to_postcode ?? null,
+            'routing_to_city' => $request->routing_to_city ?? null,
+        ];
+        $returnToData = [
+            'return_to_code' => $request->return_to_code ?? null,
+            'return_to_address1' => $request->return_to_address1 ?? null,
+            'return_to_address2' => $request->return_to_address2 ?? null,
+            'return_to_postcode' => $request->return_to_postcode ?? null,
+            'return_to_city' => $request->return_to_city ?? null,
+        ];
+        $data = [
+            ...$qualificationData,
+            ...$ticketData,
+            ...$itemData,
+            ...$serialData,
+            ...$salesData,
+            ...$commentsData,
+            ...$senderData,
+            ...$recipientData,
+            ...$returnToData
+        ];
+
+        try {
+
+            $productReturn = $this->productReturnService->createProductReturn($data);
+            ToastMagic::info(sprintf("Le retour produit %s a bien été créé.", $productReturn->identifier));
+
+        } catch (Exception $e) {
+
+            ToastMagic::error($e->getMessage());
+
+        }
+
         try {
             $return = ProductReturn::create([
                 'identifier' => AlphacodeHelper::generateCode(6),
@@ -125,16 +148,15 @@ class ProductReturnController extends Controller
 
     public function show($id)
     {
-        if(!Auth::user()->can('returns.read')) {
+        if(!auth()->user()->hasAnyPermission('returns.read')) {
+
             \ToastMagic::error('You do not have permission to access this page.');
             return redirect()->route('dashboard');
-        }
-        if (!auth()->user()->hasAnyPermission('returns.read')) {
-            return redirect()->back()->with('message', 'You are not authorized to use this functionality!');
+
         }
 
-        $productReturn = ProductReturn::where('identifier', $id)->first();
-        return view('returns.show', compact('productReturn'));
+        return view('returns.show')
+            ->with('productReturn', ProductReturn::where('identifier', $id)->first());
     }
 
     public function edit($identifier)
@@ -144,8 +166,8 @@ class ProductReturnController extends Controller
             return redirect()->route('dashboard');
         }
 
-        $return = ProductReturn::where('identifier', $identifier)->withTrashed()->firstOrFail();
-        return view('returns.edit', compact('return'));
+        return view('returns.edit')
+            ->with('productReturn', ProductReturn::where('identifier', $identifier)->firstOrFail());
     }
 
     public function update(Request $request, $id)

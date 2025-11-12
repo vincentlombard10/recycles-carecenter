@@ -55,6 +55,7 @@ class TicketResource extends JsonResource
             'via' => $this->via,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
+            'contact' => new ContactResource($this->contact) ?? 'no'
         ];
     }
 }

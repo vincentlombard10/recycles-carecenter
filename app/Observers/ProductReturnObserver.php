@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Helpers\AlphacodeHelper;
 use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
@@ -9,6 +10,11 @@ use Illuminate\Support\Facades\Log;
 
 class ProductReturnObserver implements ShouldHandleEventsAfterCommit
 {
+    public function creating(ProductReturn $productReturn): void
+    {
+        $productReturn->identifier = AlphacodeHelper::generateCode(6);
+        $productReturn->author_id = auth()->user()->id;
+    }
     public function created(ProductReturn $productReturn)
     {
         Log::debug('ProductReturn created', ['productReturn' => $productReturn]);
