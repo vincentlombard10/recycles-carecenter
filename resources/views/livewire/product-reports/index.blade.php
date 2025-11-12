@@ -69,7 +69,7 @@
                                     @endif
                                 </ul>
                             </div>
-                        @elseif($report->isClosed() && auth()->user()->can('reports.read'))
+                        @elseif($report->isClosed())
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
                                         aria-expanded="false">
