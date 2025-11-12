@@ -51,7 +51,7 @@
                                     @if($report->isPending())
                                         <li><button class="dropdown-item text-end" popovertarget="po-{{ $report->id }}">Démarrer<i class="bi bi-pencil-square ms-2"></i></button></li>
                                     @endif
-                                    @if($report->isInProgress())
+                                    @if($report->isInProgress() && auth()->user()->can('reports.update'))
                                         <li><a class="dropdown-item text-end" href="{{ route('support.reports.edit', $report->identifier) }}">
                                                 Editer<i class="bi bi-pencil-square ms-2"></i></a></li>
                                     @endif
