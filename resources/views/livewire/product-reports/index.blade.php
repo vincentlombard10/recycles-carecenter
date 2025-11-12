@@ -49,7 +49,6 @@
                     <div class="d-grid gap-1">
                         <span
                             class="rcf-badge rcf-badge--{{ $report->status_color }}">{{ $report->status_label }}</span>
-                        <div>{{ $report->status }}</div>
                         @if(($report->isPending() || $report->isInProgress()) && auth()->user()->can('reports.update'))
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
