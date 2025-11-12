@@ -62,10 +62,11 @@ class ProductReturnController extends Controller
         $ticketData = ['ticket' => $request->ticket ?? null];
         $itemData = ['item' => $request->item ?? null];
         $serialData = [
-            'code' => $request->serial_code ?? null,
-            'designation' => $request->designation ?? null,
-            'sku' => $request->sku ?? null,
-            'brand' => $request->brand ?? null,
+            'serial_code' => $request->serial_code ?? null,
+            'serial_itds' => $request->serial_itds ?? null,
+            'serial_itno' => $request->serial_itno ?? null,
+            'serial_ictl' => $request->serial_itcl ?? null,
+            'serial_id' => Serial::where('code', $request->serial_code)->first()->id ?? null,
         ];
         $salesData = [
             'date' => $request->bike_sold_at ?? null,
