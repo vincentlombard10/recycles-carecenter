@@ -53,6 +53,9 @@ return [
     'serials.create' => 'Création',
     'serials.update' => 'Edition',
     'serials.delete' => 'Suppression',
-    'items' => 'Articles',
+    'items' => 'Références',
     'items.read' => 'Lecture',
+    'items.create' => 'Création',
+    'items.update' => 'Edition',
+    'items.delete' => 'Suppression',
 ];
