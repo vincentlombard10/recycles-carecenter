@@ -49,12 +49,12 @@ class ContactsImport implements ToCollection, WithHeadingRow, WithBatchInserts, 
     }
     public function batchSize(): int
     {
-        return 1000;
+        return 10;
     }
 
     public function chunkSize(): int
     {
-        return 1000;
+        return 10;
     }
 
     public function uniqueBy()
