@@ -8,15 +8,19 @@
             <div class="card-body p-5">
                 <div class="form-group mb-3">
                     {{ html()->label('Prénom')->for('firstname')->class('form-label') }}
-                    {{ html()->text('firstname')->class('form-control') }}
+                    {{ html()->text('firstname')->class('form-control')->required() }}
                 </div>
                 <div class="form-group mb-3">
                     {{ html()->label('Nom')->for('lastname')->class('form-label') }}
-                    {{ html()->text('lastname')->class('form-control') }}
+                    {{ html()->text('lastname')->class('form-control')->required() }}
+                </div>
+                <div class="form-group mb-3">
+                    {{ html()->label('Username')->for('username')->class('form-label') }}
+                    {{ html()->text('username')->class('form-control')->required() }}
                 </div>
                 <div class="form-group mb-3">
                     {{ html()->label('Adresse e-mail')->for('email')->class('form-label') }}
-                    {{ html()->text('email')->class('form-control') }}
+                    {{ html()->text('email')->class('form-control')->required() }}
                 </div>
                 <div class="form-group mb-3">
                     {{ html()->label('Rôle')->for('role')->class('form-label') }}

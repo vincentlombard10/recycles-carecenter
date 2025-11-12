@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -38,6 +39,7 @@ class UserController extends Controller
             $user->save();
             \ToastMagic::success("Utilisateur créé");
         } catch (\Throwable $th) {
+            Log::error($th->getMessage());
             \ToastMagic::error($th->getMessage());
         }
         return redirect()->route('admin.users.index');
