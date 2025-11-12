@@ -219,6 +219,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
     const routingFromAddress2 = ref()
     const routingFromPostcode = ref()
     const routingFromCity = ref()
+    const routingFromPhone = ref()
+    const routingFromEmail = ref()
+    const routingFromInfo = ref()
 
     const canFetchRoutingFromContacts = computed(() => {
         return routingFromSearchTerm.value.length >= generalMinSearchLength.value
@@ -249,6 +252,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingFromAddress2.value = routingFromAddress2.value ?? routingFrom.value.address2
         routingFromPostcode.value = routingFromPostcode.value ?? routingFrom.value.postcode
         routingFromCity.value = routingFromCity.value ?? routingFrom.value.city
+        routingFromPhone.value = routingFromPhone.value ?? routingFrom.value.phone
+        routingFromEmail.value = routingFromEmail.value ?? routingFrom.value.email
+        routingFromInfo.value = routingFromInfo.value ?? routingFrom.value.info
     }
 
     const cancelRoutingFrom = () => {
@@ -260,6 +266,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingFromAddress2.value = null
         routingFromPostcode.value = null
         routingFromCity.value = null
+        routingFromPhone.value = null
+        routingFromEmail.value = null
+        routingFromInfo.value = null
     }
 
     const resetRoutingFromAddress = () => {
@@ -267,6 +276,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingFromAddress2.value = routingFrom.value.address2
         routingFromPostcode.value = routingFrom.value.postcode
         routingFromCity.value = routingFrom.value.city
+        routingFromPhone.value = routingFrom.value.phone
+        routingFromEmail.value = routingFrom.value.email
+        routingFromInfo.value = routingFrom.value.info
     }
 
     const queryingRoutingToContacts = ref<Boolean>(false)
@@ -278,6 +290,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
     const routingToAddress2 = ref()
     const routingToPostcode = ref()
     const routingToCity = ref()
+    const routingToPhone = ref()
+    const routingToEmail = ref()
+    const routingToInfo = ref()
 
     const canFetchRoutingToContacts = computed(() => {
         return routingToSearchTerm.value.length >= generalMinSearchLength.value
@@ -309,6 +324,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingToAddress2.value = routingToAddress2.value ?? routingTo.value.address2
         routingToPostcode.value = routingToPostcode.value ?? routingTo.value.postcode
         routingToCity.value = routingToCity.value ?? routingTo.value.city
+        routingToPhone.value = routingToPhone.value ?? routingTo.value.phone
+        routingToEmail.value = routingToEmail.value ?? routingTo.value.email
+        routingToInfo.value = routingToInfo.value ?? routingTo.value.info
     }
 
     const cancelRoutingTo = () => {
@@ -320,6 +338,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingToAddress2.value = null
         routingToPostcode.value = null
         routingToCity.value = null
+        routingToPhone.value = null
+        routingToEmail.value = null
+        routingToInfo.value = null
     }
 
     const resetRoutingToAddress = () => {
@@ -327,6 +348,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingToAddress2.value = routingTo.value.address2
         routingToPostcode.value = routingTo.value.postcode
         routingToCity.value = routingTo.value.city
+        routingToPhone.value = routingTo.value.phone
+        routingToEmail.value = routingTo.value.email
+        routingToInfo.value = routingTo.value.info
     }
 
     const queryingReturnToContacts = ref<Boolean>(false)
@@ -338,6 +362,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
     const returnToAddress2 = ref()
     const returnToPostcode = ref()
     const returnToCity = ref()
+    const returnToPhone = ref()
+    const returnToEmail = ref()
+    const returnToInfo = ref()
 
     const canFetchReturnToContacts = computed(() => {
         return returnToSearchTerm.value.length >= generalMinSearchLength.value
@@ -368,6 +395,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         returnToAddress2.value = returnToAddress2.value ?? returnTo.value.address2
         returnToPostcode.value = returnToPostcode.value ?? returnTo.value.postcode
         returnToCity.value = returnToCity.value ?? returnTo.value.city
+        returnToPhone.value = returnToPhone.value ?? returnTo.value.phone
+        returnToEmail.value = returnToEmail.value ?? returnTo.value.email
+        returnToInfo.value = returnToInfo.value ?? returnTo.value.info
     }
 
     const cancelReturnTo = () => {
@@ -378,6 +408,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         returnToAddress2.value = null
         returnToPostcode.value = null
         returnToCity.value = null
+        returnToPhone.value = null
+        returnToEmail.value = null
+        returnToEmail.value = null
     }
 
     const resetReturnToAddress = () => {
@@ -385,6 +418,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         returnToAddress2.value = returnTo.value.address2
         returnToPostcode.value = returnTo.value.postcode
         returnToCity.value = returnTo.value.city
+        returnToPhone.value = returnTo.value.phone
+        returnToEmail.value = returnTo.value.email
+        returnToInfo.value = returnTo.value.info
     }
 
 
@@ -498,6 +534,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingFromAddress2,
         routingFromPostcode,
         routingFromCity,
+        routingFromEmail,
+        routingFromPhone,
+        routingFromInfo,
         resetRoutingFromAddress,
         fetchRoutingFromContacts,
         setRoutingFrom,
@@ -513,6 +552,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingToAddress2,
         routingToPostcode,
         routingToCity,
+        routingToEmail,
+        routingToPhone,
+        routingToInfo,
         resetRoutingToAddress,
         fetchRoutingToContacts,
         setRoutingTo,
@@ -528,6 +570,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         returnToAddress2,
         returnToPostcode,
         returnToCity,
+        returnToEmail,
+        returnToPhone,
+        returnToInfo,
         resetReturnToAddress,
         fetchReturnToContacts,
         setReturnTo,

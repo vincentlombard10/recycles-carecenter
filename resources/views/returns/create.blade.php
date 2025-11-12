@@ -15,6 +15,15 @@
     <x-page-wrapper>
         <div class="container-fluid p-5">
             {{ html()->form('POST', route('support.returns.store'))->open() }}
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <label for="environment" class="form-label mb-1">Environnement</label>
+                    <select name="environment" id="environment" class="form-control">
+                        <option value="production">Retour réel</option>
+                        <option value="sandbox">Retour fictif (bac à sable)</option>
+                    </select>
+                </div>
+            </div>
             <div id="product-return-form"></div>
             <div class="row">
                 <div class="col-12">

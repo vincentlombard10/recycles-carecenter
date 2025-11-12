@@ -43,6 +43,34 @@
                                    v-model="store.returnToCity">
                         </div>
                     </div>
+                    <div class="row mb-1">
+                        <div class="col-4">
+                            <label for="return_to_phone" class="form-label mb-0">Téléphone</label>
+                            <input type="text"
+                                   id="return_to_phone"
+                                   name="return_to_phone"
+                                   class="form-control form-control-xs"
+                                   v-model="store.returnToPhone">
+                        </div>
+                        <div class="col-8">
+                            <label for="return_to_email" class="form-label mb-0">E-mail</label>
+                            <input type="text"
+                                   id="return_to_email"
+                                   name="return_to_email"
+                                   class="form-control form-control-xs"
+                                   v-model="store.returnToEmail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="return_to_info" class="form-label mb-0">Infos</label>
+                            <textarea name="return_to_info"
+                                      class="form-control form-control-sm"
+                                      id="return_to_info"
+                                      cols="30"
+                                      v-html="store.returnToInfo"></textarea>
+                        </div>
+                    </div>
                 </div>
                 <ContactAddress class="mb-2" v-show="!isEditing" :address="returnToAddress" />
                 <div class="Address_Card--Actions">

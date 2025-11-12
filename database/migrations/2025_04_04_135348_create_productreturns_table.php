@@ -29,6 +29,9 @@ return new class extends Migration {
             $table->string('routing_from_address2')->nullable();
             $table->string('routing_from_postcode')->nullable();
             $table->string('routing_from_city')->nullable();
+            $table->string('routing_from_phone')->nullable();
+            $table->string('routing_from_email')->nullable();
+            $table->string('routing_from_info')->nullable();
             $table->foreignId('routing_to_id')->references('id')->on('contacts');
             $table->string('routing_to_code')->nullable();
             $table->string('routing_to_name')->nullable();
@@ -36,6 +39,9 @@ return new class extends Migration {
             $table->string('routing_to_address2')->nullable();
             $table->string('routing_to_postcode')->nullable();
             $table->string('routing_to_city')->nullable();
+            $table->string('routing_to_phone')->nullable();
+            $table->string('routing_to_email')->nullable();
+            $table->string('routing_to_info')->nullable();
             $table->foreignId('return_to_id')->references('id')->on('contacts');
             $table->string('return_to_code')->nullable();
             $table->string('return_to_name')->nullable();
@@ -43,6 +49,9 @@ return new class extends Migration {
             $table->string('return_to_address2')->nullable();
             $table->string('return_to_postcode')->nullable();
             $table->string('return_to_city')->nullable();
+            $table->string('routing_to_phone')->nullable();
+            $table->string('routing_to_email')->nullable();
+            $table->string('routing_to_info')->nullable();
             $table->foreignId('ticket_id')->nullable()->constrained();
             $table->string('zendesk_id')->nullable();
             $table->foreignId('serial_id')->nullable()->constrained();
@@ -53,11 +62,13 @@ return new class extends Migration {
             $table->foreignId('item_id')->nullable()->constrained();
             $table->string('item_itno')->nullable();
             $table->foreignId('author_id')->nullable()->references('id')->on('users');
+            $table->foreignId('validator_id')->nullable()->references('id')->on('users');
             $table->foreignId('receiver_id')->nullable()->references('id')->on('users');
             $table->string('status')->nullable();
             $table->timestamps();
-            $table->timestamp('offered_at')->nullable();
+            $table->timestamp('validatedx_at')->nullable();
             $table->timestamp('received_at')->nullable();
+            $table->enum('environment', ['production', 'sandbox'])->default('production');
             $table->softDeletes();
         });
     }

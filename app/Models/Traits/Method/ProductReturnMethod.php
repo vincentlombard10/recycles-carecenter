@@ -25,4 +25,14 @@ trait ProductReturnMethod
     {
         return $this->status === ProductReturn::STATUS_CANCELLED;
     }
+
+    public function isSandboxed(): bool
+    {
+        return $this->environment === ProductReturn::ENV_SANDBOX;
+    }
+
+    public function isProduction(): bool
+    {
+        return $this->environment === ProductReturn::ENV_PRODUCTION;
+    }
 }

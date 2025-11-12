@@ -29,4 +29,7 @@ class ProductReturn extends Model
     public const STATUS_RECEIVED = 'received';
     public const STATUS_CANCELLED = 'cancelled';
 
+    public const ENV_PRODUCTION = 'production';
+    public const ENV_SANDBOX = 'sandbox';
+
 }

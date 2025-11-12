@@ -6,6 +6,11 @@
                     <div class="Card_Support--Main mb-2">
                         <div>
                             <h2 class="fw-semibold">{{ $item->identifier }}</h2>
+                            @if($item->environment === \App\Models\ProductReturn::ENV_SANDBOX)
+                            <div class="d-grid mb-1">
+                                <span class="badge badge-{{ $item->environment }}">Sandbox</span>
+                            </div>
+                            @endif
                             <div class="d-grid mb-1">
                                 <span class="badge">{{ $item->type_label }}</span>
                             </div>
@@ -30,14 +35,14 @@
                         </div>
                         <ul>
                             <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
-                                    par {{ $item->author->username }} .</small></li>
-                            @if($item->offered_at)
-                                <li><small>Validé le {{ date('d/m/Y à H:i', strtotime($item->offered_at)) }}</small>
+                                    par {{ $item->author->username }}</small></li>
+                            @if($item->validated_at)
+                                <li><small>Validé le {{ date('d/m/Y à H:i', strtotime($item->validated_at)) }} par {{ $item->validator?->username }}</small>
                                 </li>
                             @endif
                             @if($item->received_at)
                                 <li><small>Réceptionné le {{ date('d/m/Y à H:i', strtotime($item->received_at)) }}
-                                        par {{ $item->receiver?->username ?? '-' }}</small></li>
+                                        par {{ $item->receiver?->username }}</small></li>
                             @endif
                         </ul>
                     </div>
@@ -58,12 +63,12 @@
                                     </a>
                                 </li>
                                 @canany(['returns.update', 'returns.edit'])
-                                    @if($item->status !== \App\Models\ProductReturn::STATUS_RECEIVED)
+                                    @if(!$item->isReceived())
                                         <li><a class="dropdown-item text-end"
                                                href="{{ route('support.returns.edit', $item->identifier) }}">Editer<i
                                                     class="bi bi-pencil-square ms-2"></i></a></li>
                                     @endif
-                                    @if($item->received_at === null && $item->status === \App\Models\ProductReturn::STATUS_PENDING)
+                                    @if($item->received_at === null && $item->isPending())
                                         <li>
                                             <button class="dropdown-item text-end" popovertarget="po-{{ $item->id }}">
                                                 Réceptionner<i class="bi bi-pencil-square ms-2"></i></button>

@@ -6,6 +6,11 @@
                     <div class="Card_Support--Main mb-2">
                         <div>
                             <h2 class="fw-semibold">{{ $report->identifier }}</h2>
+                            @if($report->return->environment === \App\Models\ProductReturn::ENV_SANDBOX)
+                                <div class="d-grid mb-1">
+                                    <span class="badge badge-{{ $report->return->environment }}">Sandbox</span>
+                                </div>
+                            @endif
                             <div class="d-grid mb-1">
                                 <span class="badge">{{ $report->return->type_label }}</span>
                             </div>
