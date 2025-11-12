@@ -9,7 +9,7 @@
                         @if ($ticket->contact)
                             <div class="mb-1"><span class="fw-semibold">{{ $ticket->contact->code }}</span> - {{ $ticket->contact->name }}</div>
                         @endif
-                        <div>{{ json_encode($ticket->via) }}</div>
+                        <div>{{ json_encode($ticket->via->source) }}</div>
                         @if($ticket->comments_count)
                             <span class="badge" style="background-color: oklch(94.3% 0.029 294.588);">{{ $ticket->comments_count }}<i class="bi bi-chat ms-2"></i>
 </span>
