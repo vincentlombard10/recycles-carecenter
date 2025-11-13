@@ -60,7 +60,10 @@ class ProductReturnController extends Controller
             'destination' => $request->destination ?? null
         ];
         $ticketData = ['ticket' => $request->ticket ?? null];
-        $itemData = ['item' => $request->item ?? null];
+        $itemData = [
+            'item_id' => Item::where('itno', $request->item)->first()->id ?? null,
+            'item_itno' => $request->item ?? null,
+        ];
         $serialData = [
             'serial_code' => $request->serial_code ?? null,
             'serial_itds' => $request->serial_itds ?? null,
