@@ -41,9 +41,9 @@
             <div class="col-lg-3 mb-3">
                 <label for="" class="form-label mb-1">Date de vente au consommateur</label>
                 <input type="date" class="form-control"
-                       :class="{'form-control--success': store.bikeSoldAt !== ''}"
-                       v-model="store.bikeSoldAt"
-                       name="bike_sold_at">
+                       :class="{'form-control--success': store.bikePurchasedAt !== ''}"
+                       v-model="store.bikePurchasedAt"
+                       name="bike_purchased_at">
             </div>
         </div>
     </section>

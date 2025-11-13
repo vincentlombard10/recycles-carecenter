@@ -128,6 +128,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
     const order = ref<string>('')
     const invoice = ref<string>('')
     const delivery = ref<string>('')
+    const bikePurchasedAt = ref<string>('')
 
     /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
     /* Section 5 - Commentaires */
@@ -210,7 +211,6 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         serialSearchMethod.value = 'auto'
     }
 
-    const queryingRoutingFromContacts = ref<Boolean>(false)
     const routingFrom = ref()
     const routingFromList = ref<[]>([])
     const routingFromSearchTerm = ref<string>('')
@@ -281,7 +281,6 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingFromInfo.value = routingFrom.value.info
     }
 
-    const queryingRoutingToContacts = ref<Boolean>(false)
     const routingTo = ref()
     const routingToList = ref<[]>([])
     const routingToSearchTerm = ref<string>('')
@@ -523,6 +522,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         order,
         invoice,
         delivery,
+        bikePurchasedAt,
         info,
         note,
 

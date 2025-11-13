@@ -6,7 +6,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 mb-3">
-                <label for="info" class="form-label mb-1">Informations sur le retour (affiché sur le bin de retour)</label>
+                <label for="info" class="form-label mb-1">Informations sur le retour (affiché sur le bon de retour)</label>
                 <textarea class="form-control" v-model="store.info" rows="5" v-html="store.info" name="info"></textarea>
             </div>
             <div class="col-lg-6 mb-3">
