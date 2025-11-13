@@ -58,6 +58,7 @@ onMounted(() => {
         store.info = productReturn.value.info
         store.note = productReturn.value.note
         store.bikeSoldAt = dayjs(productReturn.value.bike_sold_at).format('YYYY-MM-DD')
+        store.bikePurchasedAt = dayjs(productReturn.value.bike_purchased_at).format('YYYY-MM-DD')
         store.setTicket(productReturn.value.ticket_id ?? null)
         store.setItem(productReturn.value.item_itno ?? null)
         if (productReturn.value.serial_code) {

@@ -6,12 +6,13 @@
         </div>
         <div class="row">
             <div class="col-lg-6 mb-3">
-                <label for="info" class="form-label mb-1">Informations sur le retour</label>
+                <label for="info" class="form-label mb-1">Informations sur le retour (affiché sur le bon de retour)</label>
                 <textarea class="form-control" v-model="store.info" rows="5" v-html="store.info" name="info"></textarea>
             </div>
             <div class="col-lg-6 mb-3">
-                <label for="note" class="form-label mb-1">Note interne au technicien</label>
+                <label for="note" class="form-label mb-1">Note interne au technicien (privé)</label>
                 <textarea class="form-control" v-model="store.note" rows="5" v-html="store.note"
+                          style="background-color: oklch(98.7% 0.026 102.212); color: oklch(27.9% 0.077 45.635);"
                           name="note"></textarea>
             </div>
         </div>

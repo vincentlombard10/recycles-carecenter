@@ -60,7 +60,10 @@ class ProductReturnController extends Controller
             'destination' => $request->destination ?? null
         ];
         $ticketData = ['ticket' => $request->ticket ?? null];
-        $itemData = ['item' => $request->item ?? null];
+        $itemData = [
+            'item_id' => Item::where('itno', $request->item)->first()->id ?? null,
+            'item_itno' => $request->item ?? null,
+        ];
         $serialData = [
             'serial_code' => $request->serial_code ?? null,
             'serial_itds' => $request->serial_itds ?? null,
@@ -69,10 +72,11 @@ class ProductReturnController extends Controller
             'serial_id' => Serial::where('code', $request->serial_code)->first()->id ?? null,
         ];
         $salesData = [
-            'date' => $request->bike_sold_at ?? null,
+            'bike_sold_at' => $request->bike_sold_at ?? null,
             'order' => $request->order ?? null,
             'invoice' => $request->invoice ?? null,
             'delivery' => $request->delivery ?? null,
+            'bike_purchased_at' => $request->bike_purchased_at ?? null,
         ];
         $commentsData = [
             'info' => $request->info ?? null,
@@ -185,6 +189,7 @@ class ProductReturnController extends Controller
             order: $request->order ?? null,
             invoice: $request->invoice ?? null,
             delivery: $request->delivery ?? null,
+            purchase: $request->bike_purchased_at ?? null,
         );
         $comments = self::getComments(
             info: $request->info ?? null,
@@ -358,13 +363,15 @@ class ProductReturnController extends Controller
         string|null $order,
         string|null $invoice,
         string|null $delivery,
+        string|null $purchase,
     ): array
     {
         return [
             'bike_sold_at' => $date,
             'order' => $order,
             'invoice' => $invoice,
-            'delivery' => $delivery
+            'delivery' => $delivery,
+            'purchase' => $purchase,
         ];
     }
 
