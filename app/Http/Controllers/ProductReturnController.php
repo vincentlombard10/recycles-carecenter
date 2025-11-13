@@ -371,7 +371,7 @@ class ProductReturnController extends Controller
             'order' => $order,
             'invoice' => $invoice,
             'delivery' => $delivery,
-            'purchase' => $purchase,
+            'bike_purchased_at' => $purchase,
         ];
     }
 
