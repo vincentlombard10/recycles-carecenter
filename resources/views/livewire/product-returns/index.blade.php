@@ -25,7 +25,6 @@
                             <div class="mb-2"><span class="badge">{{ $item->customer_code }}</span></div>
                             @if($item->type === 'bike')
                                 <x-card-bike :item="$item"/>
-                                <small>DVD : {{ $item->bike_sold_at }}</small>
                             @elseif($item->type === 'component')
                                 <x-card-component :item="$item"/>
                             @elseif($item->type === 'battery')
@@ -33,6 +32,9 @@
                             @else
                                 <div>Non défini</div>
                             @endif
+                            <div><small>DVD : {{ $item->bike_sold_at }}</small></div>
+                            <div><small>DVC : {{ $item->bike_purchased_at }}</small></div>
+
                         </div>
                         <ul>
                             <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
