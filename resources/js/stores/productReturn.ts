@@ -282,6 +282,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         routingFromInfo.value = routingFrom.value.info
     }
 
+    const queryingRoutingToContacts = ref<Boolean>(false)
     const routingTo = ref()
     const routingToList = ref<[]>([])
     const routingToSearchTerm = ref<string>('')
