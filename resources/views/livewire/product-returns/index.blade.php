@@ -25,6 +25,7 @@
                             <div class="mb-2"><span class="badge">{{ $item->customer_code }}</span></div>
                             @if($item->type === 'bike')
                                 <x-card-bike :item="$item"/>
+                                <small>DVD : {{ $item->bike_sold_at }}</small>
                             @elseif($item->type === 'component')
                                 <x-card-component :item="$item"/>
                             @elseif($item->type === 'battery')
