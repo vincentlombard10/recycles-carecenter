@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Item;
 use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use App\Models\Serial;
@@ -22,6 +23,8 @@ class DashboardController extends Controller
         $serials_count = Serial::count();
         $serials_without_item = Serial::doesntHave('item')->count();
         $serial_without_invoice_count = Serial::whereNull('last_invoice')->count();
+
+        $items_count = Item::count();
 
         $tickets_open_count = Ticket::open()->count();
         $tickets_new_count = Ticket::new()->count();
@@ -60,6 +63,7 @@ class DashboardController extends Controller
             ->with('tickets_open_count', $tickets_open_count)
             ->with('tickets_new_count', $tickets_new_count)
             ->with('tickets_new', $tickets_new)
+            ->with('items_count', $items_count)
             ->with('tickets_solved_this_year_count', $tickets_solved_this_year_count)
             ->with('first_reply_avg_time', $first_reply_avg_time)
             ->with('full_resolution_avg_time', $full_resolution_avg_time)
