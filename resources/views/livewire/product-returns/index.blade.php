@@ -33,10 +33,10 @@
                                 <div>Non défini</div>
                             @endif
                             @if($item->bike_sold_at)
-                                <div><small>DVD : {{ $item->bike_sold_at }}</small></div>
+                                <div><small>DVD : {{ date('d/m/Y', strtotime($item->bike_sold_at)) }}</small></div>
                             @endif
                             @if($item->bike_purchased_at)
-                                <div><small>DVC : {{ $item->bike_purchased_at }}</small></div>
+                                <div><small>DVC : {{ date('d/m/Y', strtotime($item->bike_purchased_at)) }}</small></div>
                             @endif
                         </div>
                         <ul>
