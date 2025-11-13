@@ -35,11 +35,18 @@ class DashboardController extends Controller
         $first_reply_avg_time = Ticket::where('created_at', '>', now()->startOfYear())->avg('tickets.first_reply_time_in_minutes_within_business_hours');
         $full_resolution_avg_time = Ticket::where('created_at', '>', now()->startOfYear())->avg('tickets.full_resolution_time_in_minutes_within_business_hours');
 
-        $product_returns_pending_count = ProductReturn::where('status', 'pending')->count();
+        # Retours produits
+        $product_returns_count = ProductReturn::count();
+        $product_returns_pending_count = ProductReturn::pending()->count();
+        $product_returns_received_count = ProductReturn::received()->count();
+
         $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
         $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')->count();
 
         return view('dashboard')
+            ->with('product_returns_count', $product_returns_count)
+            ->with('product_returns_pending_count', $product_returns_pending_count)
+            ->with('product_returns_received_count', $product_returns_received_count)
             ->with('contacts_count', $contacts_count)
             ->with('contacts_with_support_enabled_count', $contacts_with_support_enabled_count)
             ->with('contacts_with_support_disabled', $contacts_with_support_disabled)
@@ -55,7 +62,6 @@ class DashboardController extends Controller
             ->with('first_reply_avg_time', $first_reply_avg_time)
             ->with('full_resolution_avg_time', $full_resolution_avg_time)
             ->with('tickets_hold_or_pending_count', $tickets_hold_or_pending_count)
-            ->with('product_returns_pending_count', $product_returns_pending_count)
             ->with('product_reports_pending_count', $product_reports_pending_count)
             ->with('product_reports_in_progress_count', $product_reports_in_progress_count);
     }
