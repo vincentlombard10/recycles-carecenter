@@ -112,27 +112,6 @@
                         suffix="''"/>
                 </div>
             </div>--}}
-            <div class="row">
-                <h2>Retours produit</h2>
-                <div class="col-4 mb-3">
-                    <x-dashboard.counter
-                        title="en attente"
-                        :count="$product_returns_pending_count" />
-                </div>
-            </div>
-            <div class="row">
-                <h2>Expertises et rapports</h2>
-                <div class="col-4 mb-3">
-                    <x-dashboard.counter
-                        title="en attente"
-                        :count="$product_reports_pending_count" />
-                </div>
-                <div class="col-4 mb-3">
-                    <x-dashboard.counter
-                        title="en cours"
-                        :count="$product_reports_in_progress_count" />
-                </div>
-            </div>
         </div>
     </x-page-wrapper>
 </x-app-layout>
