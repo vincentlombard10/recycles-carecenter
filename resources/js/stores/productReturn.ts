@@ -211,6 +211,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         serialSearchMethod.value = 'auto'
     }
 
+    const queryingRoutingFromContacts = ref()
     const routingFrom = ref()
     const routingFromList = ref<[]>([])
     const routingFromSearchTerm = ref<string>('')
