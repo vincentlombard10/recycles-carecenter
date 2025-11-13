@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Item;
 use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use App\Models\Serial;
@@ -23,6 +24,8 @@ class DashboardController extends Controller
         $serials_without_item = Serial::doesntHave('item')->count();
         $serial_without_invoice_count = Serial::whereNull('last_invoice')->count();
 
+        $items_count = Item::count();
+
         $tickets_open_count = Ticket::open()->count();
         $tickets_new_count = Ticket::new()->count();
         $tickets_new = Ticket::new()->get();
@@ -35,11 +38,20 @@ class DashboardController extends Controller
         $first_reply_avg_time = Ticket::where('created_at', '>', now()->startOfYear())->avg('tickets.first_reply_time_in_minutes_within_business_hours');
         $full_resolution_avg_time = Ticket::where('created_at', '>', now()->startOfYear())->avg('tickets.full_resolution_time_in_minutes_within_business_hours');
 
-        $product_returns_pending_count = ProductReturn::where('status', 'pending')->count();
+        # Retours produits
+        $product_returns_count = ProductReturn::count();
+        $product_returns_pending_count = ProductReturn::pending()->count();
+        $product_returns_received_count = ProductReturn::received()->count();
+
         $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
         $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')->count();
+        $product_reports_closed_count = ProductReport::where('status', 'closed')->count();
+        $product_reports_duration_time = ProductReport::where('status', 'closed')->avg('duration_time_in_seconds');
 
         return view('dashboard')
+            ->with('product_returns_count', $product_returns_count)
+            ->with('product_returns_pending_count', $product_returns_pending_count)
+            ->with('product_returns_received_count', $product_returns_received_count)
             ->with('contacts_count', $contacts_count)
             ->with('contacts_with_support_enabled_count', $contacts_with_support_enabled_count)
             ->with('contacts_with_support_disabled', $contacts_with_support_disabled)
@@ -51,12 +63,14 @@ class DashboardController extends Controller
             ->with('tickets_open_count', $tickets_open_count)
             ->with('tickets_new_count', $tickets_new_count)
             ->with('tickets_new', $tickets_new)
+            ->with('items_count', $items_count)
             ->with('tickets_solved_this_year_count', $tickets_solved_this_year_count)
             ->with('first_reply_avg_time', $first_reply_avg_time)
             ->with('full_resolution_avg_time', $full_resolution_avg_time)
             ->with('tickets_hold_or_pending_count', $tickets_hold_or_pending_count)
-            ->with('product_returns_pending_count', $product_returns_pending_count)
             ->with('product_reports_pending_count', $product_reports_pending_count)
-            ->with('product_reports_in_progress_count', $product_reports_in_progress_count);
+            ->with('product_reports_in_progress_count', $product_reports_in_progress_count)
+            ->with('product_reports_closed_count', $product_reports_closed_count)
+            ->with('product_reports_duration_time', $product_reports_duration_time);
     }
 }

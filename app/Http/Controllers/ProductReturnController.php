@@ -163,7 +163,7 @@ class ProductReturnController extends Controller
         }
 
         return view('returns.edit')
-            ->with('return', ProductReturn::where('identifier', $identifier)->firstOrFail());
+            ->with('return', ProductReturn::where('identifier', $identifier)->withTrashed()->firstOrFail());
     }
 
     public function update(Request $request, $id)
