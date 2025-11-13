@@ -65,7 +65,7 @@ class ProductReturnController extends Controller
             'serial_code' => $request->serial_code ?? null,
             'serial_itds' => $request->serial_itds ?? null,
             'serial_itno' => $request->serial_itno ?? null,
-            'serial_ictl' => $request->serial_itcl ?? null,
+            'serial_itcl' => $request->serial_itcl ?? null,
             'serial_id' => Serial::where('code', $request->serial_code)->first()->id ?? null,
         ];
         $salesData = [
@@ -348,7 +348,7 @@ class ProductReturnController extends Controller
             'serial_code' => $code,
             'serial_itno' => $sku,
             'serial_itds' => $designation,
-            'serial_ictl' => $brand,
+            'serial_itcl' => $brand,
             'serial_id' => Serial::where('code', $code)->first()->id ?? null,
         ];
     }

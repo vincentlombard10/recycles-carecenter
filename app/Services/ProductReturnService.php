@@ -58,7 +58,7 @@ class ProductReturnService
             'serial_code' => $code,
             'serial_itno' => $sku,
             'serial_itds' => $designation,
-            'serial_ictl' => $brand,
+            'serial_itcl' => $brand,
             'serial_id' => Serial::where('code', $code)->first()->id ?? null,
         ];
     }
