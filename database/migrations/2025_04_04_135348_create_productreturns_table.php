@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('destination')->nullable();
             $table->string('order')->nullable();
             $table->timestamp('bike_sold_at')->nullable();
+            $table->timestamp('bike_purchased_at')->nullable();
             $table->string('invoice')->nullable();
             $table->string('delivery')->nullable();
             $table->string('info')->nullable();

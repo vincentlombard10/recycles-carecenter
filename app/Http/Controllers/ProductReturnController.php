@@ -76,6 +76,7 @@ class ProductReturnController extends Controller
             'order' => $request->order ?? null,
             'invoice' => $request->invoice ?? null,
             'delivery' => $request->delivery ?? null,
+            'bike_purchased_at' => $request->bike_purchased_at ?? null,
         ];
         $commentsData = [
             'info' => $request->info ?? null,
@@ -188,6 +189,7 @@ class ProductReturnController extends Controller
             order: $request->order ?? null,
             invoice: $request->invoice ?? null,
             delivery: $request->delivery ?? null,
+            purchase: $request->bike_purchased_at ?? null,
         );
         $comments = self::getComments(
             info: $request->info ?? null,
@@ -361,13 +363,15 @@ class ProductReturnController extends Controller
         string|null $order,
         string|null $invoice,
         string|null $delivery,
+        string|null $purchase,
     ): array
     {
         return [
             'bike_sold_at' => $date,
             'order' => $order,
             'invoice' => $invoice,
-            'delivery' => $delivery
+            'delivery' => $delivery,
+            'purchase' => $purchase,
         ];
     }
 
