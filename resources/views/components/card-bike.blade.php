@@ -1,4 +1,4 @@
-<div class="Card_Item p-0">
+<div class="Card_Item p-0 mb-2">
     <div class="title mb-1">Vélo concerné</div>
     <table class="table table-mini">
         <tbody>
