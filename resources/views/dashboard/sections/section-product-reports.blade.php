@@ -10,4 +10,9 @@
             title="terminés"
             :count="$product_reports_closed_count" />
     </div>
+    <div class="col-4 mb-3">
+        <x-dashboard.counter
+            title="temps moyen de traitement"
+            :count="$product_reports_duration_time" />
+    </div>
 </section>

@@ -71,6 +71,7 @@ return new class extends Migration {
             $table->timestamp('received_at')->nullable();
             $table->enum('environment', ['production', 'sandbox'])->default('production');
             $table->softDeletes();
+            $table->integer('duration_time_in_seconds')->nullable();
         });
     }
 

@@ -43,6 +43,7 @@ class DashboardController extends Controller
         $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
         $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')->count();
         $product_reports_closed_count = ProductReport::where('status', 'closed')->count();
+        $product_reports_duration_time = ProductReport::where('status', 'closed')->avg('duration_time_in_seconds');
 
         return view('dashboard')
             ->with('product_returns_count', $product_returns_count)
@@ -65,6 +66,7 @@ class DashboardController extends Controller
             ->with('tickets_hold_or_pending_count', $tickets_hold_or_pending_count)
             ->with('product_reports_pending_count', $product_reports_pending_count)
             ->with('product_reports_in_progress_count', $product_reports_in_progress_count)
-            ->with('product_reports_closed_count', $product_reports_closed_count);
+            ->with('product_reports_closed_count', $product_reports_closed_count)
+            ->with('product_reports_duration_time', $product_reports_duration_time);
     }
 }
