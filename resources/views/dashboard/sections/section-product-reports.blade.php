@@ -10,9 +10,10 @@
             title="terminés"
             :count="$product_reports_closed_count" />
     </div>
-    <div class="col-2 mb-3">
+    <div class="col-3 mb-3">
         <x-dashboard.counter
-            title="temps moyen de traitement"
-            :count="$product_reports_duration_time" />
+            title="traitement moyen"
+            suffix="min"
+            :count="$product_reports_duration_time > 0 ? round($product_reports_duration_time/60) : null" />
     </div>
 </section>
