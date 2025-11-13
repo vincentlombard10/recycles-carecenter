@@ -72,7 +72,7 @@ class ProductReturnController extends Controller
             'serial_id' => Serial::where('code', $request->serial_code)->first()->id ?? null,
         ];
         $salesData = [
-            'date' => $request->bike_sold_at ?? null,
+            'bike_sold_at' => $request->bike_sold_at ?? null,
             'order' => $request->order ?? null,
             'invoice' => $request->invoice ?? null,
             'delivery' => $request->delivery ?? null,
