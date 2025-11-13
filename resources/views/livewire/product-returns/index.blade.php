@@ -32,9 +32,12 @@
                             @else
                                 <div>Non défini</div>
                             @endif
-                            <div><small>DVD : {{ $item->bike_sold_at }}</small></div>
-                            <div><small>DVC : {{ $item->bike_purchased_at }}</small></div>
-
+                            @if($item->bike_sold_at)
+                                <div><small>DVD : {{ $item->bike_sold_at }}</small></div>
+                            @endif
+                            @if($item->bike_purchased_at)
+                                <div><small>DVC : {{ $item->bike_purchased_at }}</small></div>
+                            @endif
                         </div>
                         <ul>
                             <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
