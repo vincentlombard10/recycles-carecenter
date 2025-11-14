@@ -115,7 +115,7 @@
                     </h1>
                 </td>
                 <td>
-                    <img src="{{ public_path(DNS1D::getBarcodePNGPath($productReturn->identifier, 'C39', 1.8, 80, [0,0,0], true )) }}" alt="">
+                    <img src="{{ public_path('barcodes/' . DNS1D::getBarcodePNGPath($productReturn->identifier, 'C39', 1.8, 80, [0,0,0], true )) }}" alt="">
                 </td>
             </tr>
         </table>

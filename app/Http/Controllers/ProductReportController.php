@@ -76,6 +76,7 @@ class ProductReportController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $productReport = ProductReport::findOrFail($id);
         $bls = $productReport->batteryStates->pluck('id')->toArray();
         $presenceChecks = self::getPresenceChecks(

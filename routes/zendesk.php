@@ -21,6 +21,36 @@ Route::group(['prefix' => 'zendesk', 'as' => 'zendesk.'], function () {
             ->name('sync-fields');
         Route::get('/{id}/sync', SyncZendeskTicketController::class)
             ->name('sync');
+        Route::get('/{id}/apply-macro/{macro}', function (int $id, string $macro) {
+            ini_set('max_execution_time', 360);
+            ini_set('memory_limit', '-1');
+            $subdomain = config('zendesk.subdomain');
+            $username = 'melvin.nion@re-cycles-france.fr';
+            $token = config('zendesk.token');
+
+            $ticket = "39053";
+            $macro = 30872845447058;
+
+            $comment = sprintf("<p>Bonjour %s,</p><p>&nbsp;</p><p>Nous vous confirmons que nous avons bien reçu votre colis concernant le dossier #%s", $ticket, $ticket);
+
+            $client = new ZendeskAPI($subdomain);
+            $client->setAuth(config('zendesk.auth_strategy'), ['username' => $username, 'token' => $token]);
+
+            $ticketsData = $client->tickets()->update($ticket, [
+                   'comment' => [
+                        'body' => 'We have changed your ticket priority to Urgent and will keep you up-to-date asap.'
+                    ],
+                    'custom_fields' => [
+                        "25438901642002" => "reexpedition"
+                    ],
+                    'status' => 'hold',
+                    'macro_id' => $macro,
+                    'author_id' => 373359407040
+                ]
+            );
+            dd($ticketsData);
+
+        });
     });
     Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
         Route::get('/sync', function () {

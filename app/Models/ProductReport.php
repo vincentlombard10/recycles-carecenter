@@ -31,8 +31,10 @@ class ProductReport extends Model
         ];
     }
     public const STATUS_INIT = 'init';
+
     public const STATUS_PENDING = 'pending';
     public const STATUS_IN_PROGRESS = 'in_progress';
+    public const STATUS_PAUSED = 'paused';
     public const STATUS_CLOSED = 'closed';
     public const STATUS_CANCELLED = 'cancelled';
 
