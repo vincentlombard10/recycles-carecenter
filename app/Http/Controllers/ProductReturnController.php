@@ -51,71 +51,78 @@ class ProductReturnController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $qualificationData = [
-            'type' => $request->type ?? null,
-            'context' => $request->context ?? null,
-            'reason' => $request->reason ?? null,
-            'assignation' => $request->assignation ?? null,
-            'action' => $request->action ?? null,
-            'destination' => $request->destination ?? null
-        ];
-        $ticketData = ['ticket' => $request->ticket ?? null];
-        $itemData = [
-            'item_id' => Item::where('itno', $request->item)->first()->id ?? null,
-            'item_itno' => $request->item ?? null,
-        ];
-        $serialData = [
-            'serial_code' => $request->serial_code ?? null,
-            'serial_itds' => $request->serial_itds ?? null,
-            'serial_itno' => $request->serial_itno ?? null,
-            'serial_itcl' => $request->serial_itcl ?? null,
-            'serial_id' => Serial::where('code', $request->serial_code)->first()->id ?? null,
-        ];
-        $salesData = [
-            'bike_sold_at' => $request->bike_sold_at ?? null,
-            'order' => $request->order ?? null,
-            'invoice' => $request->invoice ?? null,
-            'delivery' => $request->delivery ?? null,
-            'bike_purchased_at' => $request->bike_purchased_at ?? null,
-        ];
-        $commentsData = [
-            'info' => $request->info ?? null,
-            'note' => $request->note ?? null,
-        ];
-        $senderData = [
-            'routing_from_code' => $request->routing_from_code ?? null,
-            'routing_from_address1' => $request->routing_from_address1 ?? null,
-            'routing_from_address2' => $request->routing_from_address2 ?? null,
-            'routing_from_postcode' => $request->routing_from_postcode ?? null,
-            'routing_from_city' => $request->routing_from_city ?? null,
-        ];
-        $recipientData = [
-            'routing_to_code' => $request->routing_to_code ?? null,
-            'routing_to_address1' => $request->routing_to_address1 ?? null,
-            'routing_to_address2' => $request->routing_to_address2 ?? null,
-            'routing_to_postcode' => $request->routing_to_postcode ?? null,
-            'routing_to_city' => $request->routing_to_city ?? null,
-        ];
-        $returnToData = [
-            'return_to_code' => $request->return_to_code ?? null,
-            'return_to_address1' => $request->return_to_address1 ?? null,
-            'return_to_address2' => $request->return_to_address2 ?? null,
-            'return_to_postcode' => $request->return_to_postcode ?? null,
-            'return_to_city' => $request->return_to_city ?? null,
-        ];
+        $qualification = self::getQualification(
+            type: $request->type ?? null,
+            context: $request->context ?? null,
+            reason: $request->reason ?? null,
+            assignation: $request->assignation ?? null,
+            action: $request->action ?? null,
+            destination: $request->destination ?? null
+        );
+        $ticket = self::getTicket(ticket: $request->ticket);
+        $item = self::getItem(item: $request->item);
+        $serial = self::getSerial(
+            code: $request->serial_code ?? null,
+            designation: $request->serial_itds ?? null,
+            sku: $request->serial_itno ?? null,
+            brand: $request->serial_itcl ?? null,
+        );
+        $salesInformation = self::getSalesInformation(
+            date: $request->bike_sold_at ?? null,
+            order: $request->order ?? null,
+            invoice: $request->invoice ?? null,
+            delivery: $request->delivery ?? null,
+            purchase: $request->bike_purchased_at ?? null,
+        );
+        $comments = self::getComments(
+            info: $request->info ?? null,
+            note: $request->note ?? null
+        );
+        $sender = self::getSender(
+            prefix: 'routing_from_',
+            code: $request->routing_from_code ?? null,
+            address1: $request->routing_from_address1 ?? null,
+            address2: $request->routing_from_address2 ?? null,
+            postcode: $request->routing_from_postcode ?? null,
+            city: $request->routing_from_city ?? null,
+            phone: $request->routing_from_phone ?? null,
+            email: $request->routing_from_email ?? null,
+            info: $request->routing_from_info ?? null,
+        );
+        $recipient = self::getRecipient(
+            prefix: 'routing_to_',
+            code: $request->routing_to_code ?? null,
+            address1: $request->routing_to_address1 ?? null,
+            address2: $request->routing_to_address2 ?? null,
+            postcode: $request->routing_to_postcode ?? null,
+            city: $request->routing_to_city ?? null,
+            phone: $request->routing_to_phone ?? null,
+            email: $request->routing_to_email ?? null,
+            info: $request->routing_to_info ?? null,
+        );
+        $reshippedTo = self::getReturnedTo(
+            prefix: 'return_to_',
+            code: $request->return_to_code ?? null,
+            address1: $request->return_to_address1 ?? null,
+            address2: $request->return_to_address2 ?? null,
+            postcode: $request->return_to_postcode ?? null,
+            city: $request->return_to_city ?? null,
+            phone: $request->return_to_phone ?? null,
+            email: $request->return_to_email ?? null,
+            info: $request->return_to_info ?? null,
+        );
         $data = [
-            ...$qualificationData,
-            ...$ticketData,
-            ...$itemData,
-            ...$serialData,
-            ...$salesData,
-            ...$commentsData,
-            ...$senderData,
-            ...$recipientData,
-            ...$returnToData,
+            ...$qualification,
+            ...$ticket,
+            ...$item,
+            ...$serial,
+            ...$salesInformation,
+            ...$comments,
+            ...$sender,
+            ...$recipient,
+            ...$reshippedTo,
             'environment' => $request->environment ?? 'sandbox',
         ];
-
 
         try {
             $return = ProductReturn::create([
