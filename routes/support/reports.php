@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProductReportController;
+use App\Models\Estimate;
+use App\Models\ProductReport;
+use Illuminate\Http\Request;
 
 Route::group([
     'prefix' => 'support',
@@ -25,6 +28,17 @@ Route::group([
         Route::get('/{productReport}/download', \App\Http\Controllers\DownloadProductReportController::class)
             ->name('download');
 
+    });
+
+    Route::group(['prefix' => 'estimates', 'as' => 'estimates.'], function () {
+        Route::patch('/{estimate}', function (Request $request, $estimate) {
+            $estimate = Estimate::find($estimate);
+            $estimate->state = $request->state;
+            $estimate->workflow_duration = intval($estimate->created_at->diffInSeconds(now()));
+            $estimate->save();
+            $estimate->report->update(['status' => ProductReport::STATUS_IN_PROGRESS]);
+            return redirect()->back();
+        })->name('update');
     });
 
 });

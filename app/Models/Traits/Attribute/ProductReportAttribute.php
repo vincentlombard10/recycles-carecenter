@@ -13,6 +13,7 @@ trait ProductReportAttribute
             ProductReport::STATUS_PENDING => __('En attente'),
             ProductReport::STATUS_IN_PROGRESS => __('En cours'),
             ProductReport::STATUS_CLOSED => __('Terminé'),
+            ProductReport::STATUS_PAUSED => __('Devis en attente'),
             ProductReport::STATUS_CANCELLED => __('Annulé'),
             default => __('-'),
         };
@@ -25,6 +26,7 @@ trait ProductReportAttribute
             ProductReport::STATUS_PENDING => 'pending',
             ProductReport::STATUS_IN_PROGRESS => 'progress',
             ProductReport::STATUS_CLOSED => 'closed',
+            ProductReport::STATUS_PAUSED => 'pending',
             ProductReport::STATUS_CANCELLED => 'cancelled',
             default => __('-'),
         };

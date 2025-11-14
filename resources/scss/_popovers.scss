@@ -1,29 +1,34 @@
-[popover],
-[popover]::backdrop {
-    position: fixed;
-    inset: 0;
-    width: 24rem;
-    height: fit-content;
-    margin: auto;
+[popover] {
+    background-color: white;
     border-radius: 1rem;
     padding: 2rem;
+    border: 0px;
+    width: 32rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+[popover]::backdrop {
+    position: fixed;
+    margin: auto;
+    border-radius: 1rem;
+    padding: 8rem;
     overflow: auto;
     background-color: white;
     border: 0px solid oklch(55.4% 0.046 257.417);
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     transition:
         display 400ms,
         overlay 400ms, /* <= !important */
         opacity 400ms,
         translate 400ms;
-    transition-behavior: allow-discrete;
-    opacity: 0;
+    opacity: 0.5;
     backdrop-filter: blur(20px);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 ::backdrop {
-    //backdrop-filter: blur(16px);
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.5);
 }
 
 [popover]:popover-open {
@@ -34,10 +39,11 @@
 
 @starting-style {
     [popover]:popover-open {
-        translate: 0 -2rem;
-        opacity: 0;
+        translate: 0 -8rem;
+        opacity: 0.5;
     }
     [popover]:popover-open::backdrop {
-        opacity: 0;
+        opacity: 0.5;
+        pointer-events: none;
     }
 }

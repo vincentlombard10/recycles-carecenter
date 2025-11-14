@@ -9,6 +9,7 @@
                 <label for="status" class="form-label mb-1">Statut</label>
                 <select name="status" id="status" class="form-control">
                     <option value="in_progress">En cours</option>
+                    <option value="paused">En pause - devis en attente d'approbation</option>
                     <option value="closed">Terminé</option>
                 </select>
             </div>

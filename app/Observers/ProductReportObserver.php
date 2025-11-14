@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\Estimate;
 use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
@@ -22,6 +23,11 @@ class ProductReportObserver implements ShouldHandleEventsAfterCommit
                 case 'in_progress':
                     $productReport->status = 'in_progress';
                     $productReport->started_at = $productReport->started_at == null ? now() : $productReport->started_at;
+                    break;
+                case 'paused':
+                    $estimate = Estimate::create([
+                        'productreport_id' => $productReport->id
+                    ]);
                     break;
                 case 'closed':
                     $productReport->status = 'closed';

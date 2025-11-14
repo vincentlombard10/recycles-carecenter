@@ -4,7 +4,7 @@
     "src": "public/fonts/GolosText-VariableFont_wght.ttf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CA-UBHtn.js",
+    "file": "assets/app-B3OKoSn2.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -13,7 +13,7 @@
     ]
   },
   "resources/scss/app.scss": {
-    "file": "assets/app-BIEBVS6C.css",
+    "file": "assets/app-DbIFWi9C.css",
     "src": "resources/scss/app.scss",
     "isEntry": true
   },

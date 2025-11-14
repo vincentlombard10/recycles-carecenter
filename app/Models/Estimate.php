@@ -12,8 +12,27 @@ class Estimate extends Model
 
     protected $guarded = ['id'];
 
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_APPROVED = 'approved';
+    public const STATUS_REJECTED = 'rejected';
+
     public function report(): BelongsTo
     {
         return $this->belongsTo(ProductReport::class, 'productreport_id');
+    }
+
+    public function scopePending($query)
+    {
+        return $query->where('status', Estimate::STATUS_PENDING);
+    }
+
+    public function scopeApproved($query)
+    {
+        return $query->where('status', Estimate::STATUS_APPROVED);
+    }
+
+    public function scopeRejected($query)
+    {
+        return $query->where('status', Estimate::STATUS_REJECTED);
     }
 }
