@@ -63,6 +63,7 @@ return new class extends Migration {
             $table->timestamp('started_at')->nullable();
             $table->timestamp('closed_at')->nullable();
             $table->timestamp('cancelled_at')->nullable();
+            $table->integer('duration_time_in_seconds')->nullable();
         });
     }
 

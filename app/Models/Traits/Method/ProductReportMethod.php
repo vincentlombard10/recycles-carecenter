@@ -23,4 +23,9 @@ trait ProductReportMethod
     {
         return $this->status === self::STATUS_CANCELLED;
     }
+
+    public function isPaused(): bool
+    {
+        return $this->status === self::STATUS_PAUSED;
+    }
 }

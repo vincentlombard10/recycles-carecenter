@@ -50,9 +50,9 @@ return new class extends Migration {
             $table->string('return_to_address2')->nullable();
             $table->string('return_to_postcode')->nullable();
             $table->string('return_to_city')->nullable();
-            $table->string('routing_to_phone')->nullable();
-            $table->string('routing_to_email')->nullable();
-            $table->string('routing_to_info')->nullable();
+            $table->string('return_to_phone')->nullable();
+            $table->string('return_to_email')->nullable();
+            $table->string('return_to_info')->nullable();
             $table->foreignId('ticket_id')->nullable()->constrained();
             $table->string('zendesk_id')->nullable();
             $table->foreignId('serial_id')->nullable()->constrained();

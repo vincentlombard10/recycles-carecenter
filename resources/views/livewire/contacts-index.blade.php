@@ -1,7 +1,5 @@
 <div>
-    <div class="mb-3">
-        {{ $contacts->onEachSide(1)->links() }}
-    </div>
+    <x-pagination :items="$contacts" class="mb-3"/>
     <div class="mb-3">
         @foreach ($contacts as $contact)
             <div class="Card_Contact">
@@ -50,5 +48,5 @@
             </div>
         @endforeach
     </div>
-    {{ $contacts->onEachSide(1)->links() }}
+    <x-pagination :items="$contacts" />
 </div>

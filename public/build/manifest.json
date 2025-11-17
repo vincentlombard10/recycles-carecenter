@@ -1,0 +1,25 @@
+{
+  "public/fonts/GolosText-VariableFont_wght.ttf": {
+    "file": "assets/GolosText-VariableFont_wght-cldftjk2.ttf",
+    "src": "public/fonts/GolosText-VariableFont_wght.ttf"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-B4zbvN4x.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "assets/app-BTqHyKW0.css"
+    ]
+  },
+  "resources/scss/app.scss": {
+    "file": "assets/app-DyjM7Tpq.css",
+    "src": "resources/scss/app.scss",
+    "isEntry": true
+  },
+  "resources/scss/pdf.scss": {
+    "file": "assets/pdf-DjgGiGrS.css",
+    "src": "resources/scss/pdf.scss",
+    "isEntry": true
+  }
+}

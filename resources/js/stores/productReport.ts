@@ -98,7 +98,7 @@ export const useProductReportStore = defineStore('report', () => {
 
 
 
-    const replacementItems = ref<[any]>()
+    const replacementItems = ref<[any]>([])
 
     const addReplacementItem = (_item: any) => {
         replacementItems.value.push(_item)

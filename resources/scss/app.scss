@@ -4,12 +4,12 @@
 @import "popovers";
 
 $theme-colors: (
-    "primary":    $primary,
+    "primary":    oklch(54.1% 0.281 293.009),
     "secondary":  $secondary,
     "success":    $success,
     "info":       $info,
     "warning":    $warning,
-    "danger":     $danger,
+    "danger":     oklch(63.7% 0.237 25.331),
     "light":      $light,
     "dark":       $dark
 ) !default;
@@ -62,7 +62,6 @@ body {
     font-family: "Golos", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    background-color: oklch(92.7% 0.003 264.542);
     background-color: oklch(0.942 0.019 289.321);
     font-size: 14px;
     border: var(--rcf-body-border-width) solid black;
