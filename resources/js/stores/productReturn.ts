@@ -145,6 +145,8 @@ export const useProductReturnStore = defineStore('productReturn', () => {
     const itemsList = ref([])
     const itemSearchTerm = ref<string>('')
     const itemSearchMethod = ref<string>('auto')
+    const itemSku = ref<string>('')
+    const itemDesignation = ref<string>('')
     const setItemSearchMethod = (_method: string) => {
         itemSearchMethod.value = _method
     }
@@ -161,6 +163,8 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         const req = await fetch('/api/v1/items/?' + new URLSearchParams({q: _item}))
         const response = await req.json()
         item.value = response.data[0]
+        itemSku.value = item.value.itno
+        itemDesignation.value = item.value.itds
         console.log('Item', item.value)
     }
 
@@ -168,6 +172,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         item.value = null
         itemSearchTerm.value = ''
         itemsList.value = []
+        itemSearchMethod.value = 'auto'
+        itemSku.value = ''
+        itemDesignation.value = ''
     }
 
     const serial = ref()
@@ -516,6 +523,8 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         itemSearchTerm,
         setItemSearchMethod,
         itemSearchMethod,
+        itemSku,
+        itemDesignation,
         fetchItems,
         setItem,
         cancelItem,

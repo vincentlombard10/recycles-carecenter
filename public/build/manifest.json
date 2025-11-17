@@ -4,12 +4,12 @@
     "src": "public/fonts/GolosText-VariableFont_wght.ttf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-D9ZKYuxO.js",
+    "file": "assets/app-G_sQd6Ci.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-CXTpg9Lp.css"
+      "assets/app-Dco6Py5g.css"
     ]
   },
   "resources/scss/app.scss": {

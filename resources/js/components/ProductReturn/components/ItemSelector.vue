@@ -1,12 +1,30 @@
 <template>
-    <div class="row" v-if="store.item">
-        <div class="col-lg-12 mb-2">
-            <ItemCard :item="store.item" />
-            <input type="hidden" name="item" :value="store.item.itno">
+    <div class="row" v-if="store.item || store.itemSearchMethod === 'manual'">
+        <div class="col-lg-3 mb-2">
+            <label for="item_itno" class="form-label mb-1">Référence</label>
+            <input type="text"
+                   name="item_itno"
+                   class="form-control"
+                   v-model="store.itemSku"
+                   :readonly="store.itemSearchMethod === 'auto'"
+            />
+        </div>
+        <div class="col-lg-6 mb-2">
+            <label for="item_itds" class="form-label mb-1">Désignation</label>
+            <input type="text"
+                   name="item_itds"
+                   class="form-control"
+                   v-model="store.itemDesignation"
+                   :readonly="store.itemSearchMethod === 'auto'"
+            />
+        </div>
+        <div class="col-lg-3 mb-2">
+
         </div>
         <div class="col-lg-6">
             <button class="btn btn-sm btn-dark" @click.prevent="store.cancelItem()">
-                <i class="bi bi-arrow-clockwise"></i>Annuler</button>
+                <i class="bi bi-arrow-clockwise"></i>Annuler
+            </button>
         </div>
     </div>
     <div class="row" v-else>
@@ -26,7 +44,8 @@
             <div class="col-lg-3 mb-3">
                 <button class="btn btn-sm btn-dark"
                         @click.prevent="cancelSuggestions">
-                    <i class="bi bi-arrow-clockwise"></i>Supprimer la sélection</button>
+                    <i class="bi bi-arrow-clockwise"></i>Supprimer la sélection
+                </button>
             </div>
         </template>
         <template v-else>
@@ -40,7 +59,9 @@
             </div>
             <div class="col-lg-3 mb-3 d-grid align-bottom">
                 <label for="" class="form-label mb-1">&nbsp;</label>
-                <button @click.prevent="store.setItemSearchMethod('manual')" class="btn btn-primary">Renseigner manuellement</button>
+                <button @click.prevent="store.setItemSearchMethod('manual')" class="btn btn-primary">Renseigner
+                    manuellement
+                </button>
             </div>
         </template>
     </div>
@@ -78,9 +99,11 @@ const store = useProductReturnStore()
         }
     }
 }
+
 .Button_Simple {
     border: 0;
 }
+
 .Item_Selected {
     padding: 1rem 1.25rem;
     background-color: oklch(44.6% 0.043 257.281);
