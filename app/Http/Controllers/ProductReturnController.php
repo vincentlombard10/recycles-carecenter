@@ -347,7 +347,7 @@ class ProductReturnController extends Controller
         return [
             'item_id' => Item::where('itno', $itno)->first()->id ?? null,
             'item_itno' => $itno ?? null,
-            'iteM_itds' => $itds ?? null,
+            'item_itds' => $itds ?? null,
         ];
     }
 
