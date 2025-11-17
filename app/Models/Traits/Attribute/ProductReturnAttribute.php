@@ -41,6 +41,7 @@ trait ProductReturnAttribute
         return match($this->context) {
             'warranty', 'garantie' => __('Garantie'),
             'out-of-warranty', 'hors_garantie' => __('Hors garantie'),
+            'entretien' => __('Entretien'),
             default => __('-'),
         };
     }
