@@ -5,11 +5,11 @@
             <tbody>
             <tr>
                 <th style="width: 6rem;">Référence</th>
-                <td><span class="fw-semibold">{{ $item->item->itno }}</span></td>
+                <td><span class="fw-semibold">{{ $item->item_itno }}</span></td>
             </tr>
             <tr>
                 <th>Désignation</th>
-                <td><span class="">{{ $item->item->itds }}</span></td>
+                <td><span class="">{{ $item->item_itds }}</span></td>
             </tr>
             </tbody>
         </table>
