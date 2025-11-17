@@ -1,6 +1,6 @@
 <div>
     @if (count($items))
-        <div class="row gap-2 mb-3">
+        <div class="row mb-3">
             <div class="col-lg-3">
                 <select name="" id="" class="form-control">
                     <option value="">Tous</option>
@@ -17,7 +17,7 @@
                     <option value="">Reçu</option>
                 </select>
             </div>
-            <x-pagination :items="$items" class="col-lg-3"/>
+            <x-pagination :items="$items" class="col-lg-6"/>
 
         </div>
         <div class="mb-3">
