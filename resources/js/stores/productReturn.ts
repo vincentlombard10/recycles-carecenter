@@ -514,6 +514,8 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         item,
         itemsList,
         itemSearchTerm,
+        setItemSearchMethod,
+        itemSearchMethod,
         fetchItems,
         setItem,
         cancelItem,
