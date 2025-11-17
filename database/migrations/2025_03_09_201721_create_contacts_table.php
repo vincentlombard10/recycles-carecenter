@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('email')->nullable();
             $table->boolean('zendesk_support')->default(true);
             $table->json('duplicates')->nullable();
+            $table->boolean('support_enabled')->nullable()->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

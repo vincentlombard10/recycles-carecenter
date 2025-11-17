@@ -1,4 +1,5 @@
 <div>
+    <x-pagination :items="$items" class="mb-3"/>
     <table class="table">
         <thead>
         <tr>
@@ -31,5 +32,5 @@
         @endforeach
         </tbody>
     </table>
-    {{ $items->onEachSide(1)->links() }}
+    <x-pagination :items="$items" />
 </div>

@@ -1,7 +1,24 @@
 <div>
     @if (count($items))
-        <div class="mb-3">
-            {{ $items->onEachSide(1)->links() }}
+        <div class="row gap-2 mb-3">
+            <div class="col-lg-3">
+                <select name="" id="" class="form-control">
+                    <option value="">Tous</option>
+                    <option value="">Incomplet</option>
+                    <option value="">En attente</option>
+                    <option value="">Reçu</option>
+                </select>
+            </div>
+            <div class="col-lg-3">
+                <select name="" id="" class="form-control">
+                    <option value="">Tous</option>
+                    <option value="">Réels</option>
+                    <option value="">Fictif</option>
+                    <option value="">Reçu</option>
+                </select>
+            </div>
+            <x-pagination :items="$items" class="col-lg-3"/>
+
         </div>
         <div class="mb-3">
             @foreach($items as $item)
@@ -114,9 +131,7 @@
                 </div>
             @endforeach
         </div>
-        <div>
-            {{ $items->onEachSide(1)->links() }}
-        </div>
+        <x-pagination :items="$items" />
     @else
         <div>Il ne se passe pas grand chose ici.</div>
     @endif

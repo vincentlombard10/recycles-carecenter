@@ -1,5 +1,5 @@
 <div>
-    <div class="mb-3">{{ $tickets->links() }}</div>
+    <x-pagination :items="$tickets" class="mb-3"/>
     <div class="mb-3">
         @foreach($tickets as $ticket)
             <div class="rcf-card Card_Ticket Card_Ticket__{{ $ticket->status }}">
@@ -48,5 +48,5 @@
             </div>
         @endforeach
     </div>
-    <div>{{ $tickets->links() }}</div>
+    <x-pagination :items="$tickets" />
 </div>

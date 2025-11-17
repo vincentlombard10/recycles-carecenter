@@ -24,7 +24,8 @@ export const useProductReturnStore = defineStore('productReturn', () => {
 
     const contextsOptions = [
         {identifier: "garantie", label: "Garantie"},
-        {identifier: "hors_garantie", label: "Hors garantie"}
+        {identifier: "hors_garantie", label: "Hors garantie"},
+        {identifier: "entretien", label: "Entretien"}
     ]
 
     const setContext = (_value: string) => {
