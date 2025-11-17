@@ -1,6 +1,6 @@
 <template>
     <section class="Section">
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-lg-6" v-if="store.status !== 'received'">
                 <label for="status" class="form-label mb-1">Statut</label>
                 <select name="status" id="status" class="form-control" v-model="store.status">
@@ -23,4 +23,6 @@ import {useProductReturnStore} from "../../../stores/productReturn";
 import VAlert from "../../form/VAlert.vue";
 
 const store = useProductReturnStore()
+
+
 </script>

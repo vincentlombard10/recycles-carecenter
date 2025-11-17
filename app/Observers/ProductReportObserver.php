@@ -26,6 +26,7 @@ class ProductReportObserver implements ShouldHandleEventsAfterCommit
                     break;
                 case 'paused':
                     $estimate = Estimate::create([
+                        'file' => request()->file('estimate')->getClientOriginalName(),
                         'productreport_id' => $productReport->id
                     ]);
                     break;

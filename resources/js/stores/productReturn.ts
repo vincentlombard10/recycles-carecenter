@@ -5,6 +5,10 @@ export const useProductReturnStore = defineStore('productReturn', () => {
 
     const generalMinSearchLength = ref<number>(3)
     const status = ref<string>('')
+
+    const setStatus = (_status) => {
+        status.value = _status
+    }
     /* Section 1 - Qualification */
     const type = ref<string>('')
 
@@ -608,7 +612,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         salesInfoSectionCompleted,
         commentsSectionCompleted,
         routingSectionCompleted,
-        productReturnIsCompleted
+        productReturnIsCompleted,
+
+        setStatus
     }
 
 

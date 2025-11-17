@@ -14,7 +14,7 @@
     </x-page-header>
     <x-page-wrapper>
         <div class="container-fluid p-3">
-            {{ html()->form('PATCH', route('support.reports.update', $report))->open() }}
+            {{ html()->form('PATCH', route('support.reports.update', $report))->acceptsFiles()->open() }}
             <div id="product-report-form" data-report="{{ $report->identifier }}"></div>
             <input type="submit" class="btn btn-lg btn-primary" value="Enregistrer">
             {{ html()->form()->close() }}

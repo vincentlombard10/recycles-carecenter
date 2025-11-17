@@ -47,7 +47,9 @@
                             .</small></div>
                 @endif
                 <div>
-                    <div><small>{{ $report->estimates->count() }} devis</small></div>
+                    @foreach($report->estimates as $estimate)
+                        <li>{{ $estimate->file }} - {{ $estimate->state }}</li>
+                    @endforeach
                 </div>
             </div>
         </div>
