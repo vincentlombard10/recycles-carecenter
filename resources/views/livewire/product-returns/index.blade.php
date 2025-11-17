@@ -2,7 +2,7 @@
     @if (count($items))
         <div class="row mb-3">
             <div class="col-lg-3">
-                <select name="" id="" class="form-control">
+                <select name="" id="" class="form-control" disabled>
                     <option value="">Tous</option>
                     <option value="">Incomplet</option>
                     <option value="">En attente</option>
@@ -10,7 +10,7 @@
                 </select>
             </div>
             <div class="col-lg-3">
-                <select name="" id="" class="form-control">
+                <select name="" id="" class="form-control" disabled>
                     <option value="">Tous</option>
                     <option value="">Réels</option>
                     <option value="">Fictif</option>
