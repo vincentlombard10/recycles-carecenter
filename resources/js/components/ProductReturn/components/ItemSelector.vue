@@ -38,6 +38,10 @@
                 <label for="" class="form-label mb-1">&nbsp;</label>
                 <button class="btn btn-dark" @click.prevent="store.fetchItems">Chercher</button>
             </div>
+            <div class="col-lg-3 mb-3 d-grid align-bottom">
+                <label for="" class="form-label mb-1">&nbsp;</label>
+                <button @click.prevent="store.setItemSearchMethod('manual')" class="btn btn-primary">Renseigner manuellement</button>
+            </div>
         </template>
     </div>
 </template>

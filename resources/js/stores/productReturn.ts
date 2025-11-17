@@ -49,6 +49,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         {identifier: "velo_salon", label: "Vélo salon"},
         {identifier: "geste_commercial", label: "Geste commercial"},
         {identifier: "casse", label: "Casse"},
+        {identifier: "composantest", label: "Composant test"},
     ]
 
     /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
@@ -76,6 +77,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         {identifier: 'expertise_credit', label: 'Expertise avec crédit'},
         {identifier: 'expertise_devis', label: 'Expertise avec devis'},
         {identifier: 'expertise_seule', label: 'Expertise seule'},
+        {identifier: 'controle_restock', label: 'Contrôle avant remise en stock'},
     ]
 
     const setAction = (_value: string) => {
@@ -92,6 +94,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         {identifier: 'reconditionnement', label: 'Reconditionnement'},
         {identifier: 'seconde_vie', label: 'Seconde vie'},
         {identifier: 'recyclage', label: 'Recyclage'},
+        {identifier: 'retour_stock', label: 'Retour stock'},
     ]
 
     const setDestination = (_value: string) => {
@@ -141,6 +144,10 @@ export const useProductReturnStore = defineStore('productReturn', () => {
     const item = ref()
     const itemsList = ref([])
     const itemSearchTerm = ref<string>('')
+    const itemSearchMethod = ref<string>('auto')
+    const setItemSearchMethod = (_method: string) => {
+        itemSearchMethod.value = _method
+    }
 
 
     const fetchItems = async () => {
