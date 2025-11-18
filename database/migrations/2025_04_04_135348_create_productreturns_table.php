@@ -41,7 +41,7 @@ return new class extends Migration {
             $table->string('routing_to_postcode')->nullable();
             $table->string('routing_to_city')->nullable();
             $table->string('routing_to_phone')->nullable();
-            $table->string('routing_to_email')->nullable()
+            $table->string('routing_to_email')->nullable();
             $table->string('routing_to_info')->nullable();
             $table->foreignId('return_to_id')->nullable()->references('id')->on('contacts');
             $table->string('return_to_code')->nullable();

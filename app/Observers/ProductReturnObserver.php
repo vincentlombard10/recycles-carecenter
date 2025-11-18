@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Helpers\AlphacodeHelper;
+use App\Jobs\CreateProductReturnReceivedCommentJob;
 use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
@@ -39,6 +40,26 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
         ) {
             $productReturn->validated_at = now();
             $productReturn->validator_id = auth()->user()->id;
+        }
+
+        if  (
+            $productReturn->isDirty('status') &&
+            $productReturn->isReceived() &&
+            $productReturn->received_at === null
+        ){
+            Log::debug('ProductReturn updated status', ['productReturn' => $productReturn]);
+
+            if ($productReturn->ticket->contact) {
+                CreateProductReturnReceivedCommentJob::dispatch($productReturn);
+            } else {
+                Log::debug('ProductReturn updated ticket contact', ['productReturn' => $productReturn]);
+            }
+            /*
+             * TODO: créer un commentaire Zendesk Support au ticket associé
+             * + changement du statut du ticket à OUVERT (open)
+             * + changement du statut du retour à Réception (reception)
+             */
+
         }
     }
 
