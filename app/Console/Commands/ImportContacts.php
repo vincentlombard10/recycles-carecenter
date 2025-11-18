@@ -17,7 +17,8 @@ class ImportContacts extends Command
      *
      * @var string
      */
-    protected $signature = 'contacts:import {--file=}';
+    protected $signature = 'contacts:import
+        {date : date du fichier à récupérer}';
 
     /**
      * The console command description.
@@ -38,20 +39,7 @@ class ImportContacts extends Command
         $file_prefix = 'CL_';
         $localFilename = 'CONTACTS.csv';
 
-        if ($this->option('file')) {
-
-            $date = $this->option('file');
-
-        } else {
-
-            $date = $this->ask('Date du fichier à importe : (format = AAMMJJ)');
-
-            if ($date == 'C' || $date == 'c') {
-                $this->line("Opération annulée");
-                return 1;
-            }
-
-        }
+        $date = $this->argument('date') ?? date('ymd');
 
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
 

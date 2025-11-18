@@ -17,7 +17,8 @@ class ImportItems extends Command
      *
      * @var string
      */
-    protected $signature = 'items:import {--file=?}';
+    protected $signature = 'items:import
+        {date : Date du fichier à récupérer}';
 
     /**
      * The console command description.
@@ -38,20 +39,7 @@ class ImportItems extends Command
         $file_prefix = 'IT_';
         $localFilename = 'ITEMS.csv';
 
-        if ($this->option('file')) {
-
-            $date = $this->option('file');
-
-        } else {
-
-            $date = $this->ask('Date du fichier à importe : (format = AAMMJJ)');
-
-            if ($date == 'C' || $date == 'c') {
-                $this->line("Opération annulée");
-                return 1;
-            }
-
-        }
+        $date = $this->argument('date') ?? date('ymd');
 
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
 
