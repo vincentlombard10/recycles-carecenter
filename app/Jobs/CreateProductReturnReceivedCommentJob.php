@@ -39,6 +39,7 @@ class CreateProductReturnReceivedCommentJob implements ShouldQueue
         $html_body.= "<p>Notre équipe va maintenant procéder à l’examen de votre envoi et vous tiendra informé(e) des prochaines étapes dès que possible.</p>";
         $html_body.= "<p>Si vous avez des questions supplémentaires ou des informations à ajouter concernant votre dossier, n’hésitez pas à répondre à ce message.</p>";
         $html_body.= "<p>Nous vous remercions pour votre confiance.</p>";
+        $html_body.= "<p>Le Service après-vente & Garantie</p>";
 
         $client = new ZendeskAPI($this->subdomain);
         $client->setAuth(config('zendesk.auth_strategy'), ['username' => $this->username, 'token' => $this->token]);

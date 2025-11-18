@@ -50,7 +50,7 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
         ){
             Log::debug('On automatise le message de réception', ['productReturn' => $productReturn]);
 
-            if ($productReturn->ticket->contact) {
+            if ($productReturn->ticket && $productReturn->ticket->contact) {
                 CreateProductReturnReceivedCommentJob::dispatch($productReturn);
             } else {
                 Log::debug('Pas de fiche contact associée ...', ['productReturn' => $productReturn]);
