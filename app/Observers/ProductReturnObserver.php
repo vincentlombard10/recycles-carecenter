@@ -47,21 +47,14 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
         if  (
             $productReturn->isDirty('status') &&
             $productReturn->isReceived() &&
-            $productReturn->received_at === null
         ){
-            Log::debug('ProductReturn updated status', ['productReturn' => $productReturn]);
+            Log::debug('On automatise le message de réception', ['productReturn' => $productReturn]);
 
             if ($productReturn->ticket->contact) {
                 CreateProductReturnReceivedCommentJob::dispatch($productReturn);
             } else {
-                Log::debug('ProductReturn updated ticket contact', ['productReturn' => $productReturn]);
+                Log::debug('Pas de fiche contact associée ...', ['productReturn' => $productReturn]);
             }
-            /*
-             * TODO: créer un commentaire Zendesk Support au ticket associé
-             * + changement du statut du ticket à OUVERT (open)
-             * + changement du statut du retour à Réception (reception)
-             */
-
         }
     }
 
