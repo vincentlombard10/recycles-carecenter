@@ -39,9 +39,9 @@ class DashboardController extends Controller
         $full_resolution_avg_time = Ticket::where('created_at', '>', now()->startOfYear())->avg('tickets.full_resolution_time_in_minutes_within_business_hours');
 
         # Retours produits
-        $product_returns_count = ProductReturn::count();
-        $product_returns_pending_count = ProductReturn::pending()->count();
-        $product_returns_received_count = ProductReturn::received()->count();
+        $product_returns_count = ProductReturn::inProduction()->count();
+        $product_returns_pending_count = ProductReturn::inProduction()->pending()->count();
+        $product_returns_received_count = ProductReturn::inProduction()->received()->count();
 
         $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
         $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')->count();
