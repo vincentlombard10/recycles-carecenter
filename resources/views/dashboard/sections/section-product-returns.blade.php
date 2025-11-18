@@ -15,4 +15,9 @@
             title="reçus"
             :count="$product_returns_received_count" />
     </div>
+    <div class="col-3 mb-3">
+        <x-dashboard.counter
+            title="Sandbox"
+            :count="$product_returns_sandboxed_count" />
+    </div>
 </section>
