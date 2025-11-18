@@ -7,6 +7,19 @@
     border-radius: 0.5rem;
     position: relative;
     overflow: hidden;
+    &.Pending {
+        background-color: oklch(90.1% 0.076 70.697);
+    }
+    &.Received {
+        background-color: oklch(92.5% 0.084 155.995);
+    }
+    &.Sandbox {
+        background-color: oklch(94.5% 0.129 101.54);
+    }
+    &.Violet {
+        background-color: oklch(89.4% 0.057 293.283);
+        color: white !important;
+    }
     &--zd {
         .display {
             color: inherit;
