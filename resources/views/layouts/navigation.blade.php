@@ -83,7 +83,7 @@
                 </li>
             @endcanany
         </ul>
-        @hasanyrole('superadmin')
+        @hasanyrole('admin|superadmin')
         <ul class="sidebar-menu">
             <li class="sidebar-item">
                 <a href="{{ route('admin.users.index') }}"
@@ -99,9 +99,17 @@
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('log-viewer.index') }}"
+                   target="_blank"
                    class="sidebar-link {{ Route::is('log-viewer.*') ? 'active': '' }}"><i
                         class="bi bi-journal-text"></i><span
                         class="sidebar-link__label">Visualiseur de logs</span></a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{{ route('vantage.dashboard') }}"
+                   target="_blank"
+                   class="sidebar-link {{ Route::is('vantage.*') ? 'active': '' }}"><i
+                        class="bi bi-journal-text"></i><span
+                        class="sidebar-link__label">Vantage</span></a>
             </li>
         </ul>
         @endhasanyrole
