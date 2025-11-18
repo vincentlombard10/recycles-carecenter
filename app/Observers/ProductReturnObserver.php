@@ -46,7 +46,7 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
 
         if  (
             $productReturn->isDirty('status') &&
-            $productReturn->isReceived() &&
+            $productReturn->isReceived()
         ){
             Log::debug('On automatise le message de réception', ['productReturn' => $productReturn]);
 
