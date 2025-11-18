@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->string('delivery')->nullable();
             $table->string('info')->nullable();
             $table->string('note')->nullable();
-            $table->foreignId('routing_from_id')->references('id')->on('contacts');
+            $table->foreignId('routing_from_id')->nullable()->references('id')->on('contacts');
             $table->string('routing_from_code')->nullable();
             $table->string('routing_from_name')->nullable();
             $table->string('routing_from_address1')->nullable();
@@ -33,7 +33,7 @@ return new class extends Migration {
             $table->string('routing_from_phone')->nullable();
             $table->string('routing_from_email')->nullable();
             $table->string('routing_from_info')->nullable();
-            $table->foreignId('routing_to_id')->references('id')->on('contacts');
+            $table->foreignId('routing_to_id')->nullable()->references('id')->on('contacts');
             $table->string('routing_to_code')->nullable();
             $table->string('routing_to_name')->nullable();
             $table->string('routing_to_address1')->nullable();
@@ -43,7 +43,7 @@ return new class extends Migration {
             $table->string('routing_to_phone')->nullable();
             $table->string('routing_to_email')->nullable();
             $table->string('routing_to_info')->nullable();
-            $table->foreignId('return_to_id')->references('id')->on('contacts');
+            $table->foreignId('return_to_id')->nullable()->references('id')->on('contacts');
             $table->string('return_to_code')->nullable();
             $table->string('return_to_name')->nullable();
             $table->string('return_to_address1')->nullable();
@@ -70,6 +70,7 @@ return new class extends Migration {
             $table->timestamps();
             $table->timestamp('validatedx_at')->nullable();
             $table->timestamp('received_at')->nullable();
+            $table->timestamp('validated_at')->nullable();
             $table->enum('environment', ['production', 'sandbox'])->default('production');
             $table->softDeletes();
             $table->integer('duration_time_in_seconds')->nullable();

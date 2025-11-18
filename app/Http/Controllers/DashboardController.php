@@ -39,13 +39,29 @@ class DashboardController extends Controller
         $full_resolution_avg_time = Ticket::where('created_at', '>', now()->startOfYear())->avg('tickets.full_resolution_time_in_minutes_within_business_hours');
 
         # Retours produits
-        $product_returns_count = ProductReturn::count();
-        $product_returns_pending_count = ProductReturn::pending()->count();
-        $product_returns_received_count = ProductReturn::received()->count();
+        $product_returns_count = ProductReturn::inProduction()->count();
+        $product_returns_pending_count = ProductReturn::where('status', ProductReturn::STATUS_PENDING)
+            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->count();
+        $product_returns_received_count = ProductReturn::where('status', ProductReturn::STATUS_RECEIVED)
+            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->count();
 
-        $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
-        $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')->count();
-        $product_reports_closed_count = ProductReport::where('status', 'closed')->count();
+        $product_reports_pending_count = ProductReport::where('status', 'pending')
+            ->whereHas('return', function ($query) {
+                $query->where('environment', ProductReturn::ENV_PRODUCTION);
+            })
+            ->count();
+        $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')
+            ->whereHas('return', function ($query) {
+                $query->where('environment', ProductReturn::ENV_PRODUCTION);
+            })
+            ->count();
+        $product_reports_closed_count = ProductReport::where('status', 'closed')
+            ->whereHas('return', function ($query) {
+                $query->where('environment', ProductReturn::ENV_PRODUCTION);
+            })
+            ->count();
         $product_reports_duration_time = ProductReport::where('status', 'closed')->avg('duration_time_in_seconds');
 
         return view('dashboard')

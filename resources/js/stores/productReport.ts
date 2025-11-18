@@ -4,6 +4,7 @@ import {Obj} from "@popperjs/core";
 
 export const useProductReportStore = defineStore('report', () => {
 
+    const status = ref<string>('')
     const type = ref<string>()
     const batteryKey = ref()
     const lockKey = ref()
@@ -21,6 +22,10 @@ export const useProductReportStore = defineStore('report', () => {
     const description = ref<string>('')
     const defect = ref<string>('')
     const tests = ref<string>('')
+
+    const setStatus = (_status) => {
+        status.value = _status
+    }
 
     const setBatteryKey = (_battery: string) => {
         batteryKey.value = _battery
@@ -276,5 +281,8 @@ export const useProductReportStore = defineStore('report', () => {
         batterySectionCompleted,
         diagnosticSectionCompleted,
         reportCompleted,
+
+        status,
+        setStatus
     }
 })

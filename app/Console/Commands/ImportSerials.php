@@ -17,7 +17,8 @@ class ImportSerials extends Command
      *
      * @var string
      */
-    protected $signature = 'serials:import {--file=?}';
+    protected $signature = 'serials:import
+        {date : Date du fichier à récupérer}';
     /**
      * The console command description.
      *
@@ -37,20 +38,7 @@ class ImportSerials extends Command
         $file_prefix = 'SN_';
         $localFilename = 'SERIALS.csv';
 
-        if ($this->option('file')) {
-
-            $date = $this->option('file');
-
-        } else {
-
-            $date = $this->ask('Date du fichier à importe : (format = AAMMJJ)');
-
-            if ($date == 'C' || $date == 'c') {
-                $this->line("Opération annulée");
-                return 1;
-            }
-
-        }
+        $date = $this->argument('date') ?? now()->format('ymd');
 
         $filename = sprintf('%s%s%s.CSV', $path, $file_prefix, $date);
 

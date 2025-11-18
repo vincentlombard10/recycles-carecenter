@@ -27,4 +27,14 @@ trait ProductReturnScope
         return $this->where('status', ProductReturn::STATUS_CANCELLED);
     }
 
+    public function scopeInProduction(): Builder
+    {
+        return $this->where('environment', ProductReturn::ENV_PRODUCTION);
+    }
+
+    public function scopeSandboxed(): Builder
+    {
+        return $this->where('environment', ProductReturn::ENV_SANDBOX);
+    }
+
 }

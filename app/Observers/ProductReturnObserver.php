@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Helpers\AlphacodeHelper;
+use App\Jobs\CreateProductReturnReceivedCommentJob;
 use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
@@ -33,12 +34,27 @@ class ProductReturnObserver implements ShouldHandleEventsAfterCommit
 
     public function updating(ProductReturn $productReturn)
     {
+        Log::debug('ProductReturn updating', ['productReturn' => $productReturn]);
+
         if ($productReturn->isDirty('status')
             && $productReturn->isPending()
             && $productReturn->validated_at === null
         ) {
             $productReturn->validated_at = now();
             $productReturn->validator_id = auth()->user()->id;
+        }
+
+        if  (
+            $productReturn->isDirty('status') &&
+            $productReturn->isReceived()
+        ){
+            Log::debug('On automatise le message de réception', ['productReturn' => $productReturn]);
+
+            if ($productReturn->ticket && $productReturn->ticket->contact) {
+                CreateProductReturnReceivedCommentJob::dispatch($productReturn);
+            } else {
+                Log::debug('Pas de fiche contact associée ...', ['productReturn' => $productReturn]);
+            }
         }
     }
 
