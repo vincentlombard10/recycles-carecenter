@@ -22,7 +22,7 @@ class ProductReportObserver implements ShouldHandleEventsAfterCommit
                     $productReport->status = 'pending';
                     break;
                 case 'in_progress':
-                    Log::info('Démarrage de l\'expertise', ['report' => $productReport]));
+                    Log::info('Démarrage de l\'expertise', ['report' => $productReport]);
                     $productReport->status = 'in_progress';
                     $productReport->started_at = $productReport->started_at == null ? now() : $productReport->started_at;
                     CreateReportInProgressCommentJob::dispatch($productReport);
