@@ -40,8 +40,8 @@ class DashboardController extends Controller
 
         # Retours produits
         $product_returns_count = ProductReturn::inProduction()->count();
-        $product_returns_pending_count = ProductReturn::inProduction()->pending()->count();
-        $product_returns_received_count = ProductReturn::inProduction()->received()->count();
+        $product_returns_pending_count = ProductReturn::pending()->inProduction()->count();
+        $product_returns_received_count = ProductReturn::received()->inProduction()->count();
 
         $product_reports_pending_count = ProductReport::where('status', 'pending')->count();
         $product_reports_in_progress_count = ProductReport::where('status', 'in_progress')->count();
