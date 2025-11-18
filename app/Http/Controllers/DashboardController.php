@@ -46,6 +46,7 @@ class DashboardController extends Controller
         $product_returns_received_count = ProductReturn::where('status', ProductReturn::STATUS_RECEIVED)
             ->where('environment', ProductReturn::ENV_PRODUCTION)
             ->count();
+        $product_returns_sandboxed_count = ProductReturn::where('environment', ProductReturn::ENV_SANDBOX)->count();
 
         $product_reports_pending_count = ProductReport::where('status', 'pending')
             ->whereHas('return', function ($query) {
@@ -68,6 +69,7 @@ class DashboardController extends Controller
             ->with('product_returns_count', $product_returns_count)
             ->with('product_returns_pending_count', $product_returns_pending_count)
             ->with('product_returns_received_count', $product_returns_received_count)
+            ->with('product_returns_sandboxed_count', $product_returns_sandboxed_count)
             ->with('contacts_count', $contacts_count)
             ->with('contacts_with_support_enabled_count', $contacts_with_support_enabled_count)
             ->with('contacts_with_support_disabled', $contacts_with_support_disabled)
