@@ -1,25 +1,24 @@
 <div>
-    @if (count($items))
-        <div class="row mb-3">
-            <div class="col-lg-3">
-                <select name="" id="" class="form-control" disabled>
-                    <option value="">Tous</option>
-                    <option value="">Incomplet</option>
-                    <option value="">En attente</option>
-                    <option value="">Reçu</option>
-                </select>
-            </div>
-            <div class="col-lg-3">
-                <select name="" id="" class="form-control" disabled>
-                    <option value="">Tous</option>
-                    <option value="">Réels</option>
-                    <option value="">Fictif</option>
-                    <option value="">Reçu</option>
-                </select>
-            </div>
-            <x-pagination :items="$items" class="col-lg-6"/>
-
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <select name="status" id="status" class="form-control" wire:model.live="status">
+                <option value="">Tous</option>
+                <option value="incomplete">Incomplet</option>
+                <option value="pending">En attente</option>
+                <option value="received">Reçu</option>
+            </select>
         </div>
+        <div class="col-lg-3">
+            <select name="environment" id="environment" class="form-control" wire:model.live="environment">
+                <option value="">Tous</option>
+                <option value="production">Réels</option>
+                <option value="sandbox">Fictif</option>
+            </select>
+        </div>
+        <x-pagination :items="$items" class="col-lg-6"/>
+
+    </div>
+@if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
                 <div class="Card_Support Card_Support--{{ $item->status }}">
