@@ -17,10 +17,10 @@ class ProductReportController extends Controller
 {
     public function index()
     {
-        $closed_reports = ProductReport::where('status', '=', 'closed')->get();
+        $closed_reports = ProductReport::closed()->get();
         foreach($closed_reports as $report){
             dd($report);
-            $report->where('status', 'closed')->update(['duration_time_in_seconds' => $report->started_at->diffInSeconds($report->closed_at)]);
+            //$report->where('status', 'closed')->update(['duration_time_in_seconds' => $report->started_at->diffInSeconds($report->closed_at)]);
         }
 
         if(!Auth::check() && !Auth::user()->can('reports.read')) {
