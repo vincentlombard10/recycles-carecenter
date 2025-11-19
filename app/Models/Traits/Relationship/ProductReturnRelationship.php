@@ -52,11 +52,11 @@ trait ProductReturnRelationship
 
     public function from(): BelongsTo
     {
-        return $this->belongsTo(Contact::class, 'from_id');
+        return $this->belongsTo(Contact::class, 'routing_from_id');
     }
 
     public function to(): BelongsTo
     {
-        return $this->belongsTo(Contact::class, 'to_id');
+        return $this->belongsTo(Contact::class, 'routing_to_id');
     }
 }
