@@ -98,7 +98,7 @@
             width: 25%;
         }
         .page-break {
-            break-after: always;
+            break-after: page;
         }
     </style>
 </head>
