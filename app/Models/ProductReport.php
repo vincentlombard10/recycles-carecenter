@@ -27,7 +27,9 @@ class ProductReport extends Model
     protected function casts()
     {
         return [
-            'battery_look_states' => 'array'
+            'battery_look_states' => 'array',
+            'started_at' => 'datetime',
+            'closed_at' => 'datetime',
         ];
     }
     public const STATUS_INIT = 'init';

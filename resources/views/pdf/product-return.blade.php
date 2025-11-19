@@ -191,12 +191,12 @@
                 </td>
                 <td class="w-third">
                     <h3>Informations de vente</h3>
-                    <ul>
-                        <li>Date de vente : {{ $productReturn->bike_sold_at }}</li>
-                        <li>Commande : {{ $productReturn->order }}</li>
-                        <li>Facture : {{ $productReturn->invoice }}</li>
-                        <li>Bon de livraison : {{ $productReturn->delivery }}</li>
-                    </ul>
+                    <div>Date de vente distributeur : {{ $productReturn->bike_sold_at ?? '-' }}</div>
+                    <div>Date de vente consommateur : {{ $productReturn->purchased_at ?? '-' }}</div>
+                    <div>Commande : {{ $productReturn->order ?? '-' }}</div>
+                    <div>Facture : {{ $productReturn->invoice ?? '-' }}</div>
+                    <div>Bon de livraison : {{ $productReturn->delivery ?? '-' }}</div>
+                    <div>Code client : {{ $productReturn->ticket?->contact?->code }}</div>
                 </td>
             </tr>
         </table>

@@ -63,7 +63,11 @@ class DashboardController extends Controller
                 $query->where('environment', ProductReturn::ENV_PRODUCTION);
             })
             ->count();
-        $product_reports_duration_time = ProductReport::where('status', 'closed')->avg('duration_time_in_seconds');
+        $product_reports_duration_time = ProductReport::where('status', 'closed')
+            ->whereHas('return', function ($query) {
+                $query->where('environment', ProductReturn::ENV_PRODUCTION);
+            })
+            ->avg('duration_time_in_seconds');
 
         return view('dashboard')
             ->with('product_returns_count', $product_returns_count)
