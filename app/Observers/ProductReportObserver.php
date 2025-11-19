@@ -36,7 +36,7 @@ class ProductReportObserver implements ShouldHandleEventsAfterCommit
                 case 'closed':
                     $productReport->status = 'closed';
                     $productReport->closed_at = $productReport->closed_at == null ? now() : $productReport->closed_at;
-                    $productReport->duration_time_in_seconds = $productReport->created_at->diffInSeconds(now());
+                    $productReport->duration_time_in_seconds = $productReport->started_at->diffInSeconds(now());
                     break;
                 default:
             }

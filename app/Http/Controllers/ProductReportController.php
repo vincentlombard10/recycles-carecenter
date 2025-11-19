@@ -19,7 +19,7 @@ class ProductReportController extends Controller
     {
         $closed_reports = ProductReport::where('status', '=', 'closed')->get();
         foreach($closed_reports as $report){
-            $report->update(['duration_time_in_seconds' => $report->created_at->diffInSeconds($report->closed_at)]);
+            $report->update(['duration_time_in_seconds' => $report->started->diffInSeconds($report->closed_at)]);
         }
 
         if(!Auth::check() && !Auth::user()->can('reports.read')) {
