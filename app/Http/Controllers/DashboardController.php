@@ -64,7 +64,9 @@ class DashboardController extends Controller
             })
             ->count();
         $product_reports_duration_time = ProductReport::where('status', 'closed')
-            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->whereHas('report', function ($query) {
+                $query->where('environment', ProductReturn::ENV_PRODUCTION);
+            })
             ->avg('duration_time_in_seconds');
 
         dd($product_reports_duration_time);
