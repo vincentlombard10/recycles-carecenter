@@ -27,6 +27,7 @@ class ProductReportController extends Controller
         $closed_reports = ProductReport::closed()->get();
         foreach($closed_reports as $report){
             $report->duration_time_in_seconds = $report->started_at->diffInSeconds($report->closed_at);
+            $report->duration_time_in_minutes = round($report->started_at->diffInMinutes($report->closed_at)/60);
             $report->save();
         }
 
