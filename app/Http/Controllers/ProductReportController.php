@@ -337,7 +337,7 @@ class ProductReportController extends Controller
         ];
     }
 
-    private function diffInBusinessHours($start, $end, int $startHour = 9, int $endHour = 17)
+    private function diffInBusinessMinutes($start, $end, int $startHour = 9, int $endHour = 17)
     {
         $start = \Carbon\Carbon::parse($start);
         $end = \Carbon\Carbon::parse($end);
