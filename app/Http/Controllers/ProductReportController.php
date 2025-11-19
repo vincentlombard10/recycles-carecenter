@@ -17,7 +17,7 @@ class ProductReportController extends Controller
 {
     public function index()
     {
-        $closed_reports = ProductReport::where('status', '=', 'closed');
+        $closed_reports = ProductReport::where('status', '=', 'closed')->get();
         foreach($closed_reports as $report){
             $report->update(['duration_time_in_seconds' => $report->created_at->diffInSeconds($report->closed_at)]);
         }
