@@ -69,8 +69,6 @@ class DashboardController extends Controller
             })
             ->avg('duration_time_in_seconds');
 
-        dd($product_reports_duration_time);
-
         return view('dashboard')
             ->with('product_returns_count', $product_returns_count)
             ->with('product_returns_pending_count', $product_returns_pending_count)
