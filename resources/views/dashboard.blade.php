@@ -17,7 +17,7 @@
             @include('dashboard.sections.section-contacts')
             <div>
                 @foreach($top_components as $item)
-                    <div>{{ $item }}</div>
+                    <div><span>{{ $item->itno }} </span>{{ $item->itds }} | {{ $item->total }}</div>
                 @endforeach
             </div>
 {{--            <div class="row mb-3">
