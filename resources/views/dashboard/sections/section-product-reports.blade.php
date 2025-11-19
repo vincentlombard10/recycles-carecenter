@@ -13,7 +13,7 @@
     <div class="col-3 mb-3">
         <x-dashboard.counter
             title="traitement moyen"
-            suffix="min"
-            :count="$product_reports_duration_time > 0 ? round($product_reports_duration_time/60) : null" />
+            suffix=" min"
+            :count="$product_reports_duration_time ?? null" />
     </div>
 </section>

@@ -67,7 +67,7 @@ class DashboardController extends Controller
             ->whereHas('return', function ($query) {
                 $query->where('environment', ProductReturn::ENV_PRODUCTION);
             })
-            ->avg('duration_time_in_seconds');
+            ->avg('duration_time_in_minutes_within_business_hours');
 
         return view('dashboard')
             ->with('product_returns_count', $product_returns_count)
