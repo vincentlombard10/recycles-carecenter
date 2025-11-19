@@ -28,7 +28,7 @@ class ProductReportController extends Controller
         foreach($closed_reports as $report){
             $report->duration_time_in_seconds = $report->started_at->diffInSeconds($report->closed_at);
             $report->duration_time_in_minutes = $report->started_at->diffInMinutes($report->closed_at);
-            $report->duration_time_in_minutes_within_business_hours = self::diffInBusinessHours($report->started_at, $report->closed_at);
+            $report->duration_time_in_minutes_within_business_hours = self::diffInBusinessMinutes($report->started_at, $report->closed_at);
             $report->save();
         }
 
@@ -344,7 +344,7 @@ class ProductReportController extends Controller
 
         $period = \Carbon\CarbonPeriod::create($start->toDateString(), $end->toDateString());
 
-        $totalHours = 0;
+        $totalMinutes = 0;
 
         foreach ($period as $date) {
             if ($date->isWeekend()) {
@@ -359,10 +359,10 @@ class ProductReportController extends Controller
             $rangeEnd   = $end->lessThan($dayEnd) ? $end : $dayEnd;
 
             if ($rangeStart < $rangeEnd) {
-                $totalHours += $rangeStart->diffInHours($rangeEnd);
+                $totalMinutes += $rangeStart->diffInMinutes($rangeEnd);
             }
         }
 
-        return $totalHours;
+        return $totalMinutes;
     }
 }
