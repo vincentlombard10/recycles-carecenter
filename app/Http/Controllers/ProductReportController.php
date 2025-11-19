@@ -351,7 +351,7 @@ class ProductReportController extends Controller
                 continue; // skip Saturday/Sunday
             }
 
-            $dayStart = $date->copy()->setTime($startHour, 0);
+            $dayStart = $date->copy()->setTime(8, 30);
             $dayEnd   = $date->copy()->setTime($endHour, 0);
 
             // clamp to interval
