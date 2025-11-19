@@ -17,17 +17,19 @@ class ProductReportController extends Controller
 {
     public function index()
     {
-        $closed_reports = ProductReport::closed()->get();
-        foreach($closed_reports as $report){
-            dd($report->started_at->diffInSeconds($report->closed_at));
-            $report->where('status', 'closed')->update(['duration_time_in_seconds' => $report->started_at->diffInSeconds($report->closed_at)]);
-        }
 
         if(!Auth::check() && !Auth::user()->can('reports.read')) {
             \ToastMagic::error('You do not have permission to access this page.');
             return redirect()->route('dashboard');
         }
+
         $reports_count = ProductReport::count();
+        $closed_reports = ProductReport::closed()->get();
+        foreach($closed_reports as $report){
+            $report->duration_time_in_seconds = $report->started_at->diffInSeconds($report->closed_at);
+            $report->save();
+        }
+
         return view('reports.index', compact('reports_count'));
     }
 
