@@ -15,6 +15,11 @@
             @include('dashboard.sections.section-serials')
             @include('dashboard.sections.section-items')
             @include('dashboard.sections.section-contacts')
+            <div>
+                @foreach($top_components $as $item)
+                    <div>{{ $item }}</div>
+                @endforeach
+            </div>
 {{--            <div class="row mb-3">
                 <h2>Contacts</h2>
                 <div class="col-2 mb-3">

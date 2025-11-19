@@ -49,11 +49,10 @@ class DashboardController extends Controller
             ->count();
         $product_returns_sandboxed_count = ProductReturn::where('environment', ProductReturn::ENV_SANDBOX)->count();
 
-        $top_components = ProductReturn::select('item_itno', DB::raw('COUNT(*) as total'))
+        $top_components = ProductReturn::select('item_itno', 'item_itds', DB::raw('COUNT(*) as total'))
             ->groupBy('item_itno')
             ->orderBy('total', 'desc')
             ->get();
-        dd($top_components);
 
         $product_reports_pending_count = ProductReport::where('status', 'pending')
             ->whereHas('return', function ($query) {
@@ -100,6 +99,7 @@ class DashboardController extends Controller
             ->with('product_reports_pending_count', $product_reports_pending_count)
             ->with('product_reports_in_progress_count', $product_reports_in_progress_count)
             ->with('product_reports_closed_count', $product_reports_closed_count)
-            ->with('product_reports_duration_time', $product_reports_duration_time);
+            ->with('product_reports_duration_time', $product_reports_duration_time)
+            ->with('top_components', $top_components);
     }
 }
