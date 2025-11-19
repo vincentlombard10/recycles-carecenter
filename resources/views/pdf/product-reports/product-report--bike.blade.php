@@ -97,6 +97,9 @@
         .w-quarter {
             width: 25%;
         }
+        .page-break {
+            page-break-after: always;
+        }
     </style>
 </head>
 <body>
@@ -276,6 +279,7 @@
         </tbody>
     </table>
 </div>
+<div class="page-break"></div>
 <div style="page-break-after: always;">
     <h2>2. Diagnostic de la batterie</h2>
     <table id="battery-identification" class="w-full no-border-top">
@@ -357,6 +361,7 @@
         </tbody>
     </table>
 </div>
+<div class="page-break"></div>
 @if($productReport->replacementItems->count())
     <h2>3. Composants remplacés</h2>
     <table id="components-replaced" class="w-full">
