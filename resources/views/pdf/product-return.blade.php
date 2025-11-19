@@ -191,8 +191,8 @@
                 </td>
                 <td class="w-third">
                     <h3>Informations de vente</h3>
-                    <div>Date de vente distributeur : {{ $productReturn->bike_sold_at ? date('d/m/Y', strtotime($productReturn->bike_sold_at)) : '-' }}</div>
-                    <div>Date de vente consommateur : {{ $productReturn->bike_purchased_at ? date('d/m/Y', strtotime($productReturn->bike_purchased_at )) : '-' }}</div>
+                    <div>Vente distributeur : {{ $productReturn->bike_sold_at ? date('d/m/Y', strtotime($productReturn->bike_sold_at)) : '-' }}</div>
+                    <div>Vente consommateur : {{ $productReturn->bike_purchased_at ? date('d/m/Y', strtotime($productReturn->bike_purchased_at )) : '-' }}</div>
                     <div>Commande : {{ $productReturn->order ?? '-' }}</div>
                     <div>Facture : {{ $productReturn->invoice ?? '-' }}</div>
                     <div>Bon de livraison : {{ $productReturn->delivery ?? '-' }}</div>
