@@ -28,9 +28,7 @@ class ProductReportController extends Controller
         foreach($closed_reports as $report){
             $report->duration_time_in_seconds = $report->started_at->diffInSeconds($report->closed_at);
             $report->duration_time_in_minutes = $report->started_at->diffInMinutes($report->closed_at);
-            $report->duration_time_in_minutes_within_business_hours = $report->started_at->diffInMinutesFiltered(function(\Carbon\Carbon $date) {
-                return $date->isWeekday();
-            });
+            $report->duration_time_in_minutes_within_business_hours = self::diffInBusinessHours($report->started_at, $report->closed_at);
             $report->save();
         }
 
@@ -337,5 +335,34 @@ class ProductReportController extends Controller
             'battery_internal_resistance' => $resistance,
             'diagnostic' => $comment,
         ];
+    }
+
+    private function diffInBusinessHours($start, $end, int $startHour = 9, int $endHour = 17)
+    {
+        $start = \Carbon\Carbon::parse($start);
+        $end = \Carbon\Carbon::parse($end);
+
+        $period = \Carbon\CarbonPeriod::create($start->toDateString(), $end->toDateString());
+
+        $totalHours = 0;
+
+        foreach ($period as $date) {
+            if ($date->isWeekend()) {
+                continue; // skip Saturday/Sunday
+            }
+
+            $dayStart = $date->copy()->setTime($startHour, 0);
+            $dayEnd   = $date->copy()->setTime($endHour, 0);
+
+            // clamp to interval
+            $rangeStart = $start->greaterThan($dayStart) ? $start : $dayStart;
+            $rangeEnd   = $end->lessThan($dayEnd) ? $end : $dayEnd;
+
+            if ($rangeStart < $rangeEnd) {
+                $totalHours += $rangeStart->diffInHours($rangeEnd);
+            }
+        }
+
+        return $totalHours;
     }
 }
