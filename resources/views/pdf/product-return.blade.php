@@ -196,7 +196,7 @@
                     <div>Commande : {{ $productReturn->order }}</div>
                     <div>Facture : {{ $productReturn->invoice }}</div>
                     <div>Bon de livraison : {{ $productReturn->delivery }}</div>
-                    <div>Code client : {{ $productReturn->contact?->code }}</div>
+                    <div>Code client : {{ $productReturn->ticket?->contact?->code }}</div>
                 </td>
             </tr>
         </table>
