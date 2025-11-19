@@ -16,7 +16,7 @@
             @include('dashboard.sections.section-items')
             @include('dashboard.sections.section-contacts')
             <div>
-                @foreach($top_components $as $item)
+                @foreach($top_components as $item)
                     <div>{{ $item }}</div>
                 @endforeach
             </div>
