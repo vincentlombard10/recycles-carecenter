@@ -8,6 +8,7 @@ use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use App\Models\Serial;
 use App\Models\Ticket;
+use DB;
 
 class DashboardController extends Controller
 {
