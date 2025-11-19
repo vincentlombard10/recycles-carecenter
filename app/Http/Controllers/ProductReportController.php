@@ -28,10 +28,9 @@ class ProductReportController extends Controller
         foreach($closed_reports as $report){
             $report->duration_time_in_seconds = $report->started_at->diffInSeconds($report->closed_at);
             $report->duration_time_in_minutes = $report->started_at->diffInMinutes($report->closed_at);
-            $report->duration_time_in_minutes_within_business_hours = $report->started_at->diffInHoursFiltered(function(\Carbon\Carbon $date) {
+            $report->duration_time_in_minutes_within_business_hours = $report->started_at->diffInFiltered(function(\Carbon\Carbon $date) {
                 return $date->isWeekday();
             });
-            dd($report->duration_time_in_minutes_within_business_hours);
             $report->save();
         }
 
