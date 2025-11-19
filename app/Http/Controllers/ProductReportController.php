@@ -17,6 +17,11 @@ class ProductReportController extends Controller
 {
     public function index()
     {
+        $closed_reports = ProductReport::where('status', '=', 'closed');
+        foreach($closed_reports as $report){
+            $report->update(['duration_time_in_seconds' => $report->created_at->diffInSeconds($report->closed_at)]);
+        }
+
         if(!Auth::check() && !Auth::user()->can('reports.read')) {
             \ToastMagic::error('You do not have permission to access this page.');
             return redirect()->route('dashboard');
