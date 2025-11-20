@@ -3,6 +3,7 @@
     <div class="col-3 mb-3">
         <x-dashboard.counter
             title="en cours"
+            class="Pink"
             :count="$product_reports_in_progress_count" />
     </div>
     <div class="col-3 mb-3">
