@@ -6,10 +6,10 @@
                 <ul class="list-group list-group-flush">
                     @foreach($top_batteries as $item)
                         <li class="list-group-item">
-                            <span class="fw-semibold">
+                            <div>
                                 <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
                                 <div><span>{{ $item->item_itds }}</span></div>
-                            </span>
+                            </div>
                         </li>
                     @endforeach
                 </ul>
