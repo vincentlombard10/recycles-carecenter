@@ -7,8 +7,8 @@
                     @foreach($top_batteries as $item)
                         <li class="list-group-item">
                             <span class="fw-semibold">
-                                <div>{{ $item->item_itno }}</div>
-                                <div>{{ $item->item_itds }}</div>
+                                <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
+                                <div><span>{{ $item->item_itds }}</span></div>
                             </span>
                         </li>
                     @endforeach
