@@ -42,7 +42,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
                                 <div><span class="fw-semibold">{{ $item->serial_itno }}</span></div>
-                                <div><span>{{ $serial->item_itds }}</span></div>
+                                <div><span>{{ $item->serial_itds }}</span></div>
                             </div>
                         </li>
                     @endforeach
