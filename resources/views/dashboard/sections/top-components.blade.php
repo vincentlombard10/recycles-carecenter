@@ -37,9 +37,16 @@
         <h2>Top Vélos</h2>
         <div class="card">
             <div class="card-body">
-                @foreach($top_bikes as $item)
-                    <div><span>{{ $item->serial_itno }} | {{ $item->total }}</div>
-                @endforeach
+                <ul class="list-group list-group-flush">
+                    @foreach($top_bikes as $item)
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                            <div>
+                                <div><span class="fw-semibold">{{ $item->serial_itno }}</span></div>
+                                <div><span>{{ $serial->item_itds }}</span></div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
