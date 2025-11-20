@@ -13,7 +13,7 @@
         <h2>Top Composants</h2>
         <div class="card">
             <div class="card-body">
-                @foreach($top_batteries as $item)
+                @foreach($top_components as $item)
                     <div><span>{{ $item->item_itno }} | {{ $item->total }}</div>
                 @endforeach
             </div>
