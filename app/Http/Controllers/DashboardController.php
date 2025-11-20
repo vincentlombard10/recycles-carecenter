@@ -49,10 +49,29 @@ class DashboardController extends Controller
             ->count();
         $product_returns_sandboxed_count = ProductReturn::where('environment', ProductReturn::ENV_SANDBOX)->count();
 
+        $top_batteries = ProductReturn::select('item_itno', 'item_itds', DB::raw('COUNT(item_itds) as total'))
+            ->groupBy('item_itno', 'item_itds')
+            ->orderBy('total', 'desc')
+            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->where('type', 'battery')
+            ->having('total', '>', 0)
+            ->take(10)
+            ->get();
         $top_components = ProductReturn::select('item_itno', 'item_itds', DB::raw('COUNT(item_itds) as total'))
             ->groupBy('item_itno', 'item_itds')
             ->orderBy('total', 'desc')
+            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->where('type', 'component')
             ->having('total', '>', 0)
+            ->take(10)
+            ->get();
+        $top_bikes = ProductReturn::select('serial_itno', 'serial_itds', DB::raw('COUNT(serial_itno) as total'))
+            ->groupBy('serial_itno', 'serial_itds')
+            ->orderBy('total', 'desc')
+            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->where('type', 'bike')
+            ->having('total', '>', 0)
+            ->take(10)
             ->get();
 
         $product_reports_pending_count = ProductReport::where('status', 'pending')
@@ -101,6 +120,8 @@ class DashboardController extends Controller
             ->with('product_reports_in_progress_count', $product_reports_in_progress_count)
             ->with('product_reports_closed_count', $product_reports_closed_count)
             ->with('product_reports_duration_time', $product_reports_duration_time)
-            ->with('top_components', $top_components);
+            ->with('top_batteries', $top_batteries)
+            ->with('top_components', $top_components)
+            ->with('top_bikes', $top_bikes);
     }
 }

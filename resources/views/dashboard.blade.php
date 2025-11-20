@@ -15,11 +15,9 @@
             @include('dashboard.sections.section-serials')
             @include('dashboard.sections.section-items')
             @include('dashboard.sections.section-contacts')
-            <div>
-                @foreach($top_components as $item)
-                    <div><span>{{ $item->item_itno }} </span>{{ $item->item_itds }} | {{ $item->total }}</div>
-                @endforeach
-            </div>
+            @include('dashboard.sections.top-components')
+            @include('dashboard.sections.top-batteries')
+            @include('dashboard.sections.top-bikes')
 {{--            <div class="row mb-3">
                 <h2>Contacts</h2>
                 <div class="col-2 mb-3">
