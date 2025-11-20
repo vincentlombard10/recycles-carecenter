@@ -12,10 +12,10 @@
             <x-messages />
             @include('dashboard.sections.section-product-returns')
             @include('dashboard.sections.section-product-reports')
+            @include('dashboard.sections.top-components')
             @include('dashboard.sections.section-serials')
             @include('dashboard.sections.section-items')
             @include('dashboard.sections.section-contacts')
-            @include('dashboard.sections.top-components')
 {{--            <div class="row mb-3">
                 <h2>Contacts</h2>
                 <div class="col-2 mb-3">
