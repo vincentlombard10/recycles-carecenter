@@ -12,6 +12,7 @@
                             </div>
                         </li>
                     @endforeach
+                    <span class="text-primary">{{ $item->total }}</span>
                 </ul>
             </div>
         </div>
@@ -45,6 +46,7 @@
                                 <div><span class="fw-semibold">{{ $item->serial_itno }}</span></div>
                                 <div><span>{{ $item->serial_itds }}</span></div>
                             </div>
+                            <span class="text-primary">{{ $item->total }}</span>
                         </li>
                     @endforeach
                 </ul>
