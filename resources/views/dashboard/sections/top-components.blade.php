@@ -3,9 +3,13 @@
         <h2>Top Batteries</h2>
         <div class="card">
             <div class="card-body">
-                @foreach($top_batteries as $item)
-                    <div><span>{{ $item->item_itno }} | {{ $item->total }}</div>
-                @endforeach
+                <ul class="list-group list-group-flush">
+                    @foreach($top_batteries as $item)
+                        <li class="list-group-item">
+                            <span class="fw-semibold">{{ $item->item_itno }}</span>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
