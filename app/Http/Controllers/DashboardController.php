@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $contacts_pending = Contact::whereNull('support_enabled')->count();
 
         $serials_count = Serial::count();
-        $serials_without_item = Serial::doesntHave('item')->count();
+        $serials_without_item_count = Serial::doesntHave('item')->count();
         $serial_without_invoice_count = Serial::whereNull('last_invoice')->count();
 
         $items_count = Item::count();
@@ -106,7 +106,8 @@ class DashboardController extends Controller
             ->with('contacts_with_duplicates_count', $contacts_with_duplicates_count)
             ->with('contacts_pending', $contacts_pending)
             ->with('serials_count', $serials_count)
-            ->with('serials_without_item', $serials_without_item)
+            ->with('serials_without_item_count', $serials_without_item_count)
+            ->with('serials_without_item_count', $serials_without_item_count)
             ->with('serial_without_invoice_count', $serial_without_invoice_count)
             ->with('tickets_open_count', $tickets_open_count)
             ->with('tickets_new_count', $tickets_new_count)
