@@ -50,7 +50,7 @@ class DashboardController extends Controller
         $product_returns_sandboxed_count = ProductReturn::where('environment', ProductReturn::ENV_SANDBOX)->count();
 
         $top_components = ProductReturn::select('item_itno', 'item_itds', DB::raw('COUNT(*) as total'))
-            ->groupBy('item_itno', 'item_itds')
+            ->groupBy('item_itno')
             ->orderBy('total', 'desc')
             ->get();
 
