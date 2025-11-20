@@ -27,6 +27,7 @@
                                 <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
                                 <div><span>{{ $item->item_itds }}</span></div>
                             </div>
+                            <span class="fw-bold">{{ $item->total }}</span>
                         </li>
                     @endforeach
                 </ul>
