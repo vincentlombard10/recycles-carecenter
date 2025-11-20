@@ -28,6 +28,7 @@ class ProductReportController extends Controller
         foreach($closed_reports as $report){
             $report->duration_time_in_seconds = $report->started_at->diffInSeconds($report->closed_at);
             $report->duration_time_in_minutes = $report->started_at->diffInMinutes($report->closed_at);
+            $report->duration_time_in_minutes_within_business_hours = self::diffInBusinessMinutes($report->started_at, $report->closed_at);
             $report->save();
         }
 
@@ -334,5 +335,34 @@ class ProductReportController extends Controller
             'battery_internal_resistance' => $resistance,
             'diagnostic' => $comment,
         ];
+    }
+
+    private function diffInBusinessMinutes($start, $end, int $startHour = 9, int $endHour = 17)
+    {
+        $start = \Carbon\Carbon::parse($start);
+        $end = \Carbon\Carbon::parse($end);
+
+        $period = \Carbon\CarbonPeriod::create($start->toDateString(), $end->toDateString());
+
+        $totalMinutes = 0;
+
+        foreach ($period as $date) {
+            if ($date->isWeekend()) {
+                continue; // skip Saturday/Sunday
+            }
+
+            $dayStart = $date->copy()->setTime(8, 30);
+            $dayEnd   = $date->copy()->setTime($endHour, 0);
+
+            // clamp to interval
+            $rangeStart = $start->greaterThan($dayStart) ? $start : $dayStart;
+            $rangeEnd   = $end->lessThan($dayEnd) ? $end : $dayEnd;
+
+            if ($rangeStart < $rangeEnd) {
+                $totalMinutes += $rangeStart->diffInMinutes($rangeEnd);
+            }
+        }
+
+        return $totalMinutes;
     }
 }

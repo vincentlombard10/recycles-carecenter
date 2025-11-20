@@ -11,6 +11,7 @@
         <div class="container-fluid p-3">
             <x-messages />
             @include('dashboard.sections.section-product-returns')
+            @include('dashboard.sections.top-components')
             @include('dashboard.sections.section-product-reports')
             @include('dashboard.sections.section-serials')
             @include('dashboard.sections.section-items')

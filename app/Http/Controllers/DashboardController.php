@@ -8,6 +8,7 @@ use App\Models\ProductReport;
 use App\Models\ProductReturn;
 use App\Models\Serial;
 use App\Models\Ticket;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -21,8 +22,8 @@ class DashboardController extends Controller
         $contacts_pending = Contact::whereNull('support_enabled')->count();
 
         $serials_count = Serial::count();
-        $serials_without_item = Serial::doesntHave('item')->count();
-        $serial_without_invoice_count = Serial::whereNull('last_invoice')->count();
+        $serials_without_item_count = Serial::doesntHave('item')->count();
+        $serials_without_invoice_count = Serial::whereNull('last_invoice')->count();
 
         $items_count = Item::count();
 
@@ -48,6 +49,31 @@ class DashboardController extends Controller
             ->count();
         $product_returns_sandboxed_count = ProductReturn::where('environment', ProductReturn::ENV_SANDBOX)->count();
 
+        $top_batteries = ProductReturn::select('item_itno', 'item_itds', DB::raw('COUNT(item_itds) as total'))
+            ->groupBy('item_itno', 'item_itds')
+            ->orderBy('total', 'desc')
+            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->where('type', 'battery')
+            ->having('total', '>', 0)
+            ->take(10)
+            ->get();
+        $top_components = ProductReturn::select('item_itno', 'item_itds', DB::raw('COUNT(item_itds) as total'))
+            ->groupBy('item_itno', 'item_itds')
+            ->orderBy('total', 'desc')
+            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->where('type', 'component')
+            ->having('total', '>', 0)
+            ->take(10)
+            ->get();
+        $top_bikes = ProductReturn::select('serial_itno', 'serial_itds', DB::raw('COUNT(serial_itno) as total'))
+            ->groupBy('serial_itno', 'serial_itds')
+            ->orderBy('total', 'desc')
+            ->where('environment', ProductReturn::ENV_PRODUCTION)
+            ->where('type', 'bike')
+            ->having('total', '>', 0)
+            ->take(10)
+            ->get();
+
         $product_reports_pending_count = ProductReport::where('status', 'pending')
             ->whereHas('return', function ($query) {
                 $query->where('environment', ProductReturn::ENV_PRODUCTION);
@@ -67,7 +93,7 @@ class DashboardController extends Controller
             ->whereHas('return', function ($query) {
                 $query->where('environment', ProductReturn::ENV_PRODUCTION);
             })
-            ->avg('duration_time_in_seconds');
+            ->avg('duration_time_in_minutes_within_business_hours');
 
         return view('dashboard')
             ->with('product_returns_count', $product_returns_count)
@@ -80,8 +106,9 @@ class DashboardController extends Controller
             ->with('contacts_with_duplicates_count', $contacts_with_duplicates_count)
             ->with('contacts_pending', $contacts_pending)
             ->with('serials_count', $serials_count)
-            ->with('serials_without_item', $serials_without_item)
-            ->with('serial_without_invoice_count', $serial_without_invoice_count)
+            ->with('serials_without_item_count', $serials_without_item_count)
+            ->with('serials_without_item_count', $serials_without_item_count)
+            ->with('serials_without_invoice_count', $serials_without_invoice_count)
             ->with('tickets_open_count', $tickets_open_count)
             ->with('tickets_new_count', $tickets_new_count)
             ->with('tickets_new', $tickets_new)
@@ -93,6 +120,9 @@ class DashboardController extends Controller
             ->with('product_reports_pending_count', $product_reports_pending_count)
             ->with('product_reports_in_progress_count', $product_reports_in_progress_count)
             ->with('product_reports_closed_count', $product_reports_closed_count)
-            ->with('product_reports_duration_time', $product_reports_duration_time);
+            ->with('product_reports_duration_time', $product_reports_duration_time)
+            ->with('top_batteries', $top_batteries)
+            ->with('top_components', $top_components)
+            ->with('top_bikes', $top_bikes);
     }
 }

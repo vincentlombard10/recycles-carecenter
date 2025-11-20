@@ -30,6 +30,7 @@ require __DIR__.'/contacts.php';
 require __DIR__.'/support/tickets.php';
 require __DIR__.'/support/returns.php';
 require __DIR__.'/support/reports.php';
+require __DIR__.'/support/qualifications.php';
 require __DIR__.'/zendesk.php';
 require __DIR__.'/admin/users.php';
 require __DIR__.'/admin/changelog.php';

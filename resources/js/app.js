@@ -5,6 +5,7 @@ import { createApp } from "vue";
 import Alpine from 'alpinejs';
 import ProductReturnForm from "./components/ProductReturn/ProductReturnForm.vue";
 import ProductReportForm from "./components/ProductReport/ProductReportForm.vue";
+import QualificationForm from "./components/QualificationForm.vue";
 window.Alpine = Alpine;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -22,5 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
         createApp(ProductReportForm)
             .use(pinia)
             .mount(productReportFormElement)
+    }
+
+    const qualificationFormElement = document.querySelector("#qualification-form")
+    if (qualificationFormElement !== null) {
+        createApp(QualificationForm)
+            .use(pinia)
+            .mount(qualificationFormElement)
     }
 })
