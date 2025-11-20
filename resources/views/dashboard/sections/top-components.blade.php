@@ -1,7 +1,7 @@
 <section class="row">
     <div class="col-lg-4 mb-3">
         <h2>Top Batteries</h2>
-        <div class="card">
+        <div class="card h-100">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     @foreach($top_batteries as $item)
