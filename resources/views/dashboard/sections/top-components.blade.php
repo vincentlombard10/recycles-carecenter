@@ -20,12 +20,16 @@
         <h2>Top Composants</h2>
         <div class="card">
             <div class="card-body">
-                <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
-                    <div>
-                        <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
-                        <div><span>{{ $item->item_itds }}</span></div>
-                    </div>
-                </li>
+                <ul class="list-group list-group-flush">
+                    @foreach($top_components as $item)
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
+                            <div>
+                                <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
+                                <div><span>{{ $item->item_itds }}</span></div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
