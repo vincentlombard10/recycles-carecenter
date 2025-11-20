@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
         $serials_count = Serial::count();
         $serials_without_item_count = Serial::doesntHave('item')->count();
-        $serial_without_invoice_count = Serial::whereNull('last_invoice')->count();
+        $serials_without_invoice_count = Serial::whereNull('last_invoice')->count();
 
         $items_count = Item::count();
 
@@ -108,7 +108,7 @@ class DashboardController extends Controller
             ->with('serials_count', $serials_count)
             ->with('serials_without_item_count', $serials_without_item_count)
             ->with('serials_without_item_count', $serials_without_item_count)
-            ->with('serial_without_invoice_count', $serial_without_invoice_count)
+            ->with('serials_without_invoice_count', $serials_without_invoice_count)
             ->with('tickets_open_count', $tickets_open_count)
             ->with('tickets_new_count', $tickets_new_count)
             ->with('tickets_new', $tickets_new)
