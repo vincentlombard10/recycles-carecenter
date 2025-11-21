@@ -111,7 +111,21 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
             );
 
             $headerRow = [
-                'Identifiant'
+                'Identifiant',
+                'Type',
+                'Contexte',
+                'Ticket',
+                'Code client',
+
+                'Nom Client',
+                'Statut',
+
+                'Créé le',
+                'Par',
+                'Validé le',
+                'Par',
+                'Reçu le',
+                'Par',
             ];
 
             $writer->addHeader($headerRow);
@@ -120,7 +134,21 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
             foreach ($returns as $return) {
 
                 $row = new Row([
-                    Cell::fromValue($return->identifier)
+                    Cell::fromValue($return->identifier),
+                    Cell::fromValue($return->type),
+                    Cell::fromValue($return->context),
+                    Cell::fromValue($return->ticket),
+                    Cell::fromValue($return->ticket->contact?->code),
+
+                    Cell::fromValue($return->ticket->contact?->name),
+                    Cell::fromValue($return->status),
+
+                    Cell::fromValue($return->created_at),
+                    Cell::fromValue($return->author?->username),
+                    Cell::fromValue($return->validated_at),
+                    Cell::fromValue($return->validator?->username),
+                    Cell::fromValue($return->received_at),
+                    Cell::fromValue($return->receiver?->username),
                 ]);
                 $writer->addRow($row);
 
