@@ -21,19 +21,20 @@ use OpenSpout\Common\Entity\Style\BorderPart;
 use OpenSpout\Common\Entity\Style\CellAlignment;
 use OpenSpout\Common\Entity\Style\Color;
 use OpenSpout\Common\Entity\Style\Style;
-use Matrix\Exception;
+use Exception;
 use OpenSpout\Common\Exception\InvalidArgumentException;
 use OpenSpout\Writer\Exception\Border\InvalidNameException;
 use OpenSpout\Writer\Exception\Border\InvalidStyleException;
 use OpenSpout\Writer\Exception\Border\InvalidWidthException;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use Spatie\SimpleExcel\SimpleExcelWriter;
+use Illuminate\Foundation\Queue\Queueable;
 
 #[AllowDynamicProperties] class ExportTicketsJob extends BaseExportJob implements ShouldQueue
 {
     use Dispatchable,
         InteractsWithQueue,
-        \Illuminate\Bus\Queueable,
+        Queueable,
         SerializesModels;
 
     public int $timeout = 600;

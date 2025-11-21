@@ -1,3 +1,3 @@
 <div>
-    Export de tickets
+    Exportation de tickets
 </div>

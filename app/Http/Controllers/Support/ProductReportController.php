@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Support;
 
+use App\Http\Controllers\Controller;
 use App\Models\BatteryState;
 use App\Models\Item;
 use App\Models\ProductReport;
 use App\Models\ReplacementItem;
 use Auth;
+use Devrabiul\ToastMagic\Facades\ToastMagic;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Devrabiul\ToastMagic\Facades\ToastMagic;
 use Illuminate\Support\Facades\Log;
 use Matrix\Exception;
 
@@ -33,6 +34,15 @@ class ProductReportController extends Controller
         }
 
         return view('reports.index', compact('reports_count'));
+    }
+
+    public function export()
+    {
+        $start_time = now()->subDays(30)->startOfDay();
+        $end_time = now();
+        return view('reports.export')
+            ->with('start_time', $start_time)
+            ->with('end_time', $end_time);;
     }
 
     public function create()

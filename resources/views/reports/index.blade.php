@@ -4,7 +4,13 @@
             <div>
                 <h1>Rapports d'intervention</h1>
             </div>
-            <livewire:search-form />
+            <div class="d-flex align-content-center gap-2">
+                <a href="{{ route('support.reports.export.form') }}"
+                   class="btn btn-circle btn-cyan">
+                    <i class="bi bi-cloud-download"></i>
+                </a>
+                <livewire:search-form />
+            </div>
         </div>
     </x-page-header>
     <x-page-wrapper>

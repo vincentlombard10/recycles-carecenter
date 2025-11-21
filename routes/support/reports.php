@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProductReportController;
+use App\Http\Controllers\Support\ExportProductReportController;
+use App\Http\Controllers\Support\ProductReportController;
 use App\Models\Estimate;
 use App\Models\ProductReport;
 use Illuminate\Http\Request;
@@ -16,6 +17,12 @@ Route::group([
         Route::get('/', [ProductReportController::class, 'index'])
             ->name('index');
 
+        Route::get('/export', [ProductReportController::class, 'export'])
+            ->name('export.form');
+
+        Route::post('/export', ExportProductReportController::class)
+            ->name('export.post');
+
         Route::get('/{identfier}/edit', [ProductReportController::class, 'edit'])
             ->name('edit');
 
@@ -25,7 +32,7 @@ Route::group([
         Route::patch('/start/{identfier}', [ProductReportController::class, 'start'])
             ->name('start');
 
-        Route::get('/{productReport}/download', \App\Http\Controllers\DownloadProductReportController::class)
+        Route::get('/{productReport}/download', \App\Http\Controllers\Support\DownloadProductReportController::class)
             ->name('download');
 
     });

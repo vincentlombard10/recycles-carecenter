@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Support;
 
 use App\Helpers\AlphacodeHelper;
+use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Item;
 use App\Models\ProductReturn;
@@ -10,10 +11,10 @@ use App\Models\Serial;
 use App\Models\Ticket;
 use App\Services\ProductReturnService;
 use Auth;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Devrabiul\ToastMagic\Facades\ToastMagic;
 use Exception;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class ProductReturnController extends Controller
 {
@@ -160,6 +161,15 @@ class ProductReturnController extends Controller
 
         return view('returns.show')
             ->with('productReturn', ProductReturn::where('identifier', $id)->first());
+    }
+
+    public function export()
+    {
+        $start_time = now()->subDays(30)->startOfDay();
+        $end_time = now();
+        return view('returns.export')
+            ->with('start_time', $start_time)
+            ->with('end_time', $end_time);
     }
 
     public function edit($identifier)
