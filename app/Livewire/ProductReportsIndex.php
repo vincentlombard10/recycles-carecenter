@@ -13,6 +13,8 @@ class ProductReportsIndex extends Component
 
     protected $paginationTheme = 'bootstrap';
     public string $searchTerm = '';
+    public string $status = '';
+    public string $environment = 'production';
 
     public function render()
     {
@@ -29,6 +31,14 @@ class ProductReportsIndex extends Component
                 });
             });
         })
+            ->when($this->status, function ($query) {
+                return $query->where('status', $this->status);
+            })
+            ->when($this->environment, function ($query) {
+                return $query->whereHas('return', function ($query) {
+                    $query->where('environment', $this->environment);
+                });
+            })
             ->orderBy('updated_at', 'desc')->paginate(10);
         return view('livewire.product-reports.index', compact('reports'));
     }

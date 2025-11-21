@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    @foreach($top_batteries as $item)
+                    @forelse($top_batteries as $item)
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
                                 <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
@@ -12,7 +12,9 @@
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
                         </li>
-                    @endforeach
+                    @empty
+                        @lang('Data not available...')
+                    @endforelse
                 </ul>
             </div>
         </div>
@@ -22,7 +24,7 @@
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    @foreach($top_components as $item)
+                    @forelse($top_components as $item)
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
                                 <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
@@ -30,7 +32,9 @@
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
                         </li>
-                    @endforeach
+                        @empty
+                        @lang('Data not available...')
+                    @endforelse
                 </ul>
             </div>
         </div>
@@ -40,7 +44,7 @@
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    @foreach($top_bikes as $item)
+                    @forelse($top_bikes as $item)
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
                                 <div><span class="fw-semibold">{{ $item->serial_itno }}</span></div>
@@ -48,7 +52,9 @@
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
                         </li>
-                    @endforeach
+                        @empty
+                        @lang('Data not available...')
+                    @endforelse
                 </ul>
             </div>
         </div>
