@@ -41,7 +41,7 @@
                                     <span class="badge">
                                         <div>{{ $item->ticket_id }}</div>
                                         @if($item->ticket?->contact)
-                                            <div>{{ $item->ticket?->contact->code }}</div>
+                                            <div><span class="text-primary">{{ $item->ticket?->contact->code }}</span></div>
                                         @endif
                                     </span>
                                 </div>
