@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-page-header>
         <div class="page-header-content">
-            <h1>Duplicates</h1>
+            <h1>Comptes en doublon sur Zendesk</h1>
         </div>
     </x-page-header>
     <x-page-wrapper>
