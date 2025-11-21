@@ -24,6 +24,15 @@ class ProductReturn extends Model
 
     protected $guarded = ['id'];
 
+    protected function casts(): array
+    {
+        return [
+            'created_at' => 'datetime',
+            'validated_at' => 'datetime',
+            'received_at' => 'datetime',
+        ];
+    }
+
     public const STATUS_INCOMPLETE = 'incomplete';
     public const STATUS_PENDING = 'pending';
     public const STATUS_RECEIVED = 'received';
