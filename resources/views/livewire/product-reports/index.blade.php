@@ -20,13 +20,12 @@
         <x-pagination :items="$reports" class="col-lg-6"/>
     </div>
     @if(count($reports))
-        <x-pagination :items="$reports" class="mb-3"/>
         <div class="mb-3">
             @foreach($reports as $report)
                 <x-support.card-report :report="$report"/>
                 <x-support.card-report-popver :report="$report" />
             @endforeach
         </div>
-        <x-pagination :items="$reports" />
     @endif
+    <x-pagination :items="$reports" />
 </div>
