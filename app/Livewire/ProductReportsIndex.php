@@ -20,8 +20,8 @@ class ProductReportsIndex extends Component
             $query->whereAny(['identifier'], 'like', '%' . $this->searchTerm . '%');
             $query->orWhereHas('return', function ($query) {
                 $query->where('ticket_id', 'like', '%' . $this->searchTerm . '%');
-                $query->whereHas('ticket', function ($query) {
-                    $query->orWhereHas('contact', function ($query) {
+                $query->orWhereHas('ticket', function ($query) {
+                    $query->whereHas('contact', function ($query) {
                         $query->where('name', 'like', '%' . $this->searchTerm . '%');
                         $query->orWhere('email', 'like', '%' . $this->searchTerm . '%');
                         $query->orWhere('code', 'like', '%' . $this->searchTerm . '%');
