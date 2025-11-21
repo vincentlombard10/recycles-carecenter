@@ -6,6 +6,10 @@
             </div>
             <div class="d-flex align-content-center gap-2">
                 <a href="{{ route('support.returns.create') }}" class="btn btn-circle btn-violet"><i class="bi bi-plus-lg"></i></a>
+                <a href="{{ route('support.returns.export.form') }}"
+                   class="btn btn-circle btn-cyan">
+                    <i class="bi bi-cloud-download"></i>
+                </a>
                 <livewire:search-form />
             </div>
         </div>

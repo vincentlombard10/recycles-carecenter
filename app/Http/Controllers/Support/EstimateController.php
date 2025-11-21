@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Support;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class EstimateController extends Controller
@@ -18,6 +19,6 @@ class EstimateController extends Controller
 
     public function update(Request $request, $id)
     {
-        
+
     }
 }

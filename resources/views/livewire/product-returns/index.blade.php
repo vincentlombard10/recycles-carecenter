@@ -38,7 +38,12 @@
                                     <span class="badge">{{ $item->context_label }}</span>
                                 </div>
                                 <div class="d-grid mb-1">
-                                    <span class="badge">{{ $item->ticket_id }}</span>
+                                    <span class="badge">
+                                        <div>{{ $item->ticket_id }}</div>
+                                        @if($item->ticket?->contact)
+                                            <div><span class="text-primary">{{ $item->ticket?->contact->code }}</span></div>
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
                             <div>
