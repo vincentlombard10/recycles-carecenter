@@ -138,9 +138,9 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                     Cell::fromValue($return->type),
                     Cell::fromValue($return->context),
                     Cell::fromValue($return->ticket),
-                    Cell::fromValue($return->ticket->contact?->code),
+                    Cell::fromValue($return->ticket?->contact?->code),
 
-                    Cell::fromValue($return->ticket->contact?->name),
+                    Cell::fromValue($return->ticket?->contact?->name),
                     Cell::fromValue($return->status),
 
                     Cell::fromValue($return->created_at),
