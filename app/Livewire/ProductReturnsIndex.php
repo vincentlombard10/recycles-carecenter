@@ -20,7 +20,14 @@ class ProductReturnsIndex extends Component
     public function render()
     {
         $items = ProductReturn::where(function ($query) {
-            $query->whereAny(['identifier', 'serial_code', 'routing_from_code'], 'like', '%' . $this->searchTerm . '%');
+            $query->whereAny(['identifier', 'serial_code', 'routing_from_code', 'ticket_id'], 'like', '%' . $this->searchTerm . '%');
+            $query->orWhereHas('ticket', function ($query) {
+                $query->whereHas('contact', function ($query) {
+                    $query->where('name', 'like', '%' . $this->searchTerm . '%');
+                    $query->orWhere('code', 'like', '%' . $this->searchTerm . '%');
+                    $query->orWhere('email', 'like', '%' . $this->searchTerm . '%');
+                });
+            });
         })
             ->when($this->trashed, function ($query) {
                 return $query->onlyTrashed();
