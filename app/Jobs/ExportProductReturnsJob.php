@@ -143,11 +143,11 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                     Cell::fromValue($return->ticket?->contact?->name),
                     Cell::fromValue($return->status),
 
-                    Cell::fromValue($return->created_at),
+                    Cell::fromValue(date('d/m/Y H:i:s', strtotime($return->created_at))),
                     Cell::fromValue($return->author?->username),
-                    Cell::fromValue($return->validated_at),
+                    Cell::fromValue(date('d/m/Y H:i:s', strtotime($return->validated_at))),
                     Cell::fromValue($return->validator?->username),
-                    Cell::fromValue($return->received_at),
+                    Cell::fromValue(date('d/m/Y H:i:s', strtotime($return->received_at))),
                     Cell::fromValue($return->receiver?->username),
                 ]);
                 $writer->addRow($row);
