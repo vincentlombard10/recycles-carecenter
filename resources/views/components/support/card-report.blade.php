@@ -16,7 +16,12 @@
                     <span class="badge">{{ $report->return->context_label }}</span>
                 </div>
                 <div class="d-grid mb-1">
-                    <span class="badge">{{ $report->return->ticket_id }}</span>
+                    <span class="badge">
+                        <div>{{ $report->return->ticket_id }}</div>
+                        @if($report->return->ticket?->contact)
+                        <div><span class="text-primary">{{ $report->return->ticket?->contact->code }}</span></div>
+                        @endif
+                    </span>
                 </div>
             </div>
             <div>
