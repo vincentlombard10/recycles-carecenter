@@ -7,7 +7,7 @@
     </div>
     <div class="col-3 mb-3">
         <x-dashboard.counter
-            title="duplicates"
+            title="doublons Zendesk"
             class="Sandbox"
             :count="$contacts_with_duplicates_count" />
     </div>
