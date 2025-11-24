@@ -57,7 +57,6 @@ class ImportSerials extends Command
 
                 Log::warning(sprintf("SN Chassis - Aucun contenu dans le fichier %s", $filename));
                 $this->error('Aucun fichier d\'ímportation à cette date.');
-                return 1;
 
             }
 
