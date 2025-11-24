@@ -138,5 +138,4 @@
     @else
         <div>Il ne se passe pas grand chose ici.</div>
     @endif
-
 </div>

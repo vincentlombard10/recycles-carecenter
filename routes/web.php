@@ -20,7 +20,6 @@ Route::get('/dashboard', DashboardController::class)
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-
 require __DIR__.'/auth.php';
 require __DIR__.'/brands.php';
 require __DIR__.'/groups.php';
@@ -31,6 +30,7 @@ require __DIR__.'/support/tickets.php';
 require __DIR__.'/support/returns.php';
 require __DIR__.'/support/reports.php';
 require __DIR__.'/support/qualifications.php';
+require __DIR__.'/support/estimates.php';
 require __DIR__.'/zendesk.php';
 require __DIR__.'/admin/users.php';
 require __DIR__.'/admin/changelog.php';

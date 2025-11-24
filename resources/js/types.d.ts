@@ -1,4 +1,4 @@
-type Option = {
-    name: string,
-    marker: string
+export type Option = {
+    name?: string,
+    marker?: string
 }
