@@ -97,6 +97,7 @@
                 <label for="battery_cells_state" class="form-label mb-1">Etat des cellules</label>
                 <select name="battery_cells_state"
                         class="form-control"
+                        :disabled="!store.batteryBmsState"
                         v-model="store.batteryCellsState">
                     <option :value="null" selected disabled>Sélectionner</option>
                     <option v-for="cellsState in store.batteryCellsStatesList"
@@ -109,6 +110,7 @@
                 <label for="battery_usable_capacity" class="form-label mb-1">Capacité utile (Ah)</label>
                 <input type="number" step="0.1" min="0" max="100000"
                        class="form-control"
+                       :disabled="!store.batteryBmsState"
                        name="battery_usable_capacity"
                        v-model="store.batteryVirtualUsableCapacity">
             </div>
@@ -116,7 +118,10 @@
         <div class="row">
             <div class="col-lg-4 mb-3">
                 <label for="battery_temperature" class="form-label mb-1">Température</label>
-                <select name="battery_temperature" class="form-control" v-model="store.batteryTemperature">
+                <select name="battery_temperature"
+                        class="form-control"
+                        :disabled="!store.batteryBmsState"
+                        v-model="store.batteryTemperature">
                     <option selected disabled>Sélectionner</option>
                     <option v-for="temp in store.batteryTemperaturesList" :key="temp.identifier"
                             :value="temp.identifier">{{ temp.label }}
@@ -129,6 +134,7 @@
                 <label for="battery_internal_resistance" class="form-label mb-1">Résistance interne (mΩ)</label>
                 <input type="number" step="0.1" min="0" max="100000"
                        class="form-control"
+                       :disabled="!store.batteryBmsState"
                        name="battery_internal_resistance"
                        v-model="store.batteryInternalResistance">
             </div>
