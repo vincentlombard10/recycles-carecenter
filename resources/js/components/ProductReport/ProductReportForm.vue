@@ -73,6 +73,7 @@ const getReport = async (_report) => {
     store.batteryChargeState = report.batteryChargeState
     store.batteryChargeVoltage = report.batteryChargeVoltage
     store.batteryEnergy = report.batteryEnergy
+    store.batteryBmsState = report.batteryBmsState
     store.batteryChargeCycles = report.batteryChargeCycles
     store.batteryCellsState = report.batteryCellsState
     store.batteryVirtualUsableCapacity = report.batteryVirtualUsableCapacity

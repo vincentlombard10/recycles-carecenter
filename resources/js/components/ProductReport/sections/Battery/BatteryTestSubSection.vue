@@ -76,17 +76,27 @@
             <div><SectionStatusBadge :completed="true" /></div>
         </div>
         <div class="row">
+            <div class="col-12 mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" v-model="store.batteryBmsState" name="bms_state" id="bms_state">
+                    <label for="bms_state" class="form-check-label mb-1">BMS exploitable</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-4 mb-3">
                 <label for="battery_charge_cycles" class="form-label mb-1">Cycles de charge</label>
                 <input type="text"
                        class="form-control"
                        name="battery_charge_cycles"
+                       :disabled="!store.batteryBmsState"
                        v-model="store.batteryChargeCycles">
             </div>
             <div class="col-lg-4 mb-3">
                 <label for="battery_cells_state" class="form-label mb-1">Etat des cellules</label>
                 <select name="battery_cells_state"
                         class="form-control"
+                        :disabled="!store.batteryBmsState"
                         v-model="store.batteryCellsState">
                     <option :value="null" selected disabled>Sélectionner</option>
                     <option v-for="cellsState in store.batteryCellsStatesList"
@@ -99,6 +109,7 @@
                 <label for="battery_usable_capacity" class="form-label mb-1">Capacité utile (Ah)</label>
                 <input type="number" step="0.1" min="0" max="100000"
                        class="form-control"
+                       :disabled="!store.batteryBmsState"
                        name="battery_usable_capacity"
                        v-model="store.batteryVirtualUsableCapacity">
             </div>
@@ -106,7 +117,10 @@
         <div class="row">
             <div class="col-lg-4 mb-3">
                 <label for="battery_temperature" class="form-label mb-1">Température</label>
-                <select name="battery_temperature" class="form-control" v-model="store.batteryTemperature">
+                <select name="battery_temperature"
+                        class="form-control"
+                        :disabled="!store.batteryBmsState"
+                        v-model="store.batteryTemperature">
                     <option selected disabled>Sélectionner</option>
                     <option v-for="temp in store.batteryTemperaturesList" :key="temp.identifier"
                             :value="temp.identifier">{{ temp.label }}
@@ -119,6 +133,7 @@
                 <label for="battery_internal_resistance" class="form-label mb-1">Résistance interne (mΩ)</label>
                 <input type="number" step="0.1" min="0" max="100000"
                        class="form-control"
+                       :disabled="!store.batteryBmsState"
                        name="battery_internal_resistance"
                        v-model="store.batteryInternalResistance">
             </div>

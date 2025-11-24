@@ -21,6 +21,7 @@ return new class extends Migration
                 Estimate::STATUS_REJECTED
             ])->default(Estimate::STATUS_PENDING);
             $table->integer('workflow_duration')->unsigned()->nullable();
+            $table->integer('workflow_duration_within_business_hours')->unsigned()->nullable();
             $table->timestamps();
         });
     }

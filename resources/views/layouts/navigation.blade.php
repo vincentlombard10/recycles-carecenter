@@ -30,6 +30,14 @@
                             class="sidebar-link__label">Rapports d'expertise</span></a>
                 </li>
             @endcanany
+            @canany(['reports.read', 'reports.create', 'reports.update', 'reports.delete'])
+                <li class="sidebar-item">
+                    <a href="{{ route('support.estimates.index') }}"
+                       class="sidebar-link {{ Route::is('support.estimates.*') ? 'active': '' }}"><i
+                            class="bi bi-piggy-bank"></i><span
+                            class="sidebar-link__label">Devis</span></a>
+                </li>
+            @endcanany
             @canany('tickets.read')
                 <li class="sidebar-item">
                     <a href="{{ route('support.tickets.index') }}"

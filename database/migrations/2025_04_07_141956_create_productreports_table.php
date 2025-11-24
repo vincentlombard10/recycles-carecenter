@@ -49,6 +49,7 @@ return new class extends Migration {
             $table->enum('battery_charge_state', ['good', 'bad'])->nullable();
             $table->decimal('battery_charge_voltage')->nullable();
             $table->decimal('battery_energy')->nullable();
+            $table->boolean('bms_state')->default(1)->nullable();
             $table->integer('battery_charge_cycles')->nullable();
             $table->string('battery_cells_state')->nullable();
             $table->decimal('battery_usable_capacity')->nullable();

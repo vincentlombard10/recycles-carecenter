@@ -88,6 +88,8 @@ export const useProductReportStore = defineStore('report', () => {
     const batteryChargeVoltage = ref()
 
     const batteryEnergy = ref()
+
+    const batteryBmsState = ref()
     const batteryChargeCycles = ref()
     const batteryCellsState = ref()
     const batteryVirtualUsableCapacity = ref()
@@ -171,9 +173,11 @@ export const useProductReportStore = defineStore('report', () => {
     })
 
     const batteryTestsSubsectionCompleted = computed(() => {
-        return batteryChargeState.value &&
+        return batteryBmsState.value === false || (
+            batteryChargeState.value &&
             batteryChargeVoltage.value &&
             batteryEnergy.value && true
+        )
     })
 
     const batterySectionCompleted = computed(() => {
@@ -256,6 +260,7 @@ export const useProductReportStore = defineStore('report', () => {
         batteryChargeVoltage,
         batteryEnergy,
 
+        batteryBmsState,
         batteryChargeCycles,
         batteryCellsStatesList,
         batteryCellsState,

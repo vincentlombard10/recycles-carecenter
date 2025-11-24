@@ -30,6 +30,7 @@ class ProductReport extends Model
             'battery_look_states' => 'array',
             'started_at' => 'datetime',
             'closed_at' => 'datetime',
+            'bms_state' => 'boolean',
         ];
     }
     public const STATUS_INIT = 'init';

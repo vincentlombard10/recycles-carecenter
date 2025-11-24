@@ -32,9 +32,6 @@
                 </div>
             </div>
             {{ html()->form()->close() }}
-            <div>
-                {{ session('success') }}
-            </div>
         </div>
     </x-page-wrapper>
 </x-app-layout>

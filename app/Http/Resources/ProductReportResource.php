@@ -54,6 +54,7 @@ class ProductReportResource extends JsonResource
             'batteryChargeState' => $this->battery_charge_state,
             'batteryChargeVoltage' => $this->battery_charge_voltage,
             'batteryEnergy' => $this->battery_energy,
+            'batteryBmsState' => $this->bms_state,
             'batteryChargeCycles' => $this->battery_charge_cycles,
             'batteryCellsState' => $this->battery_cells_state,
             'batteryVirtualUsableCapacity' => $this->battery_usable_capacity,
