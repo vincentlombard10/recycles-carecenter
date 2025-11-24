@@ -79,7 +79,7 @@
             <div class="col-12 mb-3">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" v-model="store.batteryBmsState" name="bms_state" id="bms_state">
-                    <label for="bms_state" class="form-check-label mb-1">BMS inexploitable</label>
+                    <label for="bms_state" class="form-check-label mb-1">BMS exploitable</label>
                 </div>
                 <div>{{ store.batteryBmsState }}</div>
             </div>
@@ -90,6 +90,7 @@
                 <input type="text"
                        class="form-control"
                        name="battery_charge_cycles"
+                       :disabled="!store.batteryBmsState"
                        v-model="store.batteryChargeCycles">
             </div>
             <div class="col-lg-4 mb-3">
