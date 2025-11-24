@@ -42,7 +42,7 @@ class ProductReportController extends Controller
         $end_time = now();
         return view('reports.export')
             ->with('start_time', $start_time)
-            ->with('end_time', $end_time);;
+            ->with('end_time', $end_time);
     }
 
     public function create()
@@ -157,12 +157,12 @@ class ProductReportController extends Controller
             energy: $request->battery_energy,
         );
         $diagnostic = self::getDiagnostic(
-            cycles: $request->battery_charge_cycles,
-            cells_state: $request->battery_cells_state,
-            capacity: $request->battery_usable_capacity,
-            temperature: $request->battery_temperature,
-            resistance: $request->battery_internal_resistance,
-            comment: $request->diagnostic,
+            cycles: $request->battery_charge_cycles ?? null,
+            cells_state: $request->battery_cells_state ?? null,
+            capacity: $request->battery_usable_capacity ?? null,
+            temperature: $request->battery_temperature ?? null,
+            resistance: $request->battery_internal_resistance ?? null,
+            comment: $request->diagnostic ?? null,
         );
         $other = [
             'status' => $request->status ?? $productReport->status,

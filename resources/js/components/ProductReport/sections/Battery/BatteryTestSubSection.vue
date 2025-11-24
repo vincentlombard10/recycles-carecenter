@@ -81,7 +81,6 @@
                     <input class="form-check-input" type="checkbox" v-model="store.batteryBmsState" name="bms_state" id="bms_state">
                     <label for="bms_state" class="form-check-label mb-1">BMS exploitable</label>
                 </div>
-                <div>{{ store.batteryBmsState }}</div>
             </div>
         </div>
         <div class="row">
