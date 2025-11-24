@@ -88,6 +88,8 @@ export const useProductReportStore = defineStore('report', () => {
     const batteryChargeVoltage = ref()
 
     const batteryEnergy = ref()
+
+    const batteryBmsState = ref()
     const batteryChargeCycles = ref()
     const batteryCellsState = ref()
     const batteryVirtualUsableCapacity = ref()
@@ -256,6 +258,7 @@ export const useProductReportStore = defineStore('report', () => {
         batteryChargeVoltage,
         batteryEnergy,
 
+        batteryBmsState,
         batteryChargeCycles,
         batteryCellsStatesList,
         batteryCellsState,
