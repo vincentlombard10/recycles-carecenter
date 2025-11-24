@@ -165,7 +165,7 @@ class ProductReportController extends Controller
             comment: $request->diagnostic ?? null,
         );
         $other = [
-            'bms_stat' => $request->bms_state ?? null,
+            'bms_state' => $request->bms_state ?? null,
             'status' => $request->status ?? $productReport->status,
             'order' => $request->order,
         ];
