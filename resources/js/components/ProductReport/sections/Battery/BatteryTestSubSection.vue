@@ -76,6 +76,11 @@
             <div><SectionStatusBadge :completed="true" /></div>
         </div>
         <div class="row">
+            <div class="col-12 mb-3">
+                <label for="bms_state" class="form-label mb-1">BMS inexploitable</label>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-4 mb-3">
                 <label for="battery_charge_cycles" class="form-label mb-1">Cycles de charge</label>
                 <input type="text"
