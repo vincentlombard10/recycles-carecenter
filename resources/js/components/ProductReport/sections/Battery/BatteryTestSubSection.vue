@@ -76,8 +76,9 @@
             <div><SectionStatusBadge :completed="true" /></div>
         </div>
         <div class="row">
-            <div class="col-12 mb-3">
-                <label for="bms_state" class="form-label mb-1">BMS inexploitable</label>
+            <div class="form-check col-12 mb-3">
+                <input class="form-check-input" type="checkbox" value="1" name="bms_state" id="bms_state">
+                <label for="bms_state" class="form-check-label mb-1">BMS inexploitable</label>
             </div>
         </div>
         <div class="row">
