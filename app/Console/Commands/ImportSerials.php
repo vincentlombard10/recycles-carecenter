@@ -48,14 +48,18 @@ class ImportSerials extends Command
 
             $fileContents = Storage::disk('sftp')->get($filename);
 
-            if (!$fileContents) {
+            if ($fileContents) {
+
+                Storage::disk('local')->put($localFilename, $fileContents);
+                ImportSerialsJob::dispatch($localFilename);
+
+            } else {
+
                 Log::warning(sprintf("SN Chassis - Aucun contenu dans le fichier %s", $filename));
                 $this->error('Aucun fichier d\'ímportation à cette date.');
                 return 1;
-            }
-            Storage::disk('local')->put($localFilename, $fileContents);
 
-            ImportSerialsJob::dispatch($localFilename);
+            }
 
         } catch (Exception $e) {
 
