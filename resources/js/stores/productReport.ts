@@ -173,9 +173,11 @@ export const useProductReportStore = defineStore('report', () => {
     })
 
     const batteryTestsSubsectionCompleted = computed(() => {
-        return batteryChargeState.value &&
+        return batteryBmsState.value === 0 || (
+            batteryChargeState.value &&
             batteryChargeVoltage.value &&
             batteryEnergy.value && true
+        )
     })
 
     const batterySectionCompleted = computed(() => {
