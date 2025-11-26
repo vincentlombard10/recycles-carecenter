@@ -64,7 +64,7 @@
                                 @endif
                             </div>
                             <div>
-                                <ul>
+                                <ul class="mb-2">
                                     <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
                                             par {{ $item->author->username }}</small></li>
                                     @if($item->validated_at)
