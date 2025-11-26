@@ -78,8 +78,9 @@
                                     @endif
                                 </ul>
                                 <ul>
-                                    <li>{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</li>
-                                    <li>{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</li>
+                                    <li class="mb-1">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</li>
+                                    <li class="mb-1">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</li>
+                                    <li class="mb-1">{{ $item->return_to_code }} {{ $item->return_to_address1 }}</li>
                                 </ul>
                             </div>
                         </div>
