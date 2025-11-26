@@ -80,14 +80,20 @@
                                 <h4 class="font-bold mb-1">Acheminement</h4>
                                 <ul>
                                     <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</div>
+                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">
+                                            de <span class="font-bold">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</span>
+                                        </div>
                                     </li>
                                     <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</div>
+                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">
+                                            vers <span class="font-bold">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</span>
+                                        </div>
                                     </li>
                                     @if($item->return_to)
                                     <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">{{ $item->return_to_code }} {{ $item->return_to_address1 }}</div>
+                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">
+                                            retourné à <span class="font-bold">{{ $item->return_to_code }} {{ $item->return_to_address1 }}</span>
+                                        </div>
                                     </li>
                                     @endif
                                 </ul>
