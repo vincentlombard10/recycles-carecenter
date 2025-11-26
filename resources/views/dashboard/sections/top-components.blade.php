@@ -7,7 +7,7 @@
                     @forelse($top_batteries as $item)
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
-                                <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
+                                <div><span class="fw-bold text-violet-900">{{ $item->item_itno }}</span></div>
                                 <div><span>{{ $item->item_itds }}</span></div>
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
@@ -27,7 +27,7 @@
                     @forelse($top_components as $item)
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
-                                <div><span class="fw-semibold">{{ $item->item_itno }}</span></div>
+                                <div><span class="fw-bold text-violet-900">{{ $item->item_itno }}</span></div>
                                 <div><span>{{ $item->item_itds }}</span></div>
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
@@ -47,7 +47,7 @@
                     @forelse($top_bikes as $item)
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
-                                <div><span class="fw-semibold">{{ $item->serial_itno }}</span></div>
+                                <div><span class="fw-bold text-violet-900">{{ $item->serial_itno }}</span></div>
                                 <div><span>{{ $item->serial_itds }}</span></div>
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
