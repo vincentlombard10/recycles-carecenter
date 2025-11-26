@@ -77,6 +77,7 @@
                                                 par {{ $item->receiver?->username }}</small></li>
                                     @endif
                                 </ul>
+                                <h4 class="font-bold mb-1">Acheminement</h4>
                                 <ul>
                                     <li class="mb-1">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</li>
                                     <li class="mb-1">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</li>
