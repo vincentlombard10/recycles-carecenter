@@ -12,7 +12,7 @@
         </tr>
         <tr>
             <th>Quantité</th>
-            <td><span class="">{{ $item->item_quantity }}</span></td>
+            <td><span class="">{{ $item->item_quantity ?? '/!\'' }}</span></td>
         </tr>
         </tbody>
     </table>
