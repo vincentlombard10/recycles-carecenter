@@ -11,7 +11,7 @@
             <td><span class="">{{ $item->item_itds }}</span></td>
         </tr>
         <tr>
-            <th>QUantité</th>
+            <th>Quantité</th>
             <td><span class="">{{ $item->item_quantity }}</span></td>
         </tr>
         </tbody>
