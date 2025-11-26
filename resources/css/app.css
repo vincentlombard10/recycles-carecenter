@@ -82,6 +82,11 @@ body {
     border: var(--rcf-body-border-width) solid black;
     min-height: 100vh;
     @apply ibm-plex-sans-400;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
 }
 
 #main {
