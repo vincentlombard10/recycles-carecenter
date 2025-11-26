@@ -76,6 +76,9 @@
                                             par {{ $item->receiver?->username }}</small></li>
                                 @endif
                             </ul>
+                            <ul>
+                                <li>{{ $item->routing_from_code }} {{ $item->routing_from_name }}</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="Card_Support--Side">

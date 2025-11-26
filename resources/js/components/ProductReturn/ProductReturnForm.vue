@@ -68,6 +68,7 @@ onMounted(() => {
         setRoutingFrom()
         setRoutingTo()
         setReturnTo()
+        console.log(productReturn.value)
     }
 })
 
