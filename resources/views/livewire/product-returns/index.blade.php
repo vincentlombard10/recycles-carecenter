@@ -79,7 +79,9 @@
                                 </ul>
                                 <h4 class="font-bold mb-1">Acheminement</h4>
                                 <ul>
-                                    <li class="mb-1">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</li>
+                                    <li class="mb-1">
+                                        <div class="text-xs px-2 py-1 bg-violet-300 rounded">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</div>
+                                    </li>
                                     <li class="mb-1">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</li>
                                     <li class="mb-1">{{ $item->return_to_code }} {{ $item->return_to_address1 }}</li>
                                 </ul>
