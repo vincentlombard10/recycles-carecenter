@@ -8,7 +8,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
                                 <div><span class="fw-bold text-violet-900">{{ $item->item_itno }}</span></div>
-                                <div><span>{{ $item->item_itds }}</span></div>
+                                <div><span class="text-sm">{{ $item->item_itds }}</span></div>
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
                         </li>
@@ -28,7 +28,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
                                 <div><span class="fw-bold text-violet-900">{{ $item->item_itno }}</span></div>
-                                <div><span>{{ $item->item_itds }}</span></div>
+                                <div><span class="text-sm">{{ $item->item_itds }}</span></div>
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
                         </li>
@@ -48,7 +48,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center px-0 py-1">
                             <div>
                                 <div><span class="fw-bold text-violet-900">{{ $item->serial_itno }}</span></div>
-                                <div><span>{{ $item->serial_itds }}</span></div>
+                                <div><span class="text-sm">{{ $item->serial_itds }}</span></div>
                             </div>
                             <span class="text-primary">{{ $item->total }}</span>
                         </li>
