@@ -77,7 +77,7 @@
                                                 par {{ $item->receiver?->username }}</small></li>
                                     @endif
                                 </ul>
-                                <h4 class="font-bold mb-1">Acheminement</h4>
+                                <h4 class="font-bold mb-2">Acheminement</h4>
                                 <ul>
                                     <li class="mb-1">
                                         <div class="text-xs px-2 py-1 rounded-sm">
