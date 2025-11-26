@@ -1,6 +1,7 @@
 @import "bootstrap";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @import "./_root.scss";
 @import "./_fonts.scss";
@@ -34,27 +35,41 @@
 @tailwind components;
 @tailwind utilities;
 
-    .form-control {
-        @apply rounded shadow-sm border-violet-300 ring-0 leading-tight focus:border-orange-500 outline-none focus:outline-none focus:ring-0 transition-all;
-    }
+.ibm-plex-sans-400 {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
 
-    button {
-        @apply px-3 py-2 rounded-md bg-violet-600 text-white font-bold shadow-sm active:bg-violet-950 outline-none focus:outline-none focus:ring-0 hover:bg-violet-700;
-    }
+* {
+    @apply ibm-plex-sans-400;
+}
 
-    .sidebar-link {
-        @apply text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold;
-    }
+.form-control {
+    @apply rounded shadow-sm border-violet-300 ring-0 leading-tight focus:border-orange-500 outline-none focus:outline-none focus:ring-0 transition-all;
+}
+
+button {
+    @apply px-3 py-2 rounded-md bg-violet-600 text-white font-bold shadow-sm active:bg-violet-950 outline-none focus:outline-none focus:ring-0 hover:bg-violet-700;
+}
+
+.sidebar-link {
+    @apply text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold;
+}
 
 @source "../**/*.{js,jsx,ts,tsx,vue}";
 
 @view-transition {
     navigation: auto;
 }
+
 :root {
     --sidebar-width: 14rem;
     --bs-table-border-color: white;
 }
+
 :root {
     --sidebar-width: 14rem;
 }
@@ -78,6 +93,7 @@ body {
         margin-left: var(--rcf-sidebar-width);
     }
 }
+
 h1 {
     font-size: 2.5rem;
     line-height: 48px;
@@ -85,6 +101,7 @@ h1 {
     font-weight: 700;
     font-family: "Golos", sans-serif;
 }
+
 h2 {
     font-size: 1.75rem;
     font-family: "Golos", sans-serif;
@@ -101,14 +118,17 @@ h2 {
     align-items: center;
     z-index: 200;
     border-bottom: 1px solid oklch(81.1% 0.111 293.571);
+
     .form-control {
         width: 120px;
         transition: 200ms ease-out;
+
         &:focus {
             width: 360px;
             border-color: oklch(43.2% 0.232 292.759);
         }
     }
+
     .page-header-content {
         padding: 1rem 1.5rem;
         width: 100%;
@@ -118,6 +138,7 @@ h2 {
         gap: 1rem;
     }
 }
+
 .page-content {
     padding: 1rem;
 }
