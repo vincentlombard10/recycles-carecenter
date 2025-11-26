@@ -20,6 +20,9 @@ export const useProductReturnStore = defineStore('productReturn', () => {
 
     const setType = (_value: string) => {
         type.value = _value
+        if (type.value === "battery" || type.value === "component") {
+            itemQuantity.value = 1
+        }
     }
 
     /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
@@ -151,6 +154,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
     const itemSearchMethod = ref<string>('auto')
     const itemSku = ref<string>('')
     const itemDesignation = ref<string>('')
+    const itemQuantity = ref<Number>()
     const setItemSearchMethod = (_method: string) => {
         itemSearchMethod.value = _method
     }
@@ -529,6 +533,7 @@ export const useProductReturnStore = defineStore('productReturn', () => {
         itemSearchMethod,
         itemSku,
         itemDesignation,
+        itemQuantity,
         fetchItems,
         setItem,
         cancelItem,

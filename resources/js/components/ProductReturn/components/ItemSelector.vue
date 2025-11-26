@@ -19,10 +19,16 @@
             />
         </div>
         <div class="col-lg-3 mb-2">
-
+            <label for="item_quantity" class="form-label mb-1">Quantité</label>
+            <input type="number"
+                   name="item_quantity"
+                   class="form-control"
+                   :readonly="store.type === 'battery'"
+                   v-model="store.itemQuantity">
         </div>
         <div class="col-lg-6">
-            <button class="text-xs px-2 py-1 rounded-md bg-gray-800 hover:bg-gray-900 shadow-sm" @click.prevent="store.cancelItem()">
+            <button class="text-xs px-2 py-1 rounded-md bg-gray-800 hover:bg-gray-900 shadow-sm"
+                    @click.prevent="store.cancelItem()">
                 <i class="bi bi-arrow-clockwise mr-1"></i>Annuler
             </button>
         </div>
@@ -55,7 +61,7 @@
             </div>
             <div class="col-lg-3 mb-3 d-grid align-bottom">
                 <label for="" class="form-label mb-1">&nbsp;</label>
-                <button  @click.prevent="store.fetchItems">Chercher</button>
+                <button @click.prevent="store.fetchItems">Chercher</button>
             </div>
             <div class="col-lg-3 mb-3 d-grid align-bottom">
                 <label for="" class="form-label mb-1">&nbsp;</label>

@@ -4,18 +4,18 @@
     "src": "public/fonts/GolosText-VariableFont_wght.ttf"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BB9v2FEz.css",
+    "file": "assets/app-HyUSRihZ.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-6qSotQR6.js",
+    "file": "assets/app-CTJ7h7Wt.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DRqel__k.css",
-      "assets/app-BB9v2FEz.css"
+      "assets/app-D1d3LR9H.css",
+      "assets/app-HyUSRihZ.css"
     ],
     "assets": [
       "assets/GolosText-VariableFont_wght-cldftjk2.ttf"
