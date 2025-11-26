@@ -81,6 +81,7 @@ body {
     font-size: 14px;
     border: var(--rcf-body-border-width) solid black;
     min-height: 100vh;
+    @apply ibm-plex-sans-400;
 }
 
 #main {
