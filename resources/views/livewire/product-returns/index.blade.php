@@ -80,12 +80,12 @@
                                 <h4 class="font-bold mb-1">Acheminement</h4>
                                 <ul>
                                     <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">
+                                        <div class="text-xs px-2 py-1 bg-orange-200 rounded-sm">
                                             de <span class="font-bold">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</span>
                                         </div>
                                     </li>
                                     <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">
+                                        <div class="text-xs px-2 py-1 bg-orange-200 rounded-sm">
                                             vers <span class="font-bold">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</span>
                                         </div>
                                     </li>
