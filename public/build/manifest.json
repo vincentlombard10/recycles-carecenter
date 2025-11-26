@@ -4,17 +4,21 @@
     "src": "public/fonts/GolosText-VariableFont_wght.ttf"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CSIqwiLr.css",
+    "file": "assets/app-BB9v2FEz.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-XbcRJj-Q.js",
+    "file": "assets/app-6qSotQR6.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-Dco6Py5g.css"
+      "assets/app-DRqel__k.css",
+      "assets/app-BB9v2FEz.css"
+    ],
+    "assets": [
+      "assets/GolosText-VariableFont_wght-cldftjk2.ttf"
     ]
   },
   "resources/scss/pdf.scss": {

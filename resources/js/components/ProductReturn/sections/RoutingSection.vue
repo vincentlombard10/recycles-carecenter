@@ -1,7 +1,7 @@
 <template>
     <section class="Section">
         <div class="Section_Head">
-            <h2>Acheminement</h2>
+            <h2 class="font-bold mb-3">Acheminement</h2>
             <div>
                 <SectionStatusBadge :completed="store.routingSectionCompleted" />
             </div>

@@ -22,8 +22,8 @@
 
         </div>
         <div class="col-lg-6">
-            <button class="btn btn-sm btn-dark" @click.prevent="store.cancelItem()">
-                <i class="bi bi-arrow-clockwise"></i>Annuler
+            <button class="text-xs px-2 py-1 rounded-md bg-gray-800 hover:bg-gray-900 shadow-sm" @click.prevent="store.cancelItem()">
+                <i class="bi bi-arrow-clockwise mr-1"></i>Annuler
             </button>
         </div>
     </div>
@@ -55,11 +55,11 @@
             </div>
             <div class="col-lg-3 mb-3 d-grid align-bottom">
                 <label for="" class="form-label mb-1">&nbsp;</label>
-                <button class="btn btn-dark" @click.prevent="store.fetchItems">Chercher</button>
+                <button  @click.prevent="store.fetchItems">Chercher</button>
             </div>
             <div class="col-lg-3 mb-3 d-grid align-bottom">
                 <label for="" class="form-label mb-1">&nbsp;</label>
-                <button @click.prevent="store.setItemSearchMethod('manual')" class="btn btn-primary">Renseigner
+                <button @click.prevent="store.setItemSearchMethod('manual')">Renseigner
                     manuellement
                 </button>
             </div>

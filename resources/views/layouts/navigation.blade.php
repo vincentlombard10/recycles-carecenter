@@ -57,35 +57,35 @@
             @canany('brands.read')
                 <li class="sidebar-item">
                     <a href="{{ route('brands.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('brands.*') ? 'active': '' }}"><i class="bi bi-tag"></i><span
+                       class="sidebar-link {{ Route::is('brands.*') ? 'active': '' }}"><i class="bi bi-tag"></i><span
                             class="sidebar-link__label">Marques</span></a>
                 </li>
             @endcanany
             @canany('groups.read')
                 <li class="sidebar-item">
                     <a href="{{ route('groups.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('groups.*') ? 'active': '' }}"><i
+                       class="sidebar-link {{ Route::is('groups.*') ? 'active': '' }}"><i
                             class="bi bi-grid"></i><span class="sidebar-link__label">Groupes</span></a>
                 </li>
             @endcanany
             @canany('serials.read')
                 <li class="sidebar-item">
                     <a href="{{ route('serials.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('serials.*') ? 'active': '' }}"><i class="bi bi-upc"></i><span
+                       class="sidebar-link {{ Route::is('serials.*') ? 'active': '' }}"><i class="bi bi-upc"></i><span
                             class="sidebar-link__label">Numéros de série</span></a>
                 </li>
             @endcanany
             @canany('items.read')
                 <li class="sidebar-item">
                     <a href="{{ route('items.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('items.*') ? 'active': '' }}"><i class="bi bi-bicycle"></i><span
+                       class="sidebar-link  {{ Route::is('items.*') ? 'active': '' }}"><i class="bi bi-bicycle"></i><span
                             class="sidebar-link__label">Références</span></a>
                 </li>
             @endcanany
             @canany('items.read')
                 <li class="sidebar-item">
                     <a href="{{ route('contacts.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('contacts.*') ? 'active': '' }}"><i
+                       class="sidebar-link {{ Route::is('contacts.*') ? 'active': '' }}"><i
                             class="bi bi-person"></i><span
                             class="sidebar-link__label">Contacts</span></a>
                 </li>
@@ -95,27 +95,27 @@
         <ul class="sidebar-menu">
             <li class="sidebar-item">
                 <a href="{{ route('admin.users.index') }}"
-                   class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('admin.users.*') ? 'active': '' }}"><i
+                   class="sidebar-link {{ Route::is('admin.users.*') ? 'active': '' }}"><i
                         class="bi bi-person-fill"></i><span
                         class="sidebar-link__label">Utilisateurs</span></a>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('admin.roles.index') }}"
-                   class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('admin.roles.*') ? 'active': '' }}"><i
+                   class="sidebar-link {{ Route::is('admin.roles.*') ? 'active': '' }}"><i
                         class="bi bi-people-fill"></i><span
                         class="sidebar-link__label">Rôles</span></a>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('log-viewer.index') }}"
                    target="_blank"
-                   class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('log-viewer.*') ? 'active': '' }}"><i
+                   class="sidebar-link {{ Route::is('log-viewer.*') ? 'active': '' }}"><i
                         class="bi bi-journal-text"></i><span
                         class="sidebar-link__label">Visualiseur de logs</span></a>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('vantage.dashboard') }}"
                    target="_blank"
-                   class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('vantage.*') ? 'active': '' }}"><i
+                   class="sidebar-link {{ Route::is('vantage.*') ? 'active': '' }}"><i
                         class="bi bi-journal-text"></i><span
                         class="sidebar-link__label">Vantage</span></a>
             </li>

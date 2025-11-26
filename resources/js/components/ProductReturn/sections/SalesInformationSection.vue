@@ -1,7 +1,7 @@
 <template>
     <section class="Section" id="Sale_Information">
         <div class="Section_Head">
-            <h2>Informations de vente</h2>
+            <h2 class="font-bold mb-3">Informations de vente</h2>
             <div>
                 <SectionStatusBadge :completed="store.salesInfoSectionCompleted"/>
             </div>

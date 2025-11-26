@@ -34,10 +34,23 @@
 @tailwind components;
 @tailwind utilities;
 
+    .form-control {
+        @apply rounded shadow-sm border-violet-300 ring-0 leading-tight focus:border-orange-500 outline-none focus:outline-none focus:ring-0 transition-all;
+    }
+
+    button {
+        @apply px-3 py-2 rounded-md bg-violet-600 text-white font-bold shadow-sm active:bg-violet-950 outline-none focus:outline-none focus:ring-0 hover:bg-violet-700;
+    }
+
+    .sidebar-link {
+        @apply text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold;
+    }
+
+@source "../**/*.{js,jsx,ts,tsx,vue}";
+
 @view-transition {
     navigation: auto;
 }
-
 :root {
     --sidebar-width: 14rem;
     --bs-table-border-color: white;
