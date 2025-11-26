@@ -61,7 +61,7 @@ class ProductReturnController extends Controller
             destination: $request->destination ?? null
         );
         $ticket = self::getTicket(ticket: $request->ticket);
-        $item = self::getItem(itno: $request->item_itno, itds: $request->item_itds);
+        $item = self::getItem(itno: $request->item_itno ?? null, itds: $request->item_itds ?? null, qty: $request->item_quantity ?? null);
         $serial = self::getSerial(
             code: $request->serial_code ?? null,
             designation: $request->serial_itds ?? null,
@@ -194,7 +194,7 @@ class ProductReturnController extends Controller
             destination: $request->destination ?? null
         );
         $ticket = self::getTicket(ticket: $request->ticket);
-        $item = self::getItem(itno: $request->item_itno, itds: $request->item_itds);
+        $item = self::getItem(itno: $request->item_itno ?? null, itds: $request->item_itds ?? null, qty: $request->item_quantity ?? null);
         $serial = self::getSerial(
             code: $request->serial_code ?? null,
             designation: $request->serial_itds ?? null,
@@ -352,12 +352,13 @@ class ProductReturnController extends Controller
         ];
     }
 
-    private function getItem(string|null $itno, string|null $itds): array
+    private function getItem(string|null $itno, string|null $itds, int|null $qty): array
     {
         return [
             'item_id' => Item::where('itno', $itno)->first()->id ?? null,
             'item_itno' => $itno ?? null,
             'item_itds' => $itds ?? null,
+            'item_quantity' => $qty ?? null,
         ];
     }
 

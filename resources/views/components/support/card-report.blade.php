@@ -1,9 +1,9 @@
 @props(['report' => null])
-<div class="Card_Support Card_Support--{{ $report->status }}">
+<div class="Card_Support Card_Support--{{ $report->status }} rounded-lg">
     <div class="Card_Support--Body">
         <div class="Card_Support--Main mb-2">
-            <div>
-                <h2 class="fw-semibold">{{ $report->identifier }}</h2>
+            <div class="grid gap-1">
+                <h2 class="fw-semibold mb-2">{{ $report->identifier }}</h2>
                 @if($report->return->environment === \App\Models\ProductReturn::ENV_SANDBOX)
                     <div class="d-grid mb-1">
                         <span class="badge badge-{{ $report->return->environment }}">Sandbox</span>

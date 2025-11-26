@@ -1,0 +1,9 @@
+.tinycard {
+    background-color: oklch(98.4% 0.003 247.858);
+    border-radius: 0.35rem;
+    padding: 0.35rem 1.5rem;
+    font-size: 0.9rem;
+    &--lg {
+        padding: 1rem 1.5rem;
+    }
+}

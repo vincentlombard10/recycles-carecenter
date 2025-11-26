@@ -3,7 +3,7 @@
     <div class="sidebar-content">
         <ul class="sidebar-menu">
             <li class="sidebar-item">
-                <a href="{{ route('profile.index') }}" class="sidebar-link {{ Route::is('profile.*') ? 'active': '' }}">
+                <a href="{{ route('profile.index') }}" class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('profile.*') ? 'active': '' }}">
                     <i class="bi bi-person-badge"></i>
                     <span class="sidebar-link__label">Mon profil</span>
                 </a>
@@ -12,20 +12,20 @@
         <ul class="sidebar-menu">
             <li class="sidebar-item">
                 <a href="{{ route('dashboard') }}"
-                   class="sidebar-link {{ Route::is('dashboard') ? 'active': '' }}"><i
+                   class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('dashboard') ? 'active': '' }}"><i
                         class="bi bi-house"></i><span class="sidebar-link__label">Tableau de bord</span></a>
             </li>
             @canany(['returns.read', 'returns.create', 'returns.update', 'returns.delete'])
                 <li class="sidebar-item">
                     <a href="{{ route('support.returns.index') }}"
-                       class="sidebar-link {{ Route::is('support.returns.*') ? 'active': '' }}"><i
+                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('support.returns.*') ? 'active': '' }}"><i
                             class="bi bi-box"></i><span class="sidebar-link__label">Retours produits</span></a>
                 </li>
             @endcanany
             @canany(['reports.read', 'reports.create', 'reports.update', 'reports.delete'])
                 <li class="sidebar-item">
                     <a href="{{ route('support.reports.index') }}"
-                       class="sidebar-link {{ Route::is('support.reports.*') ? 'active': '' }}"><i
+                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('support.reports.*') ? 'active': '' }}"><i
                             class="bi bi-list-check"></i><span
                             class="sidebar-link__label">Rapports d'expertise</span></a>
                 </li>
@@ -33,7 +33,7 @@
             @canany(['reports.read', 'reports.create', 'reports.update', 'reports.delete'])
                 <li class="sidebar-item">
                     <a href="{{ route('support.estimates.index') }}"
-                       class="sidebar-link {{ Route::is('support.estimates.*') ? 'active': '' }}"><i
+                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('support.estimates.*') ? 'active': '' }}"><i
                             class="bi bi-piggy-bank"></i><span
                             class="sidebar-link__label">Devis</span></a>
                 </li>
@@ -41,7 +41,7 @@
             @canany('tickets.read')
                 <li class="sidebar-item">
                     <a href="{{ route('support.tickets.index') }}"
-                       class="sidebar-link {{ Route::is('support.tickets.*') ? 'active': '' }}"><i
+                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('support.tickets.*') ? 'active': '' }}"><i
                             class="bi bi-inboxes"></i><span class="sidebar-link__label">Tickets Zendesk</span></a>
                 </li>
             @endcanany
@@ -78,7 +78,7 @@
             @canany('items.read')
                 <li class="sidebar-item">
                     <a href="{{ route('items.index') }}"
-                       class="sidebar-link {{ Route::is('items.*') ? 'active': '' }}"><i class="bi bi-bicycle"></i><span
+                       class="sidebar-link  {{ Route::is('items.*') ? 'active': '' }}"><i class="bi bi-bicycle"></i><span
                             class="sidebar-link__label">Références</span></a>
                 </li>
             @endcanany
@@ -124,7 +124,7 @@
         <ul class="sidebar-menu mt-auto mb-0">
             <li class="sidebar-item">
                 {{ html()->form('POST', route('logout'))->open() }}
-                <button class="sidebar-link sidebar-link--logout"><i class="bi bi-person-lines-fill"></i><span
+                <button class="sidebar-link bg-red-700 hover:bg-red-500"><i class="bi bi-person-lines-fill"></i><span
                         class="sidebar-link__label">Déconnexion</span></button>
                 {{ html()->form()->close() }}
             </li>

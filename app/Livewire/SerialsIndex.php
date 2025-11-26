@@ -19,7 +19,7 @@ class SerialsIndex extends Component
     public function render()
     {
         $serials = Serial::where(function ($query) {
-            $query->whereAny(['code', 'item_itno', 'dealer_code'], 'like', '%' . $this->searchTerm . '%');
+            $query->whereAny(['code', 'item_itno', 'dealer_code', 'last_order', 'last_delivery'], 'like', '%' . $this->searchTerm . '%');
             $query->when($this->orphans, function ($query) {
                 $query->doesnthave('item');
             });

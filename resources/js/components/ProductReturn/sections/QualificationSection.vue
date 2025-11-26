@@ -1,56 +1,53 @@
 <template>
-    <section class="Section"
+    <section class="bg-transparent"
              id="Qualification">
         <div class="Section_Head">
-            <h2>Qualification</h2>
+            <h2 class="font-bold mb-3">Qualification</h2>
             <div><SectionStatusBadge :completed="store.qualificationSectionCompleted"/></div>
         </div>
-        <div class="row">
-            <div class="col-xl-12 mb-3">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="type" class="form-label mb-1">Type de retour</label>
-                        <VSelect name="type"
-                                 :current-option="store.type"
-                                 :options="store.typesOptions"
-                                 @select="handleSelectType"/>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="context" class="form-label mb-1">Contexte</label>
-                        <VSelect name="context"
-                                 :current-option="store.context"
-                                 :options="store.contextsOptions"
-                                 @select="handleSelectContext"/>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="reason" class="form-label mb-1">Motif</label>
-                        <VSelect name="reason"
-                                 :current-option="store.reason"
-                                 :options="store.reasonsOptions"
-                                 @select="handleSelectReason"/>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="assignee" class="form-label mb-1">Assignation</label>
-                        <VSelect name="assignation"
-                                 :current-option="store.assignation"
-                                 :options="store.assignationsOptions"
-                                 @select="handleSelectAssignation"/>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="action" class="form-label mb-1">Action</label>
-                        <VSelect name="action"
-                                 :currentOption="store.action"
-                                 :options="store.actionsOptions"
-                                 @select="handleSelectAction"/>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="destination" class="form-label mb-1">Destination</label>
-                        <VSelect name="destination"
-                                 :currentOption="store.destination"
-                                 :options="store.destinationsOptions"
-                                 @select="handleSelectDestination"/>
-                    </div>
-                </div>
+        <div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div>
+
+                <label for="type" class="form-label mb-1">Type de retour</label>
+                <VSelect name="type"
+                         :current-option="store.type"
+                         :options="store.typesOptions"
+                         @select="handleSelectType"/>
+            </div>
+            <div>
+                <label for="context" class="form-label mb-1">Contexte</label>
+                <VSelect name="context"
+                         :current-option="store.context"
+                         :options="store.contextsOptions"
+                         @select="handleSelectContext"/>
+            </div>
+            <div>
+                <label for="reason" class="form-label mb-1">Motif</label>
+                <VSelect name="reason"
+                         :current-option="store.reason"
+                         :options="store.reasonsOptions"
+                         @select="handleSelectReason"/>
+            </div>
+            <div>
+                <label for="assignee" class="form-label mb-1">Assignation</label>
+                <VSelect name="assignation"
+                         :current-option="store.assignation"
+                         :options="store.assignationsOptions"
+                         @select="handleSelectAssignation"/>
+            </div>
+            <div>
+                <label for="action" class="form-label mb-1">Action</label>
+                <VSelect name="action"
+                         :currentOption="store.action"
+                         :options="store.actionsOptions"
+                         @select="handleSelectAction"/>
+            </div>
+            <div>
+                <label for="destination" class="form-label mb-1">Destination</label>
+                <VSelect name="destination"
+                         :currentOption="store.destination"
+                         :options="store.destinationsOptions"
+                         @select="handleSelectDestination"/>
             </div>
         </div>
     </section>

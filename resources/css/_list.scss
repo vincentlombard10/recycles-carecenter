@@ -1,0 +1,44 @@
+ul {
+    padding: 0;
+    margin: 0;
+    li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+
+#cfo-list {
+    .cfo-item {
+        background: white;
+        border-bottom: 1px solid oklch(86.9% 0.022 252.894);
+        display: grid;
+        grid-template-columns: 3rem auto;
+        align-items: center;
+        &:last-child {
+            border-bottom: 0;
+        }
+        .handle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-right: 4px solid oklch(96.8% 0.007 247.896);
+            width: 3rem;
+            height: 3rem;
+            cursor: grab !important;
+        }
+        .info {
+            display: grid;
+            grid-template-columns: auto 8rem;
+            align-items: center;
+            padding: 0.5rem;
+        }
+    }
+    .cfo-ghost-item {
+        background-color: oklch(82.7% 0.119 306.383);
+        color: oklch(38.1% 0.176 304.987);
+        border-bottom: 1px solid oklch(70.2% 0.183 293.541);
+    }
+}

@@ -64,9 +64,11 @@ onMounted(() => {
         if (productReturn.value.serial_code) {
             store.setSerial(productReturn.value.serial_code, false)
         }
+        store.itemQuantity = productReturn.value.quantity
         setRoutingFrom()
         setRoutingTo()
         setReturnTo()
+        console.log(productReturn.value)
     }
 })
 

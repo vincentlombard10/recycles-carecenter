@@ -1,0 +1,21 @@
+.panels-wrapper {
+    position: relative;
+    width: 100%;
+    display: block;
+    @media (min-width: 992px) {
+        display: grid;
+        grid-template-columns: 240px auto;
+    }
+    @media (min-width: 1200px) {
+        grid-template-columns: 320px auto;
+    }
+    .panel-left {
+        background-color: #d5d5de;
+        padding: 1rem;
+    }
+    .panel-right {
+        padding: 1rem;
+        height: calc(100vh - 48px);
+        overflow-y: scroll;
+    }
+}

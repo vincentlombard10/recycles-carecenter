@@ -1,5 +1,6 @@
 import './bootstrap';
 import 'bootstrap';
+import '../css/app.css';
 import { createPinia} from "pinia";
 import { createApp } from "vue";
 import Alpine from 'alpinejs';

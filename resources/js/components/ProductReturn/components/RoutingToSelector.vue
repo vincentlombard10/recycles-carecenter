@@ -1,5 +1,5 @@
 <template>
-    <h4>Destinataire</h4>
+    <h4 class="font-semibold text-lg mb-2">Destinataire</h4>
     <div class="row" v-if="store.routingTo">
         <div class="col-lg-4">
             <ContactCard :contact="store.routingTo" class="mb-2"/>

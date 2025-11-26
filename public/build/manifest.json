@@ -3,19 +3,23 @@
     "file": "assets/GolosText-VariableFont_wght-cldftjk2.ttf",
     "src": "public/fonts/GolosText-VariableFont_wght.ttf"
   },
+  "resources/css/app.css": {
+    "file": "assets/app-HyUSRihZ.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
-    "file": "assets/app-D2fbJC0x.js",
+    "file": "assets/app-CPwdK6xY.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-Dco6Py5g.css"
+      "assets/app-B7m75X1a.css",
+      "assets/app-HyUSRihZ.css"
+    ],
+    "assets": [
+      "assets/GolosText-VariableFont_wght-cldftjk2.ttf"
     ]
-  },
-  "resources/scss/app.scss": {
-    "file": "assets/app-DewGyPww.css",
-    "src": "resources/scss/app.scss",
-    "isEntry": true
   },
   "resources/scss/pdf.scss": {
     "file": "assets/pdf-DjgGiGrS.css",

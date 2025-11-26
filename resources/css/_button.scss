@@ -1,0 +1,110 @@
+.btn {
+    &-light {
+        background-color: oklch(98.4% 0.003 247.858);
+        border: 1px solid oklch(92.9% 0.013 255.508);
+        &:hover {
+            background-color: oklch(96.8% 0.007 247.896);
+        }
+    }
+    &-lg {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+    &-sm {
+        border-radius: 0.35rem;
+        padding: 0.2rem 0.65rem;
+    }
+    &-pill {
+        border-radius: 1.5rem;
+    }
+    &-pill-sm {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1.5rem;
+    }
+    &-secondary {
+        background-color: oklch(64.6% 0.222 41.116);
+        color: white;
+        &:hover {
+            background-color: oklch(64.6% 0.222 41.116);
+            color: white;
+        }
+    }
+    &-violet {
+        background-color: oklch(89.4% 0.057 293.283);
+        color: oklch(38% 0.189 293.745);
+        &:hover {
+            background-color: oklch(81.1% 0.111 293.571);
+        }
+    }
+    &-circle {
+        display: flex;
+        width: 43px;
+        height: 43px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    &-violet {
+        background-color: oklch(43.2% 0.232 292.759);
+        color: white;
+        border: 4px solid oklch(54.1% 0.281 293.009);
+        &:hover {
+            background-color: oklch(60.6% 0.25 292.717);
+            color: white;
+        }
+    }
+    &-cyan {
+        background-color: oklch(58.8% 0.158 241.966);
+        color: white;
+        border: 4px solid oklch(74.6% 0.16 232.661);
+        &:hover {
+            background-color: oklch(50% 0.134 242.749);
+            border-color: oklch(58.8% 0.158 241.966);
+            color: white;
+        }
+    }
+    &-orange {
+        background-color: oklch(64.6% 0.222 41.116);
+        color: white;
+        border: 4px solid oklch(70.5% 0.213 47.604);
+        &:hover {
+            background-color: oklch(55.3% 0.195 38.402);
+            color: white;
+            border-color: oklch(64.6% 0.222 41.116);
+        }
+    }
+    &-amber {
+        background-color: oklch(76.9% 0.188 70.08);
+        color: oklch(27.9% 0.077 45.635);
+        border: 4px solid oklch(82.8% 0.189 84.429);
+        &:hover {
+            background-color: oklch(82.8% 0.189 84.429);
+            color: oklch(27.9% 0.077 45.635);
+            border-color: oklch(76.9% 0.188 70.08);
+        }
+    }
+}
+.page-header-btn {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    &-primary {
+        background-color: oklch(43.2% 0.232 292.759);
+        color: white;
+        &:hover {
+            color: oklch(70.5% 0.213 47.604);
+        }
+    }
+    &-secondary {
+        background-color: oklch(95.4% 0.038 75.164);
+        color: oklch(64.6% 0.222 41.116);
+        &:hover {
+            background-color: oklch(64.6% 0.222 41.116);
+            color: white;
+        }
+    }
+}

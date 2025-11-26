@@ -20,11 +20,11 @@
 @if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
-                <div class="Card_Support Card_Support--{{ $item->status }}">
+                <div class="Card_Support Card_Support--{{ $item->status }} rounded-lg">
                     <div class="Card_Support--Body">
                         <div class="Card_Support--Main mb-2">
-                            <div>
-                                <h2 class="fw-semibold">{{ $item->identifier }}</h2>
+                            <div class="grid gap-1">
+                                <h2 class="fw-semibold mb-2">{{ $item->identifier }}</h2>
                                 @if($item->environment === \App\Models\ProductReturn::ENV_SANDBOX)
                                     <div class="d-grid mb-1">
                                         <span class="badge badge-{{ $item->environment }}">Sandbox</span>
@@ -46,7 +46,6 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="mb-2"><span class="badge">{{ $item->customer_code }}</span></div>
                                 @if($item->type === 'bike')
                                     <x-card-bike :item="$item"/>
                                 @elseif($item->type === 'component')
@@ -64,19 +63,41 @@
                                     </div>
                                 @endif
                             </div>
-                            <ul>
-                                <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
-                                        par {{ $item->author->username }}</small></li>
-                                @if($item->validated_at)
-                                    <li><small>Validé le {{ date('d/m/Y à H:i', strtotime($item->validated_at)) }}
-                                            par {{ $item->validator?->username }}</small>
+                            <div>
+                                <ul class="mb-2">
+                                    <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
+                                            par {{ $item->author->username }}</small></li>
+                                    @if($item->validated_at)
+                                        <li><small>Validé le {{ date('d/m/Y à H:i', strtotime($item->validated_at)) }}
+                                                par {{ $item->validator?->username }}</small>
+                                        </li>
+                                    @endif
+                                    @if($item->received_at)
+                                        <li><small>Réceptionné le {{ date('d/m/Y à H:i', strtotime($item->received_at)) }}
+                                                par {{ $item->receiver?->username }}</small></li>
+                                    @endif
+                                </ul>
+                                <h4 class="font-bold mb-2">Acheminement</h4>
+                                <ul>
+                                    <li class="mb-1">
+                                        <div class="text-xs px-2 py-1 rounded-sm">
+                                            de <span class="font-bold">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</span>
+                                        </div>
                                     </li>
-                                @endif
-                                @if($item->received_at)
-                                    <li><small>Réceptionné le {{ date('d/m/Y à H:i', strtotime($item->received_at)) }}
-                                            par {{ $item->receiver?->username }}</small></li>
-                                @endif
-                            </ul>
+                                    <li class="mb-1">
+                                        <div class="text-xs px-2 py-1 rounded-sm">
+                                            vers <span class="font-bold">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</span>
+                                        </div>
+                                    </li>
+                                    @if($item->return_to)
+                                    <li class="mb-1">
+                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">
+                                            retourné à <span class="font-bold">{{ $item->return_to_code }} {{ $item->return_to_address1 }}</span>
+                                        </div>
+                                    </li>
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="Card_Support--Side">

@@ -1,7 +1,7 @@
 <template>
     <section class="Section" id="Product">
         <div class="Section_Head">
-            <h2>Produit concerné</h2>
+            <h2 class="font-bold mb-3">Produit concerné</h2>
         </div>
         <template v-if="store.type">
             <ItemSelector

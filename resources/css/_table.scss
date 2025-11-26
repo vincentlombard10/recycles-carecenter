@@ -1,0 +1,78 @@
+table.table {
+    thead {
+        tr {
+            th {
+                padding: 0.25rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+    }
+    tbody {
+        tr {
+            &.tr--new {
+                background: oklch(94.6% 0.033 307.174);
+                border-bottom: 1px solid oklch(82.7% 0.119 306.383);
+                td {
+                    background: inherit;
+                    color: inherit;
+                }
+            }
+            &.tr--open {
+                background: white;
+                color: oklch(44.3% 0.11 240.79) !important;
+                td {
+                    color: inherit;
+                }
+            }
+            &.tr--pending, &.tr--hold {
+                background: oklch(95.4% 0.038 75.164);
+                border-bottom: 1px solid oklch(83.7% 0.128 66.29);
+                td {
+                    background: inherit;
+                    color: inherit;
+                }
+            }
+            &.tr--solved {
+                background: oklch(95% 0.052 163.051);
+                border-bottom: 1px solid oklch(84.5% 0.143 164.978);
+                td {
+                    background: inherit;
+                    color: inherit;
+                }
+            }
+            &.tr--closed {
+                background: oklch(92.8% 0.006 264.531);
+                border-bottom: 1px solid oklch(87.2% 0.01 258.338);
+                td {
+                    background: inherit;
+                    color: inherit;
+                }
+            }
+            &:last-child {
+                border-bottom: 0;
+                td, th {
+                    border-bottom: inherit;
+                }
+            }
+        }
+    }
+    &-mini {
+        thead {
+            border: 2Px solid blue;
+        }
+        tbody {
+            tr {
+                th {
+                    padding: 0.15rem;
+                    background-color: transparent;
+                    font-weight: 500;
+                }
+                td {
+                    padding: 0.15rem;
+                    background-color: transparent;
+                }
+            }
+        }
+        margin-bottom: 0;
+    }
+}

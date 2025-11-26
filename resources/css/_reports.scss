@@ -1,0 +1,38 @@
+.report-actions {
+    display: flex;
+    font-size: 0.85rem;
+    .action-from {
+        background: linear-gradient(90deg, oklch(96.2% 0.018 272.314), oklch(93% 0.034 272.788));
+        background: linear-gradient(90deg, oklch(93% 0.034 272.788), oklch(93% 0.034 272.788));
+        line-height: 1rem;
+        color: oklch(58.5% 0.233 277.117);
+        font-weight: 600;
+        min-width: 12rem;
+        padding: 0.5rem 1.25rem 0.5rem 0.75rem;
+        position: relative;
+        clip-path: polygon(0 0, calc(100% - 0.5rem) 0, 100% 50%, calc(100% - 0.5rem) 100%, 0 100%);
+    }
+    .action-to {
+        background: linear-gradient(90deg, oklch(99% 0.026 236.824), oklch(95.6% 0.045 203.388));
+        background: linear-gradient(90deg, oklch(93.2% 0.032 255.585), oklch(93.2% 0.032 255.585));
+        line-height: 1rem;
+        color: oklch(62.3% 0.214 259.815);
+        font-weight: 600;
+        min-width: 12rem;
+        padding: 0.5rem 1.25rem 0.5rem 1.5rem;
+        position: relative;
+        clip-path: polygon(0 0, calc(100% - 0.5rem) 0, 100% 50%, calc(100% - 0.5rem) 100%, 0 100%, 0.5rem 50%);
+        margin-left: -0.4rem;
+    }
+    .action-reshipment {
+        background: linear-gradient(90deg, oklch(98.4% 0.014 180.72), oklch(95.3% 0.051 180.801));
+        background: linear-gradient(90deg, oklch(95.4% 0.038 75.164), oklch(95.4% 0.038 75.164));
+        line-height: 1rem;
+        color: oklch(70.5% 0.213 47.604);
+        font-weight: 600;
+        min-width: 12rem;
+        padding: 0.5rem 1.25rem 0.5rem 1.5rem;
+        clip-path: polygon(0 0, calc(100% - 0.5rem) 0, 100% 50%, calc(100% - 0.5rem) 100%, 0 100%, 0.5rem 50%);
+        margin-left: -0.4rem;
+    }
+}

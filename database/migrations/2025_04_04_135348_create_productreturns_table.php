@@ -63,6 +63,7 @@ return new class extends Migration {
             $table->foreignId('item_id')->nullable()->constrained();
             $table->string('item_itno')->nullable();
             $table->string('item_itds')->nullable();
+            $table->smallInteger('quantity')->unsigned()->nullable();
             $table->foreignId('author_id')->nullable()->references('id')->on('users');
             $table->foreignId('validator_id')->nullable()->references('id')->on('users');
             $table->foreignId('receiver_id')->nullable()->references('id')->on('users');

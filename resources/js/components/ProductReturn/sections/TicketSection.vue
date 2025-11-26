@@ -1,7 +1,7 @@
 <template>
     <section id="Ticket">
         <div class="Section_Head">
-            <h3>Ticket associé</h3>
+            <h2 class="font-bold mb-3">Ticket associé</h2>
             <div>
                 <SectionStatusBadge :completed="store.ticketSectionCompleted"/>
             </div>
@@ -12,7 +12,7 @@
                 <input type="hidden" name="ticket" :value="store.ticket.id"/>
             </div>
             <div class="col-12 mb-2">
-                <button class="btn btn-sm btn-dark" @click.prevent="store.cancelTicket">
+                <button class="text-sm" @click.prevent="store.cancelTicket">
                     <i class="bi bi-arrow-clockwise"></i>
                     Annuler</button>
             </div>
@@ -37,7 +37,7 @@
                 <input type="text" class="form-control" v-model="store.ticketSearchTerm">
             </div>
             <div class="col-lg-3">
-                <button class="btn btn-dark" @click.prevent="store.fetchTickets">Rechercher</button>
+                <button @click.prevent="store.fetchTickets">Rechercher</button>
             </div>
         </div>
     </section>
