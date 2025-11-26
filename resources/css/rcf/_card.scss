@@ -1,0 +1,43 @@
+.rcf-card {
+    padding: 1.25rem 1.75rem;
+    background-color: white;
+    display: grid;
+    grid-template-columns: auto 8rem;
+    gap: 1rem;
+    margin-bottom: 0.25rem;
+    border-radius: 0.35rem;
+}
+
+.Card_Return {
+    &--Info {
+        display: block;
+        @media (min-width: 1200px) {
+            display: grid;
+            grid-template-columns: 8rem 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+    }
+    &--recevied {
+        background-color: green;
+    }
+    &--pending {
+        background: oklch(96.9% 0.016 293.756);
+        border: 2px solid oklch(94.3% 0.029 294.588);
+        color: oklch(38% 0.189 293.745);
+    }
+    &--closed {
+        background-color: oklch(96.7% 0.001 286.375);
+        color: oklch(55.2% 0.016 285.938);
+    }
+    &--in_progress {
+        background-color: oklch(97.1% 0.014 343.198);
+        border: 2px solid oklch(94.8% 0.028 342.258);
+        color: oklch(40.8% 0.153 2.432);
+    }
+}
+.Card_Ticket {
+    &_Content {
+        display: grid;
+        grid-template-columns: auto 16rem;
+    }
+}

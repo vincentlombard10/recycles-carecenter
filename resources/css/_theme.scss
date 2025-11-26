@@ -1,0 +1,11 @@
+$theme-colors: (
+    "primary":    oklch(54.1% 0.281 293.009),
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     oklch(63.7% 0.237 25.331),
+    "light":      $light,
+    "dark":       $dark
+) !default;
+

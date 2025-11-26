@@ -20,11 +20,11 @@
 @if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
-                <div class="Card_Support Card_Support--{{ $item->status }}">
+                <div class="Card_Support Card_Support--{{ $item->status }} rounded-lg">
                     <div class="Card_Support--Body">
                         <div class="Card_Support--Main mb-2">
-                            <div>
-                                <h2 class="fw-semibold">{{ $item->identifier }}</h2>
+                            <div class="grid gap-1">
+                                <h2 class="fw-semibold mb-2">{{ $item->identifier }}</h2>
                                 @if($item->environment === \App\Models\ProductReturn::ENV_SANDBOX)
                                     <div class="d-grid mb-1">
                                         <span class="badge badge-{{ $item->environment }}">Sandbox</span>
@@ -46,7 +46,6 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="mb-2"><span class="badge">{{ $item->customer_code }}</span></div>
                                 @if($item->type === 'bike')
                                     <x-card-bike :item="$item"/>
                                 @elseif($item->type === 'component')

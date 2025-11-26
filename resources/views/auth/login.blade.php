@@ -2,14 +2,14 @@
     {{ html()->form('POST', route('login'))->open() }}
     <div class="mb-3">
         {{ html()->label('Adresse e-mail :')->class('form-label mb-1') }}
-        {{ html()->email('email')->class('form-control focus-ring focus-ring-light')->autocomplete('off') }}
+        {{ html()->email('email')->class('form-control rounded-md border-violet-600')->autocomplete('off') }}
     </div>
     <div class="mb-3">
         {{ html()->label('Mot de passe :')->class('form-label mb-1') }}
-        {{ html()->password('password')->class('form-control focus-ring focus-ring-light')->autocomplete('current-password') }}
+        {{ html()->password('password')->class('form-control rounded-md border-violet-600')->autocomplete('current-password') }}
     </div>
     <div class="d-grid mb-3">
-        {{ html()->submit('Connexion')->class('btn btn-primary ') }}
+        {{ html()->submit('Connexion')->class('btn btn-primary bg-orange-500 hover:bg-orange-600 py-2 border-0 font-bold') }}
     </div>
     <div>
         @if (Route::has('password.request'))

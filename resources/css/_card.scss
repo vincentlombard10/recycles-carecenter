@@ -1,0 +1,81 @@
+.card {
+    border: 0;
+}
+
+
+.Card_Support {
+    display: grid;
+    gap: 1.5rem;
+    border: 2px solid oklch(86.9% 0.022 252.894);
+    border-radius: 0.375rem;
+    margin-bottom: 0.15rem;
+    padding: 1.25rem 1.5rem;
+    background-color: white;
+    @media (min-width: 767.98px) {
+        grid-template-columns: 1fr 8rem;
+    }
+    &--Body {
+    }
+    &--Main {
+        display: grid;
+        grid-template-columns: 8rem 1fr 1fr;
+        gap: 1.5rem;
+    }
+    &--Side {
+        //display: grid;
+        gap: 0.5rem;
+    }
+    &--Timestamps {
+        padding: 0.25rem 0.5rem;
+        color: oklch(38.1% 0.176 304.987);
+        font-size: 0.8rem;
+        border-top: 1px solid oklch(96.9% 0.016 293.756);
+        background-color: oklch(96.9% 0.016 293.756);
+        border-radius: 0.25rem;
+    }
+    &--incomplete {
+        border: 2px solid oklch(96.2% 0.059 95.617);
+        background-color: oklch(98.7% 0.022 95.277);
+        color: oklch(27.9% 0.077 45.635);
+    }
+    &--received {
+        border: 2px solid oklch(92.5% 0.084 155.995);
+        background-color: oklch(98.2% 0.018 155.826);
+        color: oklch(39.3% 0.095 152.535);
+    }
+    &--pending {
+        border: 2Px solid oklch(89.4% 0.057 293.283);
+        background-color: oklch(96.9% 0.016 293.756);
+        color: oklch(38% 0.189 293.745);
+    }
+}
+
+.Card_Item {
+    //background: oklch(96.9% 0.016 293.756);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    border-radius: 0.5rem;
+    .title {
+        color: oklch(38% 0.189 293.745);
+        font-weight: 500;
+    }
+}
+
+.Card_Contact {
+    display: grid;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background-color: white;
+    border: 2px solid oklch(86.9% 0.022 252.894);
+    border-radius: 0.375rem;
+    @media (min-width: 767.98px) {
+        grid-template-columns: 1fr 8rem;
+    }
+    &--Body {
+    }
+    &--Main {
+        display: grid;
+        grid-template-columns: 12rem 1fr 1fr;
+        gap: 1.5rem;
+    }
+}

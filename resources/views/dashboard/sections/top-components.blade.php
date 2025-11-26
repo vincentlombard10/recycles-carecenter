@@ -1,6 +1,6 @@
 <section class="row">
-    <div class="col-lg-4 mb-3">
-        <h2>Top Batteries</h2>
+    <div class="col-lg-4 mb-4">
+        <h2 class="mb-2 fw-bold">Top Batteries</h2>
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
@@ -19,8 +19,8 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 mb-3">
-        <h2>Top Composants</h2>
+    <div class="col-lg-4 mb-4">
+        <h2 class="mb-2 fw-bold">Top Composants</h2>
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
@@ -39,8 +39,8 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 mb-3">
-        <h2>Top Vélos</h2>
+    <div class="col-lg-4 mb-4">
+        <h2 class="mb-2 fw-bold">Top Vélos</h2>
         <div class="card">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
