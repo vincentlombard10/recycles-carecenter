@@ -63,23 +63,25 @@
                                     </div>
                                 @endif
                             </div>
-                            <ul>
-                                <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
-                                        par {{ $item->author->username }}</small></li>
-                                @if($item->validated_at)
-                                    <li><small>Validé le {{ date('d/m/Y à H:i', strtotime($item->validated_at)) }}
-                                            par {{ $item->validator?->username }}</small>
-                                    </li>
-                                @endif
-                                @if($item->received_at)
-                                    <li><small>Réceptionné le {{ date('d/m/Y à H:i', strtotime($item->received_at)) }}
-                                            par {{ $item->receiver?->username }}</small></li>
-                                @endif
-                            </ul>
-                            <ul>
-                                <li>{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</li>
-                                <li>{{ $item->routing_to_code }} {{ $item->routing_to_name }}</li>
-                            </ul>
+                            <div>
+                                <ul>
+                                    <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
+                                            par {{ $item->author->username }}</small></li>
+                                    @if($item->validated_at)
+                                        <li><small>Validé le {{ date('d/m/Y à H:i', strtotime($item->validated_at)) }}
+                                                par {{ $item->validator?->username }}</small>
+                                        </li>
+                                    @endif
+                                    @if($item->received_at)
+                                        <li><small>Réceptionné le {{ date('d/m/Y à H:i', strtotime($item->received_at)) }}
+                                                par {{ $item->receiver?->username }}</small></li>
+                                    @endif
+                                </ul>
+                                <ul>
+                                    <li>{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</li>
+                                    <li>{{ $item->routing_to_code }} {{ $item->routing_to_name }}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="Card_Support--Side">
