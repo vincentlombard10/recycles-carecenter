@@ -80,10 +80,16 @@
                                 <h4 class="font-bold mb-1">Acheminement</h4>
                                 <ul>
                                     <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 bg-violet-100 rounded-sm">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</div>
+                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</div>
                                     </li>
-                                    <li class="mb-1">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</li>
-                                    <li class="mb-1">{{ $item->return_to_code }} {{ $item->return_to_address1 }}</li>
+                                    <li class="mb-1">
+                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</div>
+                                    </li>
+                                    @if($item->return_to)
+                                    <li class="mb-1">
+                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">{{ $item->return_to_code }} {{ $item->return_to_address1 }}</div>
+                                    </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
