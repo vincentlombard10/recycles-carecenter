@@ -23,7 +23,7 @@
                 <div class="Card_Support Card_Support--{{ $item->status }} rounded-lg">
                     <div class="Card_Support--Body">
                         <div class="Card_Support--Main mb-2">
-                            <div class="grid gap-1">
+                            <div class="flex flex-col gap-1">
                                 <h2 class="fw-semibold mb-2">{{ $item->identifier }}</h2>
                                 @if($item->environment === \App\Models\ProductReturn::ENV_SANDBOX)
                                     <div class="d-grid mb-1">
