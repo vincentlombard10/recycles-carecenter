@@ -1,24 +1,17 @@
 {
-  "public/fonts/GolosText-VariableFont_wght.ttf": {
-    "file": "assets/GolosText-VariableFont_wght-cldftjk2.ttf",
-    "src": "public/fonts/GolosText-VariableFont_wght.ttf"
-  },
   "resources/css/app.css": {
-    "file": "assets/app-HyUSRihZ.css",
+    "file": "assets/app-jLrCoQvp.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CPwdK6xY.js",
+    "file": "assets/app-B2roala_.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
       "assets/app-B7m75X1a.css",
-      "assets/app-HyUSRihZ.css"
-    ],
-    "assets": [
-      "assets/GolosText-VariableFont_wght-cldftjk2.ttf"
+      "assets/app-jLrCoQvp.css"
     ]
   },
   "resources/scss/pdf.scss": {

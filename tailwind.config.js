@@ -15,7 +15,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['"IBM Plex Sans"', 'Inter', 'Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
     },

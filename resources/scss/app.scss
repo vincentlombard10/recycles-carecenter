@@ -59,7 +59,6 @@ $theme-colors: (
 @import "dashboard/_counter.scss";
 
 body {
-    font-family: "Golos", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     background-color: oklch(0.942 0.019 289.321);
@@ -82,11 +81,9 @@ h1 {
     line-height: 48px;
     margin-bottom: 0;
     font-weight: 700;
-    font-family: "Golos", sans-serif;
 }
 h2 {
     font-size: 1.75rem;
-    font-family: "Golos", sans-serif;
 }
 
 .page-header {
