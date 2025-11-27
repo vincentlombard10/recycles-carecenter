@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Events\ProductReportsExported;
 use App\Models\ProductReport;
+use App\Models\ReplacementItem;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -91,6 +92,13 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 $query->whereDate('created_at', '<=', $end_time);
             })->orderBy('updated_at', 'desc')->get();
 
+            $replacementItems = ReplacementItem::query()->where(function ($query) use ($start_time, $end_time) {
+                $query->whereHas('report', function ($query) use ($start_time, $end_time) {
+                    $query->whereDate('created_at', '>=', $start_time);
+                    $query->whereDate('created_at', '<=', $end_time);
+                });
+            })->get();
+
             $writer = SimpleExcelWriter::create(
                 Storage::disk('exports')->path($this->filename),
                 '',
@@ -124,11 +132,16 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 }
 
             }
-/*
-            foreach ($reports as $report) {
-                $writer->addNewSheetAndMakeItCurrent();
-                //$writer->nameCurrentSheet($report->identifier);
-            }*/
+
+            foreach ($replacementItems as $item) {
+                $row = new Row([
+                    Cell::fromValue($item->quantity);
+                ]);
+                $writer->addRow($row);
+            }
+            $writer->addNewSheetAndMakeItCurrent();
+            $writer->nameCurrentSheet('Items');
+
 
             $writer->close();
 
