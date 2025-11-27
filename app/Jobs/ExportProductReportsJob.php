@@ -89,7 +89,7 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
             $reports = ProductReport::query()->where(function ($query) use ($start_time, $end_time) {
                 $query->whereDate('created_at', '>=', $start_time);
                 $query->whereDate('created_at', '<=', $end_time);
-            })->orderByDesc('id')->get();
+            })->orderBy('updated_at', 'desc')->get();
 
             $writer = SimpleExcelWriter::create(
                 Storage::disk('exports')->path($this->filename),
@@ -120,6 +120,7 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 $writer->addRow($row);
                 if(!$report->is($reports->last())) {
                     $writer->addNewSheetAndMakeItCurrent();
+                    $writer->nameCurrentSheet($report->identifier);
                 }
 
             }
