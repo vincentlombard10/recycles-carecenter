@@ -135,6 +135,14 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                     Cell::fromValue($report->rear_wheel),
                     Cell::fromValue($report->pedals),
                     Cell::fromValue($report->seatpost),
+
+                    Cell::fromValue($report->stripes),
+                    Cell::fromValue($report->clay),
+                    Cell::fromValue($report->sand),
+                    Cell::fromValue($report->impacts),
+                    Cell::fromValue($report->cracks),
+                    Cell::fromValue($report->breakage),
+                    Cell::fromValue($report->modification),
                 ]);
                 $writer->addRow($row);
 /*                if(!$report->is($reports->last())) {
