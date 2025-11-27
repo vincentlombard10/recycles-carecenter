@@ -111,7 +111,7 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
             );
 
             $headerRow = [
-                'Identifier',
+/*                'Identifier',
 
                 'Cle_Batterie',
                 'Cle_Antivol',
@@ -151,7 +151,7 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 'BMS_Capacite_Utile',
                 'BMS_Temperature',
                 'BMS_Resistance',
-                'Diagnostic',
+                'Diagnostic',*/
             ];
 
             $writer->addHeader($headerRow);
