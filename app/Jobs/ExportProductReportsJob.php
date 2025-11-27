@@ -11,6 +11,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use OpenSpout\Common\Entity\Cell;
 use OpenSpout\Common\Entity\Row;
@@ -148,6 +149,8 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
             ProductReportsExported::dispatch($this->user, $this->filename);
 
         } catch (Exception $exception) {
+
+            Log::error($exception->getMessage());
 
         }
     }
