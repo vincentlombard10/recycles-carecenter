@@ -135,7 +135,7 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
 
             foreach ($replacementItems as $item) {
                 $row = new Row([
-                    Cell::fromValue($item->quantity);
+                    Cell::fromValue($item->quantity)
                 ]);
                 $writer->addRow($row);
             }
