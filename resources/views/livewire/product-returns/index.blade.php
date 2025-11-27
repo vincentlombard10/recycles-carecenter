@@ -15,7 +15,9 @@
                 <option value="sandbox">Fictif</option>
             </select>
         </div>
-        <x-pagination :items="$items" class="col-lg-6"/>
+        <div class="col-span-2">
+            <x-pagination :items="$items" class="col-lg-6"/>
+        </div>
     </div>
     @if (count($items))
         <div class="mb-3">
