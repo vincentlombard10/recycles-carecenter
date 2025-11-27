@@ -110,11 +110,53 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 }
             );
 
-            $headerRow = [];
+            $headerRow = [
+                'Identifier',
+
+                'Cle_Batterie',
+                'Cle_Antivol',
+                'Chargeur',
+                'Batterie',
+                'Pedales',
+                'Roue_Avant',
+                'Roue_Arriere',
+                'Selle',
+                'Tige_Selle',
+                'Display',
+                'Moteur',
+                'Commentaire',
+                'Rayures',
+                'Corrosion',
+                'Terre',
+                'Sable',
+                'Impacts',
+                'Fissures',
+                'Casse',
+                'Modifications',
+                'Commentaire2',
+                'Km',
+                'Ref_batterie',
+                'SN_Batterie',
+                'Type_Batterie',
+                'Tension_Nominale',
+                'Capacite_Nominale',
+                'Etat_Visuel',
+                'Batterie_Power',
+                'Batterie_Erreurs',
+                'Charge',
+                'Tension_Bornes',
+                'Energie_Totale',
+                'BMS_Cycles',
+                'BMS_Cellules',
+                'BMS_Capacite_Utile',
+                'BMS_Temperature',
+                'BMS_Resistance',
+                'Diagnostic',
+            ];
 
             $writer->addHeader($headerRow);
             $writer->setHeaderStyle($this->headerCellStyle);
-
+            $writer->nameCurrentSheet('Rapports');
             foreach ($reports as $report) {
 
                 $row = new Row([
@@ -122,6 +164,11 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 ]);
                 $writer->addRow($row);
 
+            }
+
+            foreach ($reports as $report) {
+                $writer->addNewSheetAndMakeItCurrent();
+                $writer->nameCurrentSheet($report->identifier);
             }
 
             $writer->close();
