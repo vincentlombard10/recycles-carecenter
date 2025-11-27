@@ -16,7 +16,7 @@
             </select>
         </div>
         <div class="col-span-2">
-            <x-pagination :items="$items" class="col-lg-6"/>
+            <x-pagination :items="$items" />
         </div>
     </div>
     @if (count($items))
