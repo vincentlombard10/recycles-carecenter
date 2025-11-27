@@ -121,10 +121,10 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
 
             }
 
-            foreach ($reports as $report) {
+/*            foreach ($reports as $report) {
                 $writer->addNewSheetAndMakeItCurrent();
                 $writer->nameCurrentSheet($report->identifier);
-            }
+            }*/
 
             $writer->close();
 
