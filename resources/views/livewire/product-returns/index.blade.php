@@ -1,15 +1,15 @@
 <div>
-    <div class="row mb-3">
-        <div class="col-lg-3">
-            <select name="status" id="status" class="form-control" wire:model.live="status">
+    <div class="grid grid-cols-4 gap-2 mb-3">
+        <div>
+            <select name="status" id="status" class="form-control w-full" wire:model.live="status">
                 <option value="">Tous</option>
                 <option value="incomplete">Incomplet</option>
                 <option value="pending">En attente</option>
                 <option value="received">Reçu</option>
             </select>
         </div>
-        <div class="col-lg-3">
-            <select name="environment" id="environment" class="form-control" wire:model.live="environment">
+        <div>
+            <select name="environment" id="environment" class="form-control w-full" wire:model.live="environment">
                 <option value="">Tous</option>
                 <option value="production">Réels</option>
                 <option value="sandbox">Fictif</option>
@@ -17,7 +17,7 @@
         </div>
         <x-pagination :items="$items" class="col-lg-6"/>
     </div>
-@if (count($items))
+    @if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
                 <div class="Card_Support Card_Support--{{ $item->status }} rounded-lg">
@@ -40,7 +40,8 @@
                                     <span class="badge">
                                         <div>{{ $item->ticket_id }}</div>
                                         @if($item->ticket?->contact)
-                                            <div><span class="text-primary">{{ $item->ticket?->contact->code }}</span></div>
+                                            <div><span
+                                                    class="text-primary">{{ $item->ticket?->contact->code }}</span></div>
                                         @endif
                                     </span>
                                 </div>
@@ -73,30 +74,32 @@
                                         </li>
                                     @endif
                                     @if($item->received_at)
-                                        <li><small>Réceptionné le {{ date('d/m/Y à H:i', strtotime($item->received_at)) }}
+                                        <li><small>Réceptionné
+                                                le {{ date('d/m/Y à H:i', strtotime($item->received_at)) }}
                                                 par {{ $item->receiver?->username }}</small></li>
                                     @endif
                                 </ul>
-                                <h4 class="font-bold mb-2">Acheminement</h4>
-                                <ul>
-                                    <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 rounded-sm">
-                                            de <span class="font-bold">{{ $item->routing_from_code }} {{ $item->routing_from_address1 }}</span>
-                                        </div>
-                                    </li>
-                                    <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 rounded-sm">
-                                            vers <span class="font-bold">{{ $item->routing_to_code }} {{ $item->routing_to_address1 }}</span>
-                                        </div>
-                                    </li>
-                                    @if($item->return_to)
-                                    <li class="mb-1">
-                                        <div class="text-xs px-2 py-1 bg-violet-200 rounded-sm">
-                                            retourné à <span class="font-bold">{{ $item->return_to_code }} {{ $item->return_to_address1 }}</span>
-                                        </div>
-                                    </li>
+                                <div>
+                                    <h4 class="font-bold mb-2">Acheminement</h4>
+                                    @if($item->from)
+                                        <span
+                                            class="font-bold bg-violet-100/90 px-2 py-1 rounded">{{ $item->routing_from_code }}</span>
+                                    @else
+                                        <span
+                                            class="font-bold bg-orange-500/90 px-2 py-1 rounded text-white">
+                                            <i class="bi bi-exclamation-square"></i></span>
+
                                     @endif
-                                </ul>
+                                    <i class="bi bi-caret-right"></i>
+                                    @if($item->to)
+                                        <span
+                                            class="font-bold bg-violet-100/80 px-2 py-1 rounded">{{ $item->routing_to_code }}</span>
+                                    @else
+                                        <span
+                                            class="font-bold bg-orange-500/90 px-2 py-1 rounded text-white">
+                                            <i class="bi bi-exclamation-square"></i></span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -155,7 +158,7 @@
                 </div>
             @endforeach
         </div>
-        <x-pagination :items="$items" />
+        <x-pagination :items="$items"/>
     @else
         <div>Il ne se passe pas grand chose ici.</div>
     @endif
