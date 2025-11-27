@@ -114,17 +114,18 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
             //$writer->setHeaderStyle($this->headerCellStyle);
             foreach ($reports as $report) {
 
+                $writer->addNewSheetAndMakeItCurrent();
                 $row = new Row([
                     Cell::fromValue($report->identifier)
                 ]);
                 $writer->addRow($row);
 
             }
-
+/*
             foreach ($reports as $report) {
                 $writer->addNewSheetAndMakeItCurrent();
                 //$writer->nameCurrentSheet($report->identifier);
-            }
+            }*/
 
             $writer->close();
 
