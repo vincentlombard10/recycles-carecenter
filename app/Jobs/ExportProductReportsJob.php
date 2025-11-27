@@ -93,12 +93,12 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 $query->whereDate('created_at', '<=', $end_time);
             })->orderBy('updated_at', 'desc')->get();
 
-            $replacementItems = ReplacementItem::query()->where(function ($query) use ($start_time, $end_time) {
+/*            $replacementItems = ReplacementItem::query()->where(function ($query) use ($start_time, $end_time) {
                 $query->whereHas('report', function ($query) use ($start_time, $end_time) {
                     $query->whereDate('created_at', '>=', $start_time);
                     $query->whereDate('created_at', '<=', $end_time);
                 });
-            })->get();
+            })->get();*/
 
             $writer = SimpleExcelWriter::create(
                 Storage::disk('exports')->path($this->filename),
