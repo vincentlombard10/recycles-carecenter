@@ -27,14 +27,14 @@
                                 <h2 class="fw-semibold mb-2">{{ $item->identifier }}</h2>
                                 @if($item->environment === \App\Models\ProductReturn::ENV_SANDBOX)
                                     <div class="d-grid mb-1">
-                                        <span class="badge badge-{{ $item->environment }} uppercase">Sandbox</span>
+                                        <span class="badge badge-{{ $item->environment }} font-semibold">Sandbox</span>
                                     </div>
                                 @endif
                                 <div class="d-grid mb-1">
-                                    <span class="badge uppercase">{{ $item->type_label }}</span>
+                                    <span class="badge font-semibold">{{ $item->type_label }}</span>
                                 </div>
                                 <div class="d-grid mb-1">
-                                    <span class="badge uppercase">{{ $item->context_label }}</span>
+                                    <span class="badge font-semibold">{{ $item->context_label }}</span>
                                 </div>
                                 <div class="d-grid mb-1">
                                     <span class="badge">
