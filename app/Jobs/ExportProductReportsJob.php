@@ -123,25 +123,25 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
             foreach ($reports as $report) {
 
                 $row = new Row([
-                    Cell::fromValue($report->identifier)
+                    Cell::fromValue($report->identifier),
+                    Cell::fromValue($report->status),
+
+                    Cell::fromValue($report->battery_key),
+                    Cell::fromValue($report->lock_key),
+                    Cell::fromValue($report->battery),
+                    Cell::fromValue($report->charger),
+                    Cell::fromValue($report->front_wheel),
+                    Cell::fromValue($report->rear_wheel),
+                    Cell::fromValue($report->pedals),
+                    Cell::fromValue($report->seatpost),
                 ]);
                 $writer->addRow($row);
-                if(!$report->is($reports->last())) {
+/*                if(!$report->is($reports->last())) {
                     $writer->addNewSheetAndMakeItCurrent();
                     $writer->nameCurrentSheet($report->identifier);
-                }
+                }*/
 
             }
-
-            foreach ($replacementItems as $item) {
-                $row = new Row([
-                    Cell::fromValue($item->quantity)
-                ]);
-                $writer->addRow($row);
-            }
-            $writer->addNewSheetAndMakeItCurrent();
-            $writer->nameCurrentSheet('Items');
-
 
             $writer->close();
 
