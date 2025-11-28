@@ -134,7 +134,7 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
             foreach ($returns as $return) {
 
                 $row = new Row([
-                    Cell::fromValue($return->identifier),
+                    Cell::fromValue($return->identifier, $this->defaultCellStyle),
                     Cell::fromValue($return->type),
                     Cell::fromValue($return->context),
                     Cell::fromValue($return->ticket?->id),

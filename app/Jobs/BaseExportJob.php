@@ -41,7 +41,7 @@ class BaseExportJob implements ShouldQueue
 
         $this->defaultCellStyle = (new Style())
             ->setCellAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::LEFT);
+            ->setCellAlignment(CellAlignment::CENTER);
     }
 
     /**
