@@ -119,7 +119,64 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 }
             );
 
-            //$writer->addHeader($headerRow);
+            $writer->addHeader([
+                'Identifiant',
+                'Statut',
+
+                'Cle_Batterie',
+                'Cle_Antivol',
+                'Chargeur',
+                'Batterie',
+                'Pedales',
+
+                'Roue_Avant',
+                'Roue_Arriere',
+                'Selle',
+                'Tige_Selle',
+                'Display',
+
+                'Moteur',
+                'Commentaire_Presence',
+                'Rayures',
+                'Corrosion',
+                'Terre',
+
+                'Sable',
+                'Impacts',
+                'Fissures',
+                'Casse',
+                'Modifications',
+
+                'Commentaire_Etat_Visuel',
+                'Km',
+                'Ref_Batterie',
+                'SN_Batterie',
+                'Type_Batterie',
+
+                'V_Nom_Batterie',
+                'Ah_Nom_Batterie',
+                'Etat_Visuel_Batterie',
+                'Fonctionnement',
+                'Codes_Erreur',
+
+                'Charge_Batterie',
+                'Tension_Bornes',
+                'Energie_Batterie',
+                'BMS_Cycles',
+                'BMS_Cellules',
+
+                'BMS_Capacite',
+                'BMS_Temperature',
+                'BMS_Reistance',
+                'Diagnostic',
+                'Composants Remplacés',
+
+                'Commande',
+                'Creation',
+                'Demarrage',
+                'Cloture',
+                'Technicien',
+            ]);
             //$writer->setHeaderStyle($this->headerCellStyle);
             foreach ($reports as $report) {
 
@@ -129,20 +186,58 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
 
                     Cell::fromValue($report->battery_key),
                     Cell::fromValue($report->lock_key),
-                    Cell::fromValue($report->battery),
                     Cell::fromValue($report->charger),
+                    Cell::fromValue($report->battery),
+                    Cell::fromValue($report->pedals),
+
                     Cell::fromValue($report->front_wheel),
                     Cell::fromValue($report->rear_wheel),
-                    Cell::fromValue($report->pedals),
+                    Cell::fromValue($report->saddle),
                     Cell::fromValue($report->seatpost),
+                    Cell::fromValue($report->display),
 
+                    Cell::fromValue($report->motor),
+                    Cell::fromValue($report->presence_comment),
                     Cell::fromValue($report->stripes),
+                    Cell::fromValue($report->corrosion),
                     Cell::fromValue($report->clay),
+
                     Cell::fromValue($report->sand),
                     Cell::fromValue($report->impacts),
                     Cell::fromValue($report->cracks),
                     Cell::fromValue($report->breakage),
                     Cell::fromValue($report->modification),
+
+                    Cell::fromValue($report->comment),
+                    Cell::fromValue($report->odo),
+                    Cell::fromValue($report->battery_reference),
+                    Cell::fromValue($report->battery_serial),
+                    Cell::fromValue($report->battery_type),
+
+                    Cell::fromValue($report->battery_nominal_voltage),
+                    Cell::fromValue($report->battery_nominal_capacity),
+                    Cell::fromValue($report->battery_look_states),
+                    Cell::fromValue($report->battery_indicator),
+                    Cell::fromValue($report->battery_error_codes),
+
+                    Cell::fromValue($report->battery_charge_state),
+                    Cell::fromValue($report->battery_charge_voltage),
+                    Cell::fromValue($report->battery_energy),
+                    Cell::fromValue($report->battery_charge_cycles),
+                    Cell::fromValue($report->battery_cells_state),
+
+                    Cell::fromValue($report->battery_usable_capacity),
+                    Cell::fromValue($report->battery_temperature),
+                    Cell::fromValue($report->battery_internal_resistance),
+                    Cell::fromValue($report->diagnostic),
+                    Cell::fromValue($report->replacementItems()->count()),
+
+                    Cell::fromValue($report->order),
+                    Cell::fromValue(date('d/m/Y H:i:s', $report->created_at)),
+                    Cell::fromValue(date('d/m/Y H:i:s', $report->started_at)),
+                    Cell::fromValue(date('d/m/Y H:i:s', $report->closed_at)),
+                    Cell::fromValue($report->technicien?->username),
+
                 ]);
                 $writer->addRow($row);
 /*                if(!$report->is($reports->last())) {
