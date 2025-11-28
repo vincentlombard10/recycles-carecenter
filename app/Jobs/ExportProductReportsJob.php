@@ -25,7 +25,9 @@ use OpenSpout\Writer\Exception\Border\InvalidNameException;
 use OpenSpout\Writer\Exception\Border\InvalidStyleException;
 use OpenSpout\Writer\Exception\Border\InvalidWidthException;
 use Exception;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 use Spatie\SimpleExcel\SimpleExcelWriter;
 
 class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
@@ -170,6 +172,16 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 'Cloture',
                 'Technicien',
             ]);
+
+            $spreadsheet = new Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+            $sheet->getStyle('A')->getFont()->setBold(true);
+            $sheet->getStyle('A')->applyFromArray([
+                'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
+                'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['argb' => '000000']],
+                'font' => ['bold' => true, 'color' => ['argb' => 'FFFFFF']],
+            ]);
+
             //$writer->setHeaderStyle($this->headerCellStyle);
             foreach ($reports as $report) {
 
