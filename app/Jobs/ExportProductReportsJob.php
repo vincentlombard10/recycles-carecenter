@@ -233,9 +233,9 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                     Cell::fromValue($report->replacementItems()->count()),
 
                     Cell::fromValue($report->order),
-                    Cell::fromValue(date('d/m/Y H:i:s', $report->created_at)),
-                    Cell::fromValue(date('d/m/Y H:i:s', $report->started_at)),
-                    Cell::fromValue(date('d/m/Y H:i:s', $report->closed_at)),
+                    Cell::fromValue(date('d/m/Y H:i:s', strtotime($report->created_at))),
+                    Cell::fromValue(date('d/m/Y H:i:s', strtotime($report->updated_at))),
+                    Cell::fromValue(date('d/m/Y H:i:s', strtotime($report->closed_at))),
                     Cell::fromValue($report->technicien?->username),
 
                 ]);
