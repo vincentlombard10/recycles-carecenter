@@ -173,20 +173,20 @@ class ExportProductReportsJob extends BaseExportJob implements ShouldQueue
                 'Technicien',
             ]);
 
-            $spreadsheet = new Spreadsheet();
+/*            $spreadsheet = new Spreadsheet();
             $sheet = $spreadsheet->getActiveSheet();
             $sheet->getStyle('A')->getFont()->setBold(true);
             $sheet->getStyle('A')->applyFromArray([
                 'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
                 'fill' => ['fillType' => Fill::FILL_SOLID, 'startColor' => ['argb' => '000000']],
                 'font' => ['bold' => true, 'color' => ['argb' => 'FFFFFF']],
-            ]);
+            ]);*/
 
             //$writer->setHeaderStyle($this->headerCellStyle);
             foreach ($reports as $report) {
 
                 $row = new Row([
-                    Cell::fromValue($report->identifier),
+                    Cell::fromValue($report->identifier, $this->headerCellStyle),
                     Cell::fromValue($report->status),
 
                     Cell::fromValue($report->battery_key),
