@@ -62,6 +62,9 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                 file: Storage::disk('exports')->path($this->filename),
                 configureWriter: function ($writer) {
                     $options = $writer->getOptions();
+                    $options->setColumnWidths(
+                        [10, 1, 14, 20, 22, 24, 26]
+                    );
                     $options->DEFAULT_COLUMN_WIDTH = 15;
                     $options->DEFAULT_ROW_HEIGHT = 20;
                 }
@@ -98,7 +101,7 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                     Cell::fromValue($return->ticket?->contact?->code, $this->defaultCellStyle),
 
                     Cell::fromValue($return->ticket?->contact?->name, $this->defaultCellStyle),
-                    Cell::fromValue($return->status, $this->defaultCellStyle),
+                    Cell::fromValue($return->status_label, $this->defaultCellStyle),
 
                     Cell::fromValue($return->created_at ? date('d/m/Y H:i:s', strtotime($return->created_at)) : null, $this->defaultCellStyle),
                     Cell::fromValue($return->author?->username, $this->defaultCellStyle),
