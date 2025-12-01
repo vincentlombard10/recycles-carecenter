@@ -14,16 +14,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use OpenSpout\Common\Entity\Cell;
 use OpenSpout\Common\Entity\Row;
-use OpenSpout\Common\Entity\Style\Border;
-use OpenSpout\Common\Entity\Style\BorderPart;
-use OpenSpout\Common\Entity\Style\CellAlignment;
-use OpenSpout\Common\Entity\Style\Color;
-use OpenSpout\Common\Entity\Style\Style;
 use OpenSpout\Common\Exception\InvalidArgumentException;
-use OpenSpout\Writer\Exception\Border\InvalidNameException;
-use OpenSpout\Writer\Exception\Border\InvalidStyleException;
-use OpenSpout\Writer\Exception\Border\InvalidWidthException;
-use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use Spatie\SimpleExcel\SimpleExcelWriter;
 
 class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
@@ -109,12 +100,12 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                     Cell::fromValue($return->ticket?->contact?->name, $this->defaultCellStyle),
                     Cell::fromValue($return->status, $this->defaultCellStyle),
 
-                    Cell::fromValue($return->created_at ? date('d/m/Y H:i:s', strtotime($return->created_at)) : null),
-                    Cell::fromValue($return->author?->username),
-                    Cell::fromValue($return->validated_at ? date('d/m/Y H:i:s', strtotime($return->validated_at)) : null),
-                    Cell::fromValue($return->validator?->username),
-                    Cell::fromValue($return->received_at ? date('d/m/Y H:i:s', strtotime($return->received_at)) : null),
-                    Cell::fromValue($return->receiver?->username),
+                    Cell::fromValue($return->created_at ? date('d/m/Y H:i:s', strtotime($return->created_at)) : null, $this->defaultCellStyle),
+                    Cell::fromValue($return->author?->username, $this->defaultCellStyle),
+                    Cell::fromValue($return->validated_at ? date('d/m/Y H:i:s', strtotime($return->validated_at)) : null, $this->defaultCellStyle),
+                    Cell::fromValue($return->validator?->username, $this->defaultCellStyle),
+                    Cell::fromValue($return->received_at ? date('d/m/Y H:i:s', strtotime($return->received_at)) : null, $this->defaultCellStyle),
+                    Cell::fromValue($return->receiver?->username, $this->defaultCellStyle),
                 ]);
                 $writer->addRow($row);
 
