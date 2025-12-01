@@ -43,9 +43,9 @@ class BaseExportJob implements ShouldQueue
             ->setCellAlignment('center')
             ->setCellAlignment('center')
             ->setBorder(new Border(
-                new BorderPart(Border::BOTTOM, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::LEFT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::RIGHT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
+                new BorderPart(Border::BOTTOM, Color::RED, Border::WIDTH_THIN, Border::STYLE_SOLID),
+                new BorderPart(Border::LEFT, Color::RED, Border::WIDTH_THIN, Border::STYLE_SOLID),
+                new BorderPart(Border::RIGHT, Color::RED, Border::WIDTH_THIN, Border::STYLE_SOLID),
                 new BorderPart(Border::TOP, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID)
             ));
     }
