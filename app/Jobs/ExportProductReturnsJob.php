@@ -34,12 +34,6 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
         SerializesModels;
 
     public int $timeout = 600;
-    public Style $headerCellStyle;
-    public Style $defaultCellStyle;
-    public Style $emptyCellStyle;
-    public Style $separatorCellStyle;
-    public Border $defaultBorder;
-    public Border $grayBorder;
 
     /**
      * Create a new job instance.
@@ -52,24 +46,6 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
     )
     {
         parent::__construct();
-        try {
-            $this->defaultBorder = new Border(
-                new BorderPart(Border::BOTTOM, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::LEFT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::RIGHT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::TOP, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID)
-            );
-        } catch (InvalidNameException|InvalidStyleException|InvalidWidthException $e) {
-        }
-        try {
-            $this->grayBorder = new Border(
-                new BorderPart(Border::BOTTOM, Color::rgb(148, 163, 184), Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::LEFT, Color::rgb(148, 163, 184), Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::RIGHT, Color::rgb(148, 163, 184), Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::TOP, Color::rgb(148, 163, 184), Border::WIDTH_THIN, Border::STYLE_SOLID)
-            );
-        } catch (InvalidNameException|InvalidStyleException|InvalidWidthException $e) {
-        }
     }
 
     /**
@@ -96,17 +72,9 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                 '',
                 function ($writer) {
                     $options = $writer->getOptions();
-                    $options->DEFAULT_COLUMN_WIDTH = 15; // set default width
-                    $options->DEFAULT_ROW_HEIGHT = 20; // set default height
-                    $options->DEFAULT_CELL_STYLE = (new Style())
-                        ->setCellVerticalAlignment(Alignment::VERTICAL_CENTER)
-                        ->setCellAlignment(CellAlignment::CENTER)
-                        ->setBorder(new Border(
-                            new BorderPart(Border::BOTTOM, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                            new BorderPart(Border::LEFT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                            new BorderPart(Border::RIGHT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                            new BorderPart(Border::TOP, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID)
-                        ));
+                    $options->DEFAULT_COLUMN_WIDTH = 15;
+                    $options->DEFAULT_ROW_HEIGHT = 20;
+                    $options->DEFAULT_CELL_STYLE = $this->defaultCellStyle;
                 }
             );
 
