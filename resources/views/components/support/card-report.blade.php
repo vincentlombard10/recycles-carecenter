@@ -36,7 +36,7 @@
                 @endif
             </div>
             <div>
-                <div class="px-3 py-2 bg-gray-50 text-xs rounded mb-2">
+                <div class="px-3 py-2 bg-gray-100 text-xs rounded mb-2">
                     {{ $report->return->info ?? '-' }}
                 </div>
                 @if($report->return->note)
