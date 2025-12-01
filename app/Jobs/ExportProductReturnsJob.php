@@ -73,7 +73,7 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                     $options = $writer->getOptions();
                     $options->DEFAULT_COLUMN_WIDTH = 15;
                     $options->DEFAULT_ROW_HEIGHT = 40;
-                    $options->DEFAULT_CELL_STYLE = $this->defaultCellStyle;
+                    $options->DEFAULT_ROW_STYLE = $this->defaultCellStyle;
                 }
             );
 
