@@ -10,6 +10,7 @@ export default {
         './resources/js/',
         "./src/**/*.{vue,js,ts,jsx,tsx}",
         "./resources/js/**/*.vue",
+        "./app/Models/Traits/Attribute/*.{php}"
     ],
 
     theme: {
