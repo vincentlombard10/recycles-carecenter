@@ -65,7 +65,8 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                     $options->setColumnWidth(10, 1, 4, 9, 11, 13);
                     $options->setColumnWidth(12, 5);
                     $options->setColumnWidth(15, 2, 3, 7);
-                    $options->setColumnWidth(30, 8, 10, 12);
+                    $options->setColumnWidth(25, 8, 10, 12);
+                    $options->setColumnWidth(40, 6);
                     $options->DEFAULT_COLUMN_WIDTH = 15;
                     $options->DEFAULT_ROW_HEIGHT = 20;
                 }
