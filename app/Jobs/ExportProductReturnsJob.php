@@ -92,8 +92,8 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
 
                 $row = new Row([
                     Cell::fromValue($return->identifier, $this->defaultCellStyle),
-                    Cell::fromValue($return->type, $this->defaultCellStyle),
-                    Cell::fromValue($return->context, $this->defaultCellStyle),
+                    Cell::fromValue($return->type_label, $this->defaultCellStyle),
+                    Cell::fromValue($return->context_label, $this->defaultCellStyle),
                     Cell::fromValue($return->ticket?->id, $this->defaultCellStyle),
                     Cell::fromValue($return->ticket?->contact?->code, $this->defaultCellStyle),
 
