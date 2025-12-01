@@ -62,7 +62,10 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
                 file: Storage::disk('exports')->path($this->filename),
                 configureWriter: function ($writer) {
                     $options = $writer->getOptions();
-                    $options->setColumnWidth(10, 1, 14, 20, 22, 24, 26);
+                    $options->setColumnWidth(10, 1, 4, 9, 11, 13);
+                    $options->setColumnWidth(12, 5);
+                    $options->setColumnWidth(15, 2, 3, 7);
+                    $options->setColumnWidth(20, 9, 10, 12);
                     $options->DEFAULT_COLUMN_WIDTH = 15;
                     $options->DEFAULT_ROW_HEIGHT = 20;
                 }
