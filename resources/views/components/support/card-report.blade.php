@@ -36,6 +36,9 @@
                 @endif
             </div>
             <div>
+                <div class="px-3 py-2 bg-gray-200 text-xs rounded mb-2">
+                    {{ $report->return->info ?? '-' }}
+                </div>
                 <div><small>Créé le {{ date('d/m/Y à H:i', strtotime($report->created_at)) }}
                         &nbsp;par&nbsp;<span
                             class="fw-semibold">{{ $report->return->author?->username }}</span></small>
