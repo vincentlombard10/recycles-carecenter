@@ -37,7 +37,7 @@ use Illuminate\Foundation\Queue\Queueable;
         Queueable,
         SerializesModels;
 
-    public int $timeout = 600;
+    public int $timeout = 3600;
 
     public Style $headerCellStyle;
     public Style $defaultCellStyle;
