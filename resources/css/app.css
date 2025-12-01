@@ -48,7 +48,7 @@ button {
 @source "../**/*.{js,jsx,ts,tsx,vue}";
 @source "../../app/Models/*.{php}";
 @source "../../app/Models/**/.{php}";
-@source "../../app/Models/Traits/Attributes/ProdctReportAttribute.php";
+@source "../../app/Models/Traits/Attribute/ProdctReportAttribute.php";
 
 @view-transition {
     navigation: auto;
