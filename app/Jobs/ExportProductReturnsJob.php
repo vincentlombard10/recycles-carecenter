@@ -68,9 +68,8 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
             })->orderByDesc('id')->get();
 
             $writer = SimpleExcelWriter::create(
-                Storage::disk('exports')->path($this->filename),
-                '',
-                function ($writer) {
+                file: Storage::disk('exports')->path($this->filename),
+                configureWriter: function ($writer) {
                     $options = $writer->getOptions();
                     $options->DEFAULT_COLUMN_WIDTH = 15;
                     $options->DEFAULT_ROW_HEIGHT = 20;
