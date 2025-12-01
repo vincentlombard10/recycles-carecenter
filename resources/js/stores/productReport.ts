@@ -7,16 +7,38 @@ export const useProductReportStore = defineStore('report', () => {
     const status = ref<string>('')
     const type = ref<string>()
     const batteryKey = ref()
+    const batteryKeyQty = ref<Number|null>()
+
     const lockKey = ref()
+    const lockKeyQty = ref<Number|null>()
+
     const charger = ref()
+    const chargerQty = ref<Number|null>()
+
     const battery = ref()
+    const batteryQty = ref<Number|null>()
+
     const pedals = ref()
+    const pedalsQty = ref<Number|null>()
+
     const frontWheel = ref()
+    const frontWheelQty = ref<Number|null>()
+
     const rearWheel = ref()
+    const rearWheelQty = ref<Number|null>()
+
     const saddle = ref()
+    const saddleQty = ref<Number|null>()
+
     const seatpost = ref()
+    const seatpostQty = ref<Number|null>()
+
     const display = ref()
+    const displayQty = ref<Number|null>()
+
     const motor = ref()
+    const motorQty = ref<Number|null>()
+
     const presenceComment = ref<string>('')
     const odo = ref<Number>()
     const description = ref<string>('')
@@ -214,16 +236,27 @@ export const useProductReportStore = defineStore('report', () => {
     return {
         type,
         batteryKey,
+        batteryKeyQty,
         lockKey,
+        lockKeyQty,
         charger,
+        chargerQty,
         battery,
+        batteryQty,
         pedals,
+        pedalsQty,
         frontWheel,
+        frontWheelQty,
         rearWheel,
+        rearWheelQty,
         saddle,
+        saddleQty,
         seatpost,
+        seatpostQty,
         display,
+        displayQty,
         motor,
+        motorQty,
         presenceComment,
         odo,
         description,

@@ -34,16 +34,27 @@ const getReport = async (_report) => {
 
     store.type = report.type
     store.batteryKey = report.batteryKey
+    store.batteryKeyQty = report.batteryKeyQty
     store.lockKey = report.lockKey
+    store.lockKeyQty = report.lockKeyQty
     store.charger = report.charger
+    store.chargerQty = report.chargerQty
     store.battery = report.battery
+    store.batteryQty = report.batteryQty
     store.pedals = report.pedals
+    store.pedalsQty = report.pedalsQty
     store.frontWheel = report.frontWheel
+    store.frontWheelQty = report.frontWheelQty
     store.rearWheel = report.rearWheel
+    store.rearWheelQty = report.rearWheelQty
     store.saddle = report.saddle
+    store.saddleQty = report.saddleQty
     store.seatpost = report.seatpost
+    store.seatpostQty = report.seatpostQty
     store.display = report.display
+    store.displayQty = report.displayQty
     store.motor = report.motor
+    store.motorQty = report.motorQty
     store.presenceComment = report.presenceComment
     store.odo = report.odo
     store.description = report.description

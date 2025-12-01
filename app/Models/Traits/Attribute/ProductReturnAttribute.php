@@ -2,7 +2,7 @@
 
 namespace App\Models\Traits\Attribute;
 
-trait ProductReturnAttribute
+trait   ProductReturnAttribute
 {
     public function getStatusLabelAttribute(): string
     {
