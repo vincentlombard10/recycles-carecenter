@@ -46,6 +46,7 @@ button {
 }
 
 @source "../**/*.{js,jsx,ts,tsx,vue}";
+@source "../../app/Model/*/{php}";
 
 @view-transition {
     navigation: auto;
