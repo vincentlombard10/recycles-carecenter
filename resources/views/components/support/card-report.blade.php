@@ -1,5 +1,5 @@
 @props(['report' => null])
-<div class="Card_Support Card_Support--{{ $report->status }} rounded-lg">
+<div class="Card_Support Card_Support-- {{ $report->status_color }} rounded-md p-4 mb-2 ">
     <div class="Card_Support--Body">
         <div class="Card_Support--Main mb-2">
             <div class="grid gap-1">

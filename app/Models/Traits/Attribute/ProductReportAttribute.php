@@ -22,8 +22,8 @@ trait ProductReportAttribute
     public function getStatusColorAttribute(): string
     {
         return match($this->status) {
-            ProductReport::STATUS_INIT => __('init'),
-            ProductReport::STATUS_PENDING => 'pending',
+            ProductReport::STATUS_INIT => 'bg-white',
+            ProductReport::STATUS_PENDING => 'bg-orange-200',
             ProductReport::STATUS_IN_PROGRESS => 'progress',
             ProductReport::STATUS_CLOSED => 'closed',
             ProductReport::STATUS_PAUSED => 'pending',
