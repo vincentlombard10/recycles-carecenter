@@ -39,9 +39,11 @@
                 <div class="px-3 py-2 bg-gray-50 text-xs rounded mb-2">
                     {{ $report->return->info ?? '-' }}
                 </div>
+                @if($report->return->note)
                 <div class="px-3 py-2 bg-yellow-100 text-xs rounded mb-2">
                     {{ $report->return->note ?? '-' }}
                 </div>
+                @endif
                 <div><small>Créé le {{ date('d/m/Y à H:i', strtotime($report->created_at)) }}
                         &nbsp;par&nbsp;<span
                             class="fw-semibold">{{ $report->return->author?->username }}</span></small>
