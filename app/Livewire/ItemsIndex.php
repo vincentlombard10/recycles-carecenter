@@ -10,7 +10,6 @@ class ItemsIndex extends Component
 {
     use WithPagination;
     public $searchTerm;
-    protected $paginationTheme = 'bootstrap';
     public function render()
     {
         $items = Item::where(function ($query) {

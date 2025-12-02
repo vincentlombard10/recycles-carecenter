@@ -10,7 +10,6 @@ use Livewire\WithPagination;
 class TicketsIndex extends Component
 {
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
 
     public $searchTerm;
 

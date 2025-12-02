@@ -11,7 +11,6 @@ class ProductReportsIndex extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
     public string $searchTerm = '';
     public string $status = '';
     public string $environment = 'production';

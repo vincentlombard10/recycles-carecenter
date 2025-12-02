@@ -10,7 +10,6 @@ class BrandsIndex extends Component
 {
 
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
     private $searchTerm;
 
     public function render()

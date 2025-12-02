@@ -9,7 +9,6 @@ use Livewire\WithPagination;
 class UsersIndex extends Component
 {
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
 
     public string $searchTerm = '';
     public function render()
