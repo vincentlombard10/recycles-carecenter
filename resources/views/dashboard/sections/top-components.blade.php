@@ -6,9 +6,9 @@
             @if($top_batteries->count())
                 <ul class="bg-white rounded-lg px-4 py-3">
                     @foreach($top_batteries as $item)
-                        <li class="flex justify-between">
+                        <li class="flex justify-between not-last:mb-2">
                             <div>
-                                <div><span class="fw-bold text-violet-900">{{ $item->item_itno }}</span></div>
+                                <div><span class="font-bold text-violet-900">{{ $item->item_itno }}</span></div>
                                 <div><span class="text-xs">{{ $item->item_itds }}</span></div>
                             </div>
                             <span class="font-bold text-2xl text-violet-900">{{ $item->total }}</span>
@@ -25,7 +25,7 @@
             @if($top_components->count())
                 <ul class="bg-white rounded-lg px-4 py-3">
                     @foreach($top_components as $item)
-                        <li class="flex justify-between">
+                        <li class="flex justify-between not-last:mb-2">
                             <div>
                                 <div><span class="font-bold text-violet-900">{{ $item->item_itno }}</span></div>
                                 <div><span class="text-xs">{{ $item->item_itds }}</span></div>
@@ -44,9 +44,9 @@
             @if($top_bikes->count())
                 <ul class="bg-white rounded-lg px-4 py-3">
                     @foreach($top_bikes as $item)
-                        <li class="flex justify-between">
+                        <li class="flex justify-between not-last:mb-2">
                             <div>
-                                <div><span class="fw-bold text-violet-900">{{ $item->serial_itno }}</span></div>
+                                <div><span class="font-bold text-violet-900">{{ $item->serial_itno }}</span></div>
                                 <div><span class="text-xs">{{ $item->serial_itds }}</span></div>
                             </div>
                             <span class="font-bold text-2xl text-violet-900">{{ $item->total }}</span>
