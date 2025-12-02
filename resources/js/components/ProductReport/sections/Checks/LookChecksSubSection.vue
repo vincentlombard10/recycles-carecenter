@@ -1,14 +1,14 @@
 <template>
-    <section class="SubSection">
+    <section class="bg-violet-50 p-8 rounded-xl mb-5">
         <div class="SubSection_Head">
-            <h4>Etat visuel</h4>
+            <h4 class="font-bold text-xl mb-2">Etat visuel</h4>
             <div>
                 <SectionStatusBadge :completed="store.lookChecksSubsectionCompleted"/>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 mb-3">
-                <label for="stripes" class="form-label mb-1">Rayures</label>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-4 mb-4">
+            <div>
+                <label for="stripes" class="form-label">Rayures</label>
                 <select name="stripes" id="stripes"
                         class="form-control"
                         :class="`form-control--${store.stripes}`"
@@ -19,7 +19,7 @@
                     <option value="no">Non</option>
                 </select>
             </div>
-            <div class="col-lg-3 mb-3">
+            <div>
                 <label for="corrosion" class="form-label mb-1">Corrosion</label>
                 <select name="corrosion" id="corrosion"
                         class="form-control"
@@ -31,7 +31,7 @@
                     <option value="no">Non</option>
                 </select>
             </div>
-            <div class="col-lg-3 mb-3">
+            <div>
                 <label for="clay" class="form-label mb-1">Terre</label>
                 <select name="clay" id="clay"
                         class="form-control"
@@ -43,7 +43,7 @@
                     <option value="no">Non</option>
                 </select>
             </div>
-            <div class="col-lg-3 mb-3">
+            <div>
                 <label for="sand" class="form-label mb-1">Sable</label>
                 <select name="sand" id="sand"
                         class="form-control"
@@ -55,7 +55,7 @@
                     <option value="no">Non</option>
                 </select>
             </div>
-            <div class="col-lg-3 mb-3">
+            <div>
                 <label for="impacts" class="form-label mb-1">Impacts</label>
                 <select name="impacts" id="impacts"
                         class="form-control"
@@ -67,7 +67,7 @@
                     <option value="no">Non</option>
                 </select>
             </div>
-            <div class="col-lg-3 mb-3">
+            <div>
                 <label for="cracks" class="form-label mb-1">Fissures</label>
                 <select name="cracks" id="cracks"
                         class="form-control"
@@ -79,7 +79,7 @@
                     <option value="no">Non</option>
                 </select>
             </div>
-            <div class="col-lg-3 mb-3">
+            <div>
                 <label for="breakage" class="form-label mb-1">Casse</label>
                 <select name="breakage" id="breakage"
                         class="form-control"
@@ -91,7 +91,7 @@
                     <option value="no">Non</option>
                 </select>
             </div>
-            <div class="col-lg-3 mb-3">
+            <div>
                 <label for="modification" class="form-label mb-1">Modifications</label>
                 <select name="modification" id="modification"
                         class="form-control"

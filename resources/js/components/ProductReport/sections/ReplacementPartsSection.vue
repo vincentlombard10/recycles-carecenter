@@ -1,6 +1,6 @@
 <template>
     <section class="Section">
-        <h2 class="mb-3">Composants remplacés</h2>
+        <h2 class="text-4xl font-bold mb-3">Composants remplacés</h2>
         <ReplacementItemsList />
         <ReplacementItemForm class="mb-5"/>
         <div class="SubSection">

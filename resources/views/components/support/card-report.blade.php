@@ -3,7 +3,7 @@
     <div class="Card_Support--Body">
         <div class="Card_Support--Main mb-2">
             <div class="grid gap-1">
-                <h2 class="fw-semibold mb-2">{{ $report->identifier }}</h2>
+                <h2 class="font-semibold mb-2">{{ $report->identifier }}</h2>
                 @if($report->return->environment === \App\Models\ProductReturn::ENV_SANDBOX)
                     <div class="d-grid mb-1">
                         <span class="badge badge-{{ $report->return->environment }}">Sandbox</span>
@@ -70,7 +70,7 @@
     <div class="Card_Support--Side">
         <div class="d-grid gap-1">
                         <span
-                            class="rcf-badge rcf-badge--{{ $report->status_color }}">{{ $report->status_label }}</span>
+                            class="rcf-badge {{ $report->status}}">{{ $report->status_label }}</span>
             @if(($report->isPending() || $report->isPaused() || $report->isInProgress()) && auth()->user()->can('reports.update'))
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle"

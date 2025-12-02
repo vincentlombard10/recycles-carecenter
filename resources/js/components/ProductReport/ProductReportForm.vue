@@ -99,8 +99,6 @@ const getReport = async (_report) => {
 
 <style lang="scss">
 .Section {
-    margin-bottom: 4rem;
-
     &_Head {
         display: flex;
         justify-content: space-between;

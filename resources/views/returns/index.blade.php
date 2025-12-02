@@ -2,7 +2,7 @@
     <x-page-header>
         <div class="page-header-content">
             <div>
-                <h1>Retours produits</h1>
+                <h1 class="m-0">Retours produits</h1>
             </div>
             <div class="d-flex align-content-center gap-2">
                 <a href="{{ route('support.returns.create') }}" class="btn btn-circle btn-violet"><i class="bi bi-plus-lg"></i></a>

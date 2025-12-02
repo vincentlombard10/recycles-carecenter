@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header>
-        <h1>Create utilisateur</h1>
+        <h1 class="m-0">Nouvel utilisateur</h1>
     </x-page-header>
     <x-page-wrapper>
         {{ html()->form('POST', route('admin.users.store'))->open() }}

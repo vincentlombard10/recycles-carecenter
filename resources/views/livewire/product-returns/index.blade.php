@@ -22,23 +22,22 @@
     @if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
-                <div class="Card_Support Card_Support--{{ $item->status }} rounded-lg">
-                    <div class="Card_Support--Body">
-                        <div class="Card_Support--Main mb-2">
-                            <div class="flex flex-col gap-1">
-                                <h2 class="fw-semibold mb-2">{{ $item->identifier }}</h2>
-                                @if($item->environment === \App\Models\ProductReturn::ENV_SANDBOX)
-                                    <div class="d-grid mb-1">
-                                        <span class="badge badge-{{ $item->environment }} font-semibold">Sandbox</span>
-                                    </div>
-                                @endif
+                <div class="bg-white p-4 lg:p-8 mb-2 rounded-md">
+                    <div class="grid md:grid-cols-[12rem_auto] gap-2">
+                        <div class="column-left">
+                            <h2 class="fw-semibold mb-2">{{ $item->identifier }}</h2>
+                            @if($item->environment === \App\Models\ProductReturn::ENV_SANDBOX)
                                 <div class="d-grid mb-1">
-                                    <span class="badge font-semibold">{{ $item->type_label }}</span>
+                                    <span class="badge badge-{{ $item->environment }} font-semibold">Sandbox</span>
                                 </div>
-                                <div class="d-grid mb-1">
-                                    <span class="badge font-semibold">{{ $item->context_label }}</span>
-                                </div>
-                                <div class="d-grid mb-1">
+                            @endif
+                            <div class="d-grid mb-1">
+                                <span class="badge font-semibold">{{ $item->type_label }}</span>
+                            </div>
+                            <div class="d-grid mb-1">
+                                <span class="badge font-semibold">{{ $item->context_label }}</span>
+                            </div>
+                            <div class="d-grid mb-1">
                                     <span class="badge">
                                         <div>{{ $item->ticket_id }}</div>
                                         @if($item->ticket?->contact)
@@ -46,8 +45,9 @@
                                                     class="text-primary">{{ $item->ticket?->contact->code }}</span></div>
                                         @endif
                                     </span>
-                                </div>
                             </div>
+                        </div>
+                        <div class="column-right">
                             <div>
                                 @if($item->type === 'bike')
                                     <x-card-bike :item="$item"/>
@@ -67,83 +67,65 @@
                                 @endif
                             </div>
                             <div>
-                                <ul class="mb-2">
-                                    <li><small>Crée le {{ date('d/m/Y à H:i', strtotime($item->created_at)) }}
-                                            par {{ $item->author->username }}</small></li>
-                                    @if($item->validated_at)
-                                        <li><small>Validé le {{ date('d/m/Y à H:i', strtotime($item->validated_at)) }}
-                                                par {{ $item->validator?->username }}</small>
-                                        </li>
-                                    @endif
-                                    @if($item->received_at)
-                                        <li><small>Réceptionné
-                                                le {{ date('d/m/Y à H:i', strtotime($item->received_at)) }}
-                                                par {{ $item->receiver?->username }}</small></li>
-                                    @endif
-                                </ul>
-                                <div>
-                                    <h4 class="font-bold mb-2">Acheminement</h4>
-                                    @if($item->from)
-                                        <span
-                                            class="font-bold bg-violet-100/90 px-2 py-1 rounded">{{ $item->routing_from_code }}</span>
-                                    @else
-                                        <span
-                                            class="font-bold bg-orange-500/90 px-2 py-1 rounded text-white">
+                                <h4 class="font-bold mb-2">Acheminement</h4>
+                                @if($item->from)
+                                    <span
+                                        class="font-bold bg-violet-100/90 px-2 py-1 rounded">{{ $item->routing_from_code }}</span>
+                                @else
+                                    <span
+                                        class="font-bold bg-orange-500/90 px-2 py-1 rounded text-white">
                                             <i class="bi bi-exclamation-square"></i></span>
 
-                                    @endif
-                                    <i class="bi bi-caret-right"></i>
-                                    @if($item->to)
-                                        <span
-                                            class="font-bold bg-violet-100/80 px-2 py-1 rounded">{{ $item->routing_to_code }}</span>
-                                    @else
-                                        <span
-                                            class="font-bold bg-orange-500/90 px-2 py-1 rounded text-white">
+                                @endif
+                                <i class="bi bi-caret-right"></i>
+                                @if($item->to)
+                                    <span
+                                        class="font-bold bg-violet-100/80 px-2 py-1 rounded">{{ $item->routing_to_code }}</span>
+                                @else
+                                    <span
+                                        class="font-bold bg-orange-500/90 px-2 py-1 rounded text-white">
                                             <i class="bi bi-exclamation-square"></i></span>
-                                    @endif
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <div class="Card_Support--Side">
-                        <div class="d-grid gap-2">
-                            <div class="rcf-badge rcf-badge--{{ $item->status }}">{{ $item->status_label }}</div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                    Actions
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item text-end"
-                                           href="{{ route('support.returns.show', $item->identifier) }}">Consulter<i
-                                                class="bi bi-eye ms-2"></i>
-                                        </a>
-                                    </li>
-                                    @canany(['returns.update', 'returns.edit'])
-                                        @if(!$item->isReceived())
-                                            <li><a class="dropdown-item text-end"
-                                                   href="{{ route('support.returns.edit', $item->identifier) }}">Editer<i
-                                                        class="bi bi-pencil-square ms-2"></i></a></li>
-                                        @endif
-                                        @if($item->received_at === null && $item->isPending())
-                                            <li>
-                                                <button class="dropdown-item text-end"
-                                                        popovertarget="po-{{ $item->id }}">
-                                                    Réceptionner<i class="bi bi-pencil-square ms-2"></i></button>
-                                            </li>
-                                        @endif
-                                    @endcanany
-                                    @if($item->isPending() || $item->isReceived() )
+                    <div class="column-side">
+                        <div class="rcf-badge rcf-badge--{{ $item->status }}">{{ $item->status_label }}</div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item text-end"
+                                       href="{{ route('support.returns.show', $item->identifier) }}">Consulter<i
+                                            class="bi bi-eye ms-2"></i>
+                                    </a>
+                                </li>
+                                @canany(['returns.update', 'returns.edit'])
+                                    @if(!$item->isReceived())
+                                        <li><a class="dropdown-item text-end"
+                                               href="{{ route('support.returns.edit', $item->identifier) }}">Editer<i
+                                                    class="bi bi-pencil-square ms-2"></i></a></li>
+                                    @endif
+                                    @if($item->received_at === null && $item->isPending())
                                         <li>
-                                            <a class="dropdown-item text-end"
-                                               href="{{ route('support.returns.download', $item->identifier) }}">Télécharger<i
-                                                    class="bi bi-download ms-2"></i>
-                                            </a>
+                                            <button class="dropdown-item text-end"
+                                                    popovertarget="po-{{ $item->id }}">
+                                                Réceptionner<i class="bi bi-pencil-square ms-2"></i></button>
                                         </li>
                                     @endif
-                                </ul>
-                            </div>
+                                @endcanany
+                                @if($item->isPending() || $item->isReceived() )
+                                    <li>
+                                        <a class="dropdown-item text-end"
+                                           href="{{ route('support.returns.download', $item->identifier) }}">Télécharger<i
+                                                class="bi bi-download ms-2"></i>
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
                         </div>
                     </div>
                 </div>

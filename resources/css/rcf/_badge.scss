@@ -60,4 +60,13 @@
         color: oklch(87.1% 0.006 286.286);
         border: 2px solid oklch(92% 0.004 286.32)
     }
+    &.init {
+        @apply bg-slate-300 text-slate-700;
+    }
+    &.pending {
+        @apply bg-orange-500 text-white;
+    }
+    &.in_progress {
+        @apply bg-pink-600 text-white;
+    }
 }

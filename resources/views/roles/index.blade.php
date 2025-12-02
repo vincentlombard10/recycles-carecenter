@@ -2,7 +2,7 @@
     <x-page-header>
         <div class="page-header-content">
             <div>
-                <h1>Rôles</h1>
+                <h1 class="m-0">Rôles</h1>
             </div>
             <div>
                 <livewire:search-form />

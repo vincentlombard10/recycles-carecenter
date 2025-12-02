@@ -1,6 +1,6 @@
 <template>
     <div
-        class="Alert"
+        class="bg-green-300 font-bold text-green-950"
         :class="`Alert__${props.type}`">
         <slot></slot>
     </div>

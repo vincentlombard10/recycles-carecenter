@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-page-header>
         <div class="page-header-content">
-            <h1>Comptes en doublon sur Zendesk</h1>
+            <h1 class="m-0">Comptes en doublon sur Zendesk</h1>
         </div>
     </x-page-header>
     <x-page-wrapper>
@@ -17,16 +17,16 @@
                         <div class="Card_Contact--Body">
                             <div class="Card_Contact--Main">
                                 <div>
-                                    <div><h2 class="fw-semibold mb-0">{{ $contact->code }}</h2></div>
+                                    <div><h2 class="font-semibold mb-0">{{ $contact->code }}</h2></div>
                                     <div>
                                         @if($contact->zendesk_user_id)
-                                            <small class="fw-semibold text-success">{{ $contact->zendesk_user_id }}</small>
+                                            <small class="font-semibold text-success">{{ $contact->zendesk_user_id }}</small>
                                         @elseif($contact->duplicates)
-                                            <small class="fw-semibold text-warning">Plusieurs utilisateurs Zendesk</small>
+                                            <small class="font-semibold text-warning">Plusieurs utilisateurs Zendesk</small>
                                         @elseif(!$contact->support_enabled == null)
-                                            <small class="fw-semibold text-danger">Aucun utilisateur Zendesk</small>
+                                            <small class="font-semibold text-danger">Aucun utilisateur Zendesk</small>
                                         @else
-                                            <small class="fw-normal text-secondary">Non défini</small>
+                                            <small class="text-secondary">Non défini</small>
                                         @endif
                                     </div>
                                     <div><small>{{ $contact->name }}</small></div>
@@ -34,12 +34,12 @@
                                 <div>
                                     @foreach(json_decode($contact->duplicates) as $d)
                                         <div class="card p-2">
-                                            <div><h6><span class="fw-semibold">{{ $d->name }}</span> ({{ $d->id }})</h6></div>
-                                            <div><span class="fw-semibold">Création :</span> {{ date('d/m/Y à H:i', strtotime($d->created_at)) }}</div>
-                                            <div><span class="fw-semibold">Adresse e-mail :</span> {{ $d->email }}</div>
-                                            <div><span class="fw-semibold">Téléphone :</span> {{ $d->phone }}</div>
-                                            <div><span class="fw-semibold">ID externe :</span> {{ $d->external_id }}</div>
-                                            <div><span class="fw-semibold">Détails :</span> {{ $d->details }}</div>
+                                            <div><h6><span class="font-semibold">{{ $d->name }}</span> ({{ $d->id }})</h6></div>
+                                            <div><span class="font-semibold">Création :</span> {{ date('d/m/Y à H:i', strtotime($d->created_at)) }}</div>
+                                            <div><span class="font-semibold">Adresse e-mail :</span> {{ $d->email }}</div>
+                                            <div><span class="font-semibold">Téléphone :</span> {{ $d->phone }}</div>
+                                            <div><span class="font-semibold">ID externe :</span> {{ $d->external_id }}</div>
+                                            <div><span class="font-semibold">Détails :</span> {{ $d->details }}</div>
                                         </div>
                                     @endforeach
                                 </div>

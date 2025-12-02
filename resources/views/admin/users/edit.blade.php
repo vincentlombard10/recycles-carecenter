@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header>
-        <h1>Editer utilisateur</h1>
+        <h1 class="m-0">Editer utilisateur</h1>
     </x-page-header>
     <x-page-wrapper>
         {{ html()->form('PUT', route('admin.users.update', $user->id))->open() }}

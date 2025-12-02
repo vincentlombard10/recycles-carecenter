@@ -1,7 +1,7 @@
 <template>
-    <section class="Section">
+    <section class="mb-8">
         <div class="Section_Head">
-            <h2 class="mb-3">Diagnostic de la batterie</h2>
+            <h2 class="text-4xl font-bold mb-3">Diagnostic de la batterie</h2>
             <div>
                 <SectionStatusBadge :completed="store.batterySectionCompleted"/>
             </div>

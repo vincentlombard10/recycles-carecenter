@@ -5,7 +5,7 @@
                 <a href="{{ route('changelogs.index') }}" class="btn btn-circle btn-orange">
                     <i class="bi bi-arrow-left"></i>
                 </a>
-                <h1>Nouveau ChangeLog</h1>
+                <h1 class="mb-0">Nouveau ChangeLog</h1>
             </div>
             <div>
 

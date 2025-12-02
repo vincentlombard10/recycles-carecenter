@@ -1,6 +1,6 @@
 <template>
     <div class="Item_Card">
-        <div><span class="fw-semibold">{{ item.itno }}</span></div>
+        <div><span class="font-semibold">{{ item.itno }}</span></div>
         <div>{{ item.itds }}</div>
     </div>
 </template>

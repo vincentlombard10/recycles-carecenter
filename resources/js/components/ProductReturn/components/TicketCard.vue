@@ -1,6 +1,6 @@
 <template>
     <div class="Ticket_Card">
-        <div><h5 class="fw-semibold mb-1">{{ ticket.id }}</h5></div>
+        <div><h5 class="font-semibold mb-1">{{ ticket.id }}</h5></div>
         <div v-if="ticket.contact">{{ ticket.contact.code }} {{ ticket.contact.name }}</div>
     </div>
 </template>

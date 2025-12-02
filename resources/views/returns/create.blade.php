@@ -5,7 +5,7 @@
                 <a href="{{ route('support.returns.index') }}" class="btn btn-circle btn-orange">
                     <i class="bi bi-arrow-left"></i>
                 </a>
-                <h1>Nouveau retour produit</h1>
+                <h1 class="m-0">Nouveau retour produit</h1>
             </div>
             <div>
 

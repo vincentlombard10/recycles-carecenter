@@ -2,7 +2,7 @@
     <x-page-header>
         <div class="page-header-content">
             <div>
-                <h1>Tableau de bord</h1>
+                <h1 class="mb-0">Tableau de bord</h1>
             </div>
             <div></div>
         </div>

@@ -2,7 +2,7 @@
     <x-page-header>
         <div class="page-header-content">
             <div class="d-flex align-items-center gap-3">
-                <h1>Mon profil</h1>
+                <h1 class="m-0">Mon profil</h1>
             </div>
             <div class="d-flex align-items-center gap-3">
                 :)

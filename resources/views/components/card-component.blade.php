@@ -4,7 +4,7 @@
         <tbody>
         <tr>
             <th style="width: 6rem;">Référence</th>
-            <td><span class="fw-semibold">{{ $item->item_itno }}</span></td>
+            <td><span class="font-semibold">{{ $item->item_itno }}</span></td>
         </tr>
         <tr>
             <th>Désignation</th>

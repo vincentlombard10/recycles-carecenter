@@ -1,9 +1,9 @@
 <template>
-    <section class="Section">
-        <VAlert v-if="store.reportCompleted" type="success">Le rapport d'intervention est complet.</VAlert>
-        <VAlert v-else>Complétez le rapport pour terminer l'intervention.</VAlert>
+    <section class="mb-8">
+        <VAlert v-if="store.reportCompleted" class="bg-green-300 font-bold text-green-950">Le rapport d'intervention est complet.</VAlert>
+        <VAlert v-else class="bg-green-300 font-bold text-green-950">Complétez le rapport pour terminer l'intervention.</VAlert>
     </section>
-    <section class="Section">
+    <section class="mb-8">
         <div class="row">
             <div class="col-6 mb-3">
                 <label for="status" class="form-label mb-1">Statut</label>
