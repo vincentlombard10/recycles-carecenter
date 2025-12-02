@@ -8,7 +8,7 @@
         </div>
     </x-page-header>
     <x-page-wrapper>
-        <div class="container-fluid p-3 ">
+        <div class="p-5">
             <x-messages />
             @include('dashboard.sections.section-product-returns')
             @include('dashboard.sections.top-components')
