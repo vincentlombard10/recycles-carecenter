@@ -1,3 +1,4 @@
+/*
 [popover] {
     background-color: white;
     border-radius: 1rem;
@@ -6,6 +7,7 @@
     width: 32rem;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
+
 [popover]::backdrop {
     position: fixed;
     margin: auto;
@@ -14,11 +16,10 @@
     overflow: auto;
     background-color: white;
     border: 0px solid oklch(55.4% 0.046 257.417);
-    transition:
-        display 400ms,
-        overlay 400ms, /* <= !important */
-        opacity 400ms,
-        translate 400ms;
+    transition: display 400ms,
+    overlay 400ms, !* <= !important *!
+    opacity 400ms,
+    translate 400ms;
     opacity: 0.5;
     backdrop-filter: blur(20px);
     top: 0;
@@ -28,7 +29,7 @@
 }
 
 ::backdrop {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 [popover]:popover-open {
@@ -42,8 +43,10 @@
         translate: 0 -8rem;
         opacity: 0.5;
     }
+
     [popover]:popover-open::backdrop {
         opacity: 0.5;
         pointer-events: none;
     }
 }
+*/

@@ -1,4 +1,4 @@
-[popover] {
+/*[popover] {
     background-color: white;
     border-radius: 1rem;
     padding: 2rem;
@@ -16,7 +16,7 @@
     border: 0px solid oklch(55.4% 0.046 257.417);
     transition:
         display 400ms,
-        overlay 400ms, /* <= !important */
+        overlay 400ms, !* <= !important *!
         opacity 400ms,
         translate 400ms;
     opacity: 0.5;
@@ -29,15 +29,17 @@
 
 ::backdrop {
     background-color: rgba(0,0,0,0.5);
-}
+}*/
 
+/*
 [popover]:popover-open {
     translate: 0 0;
     opacity: 1;
     backdrop-filter: blur(20px);
 }
+*/
 
-@starting-style {
+/*@starting-style {
     [popover]:popover-open {
         translate: 0 -8rem;
         opacity: 0.5;
@@ -46,4 +48,4 @@
         opacity: 0.5;
         pointer-events: none;
     }
-}
+}*/

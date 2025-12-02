@@ -22,32 +22,26 @@
     @if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
-                <div class="bg-white p-4 lg:p-8 mb-2 rounded-md">
-                    <div class="grid md:grid-cols-[12rem_auto] gap-2">
+                <div class="bg-white p-4 lg:p-8 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
+                    <div class="grid md:grid-cols-[8rem_auto] gap-4">
                         <div class="column-left">
-                            <h2 class="fw-semibold mb-2">{{ $item->identifier }}</h2>
+                            <h2 class="font-bold text-2xl mb-2">{{ $item->identifier }}</h2>
                             @if($item->environment === \App\Models\ProductReturn::ENV_SANDBOX)
-                                <div class="d-grid mb-1">
+                                <div class="grid">
                                     <span class="badge badge-{{ $item->environment }} font-semibold">Sandbox</span>
                                 </div>
                             @endif
-                            <div class="d-grid mb-1">
-                                <span class="badge font-semibold">{{ $item->type_label }}</span>
-                            </div>
-                            <div class="d-grid mb-1">
-                                <span class="badge font-semibold">{{ $item->context_label }}</span>
-                            </div>
-                            <div class="d-grid mb-1">
-                                    <span class="badge">
+                            <span class="inline-flex md:inline-block px-4 py-2 bg-violet-100 md:w-full mb-2 rounded font-bold text-center">{{ $item->type_label }}</span>
+                            <span class="inline-flex md:inline-block px-4 py-2 bg-violet-100 md:w-full mb-2 rounded font-bold text-center">{{ $item->context_label }}</span>
+                            <span class="inline-flex md:inline-block px-4 py-2 bg-violet-100 md:w-full mb-2 rounded font-bold text-center">
                                         <div>{{ $item->ticket_id }}</div>
                                         @if($item->ticket?->contact)
-                                            <div><span
-                                                    class="text-primary">{{ $item->ticket?->contact->code }}</span></div>
-                                        @endif
+                                    <div><span
+                                            class="text-blue-800 font-bold">{{ $item->ticket?->contact->code }}</span></div>
+                                @endif
                                     </span>
-                            </div>
                         </div>
-                        <div class="column-right">
+                        <div class="column-right grid lg:grid-cols-[auto_16rem] gap-8">
                             <div>
                                 @if($item->type === 'bike')
                                     <x-card-bike :item="$item"/>
@@ -89,44 +83,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="column-side">
-                        <div class="rcf-badge rcf-badge--{{ $item->status }}">{{ $item->status_label }}</div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Actions
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item text-end"
-                                       href="{{ route('support.returns.show', $item->identifier) }}">Consulter<i
-                                            class="bi bi-eye ms-2"></i>
-                                    </a>
-                                </li>
-                                @canany(['returns.update', 'returns.edit'])
-                                    @if(!$item->isReceived())
-                                        <li><a class="dropdown-item text-end"
-                                               href="{{ route('support.returns.edit', $item->identifier) }}">Editer<i
-                                                    class="bi bi-pencil-square ms-2"></i></a></li>
-                                    @endif
-                                    @if($item->received_at === null && $item->isPending())
-                                        <li>
-                                            <button class="dropdown-item text-end"
-                                                    popovertarget="po-{{ $item->id }}">
-                                                Réceptionner<i class="bi bi-pencil-square ms-2"></i></button>
-                                        </li>
-                                    @endif
-                                @endcanany
-                                @if($item->isPending() || $item->isReceived() )
-                                    <li>
-                                        <a class="dropdown-item text-end"
-                                           href="{{ route('support.returns.download', $item->identifier) }}">Télécharger<i
-                                                class="bi bi-download ms-2"></i>
-                                        </a>
-                                    </li>
-                                @endif
-                            </ul>
+                    <div>
+                        <div class="rcf-badge rcf-badge--{{ $item->status }} w-full mb-2">{{ $item->status_label }}</div>
+                        <div>
+                            <el-dropdown>
+                                <button
+                                    role="button"
+                                    popovertarget="item-{{ $item->identifier }}"
+                                    class="inline-flex bg-violet-100 justify-center rounded-md w-full text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                                    Actions
+                                    <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="-mr-1 size-5 text-gray-400">
+                                        <path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                                    </svg>
+                                </button>
+
+                                <el-menu anchor="bottom end" id="item-{{ $item->identifier }}" popover class="w-56 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+                                    <div class="py-0">
+                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden">Account settings</a>
+                                    </div>
+                                </el-menu>
+                            </el-dropdown>
                         </div>
+
                     </div>
                 </div>
                 <div id="po-{{ $item->id }}" popover="manual">

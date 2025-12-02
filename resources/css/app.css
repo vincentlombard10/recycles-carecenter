@@ -36,7 +36,7 @@
 }
 
 button {
-    @apply px-3 py-2 rounded-md bg-violet-600 text-white font-bold shadow-sm active:bg-violet-950 outline-none focus:outline-none focus:ring-0 hover:bg-violet-700;
+    @apply px-3 py-2 rounded-md text-violet-900 font-bold outline-none focus:outline-none focus:ring-0;
 }
 
 .sidebar-link {
