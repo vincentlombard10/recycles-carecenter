@@ -54,7 +54,7 @@
                                  class="w-32 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
                             <div class="py-0">
                                 @if($report->isPending() || $report->isPaused())
-                                    <button class="dropdown-item text-end"
+                                    <button class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold"
                                             popovertarget="po-{{ $report->id }}">
                                         {{ $report->isPaused() ? 'Reprendre' : 'Démarrer' }}
                                         <i class="bi bi-pencil-square ms-2"></i></button>
