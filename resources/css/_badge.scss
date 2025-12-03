@@ -9,6 +9,12 @@
     &.received {
         @apply bg-green-200 text-green-700;
     }
+    &.in_progress {
+        @apply bg-sky-200 text-sky-700;
+    }
+    &.closed {
+        @apply bg-gray-500 text-gray-800;
+    }
 }
 
 .paused {
