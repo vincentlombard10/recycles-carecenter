@@ -24,3 +24,21 @@
 .closed {
 
 }
+
+.bg {
+    &.incomplete {
+        @apply bg-yellow-50;
+    }
+    &.pending {
+        @apply bg-orange-50;
+    }
+    &.received {
+        @apply bg-green-50;
+    }
+    &.in_progress {
+        @apply bg-sky-50;
+    }
+    &.closed {
+        @apply bg-gray-100;
+    }
+}
