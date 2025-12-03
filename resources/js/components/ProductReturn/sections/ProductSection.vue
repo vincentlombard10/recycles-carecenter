@@ -1,7 +1,9 @@
 <template>
-    <section class="Section" id="Product">
+    <section
+        class="bg-violet-50 p-8 rounded-xl mb-5"
+        id="Product">
         <div class="Section_Head">
-            <h2 class="font-bold mb-3">Produit concerné</h2>
+            <h2 class="font-bold text-xl mb-2">Produit concerné</h2>
         </div>
         <template v-if="store.type">
             <ItemSelector

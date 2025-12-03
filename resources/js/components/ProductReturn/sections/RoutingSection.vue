@@ -1,7 +1,8 @@
 <template>
-    <section class="Section">
+    <section
+        class="bg-violet-50 p-8 rounded-xl mb-5">
         <div class="Section_Head">
-            <h2 class="font-bold mb-3">Acheminement</h2>
+            <h2 class="font-bold text-xl mb-2">Acheminement</h2>
             <div>
                 <SectionStatusBadge :completed="store.routingSectionCompleted" />
             </div>

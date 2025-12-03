@@ -1,8 +1,9 @@
 <template>
-    <section class="bg-transparent"
-             id="Qualification">
+    <section
+        class="bg-violet-50 p-8 rounded-xl mb-5"
+        id="Qualification">
         <div class="Section_Head">
-            <h2 class="font-bold mb-3">Qualification</h2>
+            <h2 class="font-bold text-xl mb-2">Qualification</h2>
             <div><SectionStatusBadge :completed="store.qualificationSectionCompleted"/></div>
         </div>
         <div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

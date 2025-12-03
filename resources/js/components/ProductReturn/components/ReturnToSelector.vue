@@ -1,5 +1,5 @@
 <template>
-    <h4 class="font-semibold text-lg mb-2">Réexpédition</h4>
+    <h4 class="font-semibold text-md mb-2">Réexpédition</h4>
     <div class="row" v-if="store.returnTo">
         <div class="col-lg-4">
             <ContactCard :contact="store.returnTo" class="mb-2"/>

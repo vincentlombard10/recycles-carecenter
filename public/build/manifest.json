@@ -8,18 +8,18 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-gKSszG4j.css",
+    "file": "assets/app-tn8zWi1n.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DYU6n4xL.js",
+    "file": "assets/app-D8DQWRXo.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-BtUaCIvc.css",
-      "assets/app-gKSszG4j.css"
+      "assets/app-rRUHCA6b.css",
+      "assets/app-tn8zWi1n.css"
     ],
     "assets": [
       "assets/bootstrap-icons-mSm7cUeB.woff2",

@@ -1,7 +1,9 @@
 <template>
-    <section class="Section" id="Comments">
+    <section
+        class="bg-violet-50 p-8 rounded-xl mb-5"
+        id="Comments">
         <div class="Section_Head">
-            <h2 class="font-bold mb-3">Commentaires</h2>
+            <h2 class="font-bold text-xl mb-2">Commentaires</h2>
             <div><SectionStatusBadge :completed="store.commentsSectionCompleted"/></div>
         </div>
         <div class="row">

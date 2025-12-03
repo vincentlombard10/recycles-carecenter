@@ -97,9 +97,12 @@
                                     </svg>
                                 </button>
 
-                                <el-menu anchor="bottom end" id="item-{{ $item->identifier }}" popover class="w-56 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+                                <el-menu anchor="bottom end" id="item-{{ $item->identifier }}" popover class="w-32 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
                                     <div class="py-0">
-                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden">Account settings</a>
+                                        <a href="{{ route('support.returns.edit', $item->identifier) }}" class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold">Editer</a>
+                                        @if($item->isPending() || $item->isReceived())
+                                        <a href="{{ route('support.returns.download', $item->identifier) }}" class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold">Télécharger</a>
+                                        @endif
                                     </div>
                                 </el-menu>
                             </el-dropdown>
