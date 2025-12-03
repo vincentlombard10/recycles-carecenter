@@ -28,7 +28,7 @@
     @apply bg-white;
 }
 .bg__complete {
-    @apply bg-yellow-50 border-1 border-yellow-300;
+    @apply bg-yellow-50 border-1 border-yellow-200;
 }
 .bg__pending {
     @apply bg-orange-50;
@@ -37,7 +37,7 @@
     @apply bg-green-50;
 }
 .bg__in_progress {
-    @apply bg-sky-50 border-1 border-sky-300;
+    @apply bg-sky-50 border-1 border-sky-200;
 }
 .bg__closed {
     @apply bg-gray-100;
