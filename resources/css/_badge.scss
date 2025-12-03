@@ -26,19 +26,19 @@
 }
 
 .bg {
-    &.incomplete {
+    &.-incomplete {
         @apply bg-yellow-50;
     }
-    &.pending {
+    &.-pending {
         @apply bg-orange-50;
     }
-    &.received {
+    &.-received {
         @apply bg-green-50;
     }
-    &.in_progress {
+    &.-in_progress {
         @apply bg-sky-50;
     }
-    &.closed {
+    &.-closed {
         @apply bg-gray-100;
     }
 }
