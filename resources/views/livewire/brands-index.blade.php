@@ -4,7 +4,7 @@
         <thead class="bg-violet-900 text-white py-2">
         <tr>
             <th class="w-[8rem] text-xs py-1">Code</th>
-            <th class="text-xs py-1">Name</th>
+            <th class="text-left text-xs py-1">Name</th>
         </tr>
         </thead>
         <tbody>
