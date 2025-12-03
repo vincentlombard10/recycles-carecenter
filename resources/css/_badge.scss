@@ -10,10 +10,10 @@
         @apply bg-green-200 text-green-700;
     }
     &.in_progress {
-        @apply bg-sky-200 text-sky-700;
+        @apply bg-sky-200 text-sky-800;
     }
     &.closed {
-        @apply bg-gray-500 text-gray-800;
+        @apply bg-gray-200 text-gray-800;
     }
 }
 
