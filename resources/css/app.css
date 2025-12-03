@@ -74,16 +74,6 @@ body {
     min-height: 100vh;
 }
 
-#main {
-    border-radius: 0.25rem 0.75rem 0.75rem 0.25rem;
-    border: 0px solid black;
-    margin-left: var(--rcf-sidebar-width);
-    @media (min-width: 1200px) {
-        --rcf-sidebar-width: 16rem;
-        margin-left: var(--rcf-sidebar-width);
-    }
-}
-
 .page-header {
     background-color: white;
     position: sticky;

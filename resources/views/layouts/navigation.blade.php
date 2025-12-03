@@ -1,135 +1,192 @@
-<div class="sidebar">
-    <div class="sidebar-brand h-16">
-        <span class="font-bold uppercase text-2xl text-orange-500">Care Center</span>
+<div class="fixed bg-white w-16 z-50 overflow-visible h-screen top-0">
+    <div class="bg-violet-200 h-16">
+        <span class="font-bold uppercase text-2xl text-orange-500">CC</span>
     </div>
-    <div class="sidebar-content">
-        <ul class="sidebar-menu">
-            <li class="sidebar-item">
-                <a href="{{ route('profile.index') }}" class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('profile.*') ? 'active': '' }}">
-                    <i class="bi bi-person-badge"></i>
-                    <span class="sidebar-link__label">Mon profil</span>
+    <div class="h-[calc(100vh-4rem)] scroll-auto py-2 flex flex-col gap-1">
+        <ul class="flex flex-col items-center gap-1">
+            <li class="w-10 rounded">
+                <a href="{{ route('profile.index') }}"
+                   class="group inline-flex gap-2 items-center text-violet-900">
+                    <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('profile.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+                    <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                        <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Mon profil</span>
+                    </div>
                 </a>
             </li>
         </ul>
-        <ul class="sidebar-menu">
-            <li class="sidebar-item">
+        <ul class="flex flex-col items-center gap-1">
+            <li class="w-10">
                 <a href="{{ route('dashboard') }}"
-                   class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('dashboard') ? 'active': '' }}"><i
-                        class="bi bi-house"></i><span class="sidebar-link__label">Tableau de bord</span></a>
+                   class="group inline-flex gap-2 items-center text-violet-900">
+                    <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('dashboard') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-house"></i>
+                    </div>
+                    <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                        <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Tableau de bord</span>
+                    </div>
+                </a>
             </li>
             @canany(['returns.read', 'returns.create', 'returns.update', 'returns.delete'])
-                <li class="sidebar-item">
+                <li class="w-10">
                     <a href="{{ route('support.returns.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('support.returns.*') ? 'active': '' }}"><i
-                            class="bi bi-box"></i><span class="sidebar-link__label">Retours produits</span></a>
+                       class="group inline-flex gap-2 items-center text-violet-900">
+                        <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('support.returns.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-box"></i>
+                        </div>
+                        <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span
+                                class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Retours produits</span>
+                        </div>
+                    </a>
                 </li>
             @endcanany
             @canany(['reports.read', 'reports.create', 'reports.update', 'reports.delete'])
-                <li class="sidebar-item">
+                <li class="w-10">
                     <a href="{{ route('support.reports.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('support.reports.*') ? 'active': '' }}"><i
-                            class="bi bi-list-check"></i><span
-                            class="sidebar-link__label">Rapports d'expertise</span></a>
+                       class="group inline-flex gap-2 items-center text-violet-900">
+                        <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('support.reports.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-list-check"></i>
+                        </div>
+                        <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Rapports d'intervention</span>
+                        </div>
+                    </a>
                 </li>
             @endcanany
             @canany(['reports.read', 'reports.create', 'reports.update', 'reports.delete'])
-                <li class="sidebar-item">
+                <li class="w-10">
                     <a href="{{ route('support.estimates.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('support.estimates.*') ? 'active': '' }}"><i
-                            class="bi bi-piggy-bank"></i><span
-                            class="sidebar-link__label">Devis</span></a>
+                       class="group inline-flex gap-2 items-center text-violet-900">
+                        <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('support.estimates.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-piggy-bank"></i>
+                        </div>
+                        <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Devis</span>
+                        </div>
+                    </a>
                 </li>
             @endcanany
             @canany('tickets.read')
-                <li class="sidebar-item">
+                <li class="w-10">
                     <a href="{{ route('support.tickets.index') }}"
-                       class="sidebar-link text-violet-950 hover:bg-violet-100 hover:text-orange-600 fw-semibold {{ Route::is('support.tickets.*') ? 'active': '' }}"><i
-                            class="bi bi-inboxes"></i><span class="sidebar-link__label">Tickets Zendesk</span></a>
+                       class="group inline-flex gap-2 items-center text-violet-900">
+                        <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('support.tickets.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-inboxes"></i>
+                        </div>
+                        <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Tickets Zendesk Support</span>
+                        </div>
+                    </a>
                 </li>
             @endcanany
-{{--            <li class="sidebar-item">
-                <a href="#"
-                   class="sidebar-link">
-                    <i class="bi bi-card-list"></i>
-                    <span class="sidebar-link__label">Nomenclatures</span>
-                </a>
-            </li>--}}
+            {{--            <li class="sidebar-item">
+                            <a href="#"
+                               class="sidebar-link">
+                                <i class="bi bi-card-list"></i>
+                                <span class="sidebar-link__label">Nomenclatures</span>
+                            </a>
+                        </li>--}}
         </ul>
-        <ul class="sidebar-menu">
+        <ul class="flex flex-col items-center gap-1">
             @canany('brands.read')
-                <li class="sidebar-item">
+                <li class="w-10">
                     <a href="{{ route('brands.index') }}"
-                       class="sidebar-link {{ Route::is('brands.*') ? 'active': '' }}"><i class="bi bi-tag"></i><span
-                            class="sidebar-link__label">Marques</span></a>
+                       class="group inline-flex gap-2 items-center text-violet-900">
+                        <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('brands.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-tag"></i>
+                        </div>
+                        <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Marques</span>
+                        </div>
+                    </a>
                 </li>
             @endcanany
             @canany('groups.read')
-                <li class="sidebar-item">
+                <li class="w-10">
                     <a href="{{ route('groups.index') }}"
-                       class="sidebar-link {{ Route::is('groups.*') ? 'active': '' }}"><i
-                            class="bi bi-grid"></i><span class="sidebar-link__label">Groupes</span></a>
+                       class="group inline-flex gap-2 items-center text-violet-900">
+                        <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('groups.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-grid"></i>
+                        </div>
+                        <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span
+                                class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Groupes produits</span>
+                        </div>
+                    </a>
                 </li>
             @endcanany
             @canany('serials.read')
-                <li class="sidebar-item">
+                <li class="w-10">
                     <a href="{{ route('serials.index') }}"
-                       class="sidebar-link {{ Route::is('serials.*') ? 'active': '' }}"><i class="bi bi-upc"></i><span
-                            class="sidebar-link__label">Numéros de série</span></a>
+                       class="group inline-flex gap-2 items-center text-violet-900">
+                        <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('serials.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-upc"></i>
+                        </div>
+                        <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span
+                                class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Numéros de série</span>
+                        </div>
+                    </a>
                 </li>
             @endcanany
             @canany('items.read')
-                <li class="sidebar-item">
+                <li class="w-10">
                     <a href="{{ route('items.index') }}"
-                       class="sidebar-link  {{ Route::is('items.*') ? 'active': '' }}"><i class="bi bi-bicycle"></i><span
-                            class="sidebar-link__label">Références</span></a>
+                       class="group inline-flex gap-2 items-center text-violet-900">
+                        <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('items.*') ? 'active bg-violet-500 text-white' : '' }}">
+                            <i class="bi bi-bicycle"></i>
+                        </div>
+                        <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span
+                                class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Références produits</span>
+                        </div>
+                    </a>
                 </li>
             @endcanany
             @canany('items.read')
-                <li class="sidebar-item">
-                    <a href="{{ route('contacts.index') }}"
-                       class="sidebar-link {{ Route::is('contacts.*') ? 'active': '' }}"><i
-                            class="bi bi-person"></i><span
-                            class="sidebar-link__label">Contacts</span></a>
-                </li>
+                    <li class="w-10">
+                        <a href="{{ route('contacts.index') }}"
+                           class="group inline-flex gap-2 items-center text-violet-900">
+                            <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('contacts.*') ? 'active bg-violet-500 text-white' : '' }}">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span
+                                class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Contacts clients</span>
+                            </div>
+                        </a>
+                    </li>
             @endcanany
         </ul>
         @hasanyrole('admin|superadmin')
-        <ul class="sidebar-menu">
-            <li class="sidebar-item">
+        <ul class="flex flex-col items-center gap-1">
+            <li class="w-10">
                 <a href="{{ route('admin.users.index') }}"
-                   class="sidebar-link {{ Route::is('admin.users.*') ? 'active': '' }}"><i
-                        class="bi bi-person-fill"></i><span
-                        class="sidebar-link__label">Utilisateurs</span></a>
+                   class="group inline-flex gap-2 items-center text-violet-900">
+                    <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('admin.users.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span
+                                class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Utilisateurs</span>
+                    </div>
+                </a>
             </li>
-            <li class="sidebar-item">
+            <li class="w-10">
                 <a href="{{ route('admin.roles.index') }}"
-                   class="sidebar-link {{ Route::is('admin.roles.*') ? 'active': '' }}"><i
-                        class="bi bi-people-fill"></i><span
-                        class="sidebar-link__label">Rôles</span></a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('log-viewer.index') }}"
-                   target="_blank"
-                   class="sidebar-link {{ Route::is('log-viewer.*') ? 'active': '' }}"><i
-                        class="bi bi-journal-text"></i><span
-                        class="sidebar-link__label">Visualiseur de logs</span></a>
-            </li>
-            <li class="sidebar-item">
-                <a href="{{ route('vantage.dashboard') }}"
-                   target="_blank"
-                   class="sidebar-link {{ Route::is('vantage.*') ? 'active': '' }}"><i
-                        class="bi bi-journal-text"></i><span
-                        class="sidebar-link__label">Vantage</span></a>
+                   class="group inline-flex gap-2 items-center text-violet-900">
+                    <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('admin.roles.*') ? 'active bg-violet-500 text-white' : '' }}">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div class="hidden h-8 w-128 px-4 items-center font-semibold group-hover:flex">
+                            <span
+                                class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Rôles</span>
+                    </div>
+                </a>
             </li>
         </ul>
         @endhasanyrole
-        <ul class="sidebar-menu mt-auto mb-0">
-            <li class="sidebar-item">
-                {{ html()->form('POST', route('logout'))->open() }}
-                <button class="sidebar-link bg-red-700 hover:bg-red-500"><i class="bi bi-person-lines-fill"></i><span
-                        class="sidebar-link__label">Déconnexion</span></button>
-                {{ html()->form()->close() }}
-            </li>
-        </ul>
     </div>
 </div>

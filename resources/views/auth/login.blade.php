@@ -9,7 +9,7 @@
         {{ html()->password('password')->class('form-control rounded-md border-violet-600')->autocomplete('current-password') }}
     </div>
     <div class="d-grid mb-3">
-        {{ html()->submit('Connexion')->class('btn btn-primary bg-orange-500 hover:bg-orange-600 py-2 border-0 font-bold') }}
+        {{ html()->submit('Connexion')->class('bg-violet-600 w-full py-2 rounded text-white font-bold hover:bg-violet-700') }}
     </div>
     <div>
         @if (Route::has('password.request'))
