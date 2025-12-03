@@ -1,6 +1,6 @@
 <div class="fixed bg-white w-16 z-50 overflow-visible h-screen top-0">
     <div class="bg-violet-200 h-16 flex justify-center items-center">
-        <span class="font-bold uppercase text-2xl text-orange-500">CC</span>
+        <span class="font-bold uppercase text-2xl text-orange-500"></span>
     </div>
     <div class="h-[calc(100vh-4rem)] scroll-auto py-2 flex flex-col gap-1">
         <ul class="flex flex-col items-center gap-1">
