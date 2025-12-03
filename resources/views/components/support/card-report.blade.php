@@ -33,7 +33,7 @@
     <div>
         <div class="">
             <div
-                class="px-3 py-2 bg-slate-100 font-semibold text-center {{ $report->status }} w-full mb-2">{{ $report->status_label }}</div>
+                class="badge {{ $report->status }} w-full mb-2">{{ $report->status_label }}</div>
             <div>
                 <el-dropdown>
                     <button
