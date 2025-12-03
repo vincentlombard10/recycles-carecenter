@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div>
-                        <div class="px-3 py-2 bg-slate-100 font-semibold text-center {{ $item->status }} w-full mb-2">{{ $item->status_label }}</div>
+                        <div class="badge {{ $item->status }} w-full mb-2">{{ $item->status_label }}</div>
                         <div>
                             <el-dropdown>
                                 <button
