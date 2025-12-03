@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-page-header>
         <div class="page-header-content">
-            <div class="d-flex align-items-center gap-3">
+            <div class="flex gap-4 items-center">
                 <a href="{{ route('support.reports.index') }}" class="btn btn-circle btn-orange">
                     <i class="bi bi-arrow-left"></i>
                 </a>

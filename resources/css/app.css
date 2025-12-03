@@ -35,8 +35,11 @@
     @apply rounded border-violet-300 ring-0 leading-tight focus:border-orange-500 outline-none focus:outline-none focus:ring-0 transition-all;
 }
 
-button {
-    @apply px-3 py-2 rounded-md text-violet-900 font-bold outline-none focus:outline-none focus:ring-0;
+.cancel {
+    @apply px-2 py-1 rounded-md text-white font-semibold text-xs outline-none bg-orange-600 hover:bg-orange-500 cursor-pointer;
+}
+.violet {
+    @apply px-3 py-2 rounded text-white bg-violet-600 hover:bg-violet-500 cursor-pointer;
 }
 
 .sidebar-link {

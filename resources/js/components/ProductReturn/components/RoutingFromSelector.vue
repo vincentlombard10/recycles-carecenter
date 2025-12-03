@@ -1,16 +1,16 @@
 <template>
     <h4 class="font-semibold text-md mb-2">Expéditeur</h4>
-    <div class="row" v-if="store.routingFrom">
-        <div class="col-lg-4">
+    <div class="grid grid-cols-[24rem_auto] gap-x-6" v-if="store.routingFrom">
+        <div>
             <ContactCard :contact="store.routingFrom" class="mb-2"/>
             <input type="hidden" name="routing_from_code" :value="store.routingFromCode">
             <button
-                class="btn btn-sm btn-dark"
-                @click.prevent="store.cancelRoutingFrom"><i class="bi bi-x-lg me-1"></i>Annuler
+                class="bg-slate-800 text-slate-200 px-2 py-1 rounded-sm font-medium text-xs hover:bg-slate-700"
+                @click.prevent="store.cancelRoutingFrom"><i class="bi bi-x-lg"></i>&nbsp;Annuler
             </button>
         </div>
-        <div class="col-lg-8">
-            <div class="Address_Card">
+        <div>
+            <div class="bg-white rounded-lg p-5">
                 <h6>Adresse postale</h6>
                 <div class="mb-2" v-show="isEditing">
                     <div class="row mb-1">
@@ -71,24 +71,26 @@
                     </div>
                 </div>
                 <ContactAddress class="mb-2" v-show="!isEditing" :address="routingFromAddress"/>
-                <div class="Address_Card--Actions">
-                    <button v-if="!isEditing" class="btn btn-sm btn-violet"
+                <div class="flex gap-2">
+                    <button v-if="!isEditing"
+                            class="px-3 py-2 rounded-sm bg-slate-100 text-slate-800 font-medium hover:bg-slate-200"
                             @click.prevent="startEditing">
                         <i class="bi bi-pen me-1"></i>Modifier
                     </button>
-                    <button v-else class="btn btn-sm btn-dark"
+                    <button v-else
+                            class="px-3 py-1 rounded-sm bg-slate-200 text-slate-900 font-medium hover:bg-slate-300"
                             @click.prevent="stopEditing">
                         <i class="bi bi-x-lg me-1"></i>Fermer
                     </button>
                     <button v-if="addressIsChanged"
-                            class="btn btn-sm btn-violet"
+                            class="px-3 py-1 rounded-sm bg-violet-200 text-violet-900 font-medium hover:bg-violet-300"
                             @click.prevent="store.resetRoutingFromAddress">Restaurer l'adresse initiale
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row" v-else>
+    <div class="grid grid-cols-[16rem_auto] gap-x-6" v-else>
         <div class="col-lg-4 mb-3">
             <input type="text"
                    class="form-control mb-2"
@@ -96,9 +98,9 @@
                    v-model="store.routingFromSearchTerm"
                    @input="store.fetchRoutingFromContacts">
             <button
-                class="btn btn-sm btn-dark"
+                class="bg-slate-800 text-slate-200 px-2 py-1 rounded-sm font-medium text-xs hover:bg-slate-700"
                 v-if="store.routingFromSearchTerm.length"
-                @click.prevent="store.cancelRoutingFrom()"><i class="bi bi-eraser me-1"></i>Effacer
+                @click.prevent="store.cancelRoutingFrom()"><i class="bi bi-eraser me-1"></i>&nbsp;Effacer
             </button>
         </div>
         <div class="col-lg-8 mb-3">
@@ -113,7 +115,7 @@
                 <div v-if="store.canFetchRoutingFromContacts && !store.queryingRoutingFromContacts">No suggestions</div>
                 <div v-else-if="!store.canFetchRoutingFromContacts">Type</div>
             </template>
-            <VAlert v-else>Sélectionnez un contact.</VAlert>
+            <div v-else class="px-4 py-2 rounded bg-violet-200">Sélectionnez un contact.</div>
         </div>
     </div>
 </template>

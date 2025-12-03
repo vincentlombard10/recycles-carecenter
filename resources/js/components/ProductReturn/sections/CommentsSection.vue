@@ -6,12 +6,12 @@
             <h2 class="font-bold text-xl mb-2">Commentaires</h2>
             <div><SectionStatusBadge :completed="store.commentsSectionCompleted"/></div>
         </div>
-        <div class="row">
-            <div class="col-lg-6 mb-3">
+        <div class="grid grid-cols-2 gap-x-6 gap-y-4">
+            <div>
                 <label for="info" class="font-semibold mb-1">Informations sur le retour (affiché sur le bon de retour)</label>
                 <textarea class="form-control" v-model="store.info" rows="5" v-html="store.info" name="info"></textarea>
             </div>
-            <div class="col-lg-6 mb-3">
+            <div>
                 <label for="note" class="font-semibold mb-1">Note interne au technicien (privé)</label>
                 <textarea class="form-control" v-model="store.note" rows="5" v-html="store.note"
                           style="background-color: oklch(98.7% 0.026 102.212); color: oklch(27.9% 0.077 45.635);"

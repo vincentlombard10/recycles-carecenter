@@ -1,7 +1,7 @@
 <template>
-    <div class="Contact_Card">
-        <div>{{ contact.code }}</div>
-        <div>{{ contact.name }}</div>
+    <div class="bg-violet-100 p-5 rounded">
+        <div><span class="font-bold">{{ contact.code }}</span></div>
+        <div><span>{{ contact.name }}</span></div>
     </div>
 </template>
 
