@@ -22,7 +22,7 @@
     @if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
-                <div class="bg-white p-4 lg:p-8 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
+                <div class="bg-white p-4 lg:p-6 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
                     <div class="grid md:grid-cols-[8rem_auto] gap-4">
                         <div class="column-left">
                             <h2 class="font-bold text-2xl mb-2">{{ $item->identifier }}</h2>
@@ -31,9 +31,9 @@
                                     <span class="badge badge-{{ $item->environment }} font-semibold">Sandbox</span>
                                 </div>
                             @endif
-                            <span class="inline-flex md:inline-block px-4 py-2 bg-violet-100 md:w-full mb-2 rounded font-bold text-center">{{ $item->type_label }}</span>
-                            <span class="inline-flex md:inline-block px-4 py-2 bg-violet-100 md:w-full mb-2 rounded font-bold text-center">{{ $item->context_label }}</span>
-                            <span class="inline-flex md:inline-block px-4 py-2 bg-violet-100 md:w-full mb-2 rounded font-bold text-center">
+                            <span class="inline-flex md:inline-block px-3 py-2 bg-slate-100 md:w-full mb-1.5 rounded font-bold text-center text-xs">{{ $item->type_label }}</span>
+                            <span class="inline-flex md:inline-block px-3 py-2 bg-slate-100 md:w-full mb-1.5 rounded font-bold text-center text-xs">{{ $item->context_label }}</span>
+                            <span class="inline-flex md:inline-block px-3 py-2 bg-slate-100 md:w-full mb-1.5 rounded font-bold text-center text-xs">
                                         <div>{{ $item->ticket_id }}</div>
                                         @if($item->ticket?->contact)
                                     <div><span
@@ -61,24 +61,24 @@
                                 @endif
                             </div>
                             <div>
-                                <h4 class="font-bold mb-2">Acheminement</h4>
+                                <h4 class="font-bold mb-2 text-lg">Acheminement</h4>
                                 @if($item->from)
                                     <span
                                         class="font-bold bg-violet-100/90 px-2 py-1 rounded">{{ $item->routing_from_code }}</span>
                                 @else
                                     <span
-                                        class="font-bold bg-orange-500/90 px-2 py-1 rounded text-white">
-                                            <i class="bi bi-exclamation-square"></i></span>
+                                        class="font-bold bg-orange-300 px-2 py-1 rounded text-orange-800">
+                                            <i class="bi bi-exclamation"></i></span>
 
                                 @endif
-                                <i class="bi bi-caret-right"></i>
+                                <i class="bi bi-caret-right-fill text-violet-600"></i>
                                 @if($item->to)
                                     <span
                                         class="font-bold bg-violet-100/80 px-2 py-1 rounded">{{ $item->routing_to_code }}</span>
                                 @else
                                     <span
-                                        class="font-bold bg-orange-500/90 px-2 py-1 rounded text-white">
-                                            <i class="bi bi-exclamation-square"></i></span>
+                                        class="font-bold bg-orange-300 px-2 py-1 rounded text-orange-800">
+                                            <i class="bi bi-exclamation"></i></span>
                                 @endif
                             </div>
                         </div>

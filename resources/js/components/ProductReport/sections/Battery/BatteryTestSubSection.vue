@@ -114,12 +114,15 @@
                        v-model="store.batteryVirtualUsableCapacity">
             </div>
             <div>
-                <label for="battery_usable_capacity" class="form-label mb-1">Capacité utile (Ah)</label>
+                <label for="battery_temperature" class="form-label mb-1">Capacité utile (Ah)</label>
+                <select name="battery_temperature" id="battery_temperature" v-model="store.batteryTemperature">
+                    <option :value="temp.identifier" v-for="temp in store.batteryTemperaturesList">{{ temp.label }}</option>
+                </select>
                 <input type="number" step="0.1" min="0" max="100000"
                        class="form-control"
-                       :disabled="!store.batteryBmsState"
+                       :disabled="!store.batteryTemperature"
                        name="battery_usable_capacity"
-                       v-model="store.batteryVirtualUsableCapacity">
+                       v-model="store.batteryTemperature">
             </div>
             <div>
                 <label for="battery_internal_resistance" class="form-label mb-1">Résistance interne (mΩ)</label>
