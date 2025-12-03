@@ -25,20 +25,18 @@
 
 }
 
-.bg {
-    &__incomplete {
-        @apply bg-yellow-50;
-    }
-    &__pending {
-        @apply bg-orange-50;
-    }
-    &__received {
-        @apply bg-green-50;
-    }
-    &__in_progress {
-        @apply bg-sky-50;
-    }
-    &__closed {
-        @apply bg-gray-100;
-    }
+.bg__complete {
+    @apply bg-yellow-50;
+}
+.bg__pending {
+    @apply bg-orange-50;
+}
+.bg_received {
+    @apply bg-green-50;
+}
+.bg__in_progress {
+    @apply bg-sky-50;
+}
+.bg__closed {
+    @apply bg-gray-100;
 }
