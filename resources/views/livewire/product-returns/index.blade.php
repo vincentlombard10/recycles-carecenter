@@ -22,7 +22,7 @@
     @if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
-                <div class="bg-white p-3 lg:p-4 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
+                <div class="bg bg__{{ $item->status }} p-3 lg:p-4 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
                     <div class="grid md:grid-cols-[8rem_auto] gap-4">
                         <div class="column-left">
                             <h2 class="font-bold text-2xl mb-2">{{ $item->identifier }}</h2>
