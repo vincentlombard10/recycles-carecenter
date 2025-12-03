@@ -1,5 +1,5 @@
 @props(['report' => null])
-<div class="bg-{{ $report->status }} p-3 lg:p-4 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
+<div class="bg--{{ $report->status }} p-3 lg:p-4 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
     <div class="grid md:grid-cols-[8rem_auto] gap-4">
         <div class="column-left">
             <h2 class="font-bold text-2xl mb-2">{{ $report->identifier }}</h2>
