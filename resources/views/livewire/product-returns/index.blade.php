@@ -1,7 +1,7 @@
 <div>
-    <div class="grid grid-cols-4 gap-2 mb-3">
+    <div class="flex gap-2 mb-3">
         <div>
-            <select name="status" id="status" class="form-control w-full" wire:model.live="status">
+            <select name="status" id="status" class="form-control min-w-[8rem]" wire:model.live="status">
                 <option value="">Tous</option>
                 <option value="incomplete">Incomplet</option>
                 <option value="pending">En attente</option>
@@ -9,7 +9,7 @@
             </select>
         </div>
         <div>
-            <select name="environment" id="environment" class="form-control w-full" wire:model.live="environment">
+            <select name="environment" id="environment" class="form-control min-w-[8rem]" wire:model.live="environment">
                 <option value="">Tous</option>
                 <option value="production">Réels</option>
                 <option value="sandbox">Fictif</option>
@@ -22,7 +22,7 @@
     @if (count($items))
         <div class="mb-3">
             @foreach($items as $item)
-                <div class="bg-white p-4 lg:p-6 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
+                <div class="bg-white p-3 lg:p-4 mb-2 rounded-md grid grid-cols-[auto_8rem] gap-4">
                     <div class="grid md:grid-cols-[8rem_auto] gap-4">
                         <div class="column-left">
                             <h2 class="font-bold text-2xl mb-2">{{ $item->identifier }}</h2>
@@ -107,7 +107,6 @@
                                 </el-menu>
                             </el-dropdown>
                         </div>
-
                     </div>
                 </div>
                 <div id="po-{{ $item->id }}" popover="manual">

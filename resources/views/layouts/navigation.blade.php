@@ -1,5 +1,7 @@
 <div class="sidebar">
-    <div class="sidebar-brand">Care Center</div>
+    <div class="sidebar-brand h-16">
+        <span class="font-bold uppercase text-2xl text-orange-500">Care Center</span>
+    </div>
     <div class="sidebar-content">
         <ul class="sidebar-menu">
             <li class="sidebar-item">
