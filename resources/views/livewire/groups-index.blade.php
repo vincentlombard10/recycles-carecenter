@@ -11,7 +11,7 @@
         @foreach($groups as $group)
             <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100">
                 <td class="px-3 py-2">{{ $group->code  }}</td>
-                <td class="px-3 py-2">{{ $group->name  }}</td>
+                <td class="px-3 py-2">{{ $group->name ?? $group->code  }}</td>
             </tr>
         @endforeach
         </tbody>

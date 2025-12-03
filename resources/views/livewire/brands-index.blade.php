@@ -11,7 +11,7 @@
         @foreach($brands as $brand)
             <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100">
                 <td class="px-3 py-2">{{ $brand->code  }}</td>
-                <td class="px-3 py-2">{{ $brand->name  }}</td>
+                <td class="px-3 py-2">{{ $brand->name ?? $brand->code  }}</td>
             </tr>
         @endforeach
         </tbody>
