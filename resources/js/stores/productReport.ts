@@ -206,7 +206,7 @@ export const useProductReportStore = defineStore('report', () => {
         return batteryIdentificationSubSectionCompleted.value &&
             batteryLookSubsectionCompleted.value &&
             batteryOperatingSubsectionCompleted.value &&
-            batteryTestsSubsectionCompleted.value
+            batteryTestsSubsectionCompleted.value || battery.value === 'none'
     })
 
     /* Section 3 - Diagnostic */

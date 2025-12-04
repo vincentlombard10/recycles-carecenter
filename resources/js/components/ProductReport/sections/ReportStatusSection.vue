@@ -1,7 +1,7 @@
 <template>
     <section class="mb-8">
-        <VAlert v-if="store.reportCompleted" class="bg-green-300 font-bold text-green-950">Le rapport d'intervention est complet.</VAlert>
-        <VAlert v-else class="bg-green-300 font-bold text-green-950">Complétez le rapport pour terminer l'intervention.</VAlert>
+        <div v-if="store.reportCompleted" class="bg-green-300 font-bold text-green-950 px-6 py-4 rounded">Le rapport d'intervention est complet.</div>
+        <div v-else class="bg-slate-50 font-bold text-slate-900 px-6 py-4 rounded">Complétez le rapport pour terminer l'intervention.</div>
     </section>
     <section class="mb-8">
         <div class="row">
