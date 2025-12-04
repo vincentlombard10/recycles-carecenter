@@ -17,17 +17,14 @@
     }
 }
 
-.paused {
-
+.badge-small {
+    @apply inline-flex md:inline-block px-2 py-1 bg-slate-100 md:w-full mb-1.5 rounded font-bold text-center text-xs;
 }
 
-.closed {
-
-}
 .bg__init {
     @apply bg-white;
 }
-.bg__complete {
+.bg__incomplete {
     @apply bg-yellow-50 border-1 border-yellow-200;
 }
 .bg__pending {
