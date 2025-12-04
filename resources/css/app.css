@@ -15,6 +15,7 @@
 @import "./_badge.scss";
 @import "./_login.scss";
 @import "./_list.scss";
+@import "./_popovers.scss";
 
 @import "./_alert.scss";
 @import "./_tinycard.scss";

@@ -103,17 +103,20 @@
                                         @if($item->isPending() || $item->isReceived())
                                         <a href="{{ route('support.returns.download', $item->identifier) }}" class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold">Télécharger</a>
                                         @endif
+                                        @if($item->isPending())
+                                        <button popovertarget="po-{{ $item->id }}" class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold w-full">Réceptionner</button>
+                                        @endif
                                     </div>
                                 </el-menu>
                             </el-dropdown>
                         </div>
                     </div>
                 </div>
-                <div id="po-{{ $item->id }}" popover="manual">
-                    <h5 class="mb-3">Valider la réception du retour {{ $item->identifier }} ?</h5>
+                <div id="po-{{ $item->id }}" popover class="popover text-center">
+                    <h5 class="font-bold text-xl mb-3">Valider la réception du retour {{ $item->identifier }} ?</h5>
                     {{ html()->form('patch', route('support.returns.updateReception', $item))->open() }}
-                    <div class="d-grid mb-2"><input type="submit" class="btn btn-lg btn-primary" value="Oui"
-                                                    name="return_received"/></div>
+                    <div class="d-grid mb-2">
+                        <input type="submit" class="bg-blue-500 px-6 py-4 font-bold text-xl rounded-lg w-full text-white" value="Oui" name="return_received"/></div>
                     {{ html()->form()->close() }}
                     <div class="d-grid">
                         <button popovertarget="po-{{ $item->id }}" popovertargetaction="hide" class="btn btn-sm">Annuler
