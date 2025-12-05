@@ -26,7 +26,7 @@
                                 class="badge-small">{{ stripslashes($ticket->via["channel"]) }}</span>
                         </div>
                         <div class="column-right grid grid-cols-2 gap-4">
-                            <div>
+                            <div class="max-h-[8rem] overflow-hidden">
                                 {!! $ticket->comments->first()->html_body !!}
                             </div>
                             <div>
