@@ -39,7 +39,7 @@
                     <div>
                         <div
                             class="badge {{ $ticket->status }} w-full mb-2">{{ $ticket->status_label }}</div>
-                            <a href="{{ route('support.tickets.show', $ticket->id) }}" class="bg-slate-50 text-slate-800 px-3 py-2 rounded w-full font-semibold inline-block">Consulter</a>
+                            <a href="{{ route('support.tickets.show', $ticket->id) }}" class="bg-slate-50 text-slate-800 px-3 py-2 rounded w-full font-semibold inline-block text-center hover:bg-violet-200 hover:text-shadow-violet-900">Consulter</a>
                     </div>
                 </div>
             </div>
