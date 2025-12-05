@@ -25,7 +25,7 @@
                                 class="badge-small">{{ stripslashes($ticket->via["channel"]) }}</span>
                         </div>
                         <div class="column-right grid grid-cols-2 gap-4">
-                            <div>{!! $ticket->comments->count() !!} commentaire(s)</div>
+                            <div>{!! $ticket->comments_count !!} commentaire(s)</div>
                             <div>
                                 <span class="text-primary">{{ date('d/m/Y H:i', $ticket->created_at) }}</span>
                                 <div><small>1ère réponse : {{ $ticket->first_reply_time_in_minutes }} / {{ $ticket->first_reply_time_in_minutes_within_business_hours }}</small></div>
