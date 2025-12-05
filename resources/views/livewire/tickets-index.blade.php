@@ -12,7 +12,6 @@
         </div>
         <x-pagination :items="$tickets" class="col-lg-6"/>
     </div>
-    <x-pagination :items="$tickets" class="mb-3"/>
     <div class="mb-3">
         @foreach($tickets as $ticket)
             <div class="bg bg__{{ $ticket->status }} p-3 lg:p-4 mb-2 rounded-md">
