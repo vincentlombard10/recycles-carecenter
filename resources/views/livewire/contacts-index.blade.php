@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid gap-1">
+                    <div class="flex flex-col gap-1">
                         <div
                             class="badge s{{ $contact->status }} w-full mb-2">{{ $contact->status_label }}</div>
                         <div class="badge badge-small">{{ $contact->salesrep }}</div>
