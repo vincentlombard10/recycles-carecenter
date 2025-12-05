@@ -19,7 +19,8 @@
                         </div>
                     </div>
                     <div>
-                        Div
+                        <div
+                            class="badge {{ $contact->status }} w-full mb-2">{{ $contact->status_label }}</div>
                     </div>
                 </div>
             </div>
