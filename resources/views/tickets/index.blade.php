@@ -16,6 +16,20 @@
     </x-page-header>
     <x-page-wrapper>
         <x-messages/>
+        <div class="mb-3">
+            <x-dashboard.counter
+                title="nouveaux"
+                class="New"
+                :count="$tickets_new" />
+            <x-dashboard.counter
+                title="ouverts"
+                class="Open"
+                :count="$tickets_open" />
+            <x-dashboard.counter
+                title="en attente"
+                class="Hold"
+                :count="$tickets_hold" />
+        </div>
         <div class="">
             <livewire:tickets-index/>
         </div>
