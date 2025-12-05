@@ -1,11 +1,9 @@
-<section class="row">
-    <h2 class="mb-2 fw-bold">Contacts</h2>
-    <div class="col-3 mb-4">
+<section>
+    <h2 class="font-bold text-2xl mb-3">Contacts</h2>
+    <div class="grid grid-cols-3 gap-x-6">
         <x-dashboard.counter
             title="tous"
             :count="$contacts_count" />
-    </div>
-    <div class="col-3 mb-4">
         <x-dashboard.counter
             title="doublons Zendesk"
             class="Sandbox"

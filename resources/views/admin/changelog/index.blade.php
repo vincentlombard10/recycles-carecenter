@@ -2,7 +2,7 @@
     <x-page-header>
         <div class="page-header-content">
             <div>
-                <h1>ChangeLog</h1>
+                <h1 class="m-0">ChangeLog</h1>
             </div>
             <div class="d-flex align-content-center gap-2">
                 @hasanyrole('superadmin')

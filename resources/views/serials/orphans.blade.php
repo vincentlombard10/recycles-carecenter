@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header>
-        <h1>Numéros de série orphelins</h1>
+        <h1 class="m-0">Numéros de série orphelins</h1>
     </x-page-header>
     <x-page-wrapper>
         <livewire:search-form />

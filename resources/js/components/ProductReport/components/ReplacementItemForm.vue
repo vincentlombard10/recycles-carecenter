@@ -1,20 +1,20 @@
 <template>
-    <section class="RI_Form">
+    <section class="bg-violet-200 p-5 rounded-lg">
         <h6>Ajouter une référence</h6>
-        <div class="row">
-            <div class="col-lg-1 mb-2">
+        <div class="grid grid-cols-[4rem_auto_auto_8rem_6rem] gap-x-6 align-items-end">
+            <div class="col-span-1">
                 <label for="quantity" class="form-label mb-1">Quantité</label>
                 <input type="number" class="form-control" v-model="quantity">
             </div>
-            <div class="col-lg-2 mb-2">
+            <div class="col-span-1">
                 <label for="itno" class="form-label mb-1">Référence</label>
                 <input type="text" class="form-control" v-model="searchTerm" @input="fetchItems">
             </div>
-            <div class="col-lg-5 mb-2">
+            <div class="col-span-1">
                 <label for="itds" class="form-label mb-1">Désignation</label>
                 <input type="text" class="form-control" v-model="itds">
             </div>
-            <div class="col-lg-2 mb-2">
+            <div class="col-span-1">
                 <label for="care" class="form-label mb-1">Prise en charge</label>
                 <select name="care" id="care" class="form-control" v-model="care">
                     <option :value="null" selected disabled>Sélectionner</option>
@@ -22,8 +22,9 @@
                     <option :value="false">Non</option>
                 </select>
             </div>
-            <div class="col-lg-2 mb-2 d-grid">
-                <button class="align-self-end btn btn-block btn-primary"
+            <div>
+                <label for="" class="form-label">-</label>
+                <button class="w-full bg-violet-900 px-3 py-2 font-bold border-0"
                         :disabled="!canAddReplacementItem"
                         @click.prevent="handleAddReplacementItem">Ajouter</button>
             </div>

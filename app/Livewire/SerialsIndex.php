@@ -14,7 +14,6 @@ class SerialsIndex extends Component
     public $searchTerm;
 
     public bool $orphans = false;
-    protected $paginationTheme = 'bootstrap';
 
     public function render()
     {

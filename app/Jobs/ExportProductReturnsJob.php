@@ -14,16 +14,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use OpenSpout\Common\Entity\Cell;
 use OpenSpout\Common\Entity\Row;
-use OpenSpout\Common\Entity\Style\Border;
-use OpenSpout\Common\Entity\Style\BorderPart;
-use OpenSpout\Common\Entity\Style\CellAlignment;
-use OpenSpout\Common\Entity\Style\Color;
-use OpenSpout\Common\Entity\Style\Style;
 use OpenSpout\Common\Exception\InvalidArgumentException;
-use OpenSpout\Writer\Exception\Border\InvalidNameException;
-use OpenSpout\Writer\Exception\Border\InvalidStyleException;
-use OpenSpout\Writer\Exception\Border\InvalidWidthException;
-use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use Spatie\SimpleExcel\SimpleExcelWriter;
 
 class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
@@ -34,12 +25,6 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
         SerializesModels;
 
     public int $timeout = 600;
-    public Style $headerCellStyle;
-    public Style $defaultCellStyle;
-    public Style $emptyCellStyle;
-    public Style $separatorCellStyle;
-    public Border $defaultBorder;
-    public Border $grayBorder;
 
     /**
      * Create a new job instance.
@@ -52,24 +37,6 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
     )
     {
         parent::__construct();
-        try {
-            $this->defaultBorder = new Border(
-                new BorderPart(Border::BOTTOM, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::LEFT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::RIGHT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::TOP, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID)
-            );
-        } catch (InvalidNameException|InvalidStyleException|InvalidWidthException $e) {
-        }
-        try {
-            $this->grayBorder = new Border(
-                new BorderPart(Border::BOTTOM, Color::rgb(148, 163, 184), Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::LEFT, Color::rgb(148, 163, 184), Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::RIGHT, Color::rgb(148, 163, 184), Border::WIDTH_THIN, Border::STYLE_SOLID),
-                new BorderPart(Border::TOP, Color::rgb(148, 163, 184), Border::WIDTH_THIN, Border::STYLE_SOLID)
-            );
-        } catch (InvalidNameException|InvalidStyleException|InvalidWidthException $e) {
-        }
     }
 
     /**
@@ -92,21 +59,16 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
             })->orderByDesc('id')->get();
 
             $writer = SimpleExcelWriter::create(
-                Storage::disk('exports')->path($this->filename),
-                '',
-                function ($writer) {
+                file: Storage::disk('exports')->path($this->filename),
+                configureWriter: function ($writer) {
                     $options = $writer->getOptions();
-                    $options->DEFAULT_COLUMN_WIDTH = 15; // set default width
-                    $options->DEFAULT_ROW_HEIGHT = 20; // set default height
-                    $options->DEFAULT_CELL_STYLE = (new Style())
-                        ->setCellVerticalAlignment(Alignment::VERTICAL_CENTER)
-                        ->setCellAlignment(CellAlignment::CENTER)
-                        ->setBorder(new Border(
-                            new BorderPart(Border::BOTTOM, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                            new BorderPart(Border::LEFT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                            new BorderPart(Border::RIGHT, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID),
-                            new BorderPart(Border::TOP, Color::BLACK, Border::WIDTH_THIN, Border::STYLE_SOLID)
-                        ));
+                    $options->setColumnWidth(10, 1, 4, 9, 11, 13);
+                    $options->setColumnWidth(12, 5);
+                    $options->setColumnWidth(15, 2, 3, 7);
+                    $options->setColumnWidth(25, 8, 10, 12);
+                    $options->setColumnWidth(40, 6);
+                    $options->DEFAULT_COLUMN_WIDTH = 15;
+                    $options->DEFAULT_ROW_HEIGHT = 20;
                 }
             );
 
@@ -134,21 +96,21 @@ class ExportProductReturnsJob extends BaseExportJob implements ShouldQueue
             foreach ($returns as $return) {
 
                 $row = new Row([
-                    Cell::fromValue($return->identifier),
-                    Cell::fromValue($return->type),
-                    Cell::fromValue($return->context),
-                    Cell::fromValue($return->ticket?->id),
-                    Cell::fromValue($return->ticket?->contact?->code),
+                    Cell::fromValue($return->identifier, $this->defaultCellStyle),
+                    Cell::fromValue($return->type_label, $this->defaultCellStyle),
+                    Cell::fromValue($return->context_label, $this->defaultCellStyle),
+                    Cell::fromValue($return->ticket?->id, $this->defaultCellStyle),
+                    Cell::fromValue($return->ticket?->contact?->code, $this->defaultCellStyle),
 
-                    Cell::fromValue($return->ticket?->contact?->name),
-                    Cell::fromValue($return->status),
+                    Cell::fromValue($return->ticket?->contact?->name, $this->defaultCellStyle),
+                    Cell::fromValue($return->status_label, $this->defaultCellStyle),
 
-                    Cell::fromValue($return->created_at ? date('d/m/Y H:i:s', strtotime($return->created_at)) : null),
-                    Cell::fromValue($return->author?->username),
-                    Cell::fromValue($return->validated_at ? date('d/m/Y H:i:s', strtotime($return->validated_at)) : null),
-                    Cell::fromValue($return->validator?->username),
-                    Cell::fromValue($return->received_at ? date('d/m/Y H:i:s', strtotime($return->received_at)) : null),
-                    Cell::fromValue($return->receiver?->username),
+                    Cell::fromValue($return->created_at ? date('d/m/Y H:i:s', strtotime($return->created_at)) : null, $this->defaultCellStyle),
+                    Cell::fromValue($return->author?->username, $this->defaultCellStyle),
+                    Cell::fromValue($return->validated_at ? date('d/m/Y H:i:s', strtotime($return->validated_at)) : null, $this->defaultCellStyle),
+                    Cell::fromValue($return->validator?->username, $this->defaultCellStyle),
+                    Cell::fromValue($return->received_at ? date('d/m/Y H:i:s', strtotime($return->received_at)) : null, $this->defaultCellStyle),
+                    Cell::fromValue($return->receiver?->username, $this->defaultCellStyle),
                 ]);
                 $writer->addRow($row);
 

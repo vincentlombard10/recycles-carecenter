@@ -10,7 +10,6 @@ use Livewire\WithPagination;
 class ContactsIndex extends Component
 {
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
     public $searchTerm;
 
     public function render()

@@ -1,3 +1,3 @@
-<div class="page-content">
+<div class="p-3">
     {{ $slot }}
 </div>

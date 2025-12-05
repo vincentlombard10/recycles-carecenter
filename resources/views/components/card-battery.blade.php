@@ -1,15 +1,15 @@
-<div class="Card_Item p-0 mb-2">
-    <div class="title mb-1">Batterie concernée</div>
+<div>
+    <div class="text-lg font-bold mb-1">Batterie concernée</div>
     @if($item->item)
-        <table class="table table-mini">
+        <table class="table-auto w-full">
             <tbody>
             <tr>
-                <th style="width: 6rem;">Référence</th>
+                <th class="text-left w-[8rem]">Référence</th>
                 <td><span class="fw-semibold">{{ $item->item->itno }}</span></td>
             </tr>
             <tr>
-                <th>Désignation</th>
-                <td><span class="">{{ $item->item->itds }}</span></td>
+                <th class="text-left w-[8rem]">Désignation</th>
+                <td class="border-spacing-72"><span class="">{{ $item->item->itds }}</span></td>
             </tr>
             </tbody>
         </table>

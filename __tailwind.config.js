@@ -10,12 +10,13 @@ export default {
         './resources/js/',
         "./src/**/*.{vue,js,ts,jsx,tsx}",
         "./resources/js/**/*.vue",
+        "./app/Models/Traits/Attribute/*.{php}"
     ],
 
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['"IBM Plex Sans"', 'Inter', 'Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
     },

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header>
-        <h1>Editer un contact</h1>
+        <h1 class="m-0">Editer un contact</h1>
     </x-page-header>
     <x-page-wrapper>
         <div class="mb-3">

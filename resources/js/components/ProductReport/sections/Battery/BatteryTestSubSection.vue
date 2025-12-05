@@ -1,13 +1,13 @@
 <template>
-    <section class="SubSection">
+    <section class="bg-violet-50 p-8 rounded-xl mb-5">
         <div class="SubSection_Head">
-            <h4>Test de fonctionnement</h4>
+            <h4 class="font-bold text-xl mb-2">Test de fonctionnement</h4>
             <div>
                 <SectionStatusBadge :completed="store.batteryOperatingSubsectionCompleted"/>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4 mb-3">
+        <div class="grid lg:grid-cols-4 gap-x-6 gap-y-4">
+            <div>
                 <label for="battery_indicator" class="form-label mb-1">La batterie s'allume t-elle ?</label>
                 <select name="battery_indicator"
                         v-model="store.batteryIndicator"
@@ -18,8 +18,8 @@
                     <option value="no">Non</option>
                 </select>
             </div>
-            <div class="col-12 mb-3">
-                <label for="battery_error_codes" class="form-label mb-1">Code erreur</label>
+            <div class="col-span-3">
+                <label for="battery_error_codes" class="form-label mb-1">Codes erreur</label>
                 <input type="text"
                        name="battery_error_codes"
                        id="battery_error_codes"
@@ -28,72 +28,82 @@
             </div>
         </div>
     </section>
-    <section class="SubSection">
+    <section class="bg-violet-50 p-8 rounded-xl mb-5">
         <div class="SubSection_Head">
-            <h4>Tests de charge et décharge</h4>
+            <h4 class="font-bold text-xl mb-2">Tests de charge et décharge</h4>
             <div>
                 <SectionStatusBadge :completed="store.batteryTestsSubsectionCompleted"/>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 mb-3">
-                <div><h5>Tests de charge</h5></div>
+        <div class="grid lg:grid-cols-2 gap-x-6 gap-y-4">
+            <div>
+                <h5>Tests de charge</h5>
                 <div class="col-lg-4 mb-3">
-                    <label for="battery_charge_state" class="form-label mb-1">Est-ce que la charge se lance normalement </label>
-                    <select name="battery_charge_state" id="battery_charge_state" class="form-control" v-model="store.batteryChargeState">
+                    <label for="battery_charge_state" class="form-label mb-1">Est-ce que la charge se lance
+                        normalement </label>
+                    <select name="battery_charge_state" id="battery_charge_state" class="form-control"
+                            v-model="store.batteryChargeState">
                         <option value="" selected disabled>Sélectionner</option>
                         <option value="good">Oui</option>
                         <option value="bad">Non</option>
                     </select>
                 </div>
                 <div class="col-lg-4 mb-3">
-                    <label for="battery_charge_voltage" class="form-label mb-1">Tension aux bornes de la batterie (V)</label>
-                    <input type="text"
-                           v-model="store.batteryChargeVoltage"
-                           name="battery_charge_voltage"
-                           class="form-control">
+                    <label for="battery_charge_voltage" class="form-label mb-1">Tension aux bornes de la batterie
+                        (V)</label>
+                    <input
+                        type="number" step="0.1" min="0" max="100000"
+                        v-model="store.batteryChargeVoltage"
+                        name="battery_charge_voltage"
+                        class="form-control">
                 </div>
             </div>
-            <h5>Test capacité banc de décharge</h5>
-            <div class="col-4 mb-3">
-                <label for="battery_energy" class="form-label mb-1">Energie totale délivrée en Ah </label>
-                <input type="number" step="0.1" min="0" max="20"
-                       name="battery_energy"
-                       v-model="store.batteryEnergy"
-                       class="form-control">
-            </div>
-            <div class="col-12 mb-3" v-if="store.batteryEnergy">
-                <VAlert type="success" v-if="batteryIsAbove70Percent">
-                    La batterie est au dessus de 70% de sa capacité nominale. Elle est dans un état normal de fonctionnement.
-                </VAlert>
-                <VAlert type="danger" v-else>La batterie est en dessous de 70% de sa capacité nominale. Un remplacement est fortement recommandé.</VAlert>
+            <div>
+                <h5>Test capacité banc de décharge</h5>
+                <div class="col-4 mb-3">
+                    <label for="battery_energy" class="form-label mb-1">Energie totale délivrée en Ah </label>
+                    <input type="number" step="0.1" min="0" max="20"
+                           name="battery_energy"
+                           v-model="store.batteryEnergy"
+                           class="form-control">
+                </div>
+                <div class="col-12 mb-3" v-if="store.batteryEnergy">
+                    <VAlert type="success" v-if="batteryIsAbove70Percent">
+                        La batterie est au dessus de 70% de sa capacité nominale. Elle est dans un état normal de
+                        fonctionnement.
+                    </VAlert>
+                    <VAlert type="danger" v-else>La batterie est en dessous de 70% de sa capacité nominale. Un
+                        remplacement est fortement recommandé.
+                    </VAlert>
+                </div>
             </div>
         </div>
     </section>
-    <section class="SubSection">
+    <section class="bg-violet-50 p-8 rounded-xl mb-5">
         <div class="SubSection_Head">
-            <h4>Diagnostic via le BMS</h4>
-            <div><SectionStatusBadge :completed="true" /></div>
-        </div>
-        <div class="row">
-            <div class="col-12 mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" v-model="store.batteryBmsState" name="bms_state" id="bms_state">
-                    <label for="bms_state" class="form-check-label mb-1">BMS exploitable</label>
-                </div>
+            <h4 class="font-bold text-xl mb-2">Diagnostic via le BMS</h4>
+            <div>
+                <SectionStatusBadge :completed="true"/>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 mb-3">
-                <label for="battery_charge_cycles" class="form-label mb-1">Cycles de charge</label>
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" v-model="store.batteryBmsState" name="bms_state"
+                       id="bms_state">
+                <label for="bms_state" class="form-check-label mb-1">BMS exploitable</label>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4 mb-4">
+            <div>
+                <label for="battery_charge_cycles" class="form-label">Cycles de charge</label>
                 <input type="text"
                        class="form-control"
                        name="battery_charge_cycles"
                        :disabled="!store.batteryBmsState"
                        v-model="store.batteryChargeCycles">
             </div>
-            <div class="col-lg-4 mb-3">
-                <label for="battery_cells_state" class="form-label mb-1">Etat des cellules</label>
+            <div>
+                <label for="battery_cells_state" class="form-label">Etat des cellules</label>
                 <select name="battery_cells_state"
                         class="form-control"
                         :disabled="!store.batteryBmsState"
@@ -105,7 +115,7 @@
                     </option>
                 </select>
             </div>
-            <div class="col-lg-4 mb-3">
+            <div>
                 <label for="battery_usable_capacity" class="form-label mb-1">Capacité utile (Ah)</label>
                 <input type="number" step="0.1" min="0" max="100000"
                        class="form-control"
@@ -113,23 +123,16 @@
                        name="battery_usable_capacity"
                        v-model="store.batteryVirtualUsableCapacity">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 mb-3">
-                <label for="battery_temperature" class="form-label mb-1">Température</label>
-                <select name="battery_temperature"
-                        class="form-control"
-                        :disabled="!store.batteryBmsState"
-                        v-model="store.batteryTemperature">
-                    <option selected disabled>Sélectionner</option>
-                    <option v-for="temp in store.batteryTemperaturesList" :key="temp.identifier"
-                            :value="temp.identifier">{{ temp.label }}
+            <div>
+                <label for="battery_temperature" class="form-label mb-1">Température interne</label>
+                <select name="battery_temperature" id="battery_temperature" v-model="store.batteryTemperature">
+                    <option :value="temp.identifier" v-for="temp in store.batteryTemperaturesList">{{
+                            temp.label
+                        }}
                     </option>
                 </select>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 mb-3">
+            <div>
                 <label for="battery_internal_resistance" class="form-label mb-1">Résistance interne (mΩ)</label>
                 <input type="number" step="0.1" min="0" max="100000"
                        class="form-control"

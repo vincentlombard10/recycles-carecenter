@@ -10,7 +10,7 @@
     </head>
     <body class="font-sans antialiased">
         <x-sidebar-navigation />
-        <div id="main">
+        <div id="main" class="ml-16">
             {{ $slot }}
         </div>
         {!! ToastMagic::scripts() !!}

@@ -22,12 +22,12 @@ trait ProductReportAttribute
     public function getStatusColorAttribute(): string
     {
         return match($this->status) {
-            ProductReport::STATUS_INIT => __('init'),
-            ProductReport::STATUS_PENDING => 'pending',
-            ProductReport::STATUS_IN_PROGRESS => 'progress',
-            ProductReport::STATUS_CLOSED => 'closed',
-            ProductReport::STATUS_PAUSED => 'pending',
-            ProductReport::STATUS_CANCELLED => 'cancelled',
+            ProductReport::STATUS_INIT => 'bg-white',
+            ProductReport::STATUS_PENDING => 'bg-orange-200',
+            ProductReport::STATUS_IN_PROGRESS => 'bg-pink-300',
+            ProductReport::STATUS_CLOSED => 'bg-gray-200',
+            ProductReport::STATUS_PAUSED => 'bg-orange-300',
+            ProductReport::STATUS_CANCELLED => 'bg-red-200',
             default => __('-'),
         };
     }

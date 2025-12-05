@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-page-header>
         <div class="page-header-content">
-            <div class="d-flex align-items-center gap-3">
+            <div class="flex gap-4 items-center">
                 <a href="{{ route('support.reports.index') }}" class="btn btn-circle btn-orange">
                     <i class="bi bi-arrow-left"></i>
                 </a>
-                <h1>Rapport d'intervention {{ $report->identifier }}</h1>
+                <h1 class="m-0">Rapport d'intervention {{ $report->identifier }}</h1>
             </div>
             <div>
 
@@ -16,7 +16,7 @@
         <div class="container-fluid p-3">
             {{ html()->form('PATCH', route('support.reports.update', $report))->acceptsFiles()->open() }}
             <div id="product-report-form" data-report="{{ $report->identifier }}"></div>
-            <input type="submit" class="btn btn-lg btn-primary" value="Enregistrer">
+            <input type="submit" class="bg-violet-800 font-bold text-white w-full px-4 py-4 rounded-lg hover:bg-violet-900 cursor-pointer" value="Enregistrer">
             {{ html()->form()->close() }}
         </div>
     </x-page-wrapper>

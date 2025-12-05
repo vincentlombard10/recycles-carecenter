@@ -2,13 +2,13 @@
     <x-page-header>
         <div class="page-header-content">
             <div>
-                <h1>Tableau de bord</h1>
+                <h1 class="mb-0">Tableau de bord</h1>
             </div>
             <div></div>
         </div>
     </x-page-header>
     <x-page-wrapper>
-        <div class="container-fluid p-3 ">
+        <div class="p-5">
             <x-messages />
             @include('dashboard.sections.section-product-returns')
             @include('dashboard.sections.top-components')

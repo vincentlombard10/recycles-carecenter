@@ -1,5 +1,5 @@
 @props(['report' => null])
-<div id="po-{{ $report->id }}" popover>
+<div id="po-{{ $report->id }}" class="popover" popover>
     @if($report->isPending())
         <h5 class="mb-3">Démarrer l'édition du rapport d'expertise {{ $report->identifier }} ?</h5>
         {{ html()->form('patch', route('support.reports.start', $report))->open() }}

@@ -2,7 +2,7 @@
     <x-page-header>
         <div class="page-header-content">
             <div>
-                <h1>Exportation des rapports d'intervention</h1>
+                <h1 class="m-0">Exportation des rapports d'intervention</h1>
             </div>
             <div></div>
         </div>

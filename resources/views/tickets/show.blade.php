@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header>
-            <div class="px-4"><h1>Ticket {{$ticket->id}}</h1></div>
+            <div class="px-4"><h1 class="m-0">Ticket {{$ticket->id}}</h1></div>
     </x-page-header>
     <x-page-wrapper>
         <div class="container-fluid p-3">

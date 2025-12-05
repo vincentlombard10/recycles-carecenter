@@ -34,14 +34,20 @@ class BaseExportJob implements ShouldQueue
     public function __construct()
     {
         $this->headerCellStyle = (new Style())
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
+            ->setCellAlignment('center')
+            ->setCellAlignment('center')
             ->setBackgroundColor('1e293b')
             ->setFontColor('f1f5f9');
 
         $this->defaultCellStyle = (new Style())
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::LEFT);
+            ->setCellAlignment('center')
+            ->setCellAlignment('center')
+            ->setBorder(new Border(
+                new BorderPart(Border::BOTTOM, '666666', Border::WIDTH_THIN, Border::STYLE_SOLID),
+                new BorderPart(Border::LEFT, '666666', Border::WIDTH_THIN, Border::STYLE_SOLID),
+                new BorderPart(Border::RIGHT, '666666', Border::WIDTH_THIN, Border::STYLE_SOLID),
+                new BorderPart(Border::TOP, '666666', Border::WIDTH_THIN, Border::STYLE_SOLID)
+            ));
     }
 
     /**

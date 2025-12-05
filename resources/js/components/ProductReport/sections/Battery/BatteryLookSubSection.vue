@@ -1,5 +1,5 @@
 <template>
-    <section class="SubSection">
+    <section class="">
         <div class="SubSection_Head">
             <h4>Etat visuel</h4>
             <div><SectionStatusBadge :completed="store.batteryLookSubsectionCompleted" /></div>

@@ -1,3 +1,6 @@
+button {
+    @apply cursor-pointer;
+}
 .btn {
     &-light {
         background-color: oklch(98.4% 0.003 247.858);

@@ -37,30 +37,7 @@ use Illuminate\Foundation\Queue\Queueable;
         Queueable,
         SerializesModels;
 
-    public int $timeout = 600;
-
-    public Style $headerCellStyle;
-    public Style $defaultCellStyle;
-    public Style $emptyCellStyle;
-    public Style $identityCellStyle;
-    public Style $centeredCellStyle;
-    public Style $statusNewCellStyle;
-    public Style $statusOpenCellStyle;
-    public Style $statusHoldCellStyle;
-    public Style $statusSolvedCellStyle;
-    public Style $supportRedCellStyle;
-    public Style $supportAnsweredCellStyle;
-    public Style $statusClosedCellStyle;
-    public Style $statusPendingCellStyle;
-    public Style $statusReviewingCellStyle;
-    public Style $supportAcceptedCellStyle;
-    public Style $supportRejectedCellStyle;
-    public Style $supportExpertiseCellStyle;
-    public Style $statusStandbyCellStyle;
-    public Style $separatorCellStyle;
-    public Border $defaultBorder;
-    public Border $grayBorder;
-
+    public int $timeout = 3600;
     /**
      * Create a new job instance.
      */

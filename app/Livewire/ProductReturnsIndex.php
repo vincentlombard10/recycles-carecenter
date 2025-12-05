@@ -11,7 +11,6 @@ class ProductReturnsIndex extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
     public string $searchTerm = '';
     public bool $trashed = false;
     public string $status = '';

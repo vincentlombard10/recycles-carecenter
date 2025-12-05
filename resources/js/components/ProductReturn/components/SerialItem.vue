@@ -1,9 +1,9 @@
 <template>
     <li class="Serial_Item">
-        <div><span class="fw-semibold">{{ serial.code }}</span></div>
+        <div><span class="font-semibold">{{ serial.code }}</span></div>
         <div v-if="serial.item" class="d-flex gap-2">
             <span>{{ serial.item.brand.name ?? serial.item.brand.code }}</span>
-            <span class="fw-semibold">{{ serial.item.itno }}</span>
+            <span class="font-semibold">{{ serial.item.itno }}</span>
             <span>{{ serial.item.label ?? serial.item.itds }}</span>
         </div>
         <div class="v-else">

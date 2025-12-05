@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header>
-        <h1>User</h1>
+        <h1 class="m-0">User</h1>
     </x-page-header>
     <x-page-wrapper>
         <div class="card">

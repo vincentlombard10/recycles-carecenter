@@ -1,9 +1,7 @@
 <x-app-layout>
     <x-page-header>
-        <div class="page-header-content">
-            <div>
-                <h1>Devis</h1>
-            </div>
+        <div class="flex px-4 justify-between items-center w-full">
+            <h1 class="m-0">Devis</h1>
             <div>
                 <livewire:search-form />
             </div>

@@ -1,24 +1,29 @@
 {
-  "public/fonts/GolosText-VariableFont_wght.ttf": {
-    "file": "assets/GolosText-VariableFont_wght-cldftjk2.ttf",
-    "src": "public/fonts/GolosText-VariableFont_wght.ttf"
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
+    "file": "assets/bootstrap-icons-BeopsB42.woff",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons-mSm7cUeB.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-HyUSRihZ.css",
+    "file": "assets/app-DeZnLxtU.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CPwdK6xY.js",
+    "file": "assets/app-ByAiBr-T.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-B7m75X1a.css",
-      "assets/app-HyUSRihZ.css"
+      "assets/app-CwKsIu8i.css",
+      "assets/app-DeZnLxtU.css"
     ],
     "assets": [
-      "assets/GolosText-VariableFont_wght-cldftjk2.ttf"
+      "assets/bootstrap-icons-mSm7cUeB.woff2",
+      "assets/bootstrap-icons-BeopsB42.woff"
     ]
   },
   "resources/scss/pdf.scss": {

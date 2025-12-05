@@ -2,7 +2,7 @@
     <x-page-header>
         <div class="page-header-content">
             <div>
-                <h1>Marques</h1>
+                <h1 class="m-0">Marques</h1>
             </div>
             <div>
                 <livewire:search-form />

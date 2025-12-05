@@ -1,7 +1,9 @@
 <template>
-    <section class="Section" id="Product">
+    <section
+        class="bg-violet-50 p-8 rounded-xl mb-5"
+        id="Product">
         <div class="Section_Head">
-            <h2 class="font-bold mb-3">Produit concerné</h2>
+            <h2 class="font-bold text-xl mb-2">Produit concerné</h2>
         </div>
         <template v-if="store.type">
             <ItemSelector
@@ -9,7 +11,7 @@
             <SerialSelector
                 v-if="store.type === 'bike'"/>
         </template>
-        <VAlert v-else>Veuillez d'abord sélectionner le type de retour.</VAlert>
+        <div v-else class="px-4 py-2 rounded bg-violet-200">Veuillez séléectionner un type de retour.</div>
     </section>
 </template>
 <script setup lang="ts">

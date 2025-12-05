@@ -1,5 +1,5 @@
 <template>
-    <VAlert v-if="!store.replacementItems.length" class="mb-4">La liste est vide.</VAlert>
+    <div v-if="!store.replacementItems.length" class="px-6 py-4 bg-gray-50 font-bold text-slate-950 mb-3 border-slate-200 border-1 rounded-lg">La liste est vide.</div>
     <ul class="Items_List mb-4">
         <li class="Item_Row" v-for="item in store.replacementItems" :key="item">
             <div><i class="bi bi-circle-fill"></i></div>

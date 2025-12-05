@@ -1,5 +1,5 @@
 <template>
-    <section class="Section">
+    <section class="">
         <div class="Section_Head">
             <h2 class="mb-3">Diagnotics</h2>
             <div>
