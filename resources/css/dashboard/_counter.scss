@@ -7,6 +7,9 @@
     border-radius: 0.5rem;
     position: relative;
     overflow: hidden;
+    &.New {
+        @apply bg-yellow-200 text-shadow-yellow-800;
+    }
     &.Pending {
         background-color: oklch(90.1% 0.076 70.697);
     }

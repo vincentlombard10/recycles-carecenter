@@ -16,7 +16,7 @@
     </x-page-header>
     <x-page-wrapper>
         <x-messages/>
-        <div class="grid grid-cols-3 gap-x-6">
+        <div class="grid grid-cols-3 gap-x-6 mb-3">
             <x-dashboard.counter
                 title="nouveaux"
                 class="New"
