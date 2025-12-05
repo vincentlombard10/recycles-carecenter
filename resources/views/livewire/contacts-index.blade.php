@@ -2,47 +2,23 @@
     <x-pagination :items="$contacts" class="mb-3"/>
     <div class="mb-3">
         @foreach ($contacts as $contact)
-            <div class="Card_Contact">
-                <div class="Card_Contact--Body">
-                    <div class="Card_Contact--Main">
-                        <div>
-                            <div><h2 class="fw-semibold mb-0">{{ $contact->code }}</h2></div>
+            <div class="bg bg-white p-3 lg:p-4 mb-2 rounded-md">
+                <div class="grid grid-cols-[auto_8rem] gap-4">
+                    <div class="grid md:grid-cols-[8rem_auto] gap-4">
+                        <div class="column-left">
+                            <h2 class="font-bold text-2xl mb-2">{{ $contact->code }}</h2>
+                        </div>
+                        <div class="column-right grid grid-cols-2 gap-4">
                             <div>
-                                @if($contact->zendesk_user_id)
-                                    <small class="fw-semibold text-success">{{ $contact->zendesk_user_id }}</small>
-                                @elseif($contact->duplicates)
-                                    <small class="fw-semibold text-warning">Plusieurs utilisateurs Zendesk</small>
-                                @elseif(!$contact->support_enabled == null)
-                                    <small class="fw-semibold text-danger">Aucun utilisateur Zendesk</small>
-                                @else
-                                    <small class="fw-normal text-secondary">Non défini</small>
-                                @endif
+                                Column
                             </div>
-                            <div><small>{{ $contact->name }}</small></div>
-                        </div>
-                        <div>
-                            <div><small>{{ $contact->address1 }}</small></div>
-                            <div><small>{{ $contact->address2 }}</small></div>
-                            <div><small>{{ $contact->postcode }} {{ $contact->city }}</small></div>
-                        </div>
-                        <div>
-                            <div>{{ $contact->phone }}</div>
-                            <div>{{ $contact->email }}</div>
+                            <div>
+                                Column
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="Card_Contact--Side">
-                    <div class="d-grid gap-1">
-                        <span class="rcf-badge rcf-badge--{{ $contact->status }}">{{ $contact->status_label }}</span>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Actions
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><button class="dropdown-item text-end" href="{{ route('contacts.show', $contact) }}">Editer<i class="bi bi-pencil-square ms-2"></i></button></li>
-                            </ul>
-                        </div>
+                    <div>
+                        Div
                     </div>
                 </div>
             </div>

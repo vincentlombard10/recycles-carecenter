@@ -4,11 +4,17 @@
             <div>
                 <h1 class="m-0">Contacts clients</h1>
             </div>
-            <div class="d-flex align-items-center gap-2">
-                <a href="{{ route('contacts.duplicates') }}" class="btn btn-circle btn-amber">
-                    <i class="bi bi-exclamation-lg"></i>
-                </a>
-                <livewire:search-form />
+            <div class="flex gap-2">
+                <div class="flex gap-4">
+                    <div class="flex gap-2">
+                        <a href="{{ route('contacts.duplicates') }}"
+                           class="group flex px-1 h-10 bg-sky-200 rounded-full justify-center items-center hover:bg-amber-400"><span
+                                class="bg-amber-600 flex justify-center items-center w-8 h-8 rounded-full text-white group-hover:bg-amber-600"><i
+                                    class="bi bi-exclamation"></i></span>
+                        </a>
+                    </div>
+                    <livewire:search-form/>
+                </div>
             </div>
         </div>
     </x-page-header>
