@@ -15,6 +15,12 @@
     &.closed {
         @apply bg-gray-200 text-gray-800;
     }
+    &.new {
+        @apply bg-yellow-200 text-yellow-800;
+    }
+    &.open {
+        @apply br-red-200 text-red-800;
+    }
 }
 
 .badge-small {
