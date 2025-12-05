@@ -27,6 +27,9 @@
 .bg__open {
     @apply bg-red-50 border-1 border-red-200;
 }
+.bg__solved {
+    @apply bg-slate-50 border-1 border-slate-200;
+}
 .bg__init {
     @apply bg-white;
 }
