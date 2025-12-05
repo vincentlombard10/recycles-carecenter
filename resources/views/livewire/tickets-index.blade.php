@@ -36,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid gap-2">
+                    <div>
                         <div
                             class="badge {{ $ticket->status }} w-full mb-2">{{ $ticket->status_label }}</div>
                         <a href="{{ route('support.tickets.show', $ticket->id) }}" class="bg-slate-50 text-slate-800 px-3 py-2 rounded w-full font-semibold">Consulter</a>
