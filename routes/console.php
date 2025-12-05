@@ -11,3 +11,6 @@ Schedule::command('serials:import ' . \Carbon\Carbon::now()->format('ymd'))
 
 Schedule::command('contacts:import ' . \Carbon\Carbon::now()->format('ymd'))
     ->dailyAt('20:10');
+
+Schedule::command('zendesk:sync-custom-fields')
+    ->everyMinute();
