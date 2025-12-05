@@ -27,7 +27,7 @@
                         </div>
                         <div class="column-right grid grid-cols-2 gap-4">
                             <div>
-                                {!! $ticket->comments->first()->plain_body !!}
+                                {!! $ticket->comments->first()->html_body !!}
                             </div>
                             <div>
                                 <span class="text-primary">{{ date('d/m/Y H:i', $ticket->created_at) }}</span>
