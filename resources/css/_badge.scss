@@ -21,6 +21,12 @@
     @apply inline-flex md:inline-block px-2 py-1 bg-slate-100 md:w-full mb-1.5 rounded font-bold text-center text-xs;
 }
 
+.bg__new {
+    @apply bg-yellow-50 border-1 border-yellow-200;
+}
+.bg__open {
+    @apply bg-red-50 border-1 border-red-200;
+}
 .bg__init {
     @apply bg-white;
 }
