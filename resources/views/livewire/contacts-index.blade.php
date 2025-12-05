@@ -7,6 +7,7 @@
                     <div class="grid md:grid-cols-[8rem_auto] gap-4">
                         <div class="column-left">
                             <h2 class="font-bold text-2xl mb-2">{{ $contact->code }}</h2>
+                            <span class="badge-small">{{ $contact->mailjet_contact_id }}</span>
                         </div>
                         <div class="column-right grid grid-cols-2 gap-4">
                             <div>
