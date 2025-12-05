@@ -22,11 +22,11 @@
                 </thead>
                 <tbody>
                 @foreach($ticket->filledFields as $tf)
-                    <tr class="@if($tf->pivot->value == null) table-secondary @endif">
-                        <th style="width: 12rem;">{{ $tf->id }}</th>
-                        <th>{{ $tf->type }}</th>
-                        <td style="width: 50%;">{{ $tf->title }}</td>
-                        <td>{{ $tf->pivot->value }}</td>
+                    <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100 @if($tf->pivot->value == null) bg-slate-200 @endif">
+                        <td class="px-3 py-2">{{ $tf->id }}</td>
+                        <td class="px-3 py-2">{{ $tf->type }}</td>
+                        <td class="px-3 py-2">{{ $tf->title }}</td>
+                        <td class="px-3 py-2">{{ $tf->pivot->value }}</td>
                     </tr>
                 @endforeach
                 </tbody>
