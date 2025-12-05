@@ -9,18 +9,23 @@
                             <h2 class="font-bold text-2xl mb-2">{{ $contact->code }}</h2>
                             <span class="badge-small">{{ $contact->mailjet_contact_id }}</span>
                         </div>
-                        <div class="column-right grid grid-cols-2 gap-4">
+                        <div class="column-right grid grid-cols-[auto_8rem] gap-4">
                             <div>
-                                Column
+                                <div>{{ $contact->address1 }}</div>
+                                <div>{{ $contact->address2 }}</div>
+                                <div>{{ $contact->postcode }} {{ $contact->city }} - {{ $contact->country }}</div>
+                                <div>{{ $contact->phone }}</div>
+                                <div>{{ $contact->email }}</div>
                             </div>
                             <div>
-                                Column
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="grid gap-1">
                         <div
-                            class="badge {{ $contact->status }} w-full mb-2">{{ $contact->status_label }}</div>
+                            class="badge s{{ $contact->status }} w-full mb-2">{{ $contact->status_label }}</div>
+                        <div class="badge badge-small">{{ $contact->salesrep }}</div>
+
                     </div>
                 </div>
             </div>
