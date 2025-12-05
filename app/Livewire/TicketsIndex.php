@@ -12,12 +12,16 @@ class TicketsIndex extends Component
     use WithPagination;
 
     public $searchTerm;
+    public string $status = '';
 
     public function render()
     {
         $tickets = Ticket::where(function ($query) {
             $query->where('id', 'like', '%' . $this->searchTerm . '%');
         })
+            ->when($this->status, function ($query) {
+                return $query->where('status', $this->status);
+            })
             ->orderBy('created_at', 'desc')->paginate(30);
         return view('livewire.tickets-index', compact('tickets'));
     }
@@ -28,4 +32,5 @@ class TicketsIndex extends Component
         $this->searchTerm = $searchTerm;
         $this->goToPage(1);
     }
+
 }
