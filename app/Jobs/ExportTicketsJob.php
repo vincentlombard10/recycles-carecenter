@@ -269,7 +269,7 @@ use Illuminate\Foundation\Queue\Queueable;
 
             foreach ($tickets as $ticket) {
 
-                $ticketFields = $ticket->fields()->where('is_exportable', true)->get();
+                $ticketFields = $ticket->fields()->withPivot('value');
                 $data = [];
                 foreach ($ticketFields as $ticketField) {
                     $data[] = self::getTicketField($ticket, $ticketField->id);
@@ -282,6 +282,7 @@ use Illuminate\Foundation\Queue\Queueable;
                     Cell::fromValue($ticket->via['channel'], $this->defaultCellStyle),
                     Cell::fromValue($ticket->status, $this->defaultCellStyle),
                     Cell::fromValue($ticket->contact?->code, $this->defaultCellStyle),
+                    ...$data
                     //Cell::fromValue(date('d/m/Y H:i', $ticket->created_at), $this->defaultCellStyle),
                     //Cell::fromValue($ticket->solved_at ? date('d/m/Y h:i', strtotime($ticket->solved_at)) : null, $this->defaultCellStyle),
 /*                    Cell::fromValue(self::getTicketField($ticket, 26799500920978), $this->defaultCellStyle),
