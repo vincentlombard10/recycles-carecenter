@@ -14,6 +14,7 @@ class ProductReportsIndex extends Component
     public string $searchTerm = '';
     public string $status = '';
     public string $environment = 'production';
+    public string $order = 'updated_at_desc';
 
     public function render()
     {
@@ -38,6 +39,25 @@ class ProductReportsIndex extends Component
                     $query->where('environment', $this->environment);
                 });
             })
+            ->when($this->order, function ($query) {
+                if ($this->order === 'updated_at_desc') {
+                    return $query->orderBy('updated_at', 'desc');
+                } else if ($this->order === 'created_at_desc') {
+                    return $query->orderBy('created_at', 'desc');
+                } else if ($this->order === 'updated_at_asc') {
+                    return $query->orderBy('updated_at');
+                } else if ($this->order === 'created_at_asc') {
+                    return $query->orderBy('created_at');
+                } else if ($this->order === 'started_at_desc') {
+                    return $query->orderBy('started_at', 'desc');
+                } else if ($this->order === 'started_at_asc') {
+                    return $query->orderBy('started_at');
+                } else if ($this->order === 'closed_at_desc') {
+                    return $query->orderBy('closed_at', 'desc');
+                } else if ($this->order === 'closed_at_asc') {
+                    return $query->orderBy('closed_at');
+                }
+            })
             ->orderBy('updated_at', 'desc')->paginate(10);
         return view('livewire.product-reports.index', compact('reports'));
     }
@@ -46,6 +66,12 @@ class ProductReportsIndex extends Component
     public function updateSearchTerm($searchTerm)
     {
         $this->searchTerm = $searchTerm;
+        $this->goToPage(1);
+    }
+
+    public function updatedOrder(string $order)
+    {
+        $this->order = $order;
         $this->goToPage(1);
     }
 }
