@@ -265,7 +265,16 @@ use Illuminate\Foundation\Queue\Queueable;
 
             $writer->setHeaderStyle($this->headerCellStyle);
 
+
+
             foreach ($tickets as $ticket) {
+
+                $ticketFields = $ticket->fields()->where('is_exportable', true)->get();
+                $data = [];
+                foreach ($ticketFields as $ticketField) {
+                    $data[] = $ticketField->value;
+                }
+
                 $row = (new Row([
                     Cell::fromValue($ticket->id, $this->defaultCellStyle),
                     Cell::fromValue($ticket->type, $this->defaultCellStyle),
