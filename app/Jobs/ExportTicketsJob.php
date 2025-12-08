@@ -321,6 +321,7 @@ use Illuminate\Foundation\Queue\Queueable;
 
     private function getTicketField($ticket, $identifier): string|null
     {
+        return $identifier;
         if ($ticket->fields()->wherePivot('ticketfield_id', $identifier)->exists()) {
             return $ticket->fields()->wherePivot('ticketfield_id', $identifier)->first()->pivot->value;
         }
