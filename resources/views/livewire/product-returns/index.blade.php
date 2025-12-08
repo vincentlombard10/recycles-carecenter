@@ -15,6 +15,16 @@
                 <option value="sandbox">Fictif</option>
             </select>
         </div>
+        <div>
+            <select name="order" id="order" class="form-control min-w-[8rem]" wire:model.live="order">
+                <option value="updated_at_desc">Modification la plus récente</option>
+                <option value="updated_at_asc">Modification la plus ancienne</option>
+                <option value="created_at_desc">Création la plus récente</option>
+                <option value="created_at_asc">Création la plus ancienne</option>
+                <option value="received_at_desc">Réception la plus récente</option>
+                <option value="received_at_asc">Réception la plus ancienne</option>
+            </select>
+        </div>
         <div class="col-span-2">
             <x-pagination :items="$items" />
         </div>
@@ -134,6 +144,6 @@
         </div>
         <x-pagination :items="$items"/>
     @else
-        <div>Il ne se passe pas grand chose ici.</div>
+        <div class="px-6 py-4 rounded bg-violet-500 text-white font-bold">Il ne se passe pas grand chose ici.</div>
     @endif
 </div>
