@@ -245,12 +245,16 @@ use Illuminate\Foundation\Queue\Queueable;
                 }
             );
 
-            $headerRow = [
-                'ID Zendesk', 'Type de demande', 'Coode client', 'Statut', 'Chassis',
-                'SKU', 'Type de produit', 'Commentaire client', 'Vente conso', 'Marque',
-                'Type de composant', 'Type de défaut', 'Origine du défaut', 'Référence composant', 'Création',
-                'Résolution',
+            $builtInFieldsHeader = [
+                'ID Zendesk',
+                'Type',
+                'Canal',
+                'Statut',
+                'Creation',
+                'Resolution'
             ];
+
+            $headerRow = [...$builtInFieldsHeader];
 
             $writer->addHeader($headerRow);
 
@@ -259,12 +263,17 @@ use Illuminate\Foundation\Queue\Queueable;
             foreach ($tickets as $ticket) {
                 $row = (new Row([
                     Cell::fromValue($ticket->id, $this->identityCellStyle),
-                    Cell::fromValue(self::getTicketField($ticket, 26799500920978), $this->defaultCellStyle),
+                    Cell::fromValue($ticket->type, $this->identityCellStyle),
+                    Cell::fromValue($ticket->via, $this->identityCellStyle),
+                    Cell::fromValue($ticket->status, $this->identityCellStyle),
+                    Cell::fromValue($ticket->created_at, $this->identityCellStyle),
+                    Cell::fromValue($ticket->solved_at, $this->identityCellStyle),
+/*                    Cell::fromValue(self::getTicketField($ticket, 26799500920978), $this->defaultCellStyle),
                     Cell::fromValue($ticket->contact ? $ticket->contact->code : '-', $this->defaultCellStyle),
                     Cell::fromValue($ticket->status, $this->defaultCellStyle),
-                    Cell::fromValue(self::getFormattedSerial(self::getTicketField($ticket, 22607784559250)), $this->defaultCellStyle),
+                    Cell::fromValue(self::getFormattedSerial(self::getTicketField($ticket, 22607784559250)), $this->defaultCellStyle),*/
 
-                    Cell::fromValue(self::getItem($ticket), $this->defaultCellStyle),
+/*                    Cell::fromValue(self::getItem($ticket), $this->defaultCellStyle),
                     Cell::fromValue(self::getTicketField($ticket, 23839621467666), $this->defaultCellStyle),
                     Cell::fromValue('value', $this->defaultCellStyle),
                     Cell::fromValue(self::getTicketField($ticket, 16604606187794), $this->defaultCellStyle),
@@ -275,7 +284,7 @@ use Illuminate\Foundation\Queue\Queueable;
                     Cell::fromValue(self::getTicketField($ticket, 25462965934354), $this->defaultCellStyle),
                     Cell::fromValue(self::getTicketField($ticket, 25463023390610), $this->defaultCellStyle),
                     Cell::fromValue(self::getTicketField($ticket, 23839797779090), $this->defaultCellStyle),
-                    Cell::fromValue(date('Y-m-d H:i:s', $ticket->created_at), $this->defaultCellStyle),
+                    Cell::fromValue(date('Y-m-d H:i:s', $ticket->created_at), $this->defaultCellStyle),*/
 
                     Cell::fromValue('', $this->defaultCellStyle),
                 ]));
