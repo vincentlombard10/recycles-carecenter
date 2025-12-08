@@ -1,14 +1,16 @@
 <div>
-    <div class="flex gap-2 mb-3">
-        <div>
-            <select name="status" id="status" class="form-control min-w-[8rem]" wire:model.live="status">
-                <option value="">Tous</option>
-                <option value="new">Nouveau</option>
-                <option value="open">Ouvert</option>
-                <option value="solved">Résolu</option>
-                <option value="hold">En attente</option>
-                <option value="closed">Clos</option>
-            </select>
+    <div class="flex gap-4 justify-between mb-3">
+        <div class="flex gap-2">
+            <div>
+                <select name="status" id="status" class="form-control min-w-[8rem]" wire:model.live="status">
+                    <option value="">Tous</option>
+                    <option value="new">Nouveau</option>
+                    <option value="open">Ouvert</option>
+                    <option value="solved">Résolu</option>
+                    <option value="hold">En attente</option>
+                    <option value="closed">Clos</option>
+                </select>
+            </div>
         </div>
         <x-pagination :items="$tickets" class="col-lg-6"/>
     </div>
