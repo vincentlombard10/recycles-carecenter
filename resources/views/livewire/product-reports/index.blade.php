@@ -19,14 +19,14 @@
         </div>
         <div>
             <select name="order" id="order" class="form-control min-w-[8rem]" wire:model.live="order">
+                <option value="created_at_desc">Création la plus récente</option>
+                <option value="created_at_asc">Création la plus ancienne</option>
                 <option value="updated_at_desc">Modification la plus récente</option>
                 <option value="updated_at_asc">Modification la plus ancienne</option>
                 <option value="started_at_desc">Démarrage le plus récent</option>
                 <option value="started_at_asc">Démarrage le plus ancien</option>
                 <option value="closed_at_desc">Clôture la plus récente</option>
                 <option value="closed_at_asc">Clôture la plus ancienne</option>
-                <option value="received_at_desc">Réception la plus récente</option>
-                <option value="received_at_asc">Réception la plus ancienne</option>
             </select>
         </div>
         <x-pagination :items="$reports" class="col-lg-6"/>
