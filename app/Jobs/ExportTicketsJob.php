@@ -264,7 +264,7 @@ use Illuminate\Foundation\Queue\Queueable;
                 $row = (new Row([
                     Cell::fromValue($ticket->id, $this->defaultCellStyle),
                     Cell::fromValue($ticket->type, $this->defaultCellStyle),
-                    Cell::fromValue($ticket->via['source'], $this->defaultCellStyle),
+                    Cell::fromValue($ticket->via['channel'], $this->defaultCellStyle),
                     Cell::fromValue($ticket->status, $this->defaultCellStyle),
                     Cell::fromValue($ticket->created_at, $this->defaultCellStyle),
                     Cell::fromValue($ticket->solved_at, $this->defaultCellStyle),
