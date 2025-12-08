@@ -25,7 +25,7 @@
                             <h2 class="font-bold text-2xl mb-2">{{ $contact->code }}</h2>
                             <span class="badge-small">{{ $contact->mailjet_contact_id }}</span>
                         </div>
-                        <div class="column-right grid grid-cols-[auto_8rem] gap-4">
+                        <div class="column-right grid grid-cols-[auto_16rem] gap-4">
                             <div>
                                 <div>{{ $contact->address1 }}</div>
                                 <div>{{ $contact->address2 }}</div>
@@ -34,6 +34,8 @@
                                 <div>{{ $contact->email }}</div>
                             </div>
                             <div>
+                                <div class="text-xs">Création : {{ date('d/m/Y H:i', strtotime($contact->created_at)) }}</div>
+                                <div class="text-xs">Dernière modification : {{ date('d/m/Y H:i', strtotime($contact->updated_at)) }}</div>
                             </div>
                         </div>
                     </div>
