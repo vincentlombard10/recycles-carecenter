@@ -1,6 +1,6 @@
 <div>
     <div class="flex gap-4 justify-between mb-3 ">
-        <div class="flex-gap-2">
+        <div class="flex gap-2">
             <div>
                 <select name="status" id="status" class="form-control min-w-[8rem]" wire:model.live="status">
                     <option value="">Tous</option>
