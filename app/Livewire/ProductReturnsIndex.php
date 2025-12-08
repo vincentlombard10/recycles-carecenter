@@ -15,6 +15,7 @@ class ProductReturnsIndex extends Component
     public bool $trashed = false;
     public string $status = '';
     public string $environment = 'production';
+    public string $order = 'updated_at_desc';
 
     public function render()
     {
@@ -37,6 +38,21 @@ class ProductReturnsIndex extends Component
             ->when($this->environment, function ($query) {
                 return $query->where('environment', $this->environment);
             })
+            ->when($this->order, function ($query) {
+                if ($this->order === 'updated_at_desc') {
+                    return $query->orderBy('updated_at', 'desc');
+                } else if ($this->order === 'created_at_desc') {
+                    return $query->orderBy('created_at', 'desc');
+                } else if ($this->order === 'updated_at_asc') {
+                    return $query->orderBy('updated_at');
+                } else if ($this->order === 'created_at_asc') {
+                    return $query->orderBy('created_at');
+                } else if ($this->order === 'received_at_desc') {
+                    return $query->orderBy('received_at', 'desc');
+                } else if ($this->order === 'received_at_asc') {
+                    return $query->orderBy('received_at');
+                }
+            })
             ->orderBy('updated_at', 'desc')->paginate(10)->withQueryString();
 
         return view('livewire.product-returns.index', compact('items'));
@@ -58,6 +74,12 @@ class ProductReturnsIndex extends Component
     public function updatedEnvironment(string $environment)
     {
         $this->environment = $environment;
+        $this->goToPage(1);
+    }
+
+    public function updatedOrder(string $order)
+    {
+        $this->order = $order;
         $this->goToPage(1);
     }
 }

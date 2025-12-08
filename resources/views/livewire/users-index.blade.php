@@ -1,29 +1,51 @@
 <div>
-    <table class="table">
+    <table class="table-auto bg-white w-full mb-3">
+        <thead class="bg-violet-900 text-white py-2">
+        <tr>
+            <th class="w-[6rem] py-1 text-xs text-left px-3">ID M3</th>
+            <th class="w-[10rem] py-1 text-xs text-left px-3">Nom</th>
+            <th class="w-[10rem] py-1 text-xs text-left px-3">Prénom</th>
+            <th class="py-1 text-xs text-left px-3">Adresse e-mail</th>
+            <th class="w-[10rem] py-1 text-xs px-3">Rôle</th>
+            <th class="w-[10rem] py-1 text-xs px-3">&nbsp;</th>
+        </tr>
+        </thead>
         <tbody>
         @foreach($users as $user)
-            <tr>
-                <td class="ps-4 pe-2 py-3"><span class="fw-bold">{{ $user->username }}</span></td>
-                <td class="px-2 py-3">{{ $user->lastname }}</td>
-                <td class="px-2 py-3">{{ $user->firstname }}</td>
-                <td class="px-2 py-3">{{ $user->email }}</td>
-                <td class="px-2 py-3">
+            <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100">
+                <td class="px-3 py-2"><span class="fw-bold">{{ $user->username }}</span></td>
+                <td class="px-3 py-2">{{ $user->lastname }}</td>
+                <td class="px-3 py-2">{{ $user->firstname }}</td>
+                <td class="px-3 py-2">{{ $user->email }}</td>
+                <td class="px-3 py-2">
                     @foreach($user->roles as $role)
-                        <span class="badge">{{ $role->public_name }}</span>
+                        <span class="badge badge-small">{{ $role->public_name }}</span>
                     @endforeach
                 </td>
-                <td class="ps-2 pe-3 py-3" style="width: 8rem;">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <td class="px-3 py-2">
+                    <el-dropdown>
+                        <button
+                            role="button"
+                            popovertarget="item-{{ $user->id }}"
+                            class="inline-flex bg-violet-100 justify-center rounded-md w-full text-sm font-semibold text-gray-900 hover:bg-gray-50 py-2">
                             Actions
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true"
+                                 class="-mr-1 size-5 text-gray-400">
+                                <path
+                                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                    clip-rule="evenodd" fill-rule="evenodd"/>
+                            </svg>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item text-end" href="{{ route('admin.users.edit', $user) }}">Editer<i class="bi bi-eye ms-2"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
+                        <el-menu anchor="bottom end" id="role-{{ $user->id }}" popover
+                                 class="w-32 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
+                            <div class="py-0">
+                                <a class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold"
+                                   href="{{ route('admin.users.edit', $role) }}">
+                                    Editer</a>
+                            </div>
+                        </el-menu>
+                    </el-dropdown>
                 </td>
             </tr>
         @endforeach

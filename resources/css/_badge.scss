@@ -27,6 +27,9 @@
     &.s90 {
         @apply bg-gray-200 text-gray-800;
     }
+    &.paused {
+        @apply bg-teal-200 text-teal-900;
+    }
 }
 
 .badge-small {
@@ -59,4 +62,7 @@
 }
 .bg__closed {
     @apply bg-gray-100 border-1 border-gray-300;
+}
+.bg__paused {
+    @apply bg-linear-90 from-teal-50 to-teal-100;
 }

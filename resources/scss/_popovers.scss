@@ -3,7 +3,7 @@
     border-radius: 1rem;
     padding: 2rem;
     border: 0px;
-    width: 32rem;
+    width: 16rem;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 [popover]::backdrop {
@@ -39,7 +39,7 @@
 
 @starting-style {
     [popover]:popover-open {
-        translate: 0 -8rem;
+        translate: 0 8rem;
         opacity: 0.5;
     }
     [popover]:popover-open::backdrop {
