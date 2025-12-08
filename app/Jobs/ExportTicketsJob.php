@@ -248,8 +248,10 @@ use Illuminate\Foundation\Queue\Queueable;
             $builtInFieldsHeader = [
                 'ID Zendesk',
                 'Type',
+                'Sujet',
                 'Canal',
                 'Statut',
+                'Client',
                 'Creation',
                 'Resolution'
             ];
@@ -264,8 +266,10 @@ use Illuminate\Foundation\Queue\Queueable;
                 $row = (new Row([
                     Cell::fromValue($ticket->id, $this->defaultCellStyle),
                     Cell::fromValue($ticket->type, $this->defaultCellStyle),
+                    Cell::fromValue($ticket->subject, $this->defaultCellStyle),
                     Cell::fromValue($ticket->via['channel'], $this->defaultCellStyle),
                     Cell::fromValue($ticket->status, $this->defaultCellStyle),
+                    Cell::fromValue($ticket->contact?->code, $this->defaultCellStyle),
                     Cell::fromValue(date('d/m/Y H:i', $ticket->created_at), $this->defaultCellStyle),
                     Cell::fromValue(date('d/m/Y h:i', strtotime($ticket->solved_at)), $this->defaultCellStyle),
 /*                    Cell::fromValue(self::getTicketField($ticket, 26799500920978), $this->defaultCellStyle),
