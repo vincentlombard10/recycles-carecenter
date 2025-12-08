@@ -41,7 +41,7 @@
                                 @endif
                                     </span>
                         </div>
-                        <div class="column-right grid lg:grid-cols-[auto_16rem] gap-8">
+                        <div class="column-right grid lg:grid-cols-[auto_16rem_16rem] gap-8">
                             <div>
                                 @if($item->type === 'bike')
                                     <x-card-bike :item="$item"/>
@@ -79,6 +79,13 @@
                                     <span
                                         class="font-bold bg-orange-300 px-2 py-1 rounded text-orange-800">
                                             <i class="bi bi-exclamation"></i></span>
+                                @endif
+                            </div>
+                            <div class="">
+                                <div class="text-xs">Agent : {{ $item->author->username }}</div>
+                                <div class="text-xs">Création : {{ date('d/m/Y H:i', strtotime($item->created_at)) }}</div>
+                                @if($item->received_at)
+                                <div class="text-xs">Réception : {{ date('d/m/Y H:i', strtotime($item->received_at)) }}</div>
                                 @endif
                             </div>
                         </div>

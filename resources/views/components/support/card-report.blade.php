@@ -35,8 +35,11 @@
                     @if($report->started_at)
                         <div class="">
                             <div class="text-xs">Technicien : {{ $report->technician?->username }}</div>
-                            <div class="text-xs">Démarrage : {{ $report->started_at }} - {{ $report->technician?->username }}</div>
-                            <div class="text-xs">Clôture : {{ $report->started_at }}</div>
+                            <div class="text-xs">Démarrage : {{ date('d/m/Y H:i', strtotime($report->started_at)) }}
+                                - {{ $report->technician?->username }}</div>
+                            @if($report->closed_at)
+                            <div class="text-xs">Clôture : {{ date('d/m/Y H:i', strtotime($report->closed_at)) }}</div>
+                            @endif
                         </div>
                     @endif
                 </div>
