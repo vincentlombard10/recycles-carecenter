@@ -272,7 +272,7 @@ use Illuminate\Foundation\Queue\Queueable;
                 $ticketFields = $ticket->fields()->withPivot('value');
                 $data = [];
                 foreach ($ticketFields as $ticketField) {
-                    $data[] = $ticketField->id;
+                    $data[] = $ticketFields->count();
                 }
 
                 $row = (new Row([
