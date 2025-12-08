@@ -286,7 +286,7 @@ use Illuminate\Foundation\Queue\Queueable;
                     Cell::fromValue(self::getTicketField($ticket, 23839797779090), $this->defaultCellStyle),
                     Cell::fromValue(date('Y-m-d H:i:s', $ticket->created_at), $this->defaultCellStyle),*/
 
-                    Cell::fromValue('', $this->defaultCellStyle),
+                    //Cell::fromValue('', $this->defaultCellStyle),
                 ]));
                 $writer->addRow($row);
             }
