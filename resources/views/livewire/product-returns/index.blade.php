@@ -1,29 +1,31 @@
 <div>
-    <div class="flex gap-2 mb-3">
-        <div>
-            <select name="status" id="status" class="form-control min-w-[8rem]" wire:model.live="status">
-                <option value="">Tous</option>
-                <option value="incomplete">Incomplet</option>
-                <option value="pending">En attente</option>
-                <option value="received">Reçu</option>
-            </select>
-        </div>
-        <div>
-            <select name="environment" id="environment" class="form-control min-w-[8rem]" wire:model.live="environment">
-                <option value="">Tous</option>
-                <option value="production">Réels</option>
-                <option value="sandbox">Fictif</option>
-            </select>
-        </div>
-        <div>
-            <select name="order" id="order" class="form-control min-w-[8rem]" wire:model.live="order">
-                <option value="updated_at_desc">Modification la plus récente</option>
-                <option value="updated_at_asc">Modification la plus ancienne</option>
-                <option value="created_at_desc">Création la plus récente</option>
-                <option value="created_at_asc">Création la plus ancienne</option>
-                <option value="received_at_desc">Réception la plus récente</option>
-                <option value="received_at_asc">Réception la plus ancienne</option>
-            </select>
+    <div class="flex gap-4 justify-between mb-3 ">
+        <div class="flex-gap-2">
+            <div>
+                <select name="status" id="status" class="form-control min-w-[8rem]" wire:model.live="status">
+                    <option value="">Tous</option>
+                    <option value="incomplete">Incomplet</option>
+                    <option value="pending">En attente</option>
+                    <option value="received">Reçu</option>
+                </select>
+            </div>
+            <div>
+                <select name="environment" id="environment" class="form-control min-w-[8rem]" wire:model.live="environment">
+                    <option value="">Tous</option>
+                    <option value="production">Réels</option>
+                    <option value="sandbox">Fictif</option>
+                </select>
+            </div>
+            <div>
+                <select name="order" id="order" class="form-control min-w-[8rem]" wire:model.live="order">
+                    <option value="updated_at_desc">Modification la plus récente</option>
+                    <option value="updated_at_asc">Modification la plus ancienne</option>
+                    <option value="created_at_desc">Création la plus récente</option>
+                    <option value="created_at_asc">Création la plus ancienne</option>
+                    <option value="received_at_desc">Réception la plus récente</option>
+                    <option value="received_at_asc">Réception la plus ancienne</option>
+                </select>
+            </div>
         </div>
         <div class="col-span-2">
             <x-pagination :items="$items" />
