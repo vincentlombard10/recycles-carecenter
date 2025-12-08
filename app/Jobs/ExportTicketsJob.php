@@ -257,7 +257,7 @@ use Illuminate\Foundation\Queue\Queueable;
                 'Resolution'
             ];
 
-            $customFielfsHeader = CustomField::query()->where('exportable', true)->pluck('title')->toArray();
+            $customFielfsHeader = CustomField::query()->where('is_exportable', true)->pluck('title')->toArray();
 
             $headerRow = [...$builtInFieldsHeader, $customFielfsHeader];
 
