@@ -9,8 +9,7 @@ use App\Models\Traits\Scope\TicketFieldScope;
 
 class CustomField extends Model
 {
-    use SoftDeletes,
-        TicketFieldScope;
+    use TicketFieldScope;
 
     protected $table = 'ticketfields';
 
