@@ -253,8 +253,8 @@ use Illuminate\Foundation\Queue\Queueable;
                 'Canal',
                 'Statut',
                 'Client',
-                'Creation',
-                'Resolution'
+                //'Creation',
+                //'Resolution'
             ];
 
             $customFielfsHeader = CustomField::query()->where('is_exportable', true)->pluck('title')->toArray();
@@ -273,8 +273,8 @@ use Illuminate\Foundation\Queue\Queueable;
                     Cell::fromValue($ticket->via['channel'], $this->defaultCellStyle),
                     Cell::fromValue($ticket->status, $this->defaultCellStyle),
                     Cell::fromValue($ticket->contact?->code, $this->defaultCellStyle),
-                    Cell::fromValue(date('d/m/Y H:i', $ticket->created_at), $this->defaultCellStyle),
-                    Cell::fromValue($ticket->solved_at ? date('d/m/Y h:i', strtotime($ticket->solved_at)) : null, $this->defaultCellStyle),
+                    //Cell::fromValue(date('d/m/Y H:i', $ticket->created_at), $this->defaultCellStyle),
+                    //Cell::fromValue($ticket->solved_at ? date('d/m/Y h:i', strtotime($ticket->solved_at)) : null, $this->defaultCellStyle),
 /*                    Cell::fromValue(self::getTicketField($ticket, 26799500920978), $this->defaultCellStyle),
                     Cell::fromValue($ticket->contact ? $ticket->contact->code : '-', $this->defaultCellStyle),
                     Cell::fromValue($ticket->status, $this->defaultCellStyle),
