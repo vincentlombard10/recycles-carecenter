@@ -16,19 +16,21 @@
                 </div>
             </div>
             {{ html()->form('POST', route('zendesk.tickets.export.post'))->open() }}
-            <div class="row">
-                <div class="col-md-6 col-xl-3 mb-2">
+            <div class="bg-violet-200 px-4 py-3 rounded mb-3 flex justify-between items-center">
+                <div>Personnalisez le fichier d'exporation en sélectionnant les colonnes souhaitées.</div>
+                <a class="bg-violet-600 px-6 py-2 text-white rounded font-bold" href="{{ route('zendesk.fields.index') }}">Personnaliser</a>
+            </div>
+            <div class="grid grid-cols-3 gap-4 items-end">
+                <div class="">
                     <label for="from" class="form-label mb-1">Début de la période</label>
                     <input type="datetime-local" class="form-control" id="from" name="from" required value="{{ $start_time }}">
                 </div>
-                <div class="col-md-6 col-xl-3 mb-2">
+                <div class="">
                     <label for="to" class="form-label mb-1">Fin de la période</label>
                     <input type="datetime-local" class="form-control" id="to" name="to" required value="{{ $end_time }}">
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-xl-3 mb-2">
-                    <input type="submit" class="btn btn-primary" value="Démarrer l'exportation">
+                <div class="">
+                    <input type="submit" class="bg-violet-500 px-4 py-2 rounded w-full text-white font-bold" value="Démarrer l'exportation">
                 </div>
             </div>
             {{ html()->form()->close() }}

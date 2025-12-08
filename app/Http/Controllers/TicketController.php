@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomField;
 use App\Models\Ticket;
 use Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -42,8 +43,10 @@ class TicketController extends Controller
     {
         $start_time = now()->subMonth()->startOfMonth();
         $end_time = now()->subMonth()->endOfMonth();
+        $ticket_fields = CustomField::all();
         return view('tickets.export')
             ->with('start_time', $start_time)
-            ->with('end_time', $end_time);
+            ->with('end_time', $end_time)
+            ->with('ticket_fields', $ticket_fields);
     }
 }
