@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use AllowDynamicProperties;
 use App\Events\TicketsExported;
+use App\Models\CustomField;
 use App\Models\Serial;
 use App\Models\Ticket;
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -256,7 +257,9 @@ use Illuminate\Foundation\Queue\Queueable;
                 'Resolution'
             ];
 
-            $headerRow = [...$builtInFieldsHeader];
+            $customFielfsHeader = CustomField::query()->where('exportable', true)->pluck('title')->toArray();
+
+            $headerRow = [...$builtInFieldsHeader, $customFielfsHeader];
 
             $writer->addHeader($headerRow);
 

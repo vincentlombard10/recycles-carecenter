@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CustomField extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,
+        \TicketFieldScope;
 
     protected $fillable = [
         'name',
