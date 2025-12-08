@@ -272,7 +272,7 @@ use Illuminate\Foundation\Queue\Queueable;
                 $ticketFields = $ticket->fields()->where('is_exportable', true)->get();
                 $data = [];
                 foreach ($ticketFields as $ticketField) {
-                    $data[] = $ticketField->value;
+                    $data[] = self::getTicketField($ticket, $ticketField->id);
                 }
 
                 $row = (new Row([
