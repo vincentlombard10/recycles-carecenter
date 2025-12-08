@@ -3,6 +3,7 @@
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\Zendesk\SyncZendeskTicketController;
 use App\Models\Contact;
+use App\Models\CustomField;
 use App\Models\Ticket;
 use App\Models\Zendesk\TicketField;
 use Zendesk\API\HttpClient as ZendeskAPI;
@@ -84,6 +85,12 @@ Route::group(['prefix' => 'zendesk', 'as' => 'zendesk.'], function () {
                     $contact->update(['support_enabled' => false, 'duplicates' => $query->users]);
                 }
             }
+        });
+    });
+    Route::group(['prefix' => '/fields', 'as' => 'fields.'], function () {
+        Route::get('/', function() {
+            $exportable_fields = CustomField::query()->where('is_exportable', true)->pluck('title')->toArray();
+            dd($exportable_fields);
         });
     });
 });

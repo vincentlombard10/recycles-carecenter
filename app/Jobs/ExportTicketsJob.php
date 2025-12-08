@@ -259,7 +259,7 @@ use Illuminate\Foundation\Queue\Queueable;
 
             $customFielfsHeader = CustomField::query()->where('is_exportable', true)->pluck('title')->toArray();
 
-            $headerRow = [...$builtInFieldsHeader, $customFielfsHeader];
+            $headerRow = [...$builtInFieldsHeader, ...$customFielfsHeader];
 
             $writer->addHeader($headerRow);
 
