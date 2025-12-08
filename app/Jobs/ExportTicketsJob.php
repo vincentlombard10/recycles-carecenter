@@ -262,12 +262,12 @@ use Illuminate\Foundation\Queue\Queueable;
 
             foreach ($tickets as $ticket) {
                 $row = (new Row([
-                    Cell::fromValue($ticket->id, $this->identityCellStyle),
-                    Cell::fromValue($ticket->type, $this->identityCellStyle),
-                    Cell::fromValue($ticket->via, $this->identityCellStyle),
-                    Cell::fromValue($ticket->status, $this->identityCellStyle),
-                    Cell::fromValue($ticket->created_at, $this->identityCellStyle),
-                    Cell::fromValue($ticket->solved_at, $this->identityCellStyle),
+                    Cell::fromValue($ticket->id, $this->defaultCellStyle),
+                    Cell::fromValue($ticket->type, $this->defaultCellStyle),
+                    Cell::fromValue($ticket->via, $this->defaultCellStyle),
+                    Cell::fromValue($ticket->status, $this->defaultCellStyle),
+                    Cell::fromValue($ticket->created_at, $this->defaultCellStyle),
+                    Cell::fromValue($ticket->solved_at, $this->defaultCellStyle),
 /*                    Cell::fromValue(self::getTicketField($ticket, 26799500920978), $this->defaultCellStyle),
                     Cell::fromValue($ticket->contact ? $ticket->contact->code : '-', $this->defaultCellStyle),
                     Cell::fromValue($ticket->status, $this->defaultCellStyle),
