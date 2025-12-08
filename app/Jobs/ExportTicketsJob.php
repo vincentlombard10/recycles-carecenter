@@ -269,7 +269,7 @@ use Illuminate\Foundation\Queue\Queueable;
 
             foreach ($tickets as $ticket) {
 
-                $ticketFields = $ticket->fields()->withPivot('value');
+                $ticketFields = $ticket->fields()->where('is_exportable', true)->withPivot('value');
                 $data = [];
                 foreach ($ticketFields as $ticketField) {
                     $data[] = Cell::fromValue($ticketFields->count());
