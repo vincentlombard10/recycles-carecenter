@@ -72,9 +72,8 @@ use Illuminate\Foundation\Queue\Queueable;
             ->setBorder($this->defaultBorder);
 
         $this->defaultCellStyle = (new Style())
-            ->setShouldWrapText(true)
             ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::LEFT)
+            ->setCellAlignment(CellAlignment::CENTER)
             ->setBorder($this->defaultBorder);
 
         $this->identityCellStyle = (new Style())
@@ -271,7 +270,7 @@ use Illuminate\Foundation\Queue\Queueable;
                 $ticketFields = $ticket->fields()->where('is_exportable', true)->withPivot('value')->get();
                 $data = [];
                 foreach ($ticketFields as $ticketField) {
-                    $data[] = Cell::fromValue($ticketField->pivot->value);
+                    $data[] = Cell::fromValue($ticketField->pivot->value, $this->defaultCellStyle);
                 }
 
                 $row = (new Row([
