@@ -11,7 +11,7 @@
     </x-page-header>
     <x-messages />
     <x-page-wrapper>
-        <div class="bg-sky-300 text-sky-950 px-6 py-4 rounded">
+        <div class="bg-sky-100 text-sky-950 px-6 py-4 rounded-lg">
             <p>Votre mot de passe doit :</p>
             <ul>
                 <li>Contenir au moins 8 caractères</li>
