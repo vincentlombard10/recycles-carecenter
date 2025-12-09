@@ -20,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($ticket->fields()->withTrashed() as $tf)
+                @foreach($ticket->fields() as $tf)
                     <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100 @if($tf->pivot->value == null) bg-slate-200 @endif">
                         <td class="px-3 py-2">{{ $tf->id }}</td>
                         <td class="px-3 py-2">{{ $tf->type }}</td>
