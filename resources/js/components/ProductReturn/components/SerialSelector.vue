@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-[8rem_4rem_12rem_auto] gap-x-6 mb-2" v-if="store.serial || store.serialSearchMethod === 'manual'">
+    <div class="grid grid-cols-[8rem_4rem_12rem_auto] gap-x-6 gap-y-2" v-if="store.serial || store.serialSearchMethod === 'manual'">
         <div>
             <label for="serial_code" class="form-label mb-1">Numéro de série</label>
             <input type="text"
