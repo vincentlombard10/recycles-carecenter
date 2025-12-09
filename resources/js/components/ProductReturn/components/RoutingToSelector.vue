@@ -1,6 +1,6 @@
 <template>
     <h4 class="font-semibold text-md mb-2">Destinataire</h4>
-    <div class="grid grid-cols-[32rem_auto] gap-x-6" v-if="store.routingTo">
+    <div class="grid grid-cols-[24rem_auto] gap-x-6" v-if="store.routingTo">
         <div>
             <ContactCard :contact="store.routingTo" class="mb-2"/>
             <input type="hidden" name="routing_to_code" :value="store.routingToCode">

@@ -1,6 +1,6 @@
 <template>
     <h4 class="font-semibold text-md mb-2">Réexpédition</h4>
-    <div class="grid grid-cols-[32rem_auto] gap-x-6" v-if="store.returnTo">
+    <div class="grid grid-cols-[24rem_auto] gap-x-6" v-if="store.returnTo">
         <div>
             <ContactCard :contact="store.returnTo" class="mb-2"/>
             <input type="hidden" name="return_to_code" :value="store.returnToCode">
