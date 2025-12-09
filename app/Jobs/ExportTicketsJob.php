@@ -7,6 +7,7 @@ use App\Events\TicketsExported;
 use App\Models\CustomField;
 use App\Models\Serial;
 use App\Models\Ticket;
+use App\Models\Zendesk\TicketField;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -73,128 +74,7 @@ use Illuminate\Foundation\Queue\Queueable;
 
         $this->defaultCellStyle = (new Style())
             ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::LEFT)
-            ->setBorder($this->defaultBorder);
-
-        $this->identityCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
             ->setCellAlignment(CellAlignment::CENTER)
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->centeredCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBorder($this->defaultBorder);
-
-        $this->emptyCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('e2e8f0')
-            ->setFontColor('94a3b8')
-            ->setBorder($this->defaultBorder);
-
-        $this->statusNewCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('e9d5ff')
-            ->setFontColor('6b21a8')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->statusOpenCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('7dd3fc')
-            ->setFontColor('0c4a6e')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->statusHoldCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('fdba74')
-            ->setFontColor('7c2d12')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->statusSolvedCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('99f6e4')
-            ->setFontColor('115e59')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->supportRedCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('06b6d4')
-            ->setFontColor('ecfeff')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->supportAnsweredCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('06b6d4')
-            ->setFontColor('ecfeff')
-            ->setBorder($this->defaultBorder);
-
-        $this->statusClosedCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('94a3b8')
-            ->setFontColor('f8fafc')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->statusPendingCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('fed7aa')
-            ->setFontColor('9a3412')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->statusReviewingCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('a5f3fc')
-            ->setFontColor('155e75')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->supportAcceptedCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('4ade80')
-            ->setFontColor('f0fdf4')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->supportExpertiseCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('818cf8')
-            ->setFontColor('eef2ff')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->supportRejectedCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('fb7185')
-            ->setFontColor('fff1f2')
-            ->setFontBold()
-            ->setBorder($this->defaultBorder);
-
-        $this->statusStandbyCellStyle = (new Style())
-            ->setCellVerticalAlignment(CellAlignment::CENTER)
-            ->setCellAlignment(CellAlignment::CENTER)
-            ->setBackgroundColor('fef08a')
-            ->setFontColor('854d0e')
-            ->setFontBold()
             ->setBorder($this->defaultBorder);
 
         $this->separatorCellStyle = (new Style())
@@ -232,8 +112,6 @@ use Illuminate\Foundation\Queue\Queueable;
                 '',
                 function ($writer) {
                     $options = $writer->getOptions();
-                    $options->DEFAULT_COLUMN_WIDTH = 15; // set default width
-                    $options->DEFAULT_ROW_HEIGHT = 20; // set default height
                     $options->DEFAULT_CELL_STYLE = (new Style())
                         ->setCellVerticalAlignment(Alignment::VERTICAL_CENTER)
                         ->setCellAlignment(CellAlignment::CENTER)
@@ -269,10 +147,10 @@ use Illuminate\Foundation\Queue\Queueable;
 
             foreach ($tickets as $ticket) {
 
-                $ticketFields = $ticket->fields()->where('is_exportable', true)->withPivot('value')->get();
+                $ticketFields = $fields = TicketField::query()->where('is_exportable', true)->get();
                 $data = [];
                 foreach ($ticketFields as $ticketField) {
-                    $data[] = Cell::fromValue($ticketField->pivot->value);
+                    $data[] = Cell::fromValue(self::getTicketField($ticket, $ticketField->id), $this->defaultCellStyle);
                 }
 
                 $row = (new Row([
@@ -321,7 +199,6 @@ use Illuminate\Foundation\Queue\Queueable;
 
     private function getTicketField($ticket, $identifier): string|null
     {
-        return $identifier;
         if ($ticket->fields()->wherePivot('ticketfield_id', $identifier)->exists()) {
             return $ticket->fields()->wherePivot('ticketfield_id', $identifier)->first()->pivot->value;
         }
