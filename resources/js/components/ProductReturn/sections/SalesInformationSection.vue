@@ -1,6 +1,6 @@
 <template>
     <section
-        class="bg-violet-50 p-8 rounded-xl mb-5"
+        class="bg-violet-50 p-8 rounded-xl mb-5  max-w-[1200px]"
         id="Sale_Information">
         <div class="Section_Head">
             <h2 class="font-bold text-xl mb-2">Informations de vente</h2>
