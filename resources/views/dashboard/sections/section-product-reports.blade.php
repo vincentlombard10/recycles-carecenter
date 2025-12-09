@@ -1,6 +1,6 @@
 <section class="mb-4">
     <h2 class="font-bold text-2xl mb-3">Expertises et rapports d'intervention</h2>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
         <x-dashboard.counter
             title="en attente"
             class="bg-orange-300"
