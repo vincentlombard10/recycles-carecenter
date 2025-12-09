@@ -72,6 +72,7 @@ use Illuminate\Foundation\Queue\Queueable;
             ->setBorder($this->defaultBorder);
 
         $this->defaultCellStyle = (new Style())
+            ->setShouldWrapText(true)
             ->setCellVerticalAlignment(CellAlignment::CENTER)
             ->setCellAlignment(CellAlignment::LEFT)
             ->setBorder($this->defaultBorder);
@@ -232,8 +233,6 @@ use Illuminate\Foundation\Queue\Queueable;
                 '',
                 function ($writer) {
                     $options = $writer->getOptions();
-                    $options->DEFAULT_COLUMN_WIDTH = 15; // set default width
-                    $options->DEFAULT_ROW_HEIGHT = 20; // set default height
                     $options->DEFAULT_CELL_STYLE = (new Style())
                         ->setCellVerticalAlignment(Alignment::VERTICAL_CENTER)
                         ->setCellAlignment(CellAlignment::CENTER)
