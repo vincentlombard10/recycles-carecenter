@@ -1,5 +1,5 @@
 <template>
-    <div class="row" v-if="store.item || store.itemSearchMethod === 'manual'">
+    <div class="grid grid-cols-[12rem_auto_4rem] gap-x-6 gap-y-2" v-if="store.item || store.itemSearchMethod === 'manual'">
         <div class="col-lg-3 mb-2">
             <label for="item_itno" class="form-label mb-1">Référence</label>
             <input type="text"
@@ -26,8 +26,8 @@
                    :readonly="store.type === 'battery'"
                    v-model="store.itemQuantity">
         </div>
-        <div class="col-lg-6">
-            <button class="text-xs px-2 py-1 rounded-md bg-gray-800 hover:bg-gray-900 shadow-sm"
+        <div>
+            <button class="bg-slate-800 text-slate-200 px-2 py-1 rounded-sm font-medium text-xs hover:bg-slate-700"
                     @click.prevent="store.cancelItem()">
                 <i class="bi bi-arrow-clockwise mr-1"></i>Annuler
             </button>
@@ -55,19 +55,17 @@
             </div>
         </template>
         <template v-else>
-            <div class="col-lg-3">
-                <label for="" class="form-label mb-1">Référence</label>
-                <input type="text" class="form-control" v-model="store.itemSearchTerm">
-            </div>
-            <div class="col-lg-3 mb-3 d-grid align-bottom">
-                <label for="" class="form-label mb-1">&nbsp;</label>
-                <button @click.prevent="store.fetchItems">Chercher</button>
-            </div>
-            <div class="col-lg-3 mb-3 d-grid align-bottom">
-                <label for="" class="form-label mb-1">&nbsp;</label>
-                <button @click.prevent="store.setItemSearchMethod('manual')">Renseigner
-                    manuellement
-                </button>
+            <div class="grid grid-cols-3 gap-4 items-end">
+                <div>
+                    <label for="" class="form-label mb-1">Référence</label>
+                    <input type="text" class="form-control" v-model="store.itemSearchTerm">
+                </div>
+                <div class="flex gap-2">
+                    <button @click.prevent="store.fetchItems" class="bg-violet-600 rounded px-4 py-2 text-white font-bold">Chercher</button>
+                    <button @click.prevent="store.setItemSearchMethod('manual')" class="bg-violet-800 rounded px-4 py-2 text-white font-bold">Renseigner
+                        manuellement
+                    </button>
+                </div>
             </div>
         </template>
     </div>
