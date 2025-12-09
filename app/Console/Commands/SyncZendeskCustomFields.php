@@ -34,6 +34,16 @@ class SyncZendeskCustomFields extends Command
             'token' => config('zendesk.token')
         ]);
 
+        $ticketFields = TicketField::all();
+
+        foreach ($ticketFields as $ticketField) {
+            try {
+                $response = $client->ticketFields()->find($ticketField->id);
+            } catch (\Exception $e) {
+                $ticketField->delete();
+            }
+        }
+
         $ticketfields = $client->ticketFields()->findAll();
         foreach($ticketfields->ticket_fields as $ticketfield) {
             TicketField::updateOrCreate([
