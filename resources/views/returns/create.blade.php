@@ -24,8 +24,8 @@
                     </select>
                 </div>
             </div>
-            <div id="product-return-form"></div>
-            <div class=" max-w-[1200px]">
+            <div id="product-return-form" class="max-w-[1200px]"></div>
+            <div class="max-w-[1200px]">
                 <div class="col-12">
                     <input type="submit" value="Créer" class="bg-violet-800 font-bold text-white w-full px-4 py-4 rounded-lg hover:bg-violet-900 cursor-pointer">
                 </div>

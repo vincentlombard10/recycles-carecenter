@@ -1,5 +1,5 @@
 <template>
-    <section class="Section">
+    <section>
         <h2 class="text-4xl font-bold mb-3">Composants remplacés</h2>
         <ReplacementItemsList />
         <ReplacementItemForm class="mb-5"/>
