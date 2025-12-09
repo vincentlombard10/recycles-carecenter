@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-[8rem_12rem_auto_4rem] gap-x-6 mb-2" v-if="store.serial || store.serialSearchMethod === 'manual'">
+    <div class="grid grid-cols-[8rem_4rem_12rem_auto] gap-x-6 mb-2" v-if="store.serial || store.serialSearchMethod === 'manual'">
         <div>
             <label for="serial_code" class="form-label mb-1">Numéro de série</label>
             <input type="text"
@@ -8,6 +8,15 @@
                    v-model="store.serialCode"
                    :readonly="store.serialSearchMethod === 'auto'"
                    />
+        </div>
+        <div>
+            <label for="serial_itcl" class="form-label mb-1">Marque</label>
+            <input type="text"
+                   name="serial_itcl"
+                   class="form-control"
+                   v-model="store.serialBrand"
+                   :readonly="store.serialSearchMethod === 'auto'"
+            />
         </div>
         <div>
             <label for="serial_itno" class="form-label mb-1">Référence</label>
@@ -28,16 +37,7 @@
                    />
         </div>
         <div>
-            <label for="serial_itcl" class="form-label mb-1">Marque</label>
-            <input type="text"
-                   name="serial_itcl"
-                   class="form-control"
-                   v-model="store.serialBrand"
-                   :readonly="store.serialSearchMethod === 'auto'"
-                   />
-        </div>
-        <div>
-            <button class="btn btn-sm btn-dark"
+            <button class="bg-slate-800 text-slate-200 px-2 py-1 rounded-sm font-medium text-xs hover:bg-slate-700"
                     @click.prevent="store.cancelSerial()"><i class="bi bi-arrow-clockwise"></i>
                 Annuler</button>
         </div>
