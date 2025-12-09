@@ -41,7 +41,9 @@
                         </div>
                     </a>
                     @if($productReturnsPendingCount)
-                    <div class="absolute w-2.5 h-2.5 bg-orange-500 rounded-xl top-[-3px] right-[-3px]"></div>
+                        <div class="absolute w-5 h-5 bg-rose-500 rounded-xl top-[-3px] right-[-3px] flex items-center justify-center">
+                            <span class="text-xs text-white font-semibold">{{ $productReturnsPendingCount }}</span>
+                        </div>
                     @endif
                 </li>
             @endcanany
