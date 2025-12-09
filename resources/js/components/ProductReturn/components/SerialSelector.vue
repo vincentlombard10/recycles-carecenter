@@ -1,6 +1,6 @@
 <template>
-    <div class="row" v-if="store.serial || store.serialSearchMethod === 'manual'">
-        <div class="col-lg-3 mb-2">
+    <div class="grid grid-cols-[8rem_4rem_12rem_auto] gap-x-6 gap-y-2" v-if="store.serial || store.serialSearchMethod === 'manual'">
+        <div>
             <label for="serial_code" class="form-label mb-1">Numéro de série</label>
             <input type="text"
                    name="serial_code"
@@ -9,7 +9,16 @@
                    :readonly="store.serialSearchMethod === 'auto'"
                    />
         </div>
-        <div class="col-lg-3 mb-2">
+        <div>
+            <label for="serial_itcl" class="form-label mb-1">Marque</label>
+            <input type="text"
+                   name="serial_itcl"
+                   class="form-control"
+                   v-model="store.serialBrand"
+                   :readonly="store.serialSearchMethod === 'auto'"
+            />
+        </div>
+        <div>
             <label for="serial_itno" class="form-label mb-1">Référence</label>
             <input type="text"
                    name="serial_itno"
@@ -18,7 +27,7 @@
                    :readonly="store.serialSearchMethod === 'auto'"
                    />
         </div>
-        <div class="col-lg-3 mb-2">
+        <div>
             <label for="serial_itds" class="form-label mb-1">Désignation</label>
             <input type="text"
                    name="serial_itds"
@@ -27,17 +36,8 @@
                    :readonly="store.serialSearchMethod === 'auto'"
                    />
         </div>
-        <div class="col-lg-3 mb-2">
-            <label for="serial_itcl" class="form-label mb-1">Marque</label>
-            <input type="text"
-                   name="serial_itcl"
-                   class="form-control"
-                   v-model="store.serialBrand"
-                   :readonly="store.serialSearchMethod === 'auto'"
-                   />
-        </div>
-        <div class="lg-6">
-            <button class="btn btn-sm btn-dark"
+        <div>
+            <button class="bg-slate-800 text-slate-200 px-2 py-1 rounded-sm font-medium text-xs hover:bg-slate-700"
                     @click.prevent="store.cancelSerial()"><i class="bi bi-arrow-clockwise"></i>
                 Annuler</button>
         </div>
@@ -52,26 +52,24 @@
             </ul>
         </div>
         <div class="col-lg-3 mb-3">
-            <button class="btn btn-sm btn-dark"
+            <button class="bg-slate-800 text-slate-200 px-2 py-1 rounded-sm font-medium text-xs hover:bg-slate-700"
                     @click.prevent="store.cancelSerial()">
                 <i class="bi bi-eraser-fill"></i>
                 Supprimer la sélection</button>
         </div>
     </div>
-    <div class="row" v-else>
-        <div class="col-lg-3 mb-3">
-            <label for="" class="form-label mb-1">Numéro de chassis</label>
-            <input type="text" class="form-control" v-model="store.serialSearchTerm">
+    <template v-else>
+        <div class="grid grid-cols-3 gap-4 items-end">
+            <div>
+                <label for="" class="form-label mb-1">Numéro de chassis</label>
+                <input type="text" class="form-control" v-model="store.serialSearchTerm">
+            </div>
+            <div class="flex gap-2">
+                <button class="bg-violet-600 rounded px-4 py-2 text-white font-bold" @click.prevent="store.fetchSerials()">Chercher</button>
+                <button @click.prevent="store.setSerialSearchMethod('manual')" class="bg-violet-800 rounded px-4 py-2 text-white font-bold">Renseigner manuellement</button>
+            </div>
         </div>
-        <div class="col-lg-3 mb-3 d-grid align-bottom">
-            <label for="" class="form-label mb-1">&nbsp;</label>
-            <button class="btn btn-dark full-width" @click.prevent="store.fetchSerials()">Chercher</button>
-        </div>
-        <div class="col-lg-3 mb-3 d-grid align-bottom">
-            <label for="" class="form-label mb-1">&nbsp;</label>
-            <button @click.prevent="store.setSerialSearchMethod('manual')" class="btn btn-primary">Renseigner manuellement</button>
-        </div>
-    </div>
+    </template>
 </template>
 
 <script setup>

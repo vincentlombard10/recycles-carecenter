@@ -34,12 +34,12 @@
                 </ul>
             </div>
         </div>
-        <div class="row" v-else>
-            <div class="col-lg-3">
+        <div class="grid grid-cols-3 gap-4" v-else>
+            <div>
                 <input type="text" class="form-control" v-model="store.ticketSearchTerm">
             </div>
-            <div class="col-lg-3">
-                <button @click.prevent="store.fetchTickets">Rechercher</button>
+            <div>
+                <button @click.prevent="store.fetchTickets" class="bg-violet-600 rounded px-4 py-2 text-white font-bold">Rechercher</button>
             </div>
         </div>
     </section>
