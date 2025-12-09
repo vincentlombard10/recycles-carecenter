@@ -29,7 +29,7 @@
                 </a>
             </li>
             @canany(['returns.read', 'returns.create', 'returns.update', 'returns.delete'])
-                <li class="w-10">
+                <li class="relative w-10">
                     <a href="{{ route('support.returns.index') }}"
                        class="group inline-flex gap-2 items-center text-violet-900">
                         <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('support.returns.*') ? 'active bg-violet-500 text-white' : '' }}">
@@ -40,10 +40,13 @@
                                 class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Retours produits</span>
                         </div>
                     </a>
+                    @if($productReturnsPendingCount)
+                    <div class="absolute w-2.5 h-2.5 bg-orange-500 rounded-xl top-[-3px] right-[-3px]"></div>
+                    @endif
                 </li>
             @endcanany
             @canany(['reports.read', 'reports.create', 'reports.update', 'reports.delete'])
-                <li class="w-10">
+                <li class="w-10 relative">
                     <a href="{{ route('support.reports.index') }}"
                        class="group inline-flex gap-2 items-center text-violet-900">
                         <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('support.reports.*') ? 'active bg-violet-500 text-white' : '' }}">
@@ -53,10 +56,13 @@
                             <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Rapports d'intervention</span>
                         </div>
                     </a>
+                    @if($productReportsInProgressCount)
+                    <div class="absolute w-2.5 h-2.5 bg-orange-500 rounded-xl top-[-3px] right-[-3px]"></div>
+                    @endif
                 </li>
             @endcanany
             @canany(['reports.read', 'reports.create', 'reports.update', 'reports.delete'])
-                <li class="w-10">
+                <li class="relative w-10">
                     <a href="{{ route('support.estimates.index') }}"
                        class="group inline-flex gap-2 items-center text-violet-900">
                         <div class="flex w-10 h-10 justify-center items-center rounded-md hover:not('active'):bg-violet-100 hover:not('active'):text-orange-500 {{ Route::is('support.estimates.*') ? 'active bg-violet-500 text-white' : '' }}">
@@ -66,6 +72,9 @@
                             <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Devis</span>
                         </div>
                     </a>
+                    @if($estimatesPendingCount)
+                    <div class="absolute w-2.5 h-2.5 bg-orange-500 rounded-xl top-[-3px] right-[-3px]"></div>
+                    @endif
                 </li>
             @endcanany
             @canany('tickets.read')
