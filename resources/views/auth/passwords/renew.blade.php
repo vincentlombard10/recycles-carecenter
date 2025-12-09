@@ -23,7 +23,7 @@
         <div class="bg-white px-6 py-4 rounded-lg mb-4">
             {{ html()->form('PUT', route('profile.password.update'))->open() }}
             @if ($errors->any())
-                <ul class="bg-rose-100 text-rose-900 px-6 py-4 rounded-lg">
+                <ul class="bg-rose-100 text-rose-900 px-6 py-4 rounded-lg mb-4">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
