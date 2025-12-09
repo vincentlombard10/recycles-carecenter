@@ -268,7 +268,7 @@ use Illuminate\Foundation\Queue\Queueable;
 
             foreach ($tickets as $ticket) {
 
-                $ticketFields = $fields = TicketField::query()->exportable()->get();
+                $ticketFields = $fields = TicketField::query()->where('is_exportable', true)->get();
                 $data = [];
                 foreach ($ticketFields as $ticketField) {
                     $data[] = Cell::fromValue(self::getTicketField($ticket, $ticketField->id), $this->defaultCellStyle);
