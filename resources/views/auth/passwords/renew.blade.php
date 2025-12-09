@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-page-header>
-        <div class="page-header-content">
-            <div class="d-flex align-items-center gap-3">
+        <div class="flex justify-between items-center w-full">
+            <div class="flex gap-2">
                 <a href="{{ route('profile.index') }}" class="btn btn-circle btn-orange">
                     <i class="bi bi-arrow-left"></i>
                 </a>
