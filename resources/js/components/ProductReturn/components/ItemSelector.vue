@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="col-lg-3 mb-3">
-                <button class="btn btn-sm btn-dark"
+                <button class="bg-slate-800 text-slate-200 px-2 py-1 rounded-sm font-medium text-xs hover:bg-slate-700"
                         @click.prevent="cancelSuggestions">
                     <i class="bi bi-arrow-clockwise"></i>Supprimer la sélection
                 </button>

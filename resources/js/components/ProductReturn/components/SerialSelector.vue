@@ -1,6 +1,6 @@
 <template>
-    <div class="row" v-if="store.serial || store.serialSearchMethod === 'manual'">
-        <div class="col-lg-3 mb-2">
+    <div class="grid grid-cols-[8rem_12rem_auto_4rem] gap-x-6 mb-2" v-if="store.serial || store.serialSearchMethod === 'manual'">
+        <div>
             <label for="serial_code" class="form-label mb-1">Numéro de série</label>
             <input type="text"
                    name="serial_code"
@@ -9,7 +9,7 @@
                    :readonly="store.serialSearchMethod === 'auto'"
                    />
         </div>
-        <div class="col-lg-3 mb-2">
+        <div>
             <label for="serial_itno" class="form-label mb-1">Référence</label>
             <input type="text"
                    name="serial_itno"
@@ -18,7 +18,7 @@
                    :readonly="store.serialSearchMethod === 'auto'"
                    />
         </div>
-        <div class="col-lg-3 mb-2">
+        <div>
             <label for="serial_itds" class="form-label mb-1">Désignation</label>
             <input type="text"
                    name="serial_itds"
@@ -27,7 +27,7 @@
                    :readonly="store.serialSearchMethod === 'auto'"
                    />
         </div>
-        <div class="col-lg-3 mb-2">
+        <div>
             <label for="serial_itcl" class="form-label mb-1">Marque</label>
             <input type="text"
                    name="serial_itcl"
@@ -36,7 +36,7 @@
                    :readonly="store.serialSearchMethod === 'auto'"
                    />
         </div>
-        <div class="lg-6">
+        <div>
             <button class="btn btn-sm btn-dark"
                     @click.prevent="store.cancelSerial()"><i class="bi bi-arrow-clockwise"></i>
                 Annuler</button>
@@ -52,7 +52,7 @@
             </ul>
         </div>
         <div class="col-lg-3 mb-3">
-            <button class="btn btn-sm btn-dark"
+            <button class="bg-slate-800 text-slate-200 px-2 py-1 rounded-sm font-medium text-xs hover:bg-slate-700"
                     @click.prevent="store.cancelSerial()">
                 <i class="bi bi-eraser-fill"></i>
                 Supprimer la sélection</button>
