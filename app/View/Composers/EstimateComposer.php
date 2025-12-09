@@ -10,6 +10,6 @@ class EstimateComposer
     public function compose(View $view)
     {
         $view->with('estimatesCount', Estimate::count());
-        //$view->with('estimatesPendingCount', Estimate::where('state', 'pending')->count());
+        $view->with('estimatesPendingCount', Estimate::where('state', 'pending')->count());
     }
 }
