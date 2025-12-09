@@ -49,7 +49,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <input type="submit" class="bg-violet-600 text-white font-semibold hover:bg-violet-700 px4 py-2 rounded" value="Valider">
+                    <input type="submit" class="bg-violet-600 text-white font-semibold hover:bg-violet-700 px-4 py-2 rounded" value="Valider">
                 </div>
             </div>
             {{ html()->form()->close() }}
