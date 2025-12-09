@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header>
-        <div class="flex px-4 justify-between items-center w-full">
+        <div class="flex justify-between items-center w-full">
             <h1 class="m-0 text-md">Retours</h1>
             <div class="flex gap-4 items-center">
                 <div class="flex gap-2">

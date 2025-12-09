@@ -1,14 +1,12 @@
 <x-app-layout>
     <x-page-header>
-        <div class="page-header-content">
             <div>
                 <h1 class="mb-0">Tableau de bord</h1>
             </div>
             <div></div>
-        </div>
     </x-page-header>
     <x-page-wrapper>
-        <div class="p-5">
+        <div class="mx-auto max-w-[1200px]">
             <x-messages />
             @include('dashboard.sections.section-product-returns')
             @include('dashboard.sections.top-components')

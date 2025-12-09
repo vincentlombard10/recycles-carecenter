@@ -1,4 +1,4 @@
-<div>
+<div class="mx-auto max-w-[1200px]">
     <div class="flex gap-4 mb-3 justify-between">
         <div class="flex-gap-2">
             <div>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-page-header>
-        <div class="flex px-4 justify-between items-center w-full">
+        <div class="flex justify-between items-center w-full">
             <h1 class="m-0">Tickets Zendesk Support</h1>
             <div class="flex gap-4">
                 <div class="flex gap-2">
@@ -16,7 +16,7 @@
     </x-page-header>
     <x-page-wrapper>
         <x-messages/>
-        <div class="grid grid-cols-3 gap-x-6 mb-3">
+        <div class="grid grid-cols-3 gap-x-6 mb-3 mx-auto max-w-[1200px]">
             <x-dashboard.counter
                 title="nouveaux"
                 class="New"

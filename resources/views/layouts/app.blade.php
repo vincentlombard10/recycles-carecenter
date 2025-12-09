@@ -8,7 +8,7 @@
         {!! ToastMagic::styles() !!}
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="mt-16">
         <x-sidebar-navigation />
         <div id="main" class="ml-16">
             {{ $slot }}

@@ -1,9 +1,7 @@
 <x-app-layout>
     <x-page-header>
-        <div class="page-header-content">
-            <div>
-                <h1 class="m-0">Contacts clients</h1>
-            </div>
+        <div class="flex justify-between items-center w-full">
+            <h1 class="m-0">Contacts clients</h1>
             <div class="flex gap-2">
                 <div class="flex gap-4">
                     <div class="flex gap-2">
