@@ -10,7 +10,6 @@
             </div>
         </div>
         <div class="">
-            <div>{{ $ticket->fields()->wherePivot('ticketfield_id', 16577615117074)->first()->value }}</div>
             <table class="table-auto bg-white w-full mb-3">
                 <thead class="bg-violet-900 text-white py-2">
                 <tr>
