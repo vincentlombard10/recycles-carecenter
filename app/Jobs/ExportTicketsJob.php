@@ -7,6 +7,7 @@ use App\Events\TicketsExported;
 use App\Models\CustomField;
 use App\Models\Serial;
 use App\Models\Ticket;
+use App\Models\Zendesk\TicketField;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -267,10 +268,10 @@ use Illuminate\Foundation\Queue\Queueable;
 
             foreach ($tickets as $ticket) {
 
-                $ticketFields = $ticket->fields()->where('is_exportable', true)->withPivot('value')->get();
+                $ticketFields = $fields = TicketField::query()->exportable()->get();
                 $data = [];
                 foreach ($ticketFields as $ticketField) {
-                    $data[] = Cell::fromValue($ticketField->pivot->value, $this->defaultCellStyle);
+                    $data[] = Cell::fromValue(self::getTicketField($ticket, $ticketField->id), $this->defaultCellStyle);
                 }
 
                 $row = (new Row([
