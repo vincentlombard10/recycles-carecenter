@@ -40,7 +40,7 @@
                                 class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Retours produits</span>
                         </div>
                     </a>
-                    @if($productReturnsPendingCount)
+                    @if(auth()->user()->preference('show_badges') && $productReturnsPendingCount)
                         <div class="absolute w-5 h-5 bg-rose-500 rounded-xl top-[-3px] right-[-3px] flex items-center justify-center">
                             <span class="text-xs text-white font-semibold">{{ $productReturnsPendingCount }}</span>
                         </div>
@@ -58,7 +58,7 @@
                             <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Rapports d'intervention</span>
                         </div>
                     </a>
-                    @if($productReportsInProgressCount)
+                    @if(auth()->user()->preference('show_badges') && $productReportsInProgressCount)
                     <div class="absolute w-5 h-5 bg-rose-500 rounded-xl top-[-3px] right-[-3px] flex items-center justify-center">
                         <span class="text-xs text-white font-semibold">{{ $productReportsInProgressCount }}</span>
                     </div>
@@ -76,7 +76,7 @@
                             <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Devis</span>
                         </div>
                     </a>
-                    @if($estimatesPendingCount)
+                    @if(auth()->user()->preference('show_badges') && $estimatesPendingCount)
                         <div class="absolute w-5 h-5 bg-rose-500 rounded-xl top-[-3px] right-[-3px] flex items-center justify-center">
                             <span class="text-xs text-white font-semibold">{{ $estimatesPendingCount }}</span>
                         </div>
