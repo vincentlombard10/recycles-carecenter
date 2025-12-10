@@ -25,5 +25,6 @@ class GroupsIndex extends Component
     public function updateSearchTerm($searchTerm)
     {
         $this->searchTerm = $searchTerm;
+        $this->resetPage();
     }
 }

@@ -31,6 +31,6 @@ class SerialsIndex extends Component
     public function updateSerialsList($searchTerm = '')
     {
         $this->searchTerm = $searchTerm;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 }
