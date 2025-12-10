@@ -62,24 +62,24 @@ class ProductReturnsIndex extends Component
     public function updateSearchTerm($searchTerm)
     {
         $this->searchTerm = $searchTerm;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 
     public function updatedStatus(string $status)
     {
         $this->status = $status;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 
     public function updatedEnvironment(string $environment)
     {
         $this->environment = $environment;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 
     public function updatedOrder(string $order)
     {
         $this->order = $order;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 }

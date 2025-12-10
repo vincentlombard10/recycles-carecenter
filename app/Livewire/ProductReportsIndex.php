@@ -66,12 +66,12 @@ class ProductReportsIndex extends Component
     public function updateSearchTerm($searchTerm)
     {
         $this->searchTerm = $searchTerm;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 
     public function updatedOrder(string $order)
     {
         $this->order = $order;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 }
