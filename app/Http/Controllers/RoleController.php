@@ -54,6 +54,10 @@ class RoleController extends Controller
             $role = Role::find($id);
             $role->syncPermissions($request->permission);
             $role->save();
+
+            $toast_message = sprintf("Le rôle %s a correctement été mis à jour.", $role->public_name);
+            \ToastMagic::success($toast_message);
+
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
         }
