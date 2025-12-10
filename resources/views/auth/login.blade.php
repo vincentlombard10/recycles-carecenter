@@ -1,19 +1,19 @@
 <x-guest-layout>
     {{ html()->form('POST', route('login'))->open() }}
     <div class="mb-3">
-        {{ html()->label('Adresse e-mail :')->class('form-label mb-1') }}
-        {{ html()->email('email')->class('form-control rounded-md border-violet-600')->autocomplete('off') }}
+        {{ html()->label('Adresse e-mail :')->for('email')->class('inline-block font-semibold mb-1') }}
+        {{ html()->email('email')->class('px-4 py-2 w-full bg-white rounded border-1 border-violet-300 ring-0')->autocomplete('off') }}
     </div>
     <div class="mb-3">
-        {{ html()->label('Mot de passe :')->class('form-label mb-1') }}
-        {{ html()->password('password')->class('form-control rounded-md border-violet-600')->autocomplete('current-password') }}
+        {{ html()->label('Mot de passe :')->for('password')->class('inline-block font-semibold mb-1') }}
+        {{ html()->password('password')->class('px-4 py-2 w-full bg-white rounded border-1 border-violet-300')->autocomplete('current-password') }}
     </div>
     <div class="d-grid mb-3">
         {{ html()->submit('Connexion')->class('bg-violet-600 w-full py-2 rounded text-white font-bold hover:bg-violet-700') }}
     </div>
     <div>
         @if (Route::has('password.request'))
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+            <a class="font-semibold"
                href="{{ route('password.request') }}">
                 {{ __('Mot de passe oublié ?') }}
             </a>

@@ -7,15 +7,15 @@
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
         <div class="mb-3">
-            <label for="email" class="form-label mb-1">Adresse e-mail</label>
+            <label for="email" class="form-label font-semibold mb-1">Adresse e-mail</label>
             <input type="text" name="email" class="form-control" value="{{ old('email') }}" required autofocus>
         </div>
 
         <div class="d-grid mb-3">
-            <input type="submit" class="btn btn-primary" value="Recevoir le lien de renouvellement.">
+            <input type="submit" class="bg-violet-800 px-4 py-2 w-full rounded text-white font-semibold" value="Recevoir le lien de renouvellement">
         </div>
         <div>
-            <a href="/">Retour</a>
+            <a href="/" class="font-semibold"><i class="bi bi-chevron-left"></i> Retour</a>
         </div>
     </form>
 
