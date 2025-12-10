@@ -17,7 +17,7 @@
                 <a href="{{ route('profile.password.change') }}">Modifier mon mot de passe de connexion</a>
             </div>
         </div>
-        <div class="bg-white p-6 mb-3">
+{{--        <div class="bg-white p-6 mb-3">
             <h2 class="font-bold text-xl mb-3">Préférences</h2>
             {{ html()->form('PUT', route('profile.preferences.update'))->open() }}
             <div class="flex gap-2 items-center mb-3">
@@ -28,6 +28,6 @@
                 <input type="submit" class="bg-violet-700 px-4 py-2 text-white font-semibold rounded" value="Enregistrer mes préférences">
             </div>
             {{ html()->form()->close() }}
-        </div>
+        </div>--}}
     </x-page-wrapper>
 </x-app-layout>
