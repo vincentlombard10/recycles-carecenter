@@ -37,22 +37,15 @@ class ContactsIndex extends Component
         return view('livewire.contacts-index', compact('contacts'));
     }
     #[On('updatedSearchTerm')]
-    public function updateSearchTerm($searchTerm)
+    public function updatedSearchTerm($searchTerm)
     {
         $this->searchTerm = $searchTerm;
-        $this->gotoPage(0);
-        $this->resetPage();
-    }
-
-    public function updatedSearchTerm()
-    {
-        $this->gotoPage(0);
         $this->resetPage();
     }
 
     public function updatedOrder(string $order)
     {
         $this->order = $order;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 }

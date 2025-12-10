@@ -22,5 +22,6 @@ class ItemsIndex extends Component
     public function updateItemsList($searchTerm)
     {
         $this->searchTerm = $searchTerm;
+        $this->resetPage();
     }
 }

@@ -22,6 +22,6 @@ class UsersIndex extends Component
     public function updatedSearchTerm($searchTerm = '')
     {
         $this->searchTerm = $searchTerm;
-        $this->goToPage(1);
+        $this->resetPage();
     }
 }
