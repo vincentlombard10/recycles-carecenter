@@ -1,4 +1,4 @@
-<div>
+<div class="mx-auto max-w-[1200px]">
     @if (isset($estimates) && count($estimates))
         @foreach($estimates as $item)
             <div class="bg bg-white p-3 lg:p-4 mb-2 rounded-md">

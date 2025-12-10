@@ -1,4 +1,4 @@
-<div>
+<div class="mx-auto max-w-[1200px]">
     <x-pagination :items="$brands" class="mb-3"/>
     <table class="table-auto bg-white w-full mb-3">
         <thead class="bg-violet-900 text-white py-2">

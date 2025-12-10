@@ -13,7 +13,7 @@
     </x-page-header>
     <x-page-wrapper>
         <x-messages/>
-        <div class="container-fluid p-5">
+        <div class="max-w-[1200px]">
             {{ html()->form('PATCH', route('support.returns.update', $return))->open() }}
             <div id="product-return-form" data-return="{{ $return }}"></div>
             <div class="mb-3">

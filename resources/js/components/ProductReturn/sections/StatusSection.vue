@@ -1,5 +1,5 @@
 <template>
-    <section class="Section">
+    <section class="max-w-[1200px]">
         <div class="row mb-2">
             <div class="col-lg-6" v-if="store.status !== 'received'">
                 <label for="status" class="form-label mb-1">Statut</label>

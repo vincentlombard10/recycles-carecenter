@@ -1,33 +1,29 @@
 <x-app-layout>
     <x-page-header>
-        <div class="page-header-content">
-            <div class="d-flex align-items-center gap-3">
+        <div class="flex justify-between items-center w-full">
+            <div class="flex gap-2">
                 <a href="{{ route('profile.index') }}" class="btn btn-circle btn-orange">
                     <i class="bi bi-arrow-left"></i>
                 </a>
-                <h1>Modifier le mot de passe de connexion</h1>
+                <h1>Modifier le mot de passe</h1>
             </div>
         </div>
     </x-page-header>
     <x-messages />
     <x-page-wrapper>
-        <div class="container-fluid p-3">
-            <div class="row">
-                <div class="col-lg-6 mb-3">
-                    <div class="alert">
-                        <p>Votre mot de passe doit :</p>
-                        <ul>
-                            <li>Contenir au moins 8 caractères</li>
-                            <li>Inclure des lettres majuscules et minuscules</li>
-                            <li>Contenir au moins un chiffre</li>
-                            <li>Contenir au moins un symbole</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="bg-sky-100 text-sky-950 px-6 py-4 rounded-lg mb-3">
+            <p>Votre mot de passe doit :</p>
+            <ul>
+                <li>Contenir au moins 8 caractères</li>
+                <li>Inclure des lettres majuscules et minuscules</li>
+                <li>Contenir au moins un chiffre</li>
+                <li>Contenir au moins un symbole</li>
+            </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg mb-4">
             {{ html()->form('PUT', route('profile.password.update'))->open() }}
             @if ($errors->any())
-                <ul style="color: red;">
+                <ul class="bg-rose-100 text-rose-900 px-6 py-4 rounded-lg mb-4">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -53,7 +49,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <input type="submit" class="btn btn-primary" value="Valider">
+                    <input type="submit" class="bg-violet-600 text-white font-semibold hover:bg-violet-700 px-4 py-2 rounded" value="Valider">
                 </div>
             </div>
             {{ html()->form()->close() }}

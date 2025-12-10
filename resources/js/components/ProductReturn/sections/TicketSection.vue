@@ -1,6 +1,6 @@
 <template>
     <section id="Ticket"
-             class="bg-violet-50 p-8 rounded-xl mb-5">
+             class="bg-violet-50 p-8 rounded-xl mb-5  max-w-[1200px]">
         <div class="Section_Head">
             <h2 class="font-bold text-xl mb-2">Ticket Associé</h2>
             <div>

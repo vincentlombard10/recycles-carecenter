@@ -1,6 +1,6 @@
 <template>
     <h4 class="font-semibold text-md mb-2">Destinataire</h4>
-    <div class="grid grid-cols-[32rem_auto] gap-x-6" v-if="store.routingTo">
+    <div class="grid grid-cols-[24rem_auto] gap-x-6" v-if="store.routingTo">
         <div>
             <ContactCard :contact="store.routingTo" class="mb-2"/>
             <input type="hidden" name="routing_to_code" :value="store.routingToCode">
@@ -89,7 +89,7 @@
         </div>
     </div>
     <div class="grid grid-cols-[16rem_auto] gap-x-6" v-else>
-        <div class="col-lg-4 mb-3">
+        <div>
             <input type="text"
                    class="form-control mb-2"
                    placeholder="Code client ..."
@@ -101,7 +101,7 @@
                 @click.prevent="store.cancelRoutingTo()"><i class="bi bi-eraser me-1"></i>&nbsp;Effacer
             </button>
         </div>
-        <div class="col-lg-8 mb-3">
+        <div>
             <ul class="Contacts_List" v-if="store.routingToList.length">
                 <ContactItem
                     v-for="contact in store.routingToList"

@@ -12,7 +12,7 @@
         </div>
     </x-page-header>
     <x-page-wrapper>
-        <div class="container-fluid p-3">
+        <div class="max-w-[1200px]">
             {{ html()->form('PATCH', route('support.reports.update', $report))->acceptsFiles()->open() }}
             <div id="product-report-form" data-report="{{ $report->identifier }}"></div>
             <input type="submit" class="bg-violet-800 font-bold text-white w-full px-4 py-4 rounded-lg hover:bg-violet-900 cursor-pointer" value="Enregistrer">

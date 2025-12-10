@@ -1,6 +1,8 @@
 <x-app-layout>
     <x-page-header>
-        <h1 class="m-0">User</h1>
+        <div class="flex justify-between items-center w-full">
+            <h1 class="m-0">User</h1>
+        </div>
     </x-page-header>
     <x-page-wrapper>
         <div class="card">

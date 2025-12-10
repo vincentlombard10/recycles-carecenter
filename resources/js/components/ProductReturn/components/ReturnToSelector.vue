@@ -1,6 +1,6 @@
 <template>
     <h4 class="font-semibold text-md mb-2">Réexpédition</h4>
-    <div class="grid grid-cols-[32rem_auto] gap-x-6" v-if="store.returnTo">
+    <div class="grid grid-cols-[24rem_auto] gap-x-6" v-if="store.returnTo">
         <div>
             <ContactCard :contact="store.returnTo" class="mb-2"/>
             <input type="hidden" name="return_to_code" :value="store.returnToCode">
@@ -92,7 +92,7 @@
         </div>
     </div>
     <div class="grid grid-cols-[16rem_auto] gap-x-6" v-else>
-        <div class="col-lg-4 mb-3">
+        <div>
             <input type="text"
                    class="form-control mb-2"
                    placeholder="Code client ..."
@@ -104,7 +104,7 @@
                 @click.prevent="store.cancelReturnTo()"><i class="bi bi-eraser"></i>&nbsp;Effacer
             </button>
         </div>
-        <div class="col-lg-8 mb-3">
+        <div>
             <ul class="Contacts_List" v-if="store.returnToList.length">
                 <ContactItem
                     v-for="contact in store.returnToList"

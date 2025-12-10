@@ -10,7 +10,6 @@
             </div>
         </div>
         <div class="">
-            <div>{{ $ticket->fields()->wherePivot('ticketfield_id', 16577615117074)->first()->value }}</div>
             <table class="table-auto bg-white w-full mb-3">
                 <thead class="bg-violet-900 text-white py-2">
                 <tr>
@@ -21,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($ticket->filledFields as $tf)
+                @foreach($ticket->fields as $tf)
                     <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100 @if($tf->pivot->value == null) bg-slate-200 @endif">
                         <td class="px-3 py-2">{{ $tf->id }}</td>
                         <td class="px-3 py-2">{{ $tf->type }}</td>
