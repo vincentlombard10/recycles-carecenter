@@ -64,5 +64,7 @@ Route::middleware('auth')->group(function () {
             ->name('password.change');
         Route::put('update-password', [\App\Http\Controllers\ProfileController::class, 'updatePassword'])
             ->name('password.update');
+        Route::put('/update-preferences', [\App\Http\Controllers\UserPreferenceController::class, 'update'])
+            ->name('preferences.update');
     });
 });
