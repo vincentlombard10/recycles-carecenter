@@ -40,7 +40,7 @@
         @empty
             <div class="flex justify-between px-4 py-2 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">
                 <div>Aucun résultat pour cette sélection.</div>
-                <div><a wire:click="resetSelection">Réinitialiser la sélection</a></div>
+                <div><button wire:click="resetSelection" class="text-yellow-300 bg-transparent">Réinitialiser la sélection</button</div>
             </div>
         @endforelse
     </div>
