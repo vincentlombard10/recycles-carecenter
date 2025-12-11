@@ -35,10 +35,12 @@
     </div>
     @if(count($reports))
         <div class="mb-3">
-            @foreach($reports as $report)
+            @forelse($reports as $report)
                 <x-support.card-report :report="$report"/>
                 <x-support.card-report-popver :report="$report" />
-            @endforeach
+            @empty
+                <div class="px-4 py-2 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">No result for this selection.</div>
+            @endforelse
         </div>
     @endif
     <x-pagination :items="$reports" />
