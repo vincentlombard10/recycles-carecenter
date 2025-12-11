@@ -33,15 +33,13 @@
         </div>
         <x-pagination :items="$reports" class="col-lg-6"/>
     </div>
-    @if(count($reports))
-        <div class="mb-3">
-            @forelse($reports as $report)
-                <x-support.card-report :report="$report"/>
-                <x-support.card-report-popver :report="$report" />
-            @empty
-                <div class="px-4 py-2 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">No result for this selection.</div>
-            @endforelse
-        </div>
-    @endif
+    <div class="mb-3">
+        @forelse($reports as $report)
+            <x-support.card-report :report="$report"/>
+            <x-support.card-report-popver :report="$report" />
+        @empty
+            <div class="px-4 py-2 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">No result for this selection.</div>
+        @endforelse
+    </div>
     <x-pagination :items="$reports" />
 </div>
