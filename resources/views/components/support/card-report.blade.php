@@ -82,9 +82,16 @@
                                             <i class="bi bi-pencil-square ms-2"></i></a></li>
                                 @endif
                                 @if($report->isClosed())
-                                    <a class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold"
-                                       href="{{ route('support.reports.download', $report->identifier) }}">
-                                        Télécharger le rapport<i class="bi bi-download ms-2"></i></a>
+                                    <li>
+                                        <a class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold"
+                                           href="{{ route('support.reports.download', $report->identifier) }}">
+                                            Télécharger le rapport<i class="bi bi-download ms-2"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold"
+                                           href="{{ route('support.reports.reopen', $report) }}">
+                                            Rouvrir<i class="bi bi-download ms-2"></i></a>
+                                    </li>
                                 @endif
                             </div>
                         </el-menu>

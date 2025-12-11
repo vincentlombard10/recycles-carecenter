@@ -32,6 +32,9 @@ Route::group([
         Route::patch('/start/{identfier}', [ProductReportController::class, 'start'])
             ->name('start');
 
+        Route::patch('/reopen/{report}', [ProductReportController::class, 'reopen'])
+            ->name('reopen');
+
         Route::get('/{productReport}/download', \App\Http\Controllers\Support\DownloadProductReportController::class)
             ->name('download');
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('replacement_items', function (Blueprint $table) {
             $table->id();
-            $table->string('itno')->unique();
+            $table->string('itno');
             $table->string('itds')->nullable();
             $table->unsignedBigInteger('quantity');
             $table->boolean('care')->nullable();

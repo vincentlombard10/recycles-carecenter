@@ -204,6 +204,18 @@ class ProductReportController extends Controller
         return redirect()->route('support.reports.index');
     }
 
+    public function reopen(Request $request, ProductReport $report)
+    {
+        try {
+            $report->update([
+                'status' => ProductReport::STATUS_IN_PROGRESS,
+                'closed_at' => null,
+            ]);
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+        }
+    }
+
     public function destroy($id): RedirectResponse
     {
         if(!Auth::user()->can('reports.delete')) {
