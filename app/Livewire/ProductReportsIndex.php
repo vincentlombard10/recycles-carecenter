@@ -74,4 +74,12 @@ class ProductReportsIndex extends Component
         $this->order = $order;
         $this->resetPage();
     }
+
+    public function resetSelection()
+    {
+        $this->searchTerm = '';
+        $this->status = '';
+        $this->environment = 'production';
+        $this->order = 'updated_at_desc';
+    }
 }
