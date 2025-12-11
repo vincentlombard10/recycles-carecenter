@@ -1,7 +1,7 @@
 <div>
     <x-pagination :items="$items" class="mb-3"/>
     <table class="table-auto bg-white w-full mb-3">
-        <thead class="bg-violet-900 text-white py-2">
+        <thead class="bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white py-2">
         <tr>
             <th class="w-[8rem] text-xs px-2 py-1">Code</th>
             <th class="text-left text-xs px-2 py-1">Désignation</th>
