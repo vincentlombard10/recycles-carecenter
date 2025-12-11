@@ -2,7 +2,7 @@
     <div class="flex gap-4 justify-between mb-3">
         <div class="flex gap-2">
             <div>
-                <select name="status" id="status" class="form-control min-w-[8rem]" wire:model="status">
+                <select name="status" id="status" class="form-control min-w-[8rem]" wire:model.live="status">
                     <option value="">Tous</option>
                     <option value="init">Retour en attente</option>
                     <option value="pending">En attente</option>
@@ -12,7 +12,7 @@
                 </select>
             </div>
             <div class="col-lg-3">
-                <select name="environment" id="environment" class="form-control min-w-[8rem]" wire:model="environment">
+                <select name="environment" id="environment" class="form-control min-w-[8rem]" wire:model.live="environment">
                     <option value="">Tous</option>
                     <option value="production">Réels</option>
                     <option value="sandbox">Fictif</option>
@@ -33,6 +33,7 @@
         </div>
         <x-pagination :items="$reports" class="col-lg-6"/>
     </div>
+    <div>{{ $order }} - {{ $environment }} - {{ $status }}</div>
     <div class="mb-3">
         @forelse($reports as $report)
             <x-support.card-report :report="$report"/>
