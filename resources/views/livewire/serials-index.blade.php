@@ -1,7 +1,7 @@
 <div class="mx-auto max-w-[1200px]">
     <x-pagination :items="$serials" class="mb-3"/>
     <table class="table-auto bg-white w-full mb-3">
-        <thead class="bg-violet-900 text-white py-2">
+        <thead class="bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white py-2">
         <tr>
             <th class="w-[6rem] py-1 text-xs">Code</th>
             <th class="w-[10rem] py-1 text-xs">SKU</th>
