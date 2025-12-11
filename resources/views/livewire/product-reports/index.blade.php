@@ -38,7 +38,10 @@
             <x-support.card-report :report="$report"/>
             <x-support.card-report-popver :report="$report" />
         @empty
-            <div class="px-4 py-2 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">No result for this selection.</div>
+            <div class="flex justify-between px-4 py-2 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">
+                <div>Aucun résultat pour cette sélection.</div>
+                <div><a wire:click="resetSelection">Réinitialiser la sélection</a></div>
+            </div>
         @endforelse
     </div>
     <x-pagination :items="$reports" />
