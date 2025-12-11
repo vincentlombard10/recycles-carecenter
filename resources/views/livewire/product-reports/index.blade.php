@@ -2,7 +2,7 @@
     <div class="flex gap-4 justify-between mb-3">
         <div class="flex gap-2">
             <div>
-                <select name="status" id="status" class="form-control min-w-[8rem]" wire:model.live="status">
+                <select name="status" id="status" class="form-control min-w-[8rem]" wire:model="status">
                     <option value="">Tous</option>
                     <option value="init">Retour en attente</option>
                     <option value="pending">En attente</option>
@@ -12,7 +12,7 @@
                 </select>
             </div>
             <div class="col-lg-3">
-                <select name="environment" id="environment" class="form-control min-w-[8rem]" wire:model.live="environment">
+                <select name="environment" id="environment" class="form-control min-w-[8rem]" wire:model="environment">
                     <option value="">Tous</option>
                     <option value="production">Réels</option>
                     <option value="sandbox">Fictif</option>

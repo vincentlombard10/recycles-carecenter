@@ -75,7 +75,7 @@ class ProductReportsIndex extends Component
         $this->resetPage();
     }
 
-    public function resetSelection()
+    public function resetSelection(): void
     {
         $this->searchTerm = '';
         $this->status = '';
