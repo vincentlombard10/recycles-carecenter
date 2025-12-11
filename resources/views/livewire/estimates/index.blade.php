@@ -1,6 +1,6 @@
 <div class="mx-auto max-w-[1200px]">
     @if (isset($estimates) && count($estimates))
-        @foreach($estimates as $item)
+        @forelse($estimates as $item)
             <div class="bg bg-white p-3 lg:p-4 mb-2 rounded-md">
                 <div class="grid grid-cols-[auto_8rem] gap-4">
                     <div class="grid md:grid-cols-[8rem_auto] gap-4">
@@ -26,8 +26,14 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="flex justify-between px-4 py-3 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">
+                <div>Aucun résultat pour cette sélection.</div>
+            </div>
+        @endforelse
     @else
-        @lang('Data not available')
+        <div class="flex justify-between px-4 py-3 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">
+            <div>Aucun devis.</div>
+        </div>
     @endif
 </div>
