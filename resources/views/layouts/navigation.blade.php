@@ -76,7 +76,7 @@
                             <span class="flex items-center bg-white px-4 h-8 shadow-xl rounded-full">Devis</span>
                         </div>
                     </a>
-                    @if(auth()->user()->preference('show_badges') && $estimatesPendingCount)
+                    @if($estimatesPendingCount)
                         <div class="absolute w-5 h-5 bg-linear-to-r/oklch from-pink-500 via-rose-500 to-red-500 rounded-xl top-[-3px] right-[-3px] flex items-center justify-center">
                             <span class="text-xs text-white font-semibold">{{ $estimatesPendingCount }}</span>
                         </div>
