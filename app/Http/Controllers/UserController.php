@@ -37,7 +37,8 @@ class UserController extends Controller
             ]);
             $user->assignRole($request->input('role'));
             $user->save();
-            \ToastMagic::success("Utilisateur créé");
+            $toast_message = sprintf("L'utilisateur %s a correctement été créé.", $user->username);
+            \ToastMagic::success($toast_message);
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
             \ToastMagic::error($th->getMessage());
@@ -73,7 +74,9 @@ class UserController extends Controller
             ]);
             $user->syncRoles($request->input('role'));
             $user->save();
-            \ToastMagic::success("Utilisateur mis à jour");
+
+            $toast_message = sprintf("L'utilisateur %s a correctement été mis à jour.", $user->username);
+            \ToastMagic::success($toast_message);
         } catch (\Throwable $th) {
             \ToastMagic::error($th->getMessage());
         }

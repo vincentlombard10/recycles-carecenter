@@ -13,8 +13,8 @@ class ProductReportsIndex extends Component
 
     public string $searchTerm = '';
     public string $status = '';
-    public string $environment = 'production';
-    public string $order = 'updated_at_desc';
+    public string $environment = '';
+    public string $order = 'created_at_desc';
 
     public function render()
     {
@@ -74,4 +74,5 @@ class ProductReportsIndex extends Component
         $this->order = $order;
         $this->resetPage();
     }
+
 }

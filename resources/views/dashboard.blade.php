@@ -1,9 +1,6 @@
 <x-app-layout>
     <x-page-header>
-            <div>
-                <h1 class="mb-0">Tableau de bord</h1>
-            </div>
-            <div></div>
+        <h1 class="mb-0">Tableau de bord</h1>
     </x-page-header>
     <x-page-wrapper>
         <div class="mx-auto max-w-[1200px]">

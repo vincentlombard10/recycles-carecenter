@@ -14,7 +14,7 @@
                 </ul>
             </div>
             <div>
-                <a href="{{ route('profile.password.change') }}">Modifier mon mot de passe de connexion</a>
+                <a href="{{ route('profile.password.change') }}" class="px-4 py-2 bg-violet-700 text-white font-semibold rounded">Modifier mon mot de passe</a>
             </div>
         </div>
 {{--        <div class="bg-white p-6 mb-3">

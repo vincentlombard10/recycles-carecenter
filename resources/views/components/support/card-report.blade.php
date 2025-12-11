@@ -38,7 +38,8 @@
                             <div class="text-xs">Démarrage : {{ date('d/m/Y H:i', strtotime($report->started_at)) }}
                                 - {{ $report->technician?->username }}</div>
                             @if($report->closed_at)
-                            <div class="text-xs">Clôture : {{ date('d/m/Y H:i', strtotime($report->closed_at)) }}</div>
+                                <div class="text-xs">Clôture
+                                    : {{ date('d/m/Y H:i', strtotime($report->closed_at)) }}</div>
                             @endif
                         </div>
                     @endif
@@ -82,9 +83,18 @@
                                             <i class="bi bi-pencil-square ms-2"></i></a></li>
                                 @endif
                                 @if($report->isClosed())
-                                    <a class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold"
-                                       href="{{ route('support.reports.download', $report->identifier) }}">
-                                        Télécharger le rapport<i class="bi bi-download ms-2"></i></a>
+                                    <li>
+                                        <a class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold"
+                                           href="{{ route('support.reports.download', $report->identifier) }}">
+                                            Télécharger le rapport<i class="bi bi-download ms-2"></i></a>
+                                    </li>
+                                    @can('reports.reopen')
+                                        <li>
+                                            <a class="block px-4 py-2 text-sm text-gray-700 focus:bg-violet-200 focus:text-violet-900 focus:outline-hidden focus:font-semibold"
+                                               href="{{ route('support.reports.reopen', $report) }}">
+                                                Rouvrir</a>
+                                        </li>
+                                    @endcan
                                 @endif
                             </div>
                         </el-menu>

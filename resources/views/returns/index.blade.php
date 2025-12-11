@@ -21,10 +21,6 @@
     </x-page-header>
     <x-page-wrapper>
         <x-messages/>
-        @if($returns_count > 0)
-            <livewire:product-returns-index/>
-        @else
-            <div class="alert alert-primary">Il ne se passe pas grand chose ici.</div>
-        @endif
+        <livewire:product-returns-index/>
     </x-page-wrapper>
 </x-app-layout>
