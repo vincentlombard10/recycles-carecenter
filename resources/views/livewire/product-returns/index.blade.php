@@ -146,6 +146,8 @@
         </div>
         <x-pagination :items="$items"/>
     @else
-        <div class="px-6 py-4 rounded bg-violet-500 text-white font-bold">Il ne se passe pas grand chose ici.</div>
+        <div class="flex justify-between px-4 py-3 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">
+            <div>Aucun résultat pour cette sélection.</div>
+        </div>
     @endif
 </div>

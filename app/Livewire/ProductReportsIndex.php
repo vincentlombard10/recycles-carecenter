@@ -13,8 +13,8 @@ class ProductReportsIndex extends Component
 
     public string $searchTerm = '';
     public string $status = '';
-    public string $environment = 'production';
-    public string $order = 'updated_at_desc';
+    public string $environment = '';
+    public string $order = 'created_at_desc';
 
     public function render()
     {
@@ -75,12 +75,4 @@ class ProductReportsIndex extends Component
         $this->resetPage();
     }
 
-    public function resetSelection(): void
-    {
-        $this->searchTerm = '';
-        $this->status = '';
-        $this->environment = 'production';
-        $this->order = 'updated_at_desc';
-        $this->resetPage();
-    }
 }

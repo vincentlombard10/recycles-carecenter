@@ -33,15 +33,13 @@
         </div>
         <x-pagination :items="$reports" class="col-lg-6"/>
     </div>
-    <div>{{ $order }} - {{ $environment }} - {{ $status }}</div>
     <div class="mb-3">
         @forelse($reports as $report)
             <x-support.card-report :report="$report"/>
             <x-support.card-report-popver :report="$report" />
         @empty
-            <div class="flex justify-between px-4 py-2 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">
+            <div class="flex justify-between px-4 py-3 rounded bg-linear-to-r/oklch from-indigo-500 via-violet-500 to-purple-500 text-white text-xs">
                 <div>Aucun résultat pour cette sélection.</div>
-                <div><button wire:click="resetSelection" class="text-yellow-300 bg-transparent">Réinitialiser la sélection</button</div>
             </div>
         @endforelse
     </div>
