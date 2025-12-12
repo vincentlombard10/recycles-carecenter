@@ -5,8 +5,8 @@
 .form-label {
     @apply text-violet-900 inline-block mb-1;
 }
-.form-control {
-    @apply bg-white py-2 sm:py-2 px-3 block w-full border-blue-500 border-1 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none appearance-none;
+.form-control, input {
+    @apply bg-white py-2 sm:py-2 px-3 block w-full border-orange-500 border-1 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none appearance-none dark:bg-zinc-800 dark:border-violet-500 dark:focus:border-orange-500 outline-0;
 
     &--success {
         background-color: oklch(92.5% 0.084 155.995);
