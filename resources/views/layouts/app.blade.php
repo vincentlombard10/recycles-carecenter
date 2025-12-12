@@ -13,9 +13,9 @@
         <div id="main" class="ml-16">
             {{ $slot }}
         </div>
-        <div class="ml-16 mb-3 text-xs">
+{{--        <div class="ml-16 mb-3 text-xs">
             <div class="mx-auto max-w-[1200px] border-t-1 border-t-violet-600 py-2">{{ app()->version() }} | Care Center {{ app_version() ?? config('app.version') }} - {{ app_version_description() }}</div>
-        </div>
+        </div>--}}
         {!! ToastMagic::scripts() !!}
     </body>
 </html>
