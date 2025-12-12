@@ -1,5 +1,5 @@
 <section class="mb-4">
-    <h2 class="font-bold text-2xl mb-3 dark:text-orange-500">Retours produit</h2>
+    <h2 class="font-bold text-2xl mb-3 dark:text-zinc-600">Retours produit</h2>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
         <x-dashboard.counter
             title="tous"
