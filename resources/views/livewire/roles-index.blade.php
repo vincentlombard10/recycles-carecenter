@@ -7,7 +7,7 @@
         </tr>
         </thead>
         @foreach($roles as $role)
-            <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100">
+            <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100 dark:bg-zinc-900 dark:border-b-zinc-700 dark:hover:bg-violet-950 dark:hover:text-white">
                 <td class="px-3 py-2">{{ $role->public_name }}</td>
                 <td class="px-3 py-2">
                     <el-dropdown>

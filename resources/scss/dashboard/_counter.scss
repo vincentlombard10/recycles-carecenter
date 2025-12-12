@@ -7,6 +7,7 @@
     border-radius: 0.5rem;
     position: relative;
     overflow: hidden;
+    @apply dark:bg-zinc-700;
     &.Pending {
         background-color: oklch(90.1% 0.076 70.697);
     }

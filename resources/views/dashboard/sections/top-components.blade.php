@@ -1,8 +1,8 @@
 <section class="mb-4">
-    <h2 class="font-bold text-2xl mb-3">Top retours</h2>
+    <h2 class="font-bold text-2xl mb-3 dark:text-orange-500">Top retours</h2>
     <div class="grid grid-cols-3 gap-x-6">
         <div class="mb-4">
-            <h2 class="font-bold mb-3">Top batteries</h2>
+            <h2 class="font-bold mb-3 dark:text-violet-400">Top batteries</h2>
             @if($top_batteries->count())
                 <ul class="bg-white rounded-lg px-4 py-3">
                     @foreach($top_batteries as $item)
@@ -21,7 +21,7 @@
             @endif
         </div>
         <div class="mb-4">
-            <h2 class="font-bold mb-3">Top Vélos</h2>
+            <h2 class="font-bold mb-3 dark:text-violet-400">Top Vélos</h2>
             @if($top_components->count())
                 <ul class="bg-white rounded-lg px-4 py-3">
                     @foreach($top_components as $item)
@@ -40,7 +40,7 @@
             @endif
         </div>
         <div class="mb-4">
-            <h2 class="font-bold mb-3">Top Vélos</h2>
+            <h2 class="font-bold mb-3 dark:text-violet-400">Top Vélos</h2>
             @if($top_bikes->count())
                 <ul class="bg-white rounded-lg px-4 py-3">
                     @foreach($top_bikes as $item)

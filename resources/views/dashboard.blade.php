@@ -2,7 +2,7 @@
     <x-page-header>
         <div class="flex gap-2 items-center">
             <x-heroicon-o-home class="w-6 h-6" stroke-width="1.5"/>
-            <h1 class="mb-0">Tableau de bord</h1>
+            <h1 class="mb-0 text-white">Tableau de bord</h1>
         </div>
     </x-page-header>
     <x-page-wrapper>

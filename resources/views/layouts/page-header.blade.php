@@ -1,4 +1,4 @@
-<div class="bg-white h-16 fixed top-0 w-[calc(100vw-4rem)] z-10 shadow-sm px-4">
+<div class="bg-white h-16 fixed top-0 w-[calc(100vw-4rem)] z-10 shadow-sm px-4 dark:bg-linear-to-r/oklch dark:from-indigo-500 dark:via-violet-500 dark:to-violet-500 text-white">
     <div class="flex max-w-[1200px] mx-auto gap-4 h-16 items-center justify-between">
         {{ $slot }}
         <div>

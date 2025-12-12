@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         @foreach($items as $item)
-            <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100">
+            <tr class="border-b-slate-300 border-b-1 hover:bg-orange-100 dark:bg-zinc-900 dark:border-b-zinc-700 dark:hover:bg-violet-950 dark:hover:text-white">
                 <td class="px-3 py-2">{{ $item->itno }}</td>
                 <td class="px-3 py-2">{{ $item->itds }}</td>
                 <td class="px-3 py-2 text-center">

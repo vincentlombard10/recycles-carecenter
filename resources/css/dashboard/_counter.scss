@@ -7,6 +7,7 @@
     border-radius: 0.5rem;
     position: relative;
     overflow: hidden;
+    @apply dark:bg-zinc-800 text-white;
     &.New {
         @apply bg-yellow-200 text-shadow-yellow-800;
     }
@@ -18,19 +19,41 @@
     }
     &.Pending {
         background-color: oklch(90.1% 0.076 70.697);
+        @apply dark:bg-orange-800;
     }
     &.Received {
         background-color: oklch(92.5% 0.084 155.995);
+        @apply dark:bg-green-700;
+        .title {
+            @apply dark:text-green-300;
+        }
+        .display {
+            @apply dark:text-green-100;
+        }
     }
     &.Sandbox {
         background-color: oklch(94.5% 0.129 101.54);
+        @apply dark:bg-yellow-700;
+        .title {
+            @apply dark:text-yellow-300;
+        }
+        .display {
+            @apply dark:text-yellow-100;
+        }
     }
     &.Violet {
         background-color: oklch(89.4% 0.057 293.283);
-        color: white !important;
+        @apply dark:bg-violet-600;
+        .title {
+            @apply dark:text-violet-300;
+        }
+        .display {
+            @apply dark:text-violet-100;
+        }
     }
     &.Pink {
         background-color: oklch(82.3% 0.12 346.018);
+        @apply dark:bg-pink-600;
     }
     &--zd {
         .display {
@@ -70,7 +93,7 @@
 
     .display {
         z-index: 2;
-        color: oklch(29.1% 0.149 302.717);
+        @apply dark:text-violet-200;
         .title {
             font-size: 1.15rem;
             line-height: 1.15rem;
