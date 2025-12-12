@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-page-header>
         <div class="flex justify-between items-center w-full">
-            <h1 class="m-0">Contacts clients</h1>
+            <div class="flex gap-2 items-center">
+                <x-heroicon-o-user-circle class="w-6 h-6" stroke-width="1.5"/>
+                <h1 class="mb-0">Contacts Clients</h1>
+            </div>
             <div class="flex gap-2">
                 <div class="flex gap-4">
                     <div class="flex gap-2">

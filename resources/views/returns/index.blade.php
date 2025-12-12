@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-page-header>
         <div class="flex justify-between items-center w-full">
-            <h1 class="m-0 text-md">Retours</h1>
+            <div class="flex gap-2 items-center">
+                <x-heroicon-o-cube class="w-6 h-6" stroke-width="1.5"/>
+                <h1 class="mb-0">Retours produits</h1>
+            </div>
             <div class="flex gap-4 items-center">
                 <div class="flex gap-2">
                     <a href="{{ route('support.returns.create') }}"
